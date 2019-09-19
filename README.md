@@ -49,7 +49,17 @@ Additional information can be found on the product website: [www.nicai-systems.c
 
 # Robot tasks
 
-ToDo
+**Fraidy cat**
+The robot should avoid obstacles to the right or left as shown in [this video](https://youtu.be/c-cpGMVMM1k).
+
+**Follow me**
+The robot should follow a human hand as shown in [this video](https://youtu.be/KMAIyAhpvuM).
+
+**Colour detection**
+The robot should detect the colours blue, red, yellow and green. Colours should be indicated on the 8x8 pixel display as shown in [this video](https://youtu.be/4foVZdhxUQg).
+
+**Rabbit warren**
+The robot should follow a path from point A to B as shown in [this video](https://youtu.be/VxXwEKlsGJY).
 
 
 # Assembling NIBO Burger
