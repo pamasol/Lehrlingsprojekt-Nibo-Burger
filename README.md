@@ -52,19 +52,19 @@ Additional information can be found on the product website: [www.nicai-systems.c
 
 The following 5 tasks must be mastered, whereas the apprentice can choose the order by himself.
 
-**5m straightforward**  
+### 5m straightforward  
 The robot should move exactly 5 meters without any longitudinal and lateral deviation.
 
-**Fraidy cat**  
+### Fraidy cat  
 The robot should avoid obstacles to the right or left as shown in [this video](https://youtu.be/c-cpGMVMM1k).
 
-**Follow me**  
+### Follow me  
 The robot should follow a human hand as shown in [this video](https://youtu.be/KMAIyAhpvuM).
 
-**Colour detection**  
+### Colour detection  
 The robot should detect the colours blue, red, yellow and green. Colours should be indicated on the 8x8 pixel display as shown in [this video](https://youtu.be/4foVZdhxUQg).
 
-**Rabbit warren**  
+### Rabbit warren  
 The robot should follow a path from point A to B as shown in [this video](https://youtu.be/VxXwEKlsGJY).
 
 
