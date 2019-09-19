@@ -80,7 +80,8 @@ It starts with interpreting and sorting the items followed by preparing the work
 
 Following points are not mentioned in the manual but recommended:
 * The phototransistors of the IR sensors should be protected with shrinking tube to reduce interference from other sensors.
-
+* Sensor protection wings should be mounted on lower circuit board, not on the top one as described in the manual.
+ 
 Since the microcontroller is preprogramed on can run the function tests as soon as the hardware work is done.
 
 The maroon shield 8x8 matrix display is super easy to assemble. That is why its manual consists of 2 pages only.
