@@ -13,7 +13,7 @@ At Pamasol they work on customer projects as well as on internal training projec
 * Using Git as software version control system and GitHub for collaborative software development
 * Enhancing documentation and presentation skills
 
-Table of contents:
+**Table of contents:**
 1. [Robot construction kit NIBO Burger](#robot-construction-kit-nibo-burger)
 2. [Robot tasks](#robot-tasks)
 3. [Assembling NIBO Burger](#assembling-nibo-burger)
@@ -22,8 +22,8 @@ Table of contents:
 
 In a first step the roboter kit is presented. The tasks which the robot has to solve are described in a second chapter, followed by robot assembling, programming and documentation.
 
-## Robot construction kit NIBO burger
-The NIBO burger robot kit is a free programmable autonomous robot that can act autonomously with its environment. It is equipped with an Atmel ATmega16 AVR main controller, 9 sensors and a slot for ARDUINO shields where for example an 8x8 LED matrix display can be mounted. It comes as an assembly kit that is provided by [nicai-systems](http://www.nicai-systems.com/), Germany. 
+# Robot construction kit NIBO burger
+The NIBO burger robot kit is a free programmable robot that can act autonomously with its environment. It is equipped with an Atmel ATmega16 AVR main controller, 9 sensors and a slot for ARDUINO shields where for example an 8x8 LED matrix display can be mounted. It comes as an assembly kit that is provided by [nicai-systems](http://www.nicai-systems.com/), Germany. 
 
 NIBO Burger with 8x8 LED matrix display | Powered via 4x1.2V AAA battery
 :-------------------------:|:-------------------------:
@@ -44,7 +44,7 @@ Features of NIBO Burger:
 Additional information can be found on the product website: [www.nicai-systems.com/en/nibo-burger](http://www.nicai-systems.com/en/nibo-burger)
 
 
-## Robot tasks
+# Robot tasks
 
 ToDo
 
