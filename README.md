@@ -43,6 +43,8 @@ Features of NIBO Burger:
 
 Additional information can be found on the product website: [www.nicai-systems.com/en/nibo-burger](http://www.nicai-systems.com/en/nibo-burger)
 
+> Hint: Best offer we could find for purchasing a NIBO Burger in Switzerland at time of writing is [Brack.ch](https://www.brack.ch/nicai-systems-bausatz-nibo-burger-379831) with CHF 77.00. Please let us know if there are better deals out there.
+
 
 # Robot tasks
 
