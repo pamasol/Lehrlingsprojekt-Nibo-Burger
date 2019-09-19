@@ -2,7 +2,7 @@
 
 [Pamasol Willi Mäder AG](https://www.pamasol.com/) has specialised in the development and production of solutions for aerosols and spray systems since 1965. 
 
-Its Automatiker (German for “mechatronic apprentices”) go through a 4-year apprenticeship. They get an on the job training by qualified Pamasol employees and go to college one or two days per week.
+Its Automatiker Lehrlinge (German for “mechatronic apprentices”) go through a 4-year apprenticeship. They get an on the job training by qualified Pamasol employees and go to college one or two days per week.
 
 At Pamasol they work on customer projects as well as on internal training projects. NIBO Burger represents the internal electronic training project. It pursues the following goals:
 
@@ -70,7 +70,25 @@ The robot should follow a path from point A to B as shown in [this video](https:
 
 # Assembling NIBO Burger
 
-ToDo
+How to assemble the robot is described detailly in the manual that is provided with the Robot.
+
+* [English Manual NIBO Burger](https://youtu.be/VxXwEKlsGJY)
+* [German Manual NIBO Burger](https://youtu.be/VxXwEKlsGJY)
+* [Electrical Schematic NIBO Burger](https://youtu.be/VxXwEKlsGJY)
+
+It starts with interpreting and sorting the items followed by preparing the workplace and the soldering station. One should proceed as recommended in the instructions to avoid issues when putting the boards together to a Burger.
+
+Following points are not mentioned in the manual but recommended:
+* The phototransistors of the IR sensors should be protected with shrinking tube to reduce interference from other sensors.
+
+Since the microcontroller is preprogramed on can run the function tests as soon as the hardware work is done.
+
+The maroon shield 8x8 matrix display is super easy to assemble. That is why its manual consists of 2 pages only.
+
+* [English Manual maroon shield matrix display](https://youtu.be/VxXwEKlsGJY)
+* [German Manual maroon shield matrix display](https://youtu.be/VxXwEKlsGJY)
+* [Electrical Schematic maroon shield matrix display](https://youtu.be/VxXwEKlsGJY)
+
 
 
 # Programming with Arduino and Git
