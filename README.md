@@ -70,13 +70,13 @@ The robot should follow a path from point A to B as shown in [this video](https:
 
 # Assembling NIBO Burger
 
-How to assemble the robot is described detailly in the manual that is provided with the Robot.
+How to assemble the robot is described detailly in the manual that is provided with the robot.
 
-* [English Manual NIBO Burger](https://youtu.be/VxXwEKlsGJY)
-* [German Manual NIBO Burger](https://youtu.be/VxXwEKlsGJY)
-* [Electrical Schematic NIBO Burger](https://youtu.be/VxXwEKlsGJY)
+* [English Manual NIBO Burger (PDF)](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/blob/master/documentation/src/Manual_NIBOburger_20150908.pdf)
+* [German Manual NIBO Burger (PDF)](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/blob/master/documentation/src/Doku_NIBOburger_20150909.pdf)
+* [Electrical Schematic NIBO Burger (PDF)](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/blob/master/documentation/src/nibo_burger_schematic_1_09.pdf)
 
-It starts with interpreting and sorting the items followed by preparing the workplace and the soldering station. One should proceed as recommended in the instructions to avoid issues when putting the boards together to a Burger.
+It starts with interpreting and sorting the items followed by preparing the workplace and the soldering station. One should proceed as recommended in the instructions to avoid issues when putting the boards together to a burger.
 
 Following points are not mentioned in the manual but recommended:
 * The phototransistors of the IR sensors should be protected with shrinking tube to reduce interference from other sensors.
@@ -85,9 +85,9 @@ Since the microcontroller is preprogramed on can run the function tests as soon 
 
 The maroon shield 8x8 matrix display is super easy to assemble. That is why its manual consists of 2 pages only.
 
-* [English Manual maroon shield matrix display](https://youtu.be/VxXwEKlsGJY)
-* [German Manual maroon shield matrix display](https://youtu.be/VxXwEKlsGJY)
-* [Electrical Schematic maroon shield matrix display](https://youtu.be/VxXwEKlsGJY)
+* [English Manual maroon shield matrix display](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/blob/master/documentation/src/Anleitung-EN_maroon_SHIELD.pdf)
+* [German Manual maroon shield matrix display](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/blob/master/documentation/src/Anleitung_maroon_Shield.pdf)
+* [Electrical Schematic maroon shield matrix display](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/blob/master/documentation/src/maroon_shield_1_03_schematic.pdf)
 
 
 
