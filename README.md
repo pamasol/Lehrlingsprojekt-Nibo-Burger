@@ -12,6 +12,7 @@ At Pamasol they work on customer projects as well as on internal training projec
 * Learning microcontroller programming with C and C++
 * Using Git as software version control system and GitHub for collaborative software development
 * Enhancing documentation and presentation skills
+* Getting comfortable with definition of project and interpreting datasheets in English (native language of most apprentices is Swiss-German)
 
 **Table of contents:**
 1. [Robot construction kit NIBO Burger](#robot-construction-kit-nibo-burger)
