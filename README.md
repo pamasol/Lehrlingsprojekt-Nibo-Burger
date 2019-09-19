@@ -50,6 +50,11 @@ Additional information can be found on the product website: [www.nicai-systems.c
 
 # Robot tasks
 
+The following 5 tasks must be mastered, whereas the apprentice can choose the order by himself.
+
+**5m straightforward**  
+The robot should move exactly 5 meters without any longitudinal and lateral deviation.
+
 **Fraidy cat**  
 The robot should avoid obstacles to the right or left as shown in [this video](https://youtu.be/c-cpGMVMM1k).
 
