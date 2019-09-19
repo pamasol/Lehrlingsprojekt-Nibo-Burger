@@ -3,7 +3,7 @@
 
 
 ## Robot construction kit NIBO burger
-The NIBO burger robot kit is a free programmable autonomous robot that can act autonomously with its environment. It is equipped with an Atmel ATmega16 AVR main controller, 9 sensors and a slot for ARDUINO shields where for example an 8x8 LED matrix display can be mounted. It comes as an assembly kit that is provided by nicai-systems, Germany. 
+The NIBO burger robot kit is a free programmable autonomous robot that can act autonomously with its environment. It is equipped with an Atmel ATmega16 AVR main controller, 9 sensors and a slot for ARDUINO shields where for example an 8x8 LED matrix display can be mounted. It comes as an assembly kit that is provided by [nicai-systems](http://www.nicai-systems.com/), Germany. 
 
 NIBO Burger with 8x8 LED Matrix Display | Powered via 4x1.2V AAA battery
 :-------------------------:|:-------------------------:
