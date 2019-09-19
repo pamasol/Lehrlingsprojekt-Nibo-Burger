@@ -1,8 +1,22 @@
-# Lehrlingsprojekt Nibo Burger
+# NIBO Burger – Pamasol Electronic project for apprentices
 
+[Pamasol Willi Mäder AG](https://www.pamasol.com/) has specialised in the development and production of solutions for aerosols and spray systems since 1965. 
 
+Its Automatiker (German for “mechatronic apprentices”) go through a 4-year apprenticeship. They get an on the job training by qualified Pamasol employees and go to college one or two days per week.
 
-## Robot construction kit NIBO burger
+At Pamasol they work on customer projects as well on internal training projects. NIBO Burger represents the internal electronic project. It pursues the following goals:
+
+* Improving soldering skills
+* Getting familiar with PCBs and electronic components (diode, LED, transistor, capacitor, amplifier, microcontroller)
+* Acquiring knowledge of integrated circuits (motor bridges, odometry, USB programmer)
+* Learning microcontroller programming with C and C++
+* Using Git as software version control system and GitHub for collaborative software development
+* Enhancing documentation and presentation skills
+
+Table of Contents
+1. [Robot construction kit NIBO burger](#Robot-construction-kit-NIBO-burger)
+
+## 1. Robot construction kit NIBO burger
 The NIBO burger robot kit is a free programmable autonomous robot that can act autonomously with its environment. It is equipped with an Atmel ATmega16 AVR main controller, 9 sensors and a slot for ARDUINO shields where for example an 8x8 LED matrix display can be mounted. It comes as an assembly kit that is provided by [nicai-systems](http://www.nicai-systems.com/), Germany. 
 
 NIBO Burger with 8x8 LED matrix display | Powered via 4x1.2V AAA battery
