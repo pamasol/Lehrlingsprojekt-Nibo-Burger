@@ -10,6 +10,7 @@ At Pamasol they work on customer projects as well as on internal training projec
 * Getting familiar with PCBs and electronic components (diode, LED, transistor, capacitor, amplifier, [microcontroller](https://en.wikipedia.org/wiki/Arduino_Uno))
 * Acquiring knowledge of integrated circuits (motor bridges, [odometry](https://en.wikipedia.org/wiki/Odometry), USB programmer)
 * Learning microcontroller programming with C and C++
+* Becoming acquainted with control loops like [PID controller](https://en.wikipedia.org/wiki/PID_controller)
 * Using Git as software version control system and GitHub for collaborative software development
 * Enhancing documentation and presentation skills
 * Getting comfortable with definition of project and interpreting datasheets in English (native language of most apprentices is Swiss-German)
@@ -23,7 +24,7 @@ At Pamasol they work on customer projects as well as on internal training projec
 
 In a first step the roboter kit is presented. The tasks which the robot has to solve are described in a second chapter, followed by robot assembling, programming and documentation.
 
-# Robot construction kit NIBO burger
+# Robot construction kit NIBO Burger
 The NIBO burger robot kit is a free programmable robot that can act autonomously with its environment. It is equipped with an Atmel ATmega16 AVR main controller, 9 sensors and a slot for ARDUINO shields where for example an 8x8 LED matrix display can be mounted. It comes as an assembly kit that is provided by [nicai-systems](http://www.nicai-systems.com/), Germany. 
 
 NIBO Burger with 8x8 LED matrix display | Powered via 4x1.2V AAA battery
@@ -49,16 +50,16 @@ Additional information can be found on the product website: [www.nicai-systems.c
 
 # Robot tasks
 
-**Fraidy cat**
+**Fraidy cat**  
 The robot should avoid obstacles to the right or left as shown in [this video](https://youtu.be/c-cpGMVMM1k).
 
-**Follow me**
+**Follow me**  
 The robot should follow a human hand as shown in [this video](https://youtu.be/KMAIyAhpvuM).
 
-**Colour detection**
+**Colour detection**  
 The robot should detect the colours blue, red, yellow and green. Colours should be indicated on the 8x8 pixel display as shown in [this video](https://youtu.be/4foVZdhxUQg).
 
-**Rabbit warren**
+**Rabbit warren**  
 The robot should follow a path from point A to B as shown in [this video](https://youtu.be/VxXwEKlsGJY).
 
 
