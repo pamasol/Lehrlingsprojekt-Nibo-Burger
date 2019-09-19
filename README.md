@@ -94,11 +94,10 @@ The maroon shield 8x8 matrix display is super easy to assemble. That is why its 
 
 # Programming with Arduino IDE and Git
 
-**[Git Download](https://git-scm.com/downloads)**
+[Git Download](https://git-scm.com/downloads)  
 Git is the most widely used modern version control system in the world. It tracks changes in source code during software development. It is designed for coordinating work among programmers, but it can be used to track changes in any set of files.
 
-
-[Arduino IDE Download](https://www.arduino.cc/en/main/software)
+[Arduino IDE Download](https://www.arduino.cc/en/main/software)  
 The Arduino integrated development environment (IDE) is a cross-platform application that is written in the programming language Java. It is used to write and upload programs to Arduino compatible boards, but also, with the help of 3rd party cores, other vendor development boards.
 
 
