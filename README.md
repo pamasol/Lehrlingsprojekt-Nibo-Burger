@@ -13,7 +13,7 @@ At Pamasol they work on customer projects as well on internal training projects.
 * Using Git as software version control system and GitHub for collaborative software development
 * Enhancing documentation and presentation skills
 
-Table of Contents:
+Table of contents:
 1. [Robot construction kit NIBO burger](#robot-construction-kit-nibo-burger)
 
 ## Robot construction kit NIBO burger
