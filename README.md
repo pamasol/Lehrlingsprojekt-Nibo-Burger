@@ -72,9 +72,9 @@ The robot should follow a path from point A to B as shown in [this video](https:
 
 How to assemble the robot is described detailly in the manual that is provided with the robot.
 
-* [English Manual NIBO Burger (PDF)](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/blob/master/documentation/src/Manual_NIBOburger_20150908.pdf)
-* [German Manual NIBO Burger (PDF)](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/blob/master/documentation/src/Doku_NIBOburger_20150909.pdf)
-* [Electrical Schematic NIBO Burger (PDF)](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/blob/master/documentation/src/nibo_burger_schematic_1_09.pdf)
+* [English Manual NIBO Burger (PDF)](http://download.nicai-systems.com/nibo/Manual_NIBOburger_20150908.pdf)
+* [German Manual NIBO Burger (PDF)](http://download.nicai-systems.com/nibo/Doku_NIBOburger_20150909.pdf)
+* [Electrical Schematic NIBO Burger (PDF)](http://download.nicai-systems.com/nibo/nibo_burger_schematic_1_09.pdf)
 
 It starts with interpreting and sorting the items followed by preparing the workplace and the soldering station. One should proceed as recommended in the instructions to avoid issues when putting the boards together to a burger.
 
@@ -86,9 +86,9 @@ Since the microcontroller is preprogramed on can run the function tests as soon 
 
 The maroon shield 8x8 matrix display is super easy to assemble. That is why its manual consists of 2 pages only.
 
-* [English Manual maroon shield matrix display](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/blob/master/documentation/src/Anleitung-EN_maroon_SHIELD.pdf)
-* [German Manual maroon shield matrix display](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/blob/master/documentation/src/Anleitung_maroon_Shield.pdf)
-* [Electrical Schematic maroon shield matrix display](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/blob/master/documentation/src/maroon_shield_1_03_schematic.pdf)
+* [English Manual maroon shield matrix display](http://download.nicai-systems.com/nibo/Anleitung-EN_maroon_SHIELD.pdf)
+* [German Manual maroon shield matrix display](http://www.nicai-systems.com/de/robotik/nibo-burger/maroon-shield)
+* [Electrical Schematic maroon shield matrix display](http://download.nicai-systems.com/nibo/maroon_shield_1_03_schematic.pdf)
 
 
 
