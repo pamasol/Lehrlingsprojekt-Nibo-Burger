@@ -91,7 +91,6 @@ The maroon shield 8x8 matrix display is super easy to assemble. That is why its 
 * [Electrical Schematic maroon shield matrix display](http://download.nicai-systems.com/nibo/maroon_shield_1_03_schematic.pdf)
 
 
-
 # Programming with Arduino IDE and Git
 
 [Git Download](https://git-scm.com/downloads)  
