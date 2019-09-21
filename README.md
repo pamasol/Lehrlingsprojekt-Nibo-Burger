@@ -86,19 +86,24 @@ Since the microcontroller is preprogramed on can run the function tests as soon 
 
 The maroon shield 8x8 matrix display is super easy to assemble. That is why its manual consists of 2 pages only.
 
-* [English Manual maroon shield matrix display](http://download.nicai-systems.com/nibo/Anleitung-EN_maroon_SHIELD.pdf)
-* [German Manual maroon shield matrix display](http://www.nicai-systems.com/de/robotik/nibo-burger/maroon-shield)
-* [Electrical Schematic maroon shield matrix display](http://download.nicai-systems.com/nibo/maroon_shield_1_03_schematic.pdf)
+* [English Manual maroon shield matrix display (PDF)](http://download.nicai-systems.com/nibo/Anleitung-EN_maroon_SHIELD.pdf)
+* [German Manual maroon shield matrix display (PDF)](http://www.nicai-systems.com/de/robotik/nibo-burger/maroon-shield)
+* [Electrical Schematic maroon shield matrix display (PDF)](http://download.nicai-systems.com/nibo/maroon_shield_1_03_schematic.pdf)
 
 
 # Programming with Arduino IDE and Git
 
-[Git Download](https://git-scm.com/downloads)  
-Git is the most widely used modern version control system in the world. It tracks changes in source code during software development. It is designed for coordinating work among programmers, but it can be used to track changes in any set of files.
-
 [Arduino IDE Download](https://www.arduino.cc/en/main/software)  
 The Arduino integrated development environment (IDE) is a cross-platform application that is written in the programming language Java. It is used to write and upload programs to Arduino compatible boards, but also, with the help of 3rd party cores, other vendor development boards.
 
+[NIBO Lib Downlaod](https://git-scm.com/downloads)  
+
+[Installer for 64 Bit Windows (7, 8, 10)](http://download.nicai-systems.com/nibo/niborobolib_303-0_x64.msi)
+[Installer for 32 Bit Windows (XP, Vista, 7, 8, 10)](http://download.nicai-systems.com/nibo/niborobolib_303-0_x86.msi)
+[German Installation Manual (PDF)](http://download.nicai-systems.com/nibo/niborobolib_303_doc.pdf)
+
+[Git Download](https://git-scm.com/downloads)  
+Git is the most widely used modern version control system in the world. It tracks changes in source code during software development. It is designed for coordinating work among programmers, but it can be used to track changes in any set of files.
 
 # Documentation
 
