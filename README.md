@@ -52,8 +52,8 @@ Additional information can be found on the product website: [www.nicai-systems.c
 
 The following 5 tasks must be mastered, whereas the apprentice can choose the order by himself.
 
-### 5m straightforward  
-The robot should move exactly 5 meters without any longitudinal and lateral deviation.
+### Round trip  
+The robot should move 1.5m or more in one direction, turn 180° and move back to its origin.
 
 ### Fraidy cat  
 The robot should avoid obstacles to the right or left as shown in [this video](https://youtu.be/c-cpGMVMM1k).
