@@ -93,13 +93,15 @@ The maroon shield 8x8 matrix display is super easy to assemble. That is why its 
 
 # Programming with Arduino IDE and Git
 
-[Arduino IDE Download](https://www.arduino.cc/en/main/software)  
-The Arduino integrated development environment (IDE) is a cross-platform application that is written in the programming language Java. It is used to write and upload programs to Arduino compatible boards, but also, with the help of 3rd party cores, other vendor development boards.
+There are several ways to program the NIBO Burger. The easiest way is via online compiler of https://www.roboter.cc/, another way is via Arduino IDE or via Atmel Studio. We use AtmelStudio 7.0 in this project.
 
-[NiboRoboLib Downlaod](https://sourceforge.net/projects/nibo/)  
-Install NiboRoboLib for getting: All drivers, RoboDude for transfering .hex and .xhex-Files from th computer to the robot,  C-Libraries and testprograms,  Calibrationsprograms for sensors and the ARDUINO-Library for the NIBO Burger.
+1. Install latest NIBO Burger library from [SourceForge]( https://sourceforge.net/projects/nibo/).
+2. Install AtmelStudio 7.0 from [microchip.com]( https://www.microchip.com/mplab/avr-support/atmel-studio-7) website.
+3. Install (WinAVR)[ https://sourceforge.net/projects/winavr/] which is a distribution of the avr-gcc compiler that is used on Windows operating systems.
+4. Install Git from [git-scm.com](https://git-scm.com/downloads).
 
-[Git Download](https://git-scm.com/downloads)  
+As soon as the three programmes above update AtmelStudio Settings as described in [this PDF (German only)]( https://www.roboter.cc/media/kunena/attachments/4843/ProgrammierungdesNIBOBurgersmitAtmelStudio7.0.pdf). The template that has to be imported can be [downloaded here](https://www.roboter.cc/media/kunena/attachments/4843/NIBOBurger_Vorlage.zip)
+
 Git is the most widely used modern version control system in the world. It tracks changes in source code during software development. It is designed for coordinating work among programmers, but it can be used to track changes in any set of files.
 
 # Documentation
