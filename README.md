@@ -104,6 +104,30 @@ As soon as the three programmes above update AtmelStudio Settings as described i
 
 Git is the most widely used modern version control system in the world. It tracks changes in source code during software development. It is designed for coordinating work among programmers, but it can be used to track changes in any set of files. Its setup has to be performed as follows.
 
+1. Generate an SSH key and connect your Git with GitHub as [described here]( https://help.github.com/en/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent).
+2. Ask your Pamasol instructor for adding you to this repository.
+3. Clone the project as follows
+
+git clone https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger.git
+
+4. Add your changes with:
+```git
+git add –all
+```
+5. Commit changes with:
+```git
+git commit -m “here what I did and want to commit”
+```
+6. Push commits to GitHub:
+```git
+git push
+```
+7. Load latest commits
+```git
+git pull
+```
+
+
 # Documentation
 
 ToDo
