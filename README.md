@@ -107,23 +107,23 @@ Git is the most widely used modern version control system in the world. It track
 1. Generate an SSH key and connect your Git with GitHub as [described here]( https://help.github.com/en/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent).
 2. Ask your Pamasol instructor for adding you to this repository.
 3. Clone the project as follows
-
+```
 git clone https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger.git
-
-4. Add your changes with:
-```git
+```
+4. Add your changes with
+```
 git add –all
 ```
-5. Commit changes with:
-```git
+5. Commit changes with
+```
 git commit -m “here what I did and want to commit”
 ```
-6. Push commits to GitHub:
-```git
+6. Push commits to GitHub
+```
 git push
 ```
 7. Load latest commits
-```git
+```
 git pull
 ```
 
