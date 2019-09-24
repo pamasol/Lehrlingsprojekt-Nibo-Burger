@@ -95,12 +95,16 @@ The maroon shield 8x8 matrix display is super easy to assemble. That is why its 
 
 There are several ways to program the NIBO Burger. The easiest way is via online compiler of https://www.roboter.cc/, another way is via Arduino IDE or via Atmel Studio. We use AtmelStudio 7.0 in this project.
 
+## Installing software
+
 1. Install latest **NIBO Burger library** from [SourceForge]( https://sourceforge.net/projects/nibo/).
 2. Install **AtmelStudio 7.0** from [microchip.com](https://www.microchip.com/mplab/avr-support/atmel-studio-7) website.
 3. Install **[WinAVR](https://sourceforge.net/projects/winavr/)** which is a distribution of the avr-gcc compiler that is used on Windows operating systems.
 4. Install **Git** from [git-scm.com](https://git-scm.com/downloads).
 
 As soon as the three programmes above update AtmelStudio Settings as described in [this PDF (German only)]( https://www.roboter.cc/media/kunena/attachments/4843/ProgrammierungdesNIBOBurgersmitAtmelStudio7.0.pdf). The template that has to be imported can be [downloaded here](https://www.roboter.cc/media/kunena/attachments/4843/NIBOBurger_Vorlage.zip)
+
+## Using Git and GitHub
 
 Git is the most widely used modern version control system in the world. It tracks changes in source code during software development. It is designed for coordinating work among programmers, but it can be used to track changes in any set of files. Its setup has to be performed as follows.
 
