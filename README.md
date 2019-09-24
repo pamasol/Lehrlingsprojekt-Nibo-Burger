@@ -19,12 +19,12 @@ At Pamasol they work on customer projects as well as on internal training projec
 1. [Robot construction kit NIBO Burger](#robot-construction-kit-nibo-burger)
 2. [Robot tasks](#robot-tasks)
 3. [Assembling NIBO Burger](#assembling-nibo-burger)
-4. [Programming with Arduino and Git](#programming-with-arduino-and-git)
+4. [Programming with AVR Studio and Git](#programming-withavr-studio-and-Git)
 5. [Documentation](#documentation)
 
 In a first step the roboter kit is presented. The tasks which the robot has to solve are described in a second chapter, followed by robot assembling, programming and documentation.
 
-# Robot construction kit NIBO Burger
+# 1. Robot construction kit NIBO Burger
 The NIBO burger robot kit is a free programmable robot that can act autonomously with its environment. It is equipped with an Atmel ATmega16 AVR main controller, 9 sensors and a slot for ARDUINO shields where for example an 8x8 LED matrix display can be mounted. It comes as an assembly kit that is provided by [nicai-systems](http://www.nicai-systems.com/), Germany. 
 
 NIBO Burger with 8x8 LED matrix display | Powered via 4x1.2V AAA battery
@@ -48,7 +48,7 @@ Additional information can be found on the product website: [www.nicai-systems.c
 > Hint: Best offer we could find for purchasing a NIBO Burger in Switzerland at time of writing is [Brack.ch](https://www.brack.ch/nicai-systems-bausatz-nibo-burger-379831) with CHF 77.00. Please let us know if there are better deals out there.
 
 
-# Robot tasks
+# 2. Robot tasks
 
 The following 5 tasks must be mastered, whereas the apprentice can choose the order by himself.
 
@@ -68,7 +68,7 @@ The robot should detect the colours blue, red, yellow and green. Colours should 
 The robot should follow a path from point A to B as shown in [this video](https://youtu.be/VxXwEKlsGJY).
 
 
-# Assembling NIBO Burger
+# 3. Assembling NIBO Burger
 
 How to assemble the robot is described detailly in the manual that is provided with the robot.
 
@@ -92,7 +92,7 @@ The maroon shield 8x8 matrix display is super easy to assemble. That is why its 
 * [Electrical Schematic maroon shield matrix display (PDF)](http://download.nicai-systems.com/nibo/maroon_shield_1_03_schematic.pdf)
 
 
-# Programming with AVR Studio and Git
+# 4. Programming with AVR Studio and Git
 
 There are several ways to program the NIBO Burger. The easiest way is via online compiler of https://www.roboter.cc/, another way is via Arduino IDE or via Atmel Studio. We use AtmelStudio 7.0 in this project.
 
@@ -133,6 +133,6 @@ git pull
 ```
 
 
-# Documentation
+# 5. Documentation
 
 ToDo
