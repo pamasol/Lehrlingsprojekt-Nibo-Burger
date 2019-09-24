@@ -16,11 +16,11 @@ At Pamasol they work on customer projects as well as on internal training projec
 * Getting comfortable with project definition and datasheets in English (native language of most apprentices is Swiss-German)
 
 **Table of contents:**
-1. [Robot construction kit NIBO Burger](#robot-construction-kit-nibo-burger)
-2. [Robot tasks](#robot-tasks)
-3. [Assembling NIBO Burger](#assembling-nibo-burger)
-4. [Programming with AVR Studio and Git](#programming-withavr-studio-and-Git)
-5. [Documentation](#documentation)
+1. [Robot construction kit NIBO Burger](#1-robot-construction-kit-nibo-burgerr)
+2. [Robot tasks](#2-robot-tasks)
+3. [Assembling NIBO Burger](#3-assembling-nibo-burger)
+4. [Programming with AVR Studio and Git](#4-programming-with-avr-studio-and-git)
+5. [Documentation](#5-documentation)
 
 In a first step the roboter kit is presented. The tasks which the robot has to solve are described in a second chapter, followed by robot assembling, programming and documentation.
 
