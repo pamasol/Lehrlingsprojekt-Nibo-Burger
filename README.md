@@ -94,6 +94,8 @@ Write a program based on [this initial situation](https://github.com/pamasol/Leh
 
 [Solution](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/blob/master/PhilippBruhin/Excercise_tasks/h_light_switch/h_light_switch/main.c)
 
+### I) Odometry sensors
+
 
 ## Master tasks
 
