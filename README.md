@@ -50,6 +50,14 @@ Additional information can be found on the product website: [www.nicai-systems.c
 
 # 2. Robot tasks
 
+The roboter tasks are divided into two parts. The exercise tasks can be done with help of [NIBO burger Coding Tutorial](https://www.roboter.cc/index.php?option=com_wrapper&view=wrapper&Itemid=63).
+
+## Excercise tasks
+
+ToDo (Flashing LED and so on)
+
+## Master tasks
+
 The following 5 tasks must be mastered, whereas the apprentice can choose the order by himself.
 
 ### Round trip  
