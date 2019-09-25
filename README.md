@@ -64,10 +64,10 @@ The C for loop statement is used to execute a block of code repeatedly. It is of
 
 [Solution](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/blob/master/PhilippBruhin/Excercise_tasks/b_for_loop/b_for_loop/main.c)
 
-### B) Switch on LED2-LED4
+### C) Switch on LED2-LED4
 Update program B) from above with the result that only LED2 up to LED4 are on.
 
-[Solution]()
+[Solution](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/blob/master/PhilippBruhin/Excercise_tasks/c_switch_on_led2-led4/c_switch_on_led2-led4/main.c)
 
 
 ## Master tasks
