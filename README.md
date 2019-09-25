@@ -57,6 +57,9 @@ The roboter tasks are divided into two parts. The exercise tasks can be done wit
 ### A) Flashing LED 1
 LED 1 should flash for 0.5sec and then pause for 0.5sec. This process should be repeated infinitely (loop).
 
+### B) For loop
+The C for loop statement is used to execute a block of code repeatedly. It is often used when the number of iterations is predetermined. Use a for loop to switch on LED1 up to LED4.
+
 ## Master tasks
 
 The following 5 tasks must be mastered, whereas the apprentice can choose the order by himself.
