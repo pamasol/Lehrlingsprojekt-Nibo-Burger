@@ -55,17 +55,27 @@ The following 5 tasks must be mastered, whereas the apprentice can choose the or
 ### Round trip  
 The robot should move 1.5m or more in one direction, turn 180° and move back to its origin.
 
+[Layout drawing Nibo01_V1.0.pdf](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/files/3652583/Nibo01_V1.0.pdf)
+
 ### Fraidy cat  
 The robot should avoid obstacles to the right or left as shown in [this video](https://youtu.be/c-cpGMVMM1k).
+
+[Layout drawing Nibo02_V1.0.pdf](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/files/3652584/Nibo02_V1.0.pdf)
 
 ### Follow me  
 The robot should follow a human hand as shown in [this video](https://youtu.be/KMAIyAhpvuM).
 
+[Layout drawing Nibo03_V1.0.pdf](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/files/3652585/Nibo03_V1.0.pdf)
+
 ### Colour detection  
 The robot should detect the colours blue, red, yellow and green. Colours should be indicated on the 8x8 pixel display as shown in [this video](https://youtu.be/4foVZdhxUQg).
 
+[Layout drawing Nibo04_V1.0.pdf](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/files/3652586/Nibo04_V1.0.pdf)
+
 ### Rabbit warren  
 The robot should follow a path from point A to B as shown in [this video](https://youtu.be/VxXwEKlsGJY).
+
+[Layout drawing Nibo05_V1.0.pdf](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/files/3652587/Nibo05_V1.0.pdf)
 
 
 # 3. Assembling NIBO Burger
