@@ -35,5 +35,11 @@ void loop() {
 		case 'b':
 			led_set(2,0);
 		break;
+		case 'C':
+			led_set(3,1);
+		break;
+		case 'c':
+			led_set(3,0);
+		break;
 	}
 }

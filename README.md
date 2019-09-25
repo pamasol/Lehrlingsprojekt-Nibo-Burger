@@ -85,8 +85,9 @@ Nest program E) from above in a loop that increases the time from 50 to 100 and 
 [Solution](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/blob/master/PhilippBruhin/Excercise_tasks/f_for_in_for/f_for_in_for/main.c)
 
 ### G) Using buttons
+Analyze [this program](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/blob/eaf6fde06b96f30fbcf23a8362a2644a54070c86/PhilippBruhin/Excercise_tasks/g_using_buttons/g_using_buttons/main.c) which uses buttons and a switch case statement. Now add an event for button 3. If this button is pressed, LED3 should flash and as soon as the button is released, LED3 should switch off.
 
-
+[Solution]()
 
 
 ## Master tasks
