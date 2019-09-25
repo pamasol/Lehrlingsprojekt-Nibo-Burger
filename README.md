@@ -50,7 +50,7 @@ Additional information can be found on the product website: [www.nicai-systems.c
 
 # 2. Robot tasks
 
-The roboter tasks are divided into two parts. The exercise tasks can be done with help of [NIBO burger Coding Tutorial](https://www.roboter.cc/index.php?option=com_wrapper&view=wrapper&Itemid=63). Do not create a new project in Atmel Studio for every task, use Git instead efficiently.
+The roboter tasks are divided into two parts, the excercise and the master tasks. The exercise tasks can be done with help of [NIBO burger Coding Tutorial](https://www.roboter.cc/index.php?option=com_wrapper&view=wrapper&Itemid=63). Do not create a new project in Atmel Studio for every task, use Git instead efficiently.
 
 ## Excercise tasks
 
