@@ -82,7 +82,7 @@ Write same program as above in D) but work with a for loop. What is the advantag
 ### F) For in for
 Nest program E) from above in a loop that increases the time from 50 to 100 and 200 milliseconds (each iteration double of time).
 
-[Solution]()
+[Solution](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/blob/master/PhilippBruhin/Excercise_tasks/f_for_in_for/f_for_in_for/main.c)
 
 
 ## Master tasks
