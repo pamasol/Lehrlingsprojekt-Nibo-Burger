@@ -74,8 +74,8 @@ Create a program where LED 1 is flashing for 0.5sec and then pausing for 0.5sec,
 
 [Solution]()
 
-### e) Flashing LEDs 2
-Write same program as above in D) but work with a foor loop. What is the advantage of a for loop in this case?
+### E) Flashing LEDs 2
+Write same program as above in D) but work with a for loop. What is the advantage of a for loop in this case?
 
 [Solution]()
 
