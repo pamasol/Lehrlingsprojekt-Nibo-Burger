@@ -54,7 +54,8 @@ The roboter tasks are divided into two parts. The exercise tasks can be done wit
 
 ## Excercise tasks
 
-ToDo (Flashing LED and so on)
+### A) Flashing LED 1
+LED 1 should flash for 0.5sec and then pause for 0.5sec. This process should be repeated infinitely (loop).
 
 ## Master tasks
 
