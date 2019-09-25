@@ -9,8 +9,19 @@ void loop() {
 	char key = key_get_char();
 
 	switch (key) {
-		
-		// Your code here
-		
+		case 'A':
+			led_set(1,1);
+			led_set(4,1);
+		break;
+		case 'B':
+			led_set(2,1);
+			led_set(3,1);
+		break;
+		case 'C':
+			led_set(1,0);
+			led_set(2,0);
+			led_set(3,0);
+			led_set(4,0);
+		break;
 	}
 }
