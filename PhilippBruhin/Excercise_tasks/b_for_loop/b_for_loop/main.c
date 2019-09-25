@@ -2,7 +2,6 @@
 
 void setup()
 {
-
 	led_init();
 }
 
@@ -23,7 +22,7 @@ void loop()
 }
 
 /*
-About variables
+About variables and objects in C
 
 Initialization = The object is given an known value at the point of definition.
 Assignment = The object is given a known value beyond the point of definition.
