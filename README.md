@@ -89,6 +89,11 @@ Analyze [this program](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/b
 
 [Solution](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/blob/master/PhilippBruhin/Excercise_tasks/g_using_buttons/g_using_buttons/main.c)
 
+### H) Light switch
+Write a program based on [this initial situation]() that switches on LED1 and LED4 when button 1 is clicked. LED2 and LED3 should switch on when button 2 is clicked. All LEDs should switch off when button 3 is clicked.
+
+[Solution]()
+
 
 ## Master tasks
 
