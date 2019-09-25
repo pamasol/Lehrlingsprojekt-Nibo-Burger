@@ -1,4 +1,4 @@
-# NIBO Burger – Pamasol Electronic project for apprentices
+# NIBO Burger – Pamasol electronic project for apprentices
 
 [Pamasol Willi Mäder AG](https://www.pamasol.com/) has specialised in the development and production of solutions for aerosols and spray systems since 1965. 
 
@@ -112,7 +112,7 @@ The maroon shield 8x8 matrix display is super easy to assemble. That is why its 
 
 # 4. Programming with AVR Studio and Git
 
-There are several ways to program the NIBO Burger. The easiest way is via online compiler of https://www.roboter.cc/, another way is via Arduino IDE or via Atmel Studio. We use AtmelStudio 7.0 in this project.
+There are several ways to program the NIBO Burger. The easiest way is via online compiler of [roboter.cc](https://www.roboter.cc/), another way is via Arduino IDE or via Atmel Studio. We use AtmelStudio 7.0 in this project.
 
 ## Installing software
 
