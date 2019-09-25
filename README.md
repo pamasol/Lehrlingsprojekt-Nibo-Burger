@@ -50,7 +50,7 @@ Additional information can be found on the product website: [www.nicai-systems.c
 
 # 2. Robot tasks
 
-The roboter tasks are divided into two parts. The exercise tasks can be done with help of [NIBO burger Coding Tutorial](https://www.roboter.cc/index.php?option=com_wrapper&view=wrapper&Itemid=63).
+The roboter tasks are divided into two parts. The exercise tasks can be done with help of [NIBO burger Coding Tutorial](https://www.roboter.cc/index.php?option=com_wrapper&view=wrapper&Itemid=63). Do not create a new project in Atmel Studio for every task, use Git instead efficiently.
 
 ## Excercise tasks
 
@@ -72,7 +72,7 @@ Update program B) from above with the result that only LED2 up to LED4 are on.
 ### D) Flashing LEDs 1
 Create a program where LED 1 is flashing for 0.5sec and then pausing for 0.5sec, then LED 2 is flashing for 0.5sec and then pausing for 0.5sec and so on up to LED4. Don't use a for loop.
 
-[Solution]()
+[Solution](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/blob/master/PhilippBruhin/Excercise_tasks/d_flashing_leds_1/d_flashing_leds_1/main.c)
 
 ### E) Flashing LEDs 2
 Write same program as above in D) but work with a for loop. What is the advantage of a for loop in this case?
