@@ -84,6 +84,10 @@ Nest program E) from above in a loop that increases the time from 50 to 100 and 
 
 [Solution](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/blob/master/PhilippBruhin/Excercise_tasks/f_for_in_for/f_for_in_for/main.c)
 
+### G) Using buttons
+
+
+
 
 ## Master tasks
 
