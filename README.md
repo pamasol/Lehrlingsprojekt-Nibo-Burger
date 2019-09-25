@@ -29,11 +29,11 @@ The NIBO burger robot kit is a free programmable robot that can act autonomously
 
 NIBO Burger with 8x8 LED matrix display | Powered via 4x1.2V AAA battery
 :-------------------------:|:-------------------------:
-![NIBO Burger with 8x8 LED matrix display](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/blob/master/documentation/src/nibo-burger_01.png "NIBO Burger with 8x8 LED matrix display")  |  ![Powered via 4x1.2V AAA battery](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/blob/master/documentation/src/nibo-burger_02.png "Powered via 4 x 1.2V AAA battery")
+![NIBO Burger with 8x8 LED matrix display](https://user-images.githubusercontent.com/7021907/65602250-dd7b0100-dfa3-11e9-96bf-c2065803712c.png "NIBO Burger with 8x8 LED matrix display")  |  ![Powered via 4x1.2V AAA battery](https://user-images.githubusercontent.com/7021907/65602251-dd7b0100-dfa3-11e9-83b5-0e59b2f1853e.png "Powered via 4 x 1.2V AAA battery")
 
 IR and color sensor bricks | Sensor protection wings
 :-------------------------:|:-------------------------:
-![IR and Color sensor bricks ](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/blob/master/documentation/src/nibo-burger_03.png "IR and Color sensor bricks ")  |  ![Sensor protection wings](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/blob/master/documentation/src/nibo-burger_04.png "Sensor protection wings")
+![IR and Color sensor bricks ](https://user-images.githubusercontent.com/7021907/65602252-dd7b0100-dfa3-11e9-93f1-be680089db00.png "IR and Color sensor bricks ")  |  ![Sensor protection wings](https://user-images.githubusercontent.com/7021907/65602253-de139780-dfa3-11e9-80d9-09017d9aeeda.png "Sensor protection wings")
 
 Features of NIBO Burger:
 * Main processing unit Atmel ATmega16A, 16 kByte flash, 15 MHz
