@@ -77,7 +77,7 @@ Create a program where LED 1 is flashing for 0.5sec and then pausing for 0.5sec,
 ### E) Flashing LEDs 2
 Write same program as above in D) but work with a for loop. What is the advantage of a for loop in this case?
 
-[Solution]()
+[Solution](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/blob/master/PhilippBruhin/Excercise_tasks/e_flashing_leds_2/e_flashing_leds_2/main.c)
 
 
 ## Master tasks

@@ -8,7 +8,7 @@ void loop() {
 	int ledNr;
 	/*
 	For loop that does the same process with all LEDs. It does
-	not matter, if there are 4 or 400, the programming effort
+	not matter if there are 4 or 400, the programming effort
 	is the same.
 	*/
 	for (ledNr=1; ledNr<=4; ledNr++) {
