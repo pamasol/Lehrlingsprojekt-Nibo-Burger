@@ -57,8 +57,12 @@ The roboter tasks are divided into two parts. The exercise tasks can be done wit
 ### A) Flashing LED 1
 LED 1 should flash for 0.5sec and then pause for 0.5sec. This process should be repeated infinitely (loop).
 
+[Solution](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/blob/master/PhilippBruhin/Excercise_tasks/a_flashing_led_1/a_flashing_led_1/main.c)
+
 ### B) For loop
 The C for loop statement is used to execute a block of code repeatedly. It is often used when the number of iterations is predetermined. Use a for loop for switching on LED1 up to LED4.
+
+[Solution](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/blob/master/PhilippBruhin/Excercise_tasks/b_for_loop/b_for_loop/main.c)
 
 ## Master tasks
 
