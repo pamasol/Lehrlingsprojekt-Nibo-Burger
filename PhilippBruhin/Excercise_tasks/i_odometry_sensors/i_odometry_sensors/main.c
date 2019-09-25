@@ -29,9 +29,7 @@ void loop() {
 	led_set(2, odometry_getLeft(0)>20);
 	
 	// Testing of right odometry sensor
+	led_set(4, odometry_getRight(0)>10);
+	led_set(3, odometry_getRight(0)>20);
 
-	// Your code here
-	
-	
-	
 }
