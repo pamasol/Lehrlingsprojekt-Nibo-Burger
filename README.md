@@ -95,12 +95,18 @@ Write a program based on [this initial situation](https://github.com/pamasol/Leh
 [Solution](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/blob/master/PhilippBruhin/Excercise_tasks/h_light_switch/h_light_switch/main.c)
 
 ### I) Odometry sensors
-Check [this program](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/blob/fd1ff6b52d8f29d7a4f62cfac1a31953eee3e15d/PhilippBruhin/Excercise_tasks/i_odometry_sensors/i_odometry_sensors/main.c). The photoelectric sensors that are placed in the transmission are called odometry sensors. The program measures the readings of the left odometry sensor and switches on LED1 as soon as it counts more than 10 and LED2 when it is more than 20. The counter of left odometry sensor can be reset (counter back to 0) with clicking button 1 or button 3. Implement the same behavior for the right odometry sensor. The program can be tested by turning the red gear.
+Check [this program](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/blob/fd1ff6b52d8f29d7a4f62cfac1a31953eee3e15d/PhilippBruhin/Excercise_tasks/i_odometry_sensors/i_odometry_sensors/main.c). The photoelectric sensors that are placed in the transmission are called odometry sensors.
+
+The program **measures** the readings of the **left odometry sensor** and switches on **LED1** as soon as it counts **more than 10** and **LED2** when it is **more than 20**. The counter of left odometry sensor can be **reset** (counter back to 0) with clicking **button 1** or button 3.
+
+Implement the same behavior for the right odometry sensor. Clicking **button 2** resets right odometry counter wheras clicking **button 3** should reset both. The program can be tested by turning the red gear.
 
 [Solution](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/blob/master/PhilippBruhin/Excercise_tasks/i_odometry_sensors/i_odometry_sensors/main.c)
 
 ### J) Playing with motors
-The motors have to be initialized via `motpwm_init();` in the setup function. Check setup function in [this program](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/blob/aa2d69d422beaac5624e22e60bb058737606038a/PhilippBruhin/Excercise_tasks/j_playing_with_motors/j_playing_with_motors/main.c). The program furthermore explaines local and global variables and the motor control. Extend it as follows: When button 3 is released motor power variable should be decreased by 200.
+The motors have to be initialized via `motpwm_init();` in the setup function. Check setup function in [this program](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/blob/aa2d69d422beaac5624e22e60bb058737606038a/PhilippBruhin/Excercise_tasks/j_playing_with_motors/j_playing_with_motors/main.c).
+
+The program furthermore explaines **local and global variables** and the motor control. Extend it as follows: When **button 3** is released **motor power** variable should be **decreased by 200**.
 
 [Solution](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/blob/master/PhilippBruhin/Excercise_tasks/j_playing_with_motors/j_playing_with_motors/main.c)
 
