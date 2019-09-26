@@ -102,7 +102,7 @@ Check [this program](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/blo
 ### J) Playing with motors
 The motors have to be initialized via `motpwm_init();` in the setup function. Check setup function in [this program](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/blob/aa2d69d422beaac5624e22e60bb058737606038a/PhilippBruhin/Excercise_tasks/j_playing_with_motors/j_playing_with_motors/main.c). The program furthermore explaines local and global variables and the motor control. Extend it as follows: When button 3 is released motor power variable should be decreased by 200.
 
-[Solution]()
+[Solution](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/blob/master/PhilippBruhin/Excercise_tasks/j_playing_with_motors/j_playing_with_motors/main.c)
 
 ### K) Sensor calibration
 In this excercise one will calibrate the color sensors of the roboter. Therefore create a program with [this content](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/blob/master/PhilippBruhin/Excercise_tasks/k_sensor_calibration/k_sensor_calibration/main.c), compile it and download it to the robot. Put robot on a black surface and click button 1. In a second step, put the robot on a white surface and click button 2. Since the [RGB values](https://en.wikipedia.org/wiki/RGB_color_model) will be stored in the [EEPROM](https://en.wikipedia.org/wiki/EEPROM), they will not get lost anymore, even when turning off or reprogramming the robot. Furthermore a new variable type is used: `unsigned long int` what is a [2 byte variable](https://gcc.gnu.org/wiki/avr-gcc#Deviations_from_the_Standard) that can be positive only (no - in front).
