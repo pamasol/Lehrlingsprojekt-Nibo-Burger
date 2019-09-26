@@ -135,6 +135,11 @@ Does **FLL sensor** reflection valves **bigger than 20**, **LED1 should flash**.
 
 [Solution](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/blob/master/PhilippBruhin/Excercise_tasks/m_visualize_obstacle/m_visualize_obstacle/main.c)
 
+### N) Moving robot
+Compile and download [this program](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/blob/master/PhilippBruhin/Excercise_tasks/m_visualize_obstacle/m_visualize_obstacle/main.c) to your robot. Check also [documentation](http://tigcc.ticalc.org/doc/stdlib.html#max) of the `max(argument_a, argument_b)` function that is used in this program.
+
+When there are no obstracles within the roboters reach, it moves forward with 80% of max speed. If there are obstracles on the left or on the right, one motor stops and the robot eludes the obstacle. This program can be improved in many ways. For examble the LEDs could indicate what the IR sensors detect. The control of the wheels can be made more smooth. The program could start as soon as button 1 is pressed and so on. This will be part of the master tasks
+
 ## Master tasks
 
 The following 5 tasks must be mastered, whereas the apprentice can choose the order by himself.
