@@ -112,7 +112,9 @@ Since the [RGB values](https://en.wikipedia.org/wiki/RGB_color_model) will be st
 If everything went well, **LED1** is flashing when sensors detect a **black surface**. **LED2** is flashing when sensors detect a **white surface**.
 
 ### L) Infrared sensors
-Take a look at [this program](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/blob/c4faf0595e501fffab596e6a930e0ae0cdbc37a3/PhilippBruhin/Excercise_tasks/l_infrared_sensors/l_infrared_sensors/main.c). It switches off all LEDs when IR-Sensor (respectively phototransistor) in slot FL does not receive reflected [infrared light](https://en.wikipedia.org/wiki/Infrared) from the IR diode. The better the reflection get, the more LEDs are flashing. Update the code that when there is no reflection, all LEDs are switched off. Is ther a bit reflection, LED1 swichtes on. Is there more reflection, LED2 switches on additionally and so until LED4 and high reflection. 
+Take a look at [this program](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/blob/c4faf0595e501fffab596e6a930e0ae0cdbc37a3/PhilippBruhin/Excercise_tasks/l_infrared_sensors/l_infrared_sensors/main.c). It switches off all LEDs when IR-Sensor (respectively phototransistor) in **slot FL** does not receive reflected [infrared light](https://en.wikipedia.org/wiki/Infrared) from the IR diode. The better the reflection gets, the more LEDs are flashing. Update the code as follows.
+
+When there is no reflection at IR Sensor FR (not FL), all LEDs are switched off. Is ther a **bit reflection**, **LED1** swichtes on. Is there **more reflection**, **LED2** switches on additionally and so on until **LED4** for **high reflection**. 
 
 [Solution]()
 
