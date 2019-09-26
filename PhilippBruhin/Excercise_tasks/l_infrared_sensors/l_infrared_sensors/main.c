@@ -15,7 +15,7 @@ void loop() {
 		the IR spectrum (700 nm - 1 mm)
 	2 =	Returns the reflection value of the IR spectrum, without the visible part.
 	*/
-	int value = analog_getValueExt(ANALOG_FL, 2);
+	int value = analog_getValueExt(ANALOG_FR, 2);
 	
 	/*
 	Switch off all LEDs if the reflection is less than 10 and switch on all LEDs
