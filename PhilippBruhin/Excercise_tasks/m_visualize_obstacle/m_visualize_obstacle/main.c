@@ -7,8 +7,8 @@ void setup() {
 
 void loop() {
 	/*
-	Int variables store analog value of all 4 IR sensors in front of 
-	Nibo burger.
+	Variables that store analog values of all 4 IR sensors in front of 
+	NIBO Burger.
 	fll	= Front left of left
 	fl	= Front left
 	fr	= Front right
