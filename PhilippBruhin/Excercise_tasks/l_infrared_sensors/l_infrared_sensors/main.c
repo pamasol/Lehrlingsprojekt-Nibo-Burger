@@ -11,9 +11,9 @@ void loop() {
 	Function returns the value of IR sensor in slot FL. ANALOG_FL
 	is a constant. Second parameter:
 	0 =	Returns value based on human visible spectrum (Wavelength 400 nm - 700 nm)
-	1 = Returns value based on human visible spectrum together with 
+	1 =	Returns value based on human visible spectrum together with 
 		the IR spectrum (700 nm - 1 mm)
-	2 = Returns the reflection value of the IR spectrum, without the visible part.
+	2 =	Returns the reflection value of the IR spectrum, without the visible part.
 	*/
 	int value = analog_getValueExt(ANALOG_FL, 2);
 	
