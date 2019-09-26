@@ -55,42 +55,46 @@ The roboter tasks are divided into two parts, the excercise tasks and the master
 ## Excercise tasks
 
 ### A) Flashing LED1
-LED 1 should flash for 0.5sec and then pause for 0.5sec. This process should be repeated infinitely (loop).
+**LED 1** should **flash for 0.5sec** and then **pause for 0.5sec**. This process should be repeated infinitely and therefore be placed in the `void loop()`.
 
 [Solution](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/blob/master/PhilippBruhin/Excercise_tasks/a_flashing_led_1/a_flashing_led_1/main.c)
 
 ### B) For loop
-The C for loop statement is used to execute a block of code repeatedly. It is often used when the number of iterations is predetermined. Use a for loop for switching on LED1 up to LED4.
+The C for loop statement is used to execute a block of code repeatedly. It is often used when the number of iterations is predetermined. Use a **for loop for switching on** LED1 up to LED4.
 
 [Solution](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/blob/master/PhilippBruhin/Excercise_tasks/b_for_loop/b_for_loop/main.c)
 
 ### C) Switch on LED2-LED4
-Update program B) from above with the result that only LED2 up to LED4 are on.
+Update program B) from above with the result that only **LED2 up to LED4 are on**.
 
 [Solution](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/blob/master/PhilippBruhin/Excercise_tasks/c_switch_on_led2-led4/c_switch_on_led2-led4/main.c)
 
 ### D) Flashing LEDs 1
-Create a program where LED 1 is flashing for 0.5sec and then pausing for 0.5sec, then LED 2 is flashing for 0.5sec and then pausing for 0.5sec and so on up to LED4. Don't use a for loop.
+Create a program where **LED 1** is **flashing for 0.5sec** and then **pausing for 0.5sec**, then **LED 2** is **flashing for 0.5sec** and then pausing for 0.5sec **and so on** up to LED4. Don't use a for loop.
 
 [Solution](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/blob/master/PhilippBruhin/Excercise_tasks/d_flashing_leds_1/d_flashing_leds_1/main.c)
 
 ### E) Flashing LEDs 2
-Write same program as above in D) but work with a for loop. What is the advantage of a for loop in this case?
+Write same program as above in D) but work with a **for loop**. What is the advantage of a for loop in this case?
 
 [Solution](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/blob/master/PhilippBruhin/Excercise_tasks/e_flashing_leds_2/e_flashing_leds_2/main.c)
 
 ### F) For in for
-Nest program E) from above in a loop that increases the time from 50 to 100 and 200 milliseconds (each iteration double of time).
+Nest program E) from above in a loop that increases the time from **50 to 100 and 200 milliseconds** (each iteration double of time).
 
 [Solution](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/blob/master/PhilippBruhin/Excercise_tasks/f_for_in_for/f_for_in_for/main.c)
 
 ### G) Using buttons
-Analyze [this program](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/blob/eaf6fde06b96f30fbcf23a8362a2644a54070c86/PhilippBruhin/Excercise_tasks/g_using_buttons/g_using_buttons/main.c) which uses buttons and a switch case statement. Now add an event for button 3. If this button is pressed, LED3 should flash and as soon as the button is released, LED3 should switch off.
+Analyze [this program](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/blob/eaf6fde06b96f30fbcf23a8362a2644a54070c86/PhilippBruhin/Excercise_tasks/g_using_buttons/g_using_buttons/main.c) which uses **buttons and a switch case statement**.
+
+Now add an event for **button 3**. If this button is pressed, **LED3 should flash** and as soon as the button is released, LED3 should switch off.
 
 [Solution](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/blob/master/PhilippBruhin/Excercise_tasks/g_using_buttons/g_using_buttons/main.c)
 
 ### H) Light switch
-Write a program based on [this initial situation](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/blob/5efa40aacb6b36359cd94a89daca1e62d4111b8e/PhilippBruhin/Excercise_tasks/h_light_switch/h_light_switch/main.c) that switches on LED1 and LED4 when button 1 is clicked. LED2 and LED3 should switch on when button 2 is clicked. All LEDs should switch off when button 3 is clicked.
+Write a program, based on [this initial situation](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/blob/5efa40aacb6b36359cd94a89daca1e62d4111b8e/PhilippBruhin/Excercise_tasks/h_light_switch/h_light_switch/main.c) that switches on **LED1 and LED4** when **button 1** is clicked. **LED2 and LED3** should switch on when **button 2** is clicked.
+
+**All LEDs** should **switch off** when **button 3** is clicked.
 
 [Solution](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/blob/master/PhilippBruhin/Excercise_tasks/h_light_switch/h_light_switch/main.c)
 
