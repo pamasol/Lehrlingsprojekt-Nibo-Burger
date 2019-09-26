@@ -104,6 +104,12 @@ To control the motors, they have to be initialized via `motpwm_init();` in the s
 
 [Solution]()
 
+### K) Line sensors
+ToDo
+
+[Solution]()
+
+
 ## Master tasks
 
 The following 5 tasks must be mastered, whereas the apprentice can choose the order by himself.

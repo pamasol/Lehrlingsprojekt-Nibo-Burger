@@ -58,6 +58,7 @@ void loop() {
 	motpwm_setLeft(power);
 	motpwm_setRight(power);
 	
+	// Change motor speed only every 10 milliseconds.
 	delay(10);
 }
 
