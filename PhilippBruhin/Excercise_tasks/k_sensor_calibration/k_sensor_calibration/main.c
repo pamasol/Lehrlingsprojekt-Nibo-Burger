@@ -59,5 +59,3 @@ void loop() {
 		surface_writePersistent();
 	}
 }
-
-
