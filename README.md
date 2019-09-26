@@ -100,7 +100,7 @@ Check [this program](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/blo
 [Solution](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/blob/master/PhilippBruhin/Excercise_tasks/i_odometry_sensors/i_odometry_sensors/main.c)
 
 ### J) Playing with motors
-To control the motors, they have to be initialized via `motpwm_init();` in the setup function. Check setup function in [this program](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/blob/aa2d69d422beaac5624e22e60bb058737606038a/PhilippBruhin/Excercise_tasks/j_playing_with_motors/j_playing_with_motors/main.c). The program furthermore explaines local and global variables and the motor control. Extend it as follows: When button 3 is released motor power variable should be decreased by 200.
+The motors have to be initialized via `motpwm_init();` in the setup function. Check setup function in [this program](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/blob/aa2d69d422beaac5624e22e60bb058737606038a/PhilippBruhin/Excercise_tasks/j_playing_with_motors/j_playing_with_motors/main.c). The program furthermore explaines local and global variables and the motor control. Extend it as follows: When button 3 is released motor power variable should be decreased by 200.
 
 [Solution]()
 

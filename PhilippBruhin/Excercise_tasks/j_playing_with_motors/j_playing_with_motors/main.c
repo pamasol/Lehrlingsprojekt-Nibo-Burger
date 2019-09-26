@@ -37,13 +37,12 @@ void loop() {
 			power = 0;
 		break;
 		/*
-		ToDo: Button 3 released leads to a decreased power variable
+		Button 3 released leads to a decreased power variable
 		and motor speed.
 		*/
-		
-		// Your code here
-		
-		
+		case 'c':
+			power = power - 200;
+		break;
 	}
 	
 	/*
