@@ -36,7 +36,6 @@ void loop() {
 	int diff_black = color_diff_rgb(col, COLOR_RGB_CAL_BLACK);
 	int diff_white = color_diff_rgb(col, COLOR_RGB_CAL_WHITE);
 
-
 	/*
 	If RGB sensors detect a black surface, LED1 will be switched on, if
 	a white surface is detected, LED2 will switch on. Be aware that this 
