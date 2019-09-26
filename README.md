@@ -133,7 +133,7 @@ As starting point serves [this piece of code](https://github.com/pamasol/Lehrlin
 
 Does **FLL sensor** reflection valves **bigger than 20**, **LED1 should flash**. Implement same procedure for **FL** sensor and **LED2**, **FR** sensor and **LED3** and **FRR** sensor and **LED4**.
 
-[Solution](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/blob/master/PhilippBruhin/Excercise_tasks/l_infrared_sensors/l_infrared_sensors/main.c)
+[Solution](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/blob/master/PhilippBruhin/Excercise_tasks/m_visualize_obstacle/m_visualize_obstacle/main.c)
 
 ## Master tasks
 
