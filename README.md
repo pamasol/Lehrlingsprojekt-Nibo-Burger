@@ -239,4 +239,4 @@ git pull
 
 # 5. Documentation
 
-ToDo
+ToDo (explaining c language, explaining git, explaining motor control, explaining 3.3V generation, explaining EEPROM, Explaining Infrared, Explaining RGB, assembling report)
