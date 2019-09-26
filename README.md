@@ -108,8 +108,10 @@ To control the motors, they have to be initialized via `motpwm_init();` in the s
 In this excercise one will calibrate the color sensors of the roboter. Therefore create a program with [this content](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/blob/master/PhilippBruhin/Excercise_tasks/k_sensor_calibration/k_sensor_calibration/main.c), compile it and download it to the robot. Put robot on a black surface and click button 1. In a second step, put the robot on a white surface and click button 2. Since the [RGB values](https://en.wikipedia.org/wiki/RGB_color_model) will be stored in the [EEPROM](https://en.wikipedia.org/wiki/EEPROM), they will not get lost anymore, even when turning off or reprogramming the robot. Furthermore a new variable type is used: `unsigned long int` what is a [2 byte variable](https://gcc.gnu.org/wiki/avr-gcc#Deviations_from_the_Standard) that can be positive only (no - in front).
 
 ### L) Infrared sensors
+Take a look at [this program](). It switches off all LEDs when IR-Sensor (respectively phototransistor) in slot FL does not receive reflected [infrared light](https://en.wikipedia.org/wiki/Infrared) from the IR diode. The better the reflection get, the more LEDs are flashing. Update the code that when there is no reflection, all LEDs are switched off. Is ther a bit reflection, LED1 swichtes on. Is there more reflection, LED2 switches on additionally and so until LED4 and high reflection. 
 
-https://en.wikipedia.org/wiki/Infrared
+[Solution]()
+
 
 
 
