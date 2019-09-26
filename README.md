@@ -116,7 +116,7 @@ Take a look at [this program](https://github.com/pamasol/Lehrlingsprojekt-Nibo-B
 
 When there is no reflection at IR Sensor FR (not FL), all LEDs are switched off. Is ther a **bit reflection**, **LED1** swichtes on. Is there **more reflection**, **LED2** switches on additionally and so on until **LED4** for **high reflection**. 
 
-[Solution]()
+[Solution](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/blob/master/PhilippBruhin/Excercise_tasks/l_infrared_sensors/l_infrared_sensors/main.c)
 
 ### M) Visualize obstacle
 
