@@ -100,12 +100,18 @@ Check [this program](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/blo
 [Solution](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/blob/master/PhilippBruhin/Excercise_tasks/i_odometry_sensors/i_odometry_sensors/main.c)
 
 ### J) Playing with motors
-To control the motors, they have to be initialized via `motpwm_init();` in the setup function. Check setup function in [this program](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/blob/5248b3bf6dcb0b9c7a702b5e39682702e7af9728/PhilippBruhin/Excercise_tasks/j_playing_with_motors/j_playing_with_motors/main.c). The program furthermore explaines local and global variables and the motor control. Extend it as follows: When button 3 is released motor power variable should be decreased by 200.
+To control the motors, they have to be initialized via `motpwm_init();` in the setup function. Check setup function in [this program](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/blob/aa2d69d422beaac5624e22e60bb058737606038a/PhilippBruhin/Excercise_tasks/j_playing_with_motors/j_playing_with_motors/main.c). The program furthermore explaines local and global variables and the motor control. Extend it as follows: When button 3 is released motor power variable should be decreased by 200.
 
 [Solution]()
 
-### K) Line sensors
+### K) Sensor calibration
 ToDo
+
+
+https://en.wikipedia.org/wiki/EEPROM
+https://gcc.gnu.org/wiki/avr-gcc#Deviations_from_the_Standard
+https://en.wikipedia.org/wiki/RGB_color_model
+
 
 [Solution]()
 
@@ -175,7 +181,7 @@ There are several ways to program the NIBO Burger. The easiest way is via online
 3. Install **[WinAVR](https://sourceforge.net/projects/winavr/)** which is a distribution of the avr-gcc compiler that is used on Windows operating systems.
 4. Install **Git** from [git-scm.com](https://git-scm.com/downloads).
 
-As soon as the three programmes above update AtmelStudio Settings as described in [this PDF (German only)](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/files/3652530/ProgrammierungdesNIBOBurgersmitAtmelStudio7.0.pdf). The template that has to be imported can be [downloaded here](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/files/3652529/NIBOBurger_Vorlage.zip)
+As soon as the three programmes above update AtmelStudio Settings as described in [this PDF (German only)](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/files/3652530/ProgrammierungdesNIBOBurgersmitAtmelStudio7.0.pdf). The template that has to be imported can be [downloaded here](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/files/3652529/NIBOBurger_Vorlage.zip).
 
 ## Using Git and GitHub
 
