@@ -19,7 +19,29 @@ void loop() {
 	int fr = analog_getValueExt(ANALOG_FR, 2);
 	int frr = analog_getValueExt(ANALOG_FRR, 2);
 
-	// Your code here	
-	
+	// Front left of left
+	if (fll>20) {
+		led_set(1, 1);
+	} else {
+		led_set(1, 0);		
+	}	
+	// Front left
+	if (fl>20) {
+		led_set(2, 1);
+	} else {
+		led_set(2, 0);
+	}
+	// Front right
+	if (fr>20) {
+		led_set(3, 1);
+	} else {
+		led_set(3, 0);
+	}
+	// Front right of right
+	if (frr>20) {
+		led_set(4, 1);
+	} else {
+		led_set(4, 0);
+	}
 
 }

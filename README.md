@@ -129,7 +129,11 @@ When there is no reflection at IR Sensor FR (not FL), all LEDs are switched off.
 [Solution](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/blob/master/PhilippBruhin/Excercise_tasks/l_infrared_sensors/l_infrared_sensors/main.c)
 
 ### M) Visualize obstacle
+As starting point serves [this piece of code](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/blob/3b060c35fdfbc0acb7580cf4e877899957c81978/PhilippBruhin/Excercise_tasks/m_visualize_obstacle/m_visualize_obstacle/main.c). Write a program that works with all 4 IR sensors in front of NIBO Burger. 
 
+Does **FLL sensor** reflection valves **bigger than 20**, **LED1 should flash**. Implement same procedure for **FL** sensor and **LED2**, **FR** sensor and **LED3** and **FRR** sensor and **LED4**.
+
+[Solution](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/blob/master/PhilippBruhin/Excercise_tasks/l_infrared_sensors/l_infrared_sensors/main.c)
 
 ## Master tasks
 
