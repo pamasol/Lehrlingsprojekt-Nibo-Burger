@@ -9,7 +9,7 @@ void setup() {
 void loop() {
 	/*
 	The loop is executed only if a value of the analog inputs changes.
-	This makes sense since thousands of iterations the same	analog
+	This makes sense since thousands of iterations with the same analog
 	values is unrewarding.
 	*/
 	analog_wait_update();

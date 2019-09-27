@@ -241,4 +241,4 @@ git pull
 
 # 5. Documentation
 
-ToDo (explaining c language and the difference to C++, explaining git, explaining motor control, explaining 3.3V generation, explaining EEPROM, Explaining Infrared, Explaining RGB, assembling report)
+ToDo (explaining c language and the difference to C++, explaining git, explaining open source software, explaining motor control, explaining 3.3V generation, explaining EEPROM, Explaining Infrared, Explaining RGB, assembling report)
