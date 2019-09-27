@@ -241,4 +241,27 @@ git pull
 
 # 5. Documentation
 
-ToDo (explaining c language and the difference to C++, explaining git, explaining open source software, explaining motor control, explaining 3.3V generation, explaining EEPROM, Explaining Infrared, Explaining RGB, assembling report)
+This project must be documented by every apprentice. It should be structured as follows:
+
+* Front page
+* Summary
+* Table of contents
+* Table of images
+* Table of tables
+* Freely selectable chapters that explain:
+    * Construction of the robot
+        * What is a microcontroller?
+        * How is 3.3V generated on the PCB?
+        * Explaining motor bridge and PWM signals
+        * How does an IR sensor work?
+        * For what does RGB stand for in the RGB-Sensors?
+    * Programming and software
+        * In which programming language do we program the robot?
+        * Why do we need EEPROM storage?
+        * What is Git and GitHub? Is there a difference?
+        * What is open source software?
+* Appendix
+
+Documentation can be made in German language. There is no minimum or maximu number of pages.
+
+> A Pamasol Microsoft Word Template can be requested from the instructor.
