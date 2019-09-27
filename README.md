@@ -180,12 +180,9 @@ How to assemble the robot is described detailly in the manual that is provided w
 * [German Manual NIBO Burger (PDF)](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/files/3652506/Doku_NIBOburger_20150909.pdf)
 * [Electrical Schematic NIBO Burger (PDF)](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/files/3652510/nibo_burger_schematic_1_09.pdf)
 
-It starts with interpreting and sorting the items followed by preparing the workplace and the soldering station. One should proceed as recommended in the instructions to avoid issues when putting the boards together to a burger.
-
-Following points are not mentioned in the manual but recommended:
-* The phototransistors of the IR sensors should be protected with shrinking tube to reduce interference from other sensors.
+It starts with interpreting and sorting the items followed by preparing the workplace and the soldering station. One should proceed as recommended in the instructions to avoid issues when putting the boards together to a burger. A lot of attention should be paid to the gearbox. If it is not assembled in the right angle, it jams afterwards and the motors can not work properly.
  
-Since the microcontroller is preprogramed on can run the function tests as soon as the hardware work is done.
+The microcontroller is preprogramed. One can run the function tests as soon as the hardware work is done. Everything will be checked, starting with the LEDs, the odometry sensors, the IR- and RGB-Sensors and ending with the motors.
 
 ## 8x8 pixel matrix display
 
