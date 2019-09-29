@@ -252,6 +252,7 @@ This project must be documented by every apprentice. It should be structured as 
         * Explaining motor bridge and PWM signals
         * How does an IR sensor work?
         * For what does RGB stand for in the RGB-Sensors?
+        * What is the difference between flash and EEPROM storage and how much does the ATmega16A have of each?
     * Programming and software
         * In which programming language do we program the robot?
         * Why do we need EEPROM storage?
