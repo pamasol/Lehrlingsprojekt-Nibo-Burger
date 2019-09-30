@@ -8,15 +8,20 @@
 #include "niboburger/robomain.h"
 
 
-void setup() //setup wird einmal am anfang ausgeführt
+void setup() //Setup wird einmal am Anfang ausgeführt
 {
-	led_init(); //leds werden initialisiert
+	led_init(); //Leds werden initialisiert
 }
 
-void loop() //loop wird ständig wiederholt
+void loop() //Loop wird ständig wiederholt
 {
-	led_set(1,1); //led 1 wird eingeschaltet
-	delay(500); //0.5ms warten
-	led_set(1,0); //led 1 wird ausgeschaltet
-	delay(500); //0.5ms warten
+	int lednr; //Variable mit dem Namen "lednr" deklariert
+	
+	for (lednr=1; lednr<=4; lednr++) //for-Schleife um Led 1-4 einzuschalten
+	{
+		led_set(lednr, 1);
+		delay(1000); //Verzögerung eingefügt, dass Prozess besser erkennt wird
+	}
 }
+
+//for Schleife führt Anweisung mehrfach aus. Sie hat 3 Parameter: Initialisierung, Bedingungsprüfung, Aktualisierung
