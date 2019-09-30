@@ -4,7 +4,7 @@
 void setup()
 {
 	/* Programmcode zum einmaligen Setup des Roboters */
-	led_init();						//Anweisung um Led zu initialisieren
+	led_init();						// Anweisung um Led zu initialisieren
 }
 
 void loop()
