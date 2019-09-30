@@ -55,12 +55,14 @@ uint8_t obstacle_val;
  */
 uint8_t getObstSensorValue(uint8_t sensor) {
   uint16_t val = analog_getValueExt(sensor, 2);
-  if (val&0xff00) return 0xff;
+  // If value bigger than 255, return 255
+  if (val>0xff) return 0xff;
   return val;
 }
 
 
 uint8_t obstacle_getEvent(uint8_t reset) {
+	// Diese Variable wird nur beim aller ersten Aufruf der Funktion hier zugewiesen weil static.
   static uint8_t event_last = EVENT_NONE;
   
   if (reset) {
@@ -69,11 +71,13 @@ uint8_t obstacle_getEvent(uint8_t reset) {
   }
   
   uint8_t event = EVENT_NONE;
+  // Um ein bit nach rechts schieben. verliere auflösung (dividiert durch 2)
   uint8_t l = getObstSensorValue(ANALOG_FL)>>1;
   uint8_t r = getObstSensorValue(ANALOG_FR)>>1;
   
   uint8_t ll = getObstSensorValue(ANALOG_FLL)>>1;
   uint8_t rr = getObstSensorValue(ANALOG_FRR)>>1;
+  // hier wird zahl im worst case doppelt so gross
   uint8_t cc = l + r;
   ll += l;
   rr += r;
@@ -115,6 +119,7 @@ uint8_t obstacle_getEvent(uint8_t reset) {
     }
   } 
     
+	// nur falls event geändert hat, ansonsten mache nichts
   if (event!=event_last) {
     event_last = event;
     return event;
@@ -135,7 +140,7 @@ uint8_t key_getEvent() {
   return EVENT_NONE;
 }
 
-
+// kam ein tastendruck oder hat sich etwas mit der obstracle detection geändert
 uint8_t getEvent() {
   uint8_t event = EVENT_NONE;
   event = key_getEvent();
@@ -156,6 +161,8 @@ void setup() {
   odometry_init();
   analog_init();
   
+  
+  // warten bis starttaste gedrück
   while (key_getEvent()==EVENT_NONE) {
     // wait...
   }
