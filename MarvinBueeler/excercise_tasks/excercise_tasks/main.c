@@ -18,26 +18,17 @@ void loop() //Loop wird ständig wiederholt
 {
 	char key = key_get_char(); //char Variable key deklariert
 	
-	switch (key) { //ermöglicht verschiedene Fallunterscheidungen
-		case 'A': //bestimmter Fall(csae) von der char Variable hier: 'A' 
-		led_set(1,1); //Anweisung bei diesem case hier: Led 1 einschalten
-		break; //beendet jeweiligen case und switch-Anweisung
-		case 'a':
-		led_set(1,0);
+	switch (key) {
+		case 'A':
+		led_set(1,1);
+		led_set(4,1);
 		break;
 		case 'B':
 		led_set(2,1);
-		break;
-		case 'b':
-		led_set(2,0);
-		break;
-		case 'C':
 		led_set(3,1);
 		break;
-		case 'c':
-		led_set(3,0);
+		case 'C':
+		led_setall(0,0,0,0);
 		break;
 	}
-}
-
-//char Variablen speichern immer ein Buchstabe oder ein Zeichen ab. 
+} 
