@@ -7,36 +7,41 @@
 
 #include "niboburger/robomain.h"
 
+int power; //globale Variabel power deklariert, kann in void und loop funktionen verwendet werden
 
 void setup() //Setup wird einmal am Anfang ausgeführt
 {
 	led_init(); //Leds werden initialisiert
 	analog_init(); //alle analogen Datenleitungen (auch die für die Taster) werden initialisiert 
 	odometry_init(); //Odometry Sensoren werden initialisiert
+	motpwm_init(); //Motoren werden initialisiert
+	power = 0; //Beim start wird die Variabel auf 0 gesetzt
 }
 
 void loop() //Loop wird ständig wiederholt
 {
-	int left = odometry_getLeft(0); //Variable für Wert von odometry Sensor links
-	int right = odometry_getRight(0); //Variable für Wert von odometry Sensor rechts
-	char key = key_get_char(); //char Variable key deklariert
+	char key = key_get_char(); //key Variabel kann nur in der Loop-Funktion verwendet werden, weil sie hier deklariert wurde
 	
 	switch (key) {
-		case 'A':
-			odometry_resetLeft();
-			led_set(1,1);
-			led_set(1,0);
-			break;
+		case 'a':
+			power = power + 200; //Taster 1 gedrückt wird 200 zur Variabel power addiert
+		break;
+
 		case 'B':
-			odometry_resetRight();
-			break;
-		case 'C':
-			odometry_reset();
-			break;
+			power = 0; //Taster 2 setzt power wieder auf 0
+		break;
+		
+		case 'c':
+			power = power - 200; //Taster 3 subtrahiert 200 von power
+		break;
 	}
 	
-	led_set(1,left>10);
-	led_set(2,left>20);
-	led_set(3,right>20);
-	led_set(4,right>10);
+	/*
+	Motor Geschwindigkeiten liegen zwischen -1024 und 1024. 
+	Geschwindigkeit ausserhalb dieses Bereiches werden auf
+	-1024 auf- bzw. 1024 abgerundet
+	*/
+	motpwm_setLeft(power);
+	motpwm_setRight(power);
+	delay(10); //Motorgeschwindigkeit kann nur alle 10ms geändert werden
 } 
