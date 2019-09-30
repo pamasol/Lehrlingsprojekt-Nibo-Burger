@@ -11,7 +11,7 @@ void loop()
 {
 	/* Programmcode, den der NIBO Burger immer wieder ausführen soll */
 	int ledNr;
-	for (ledNr=1; ledNr<=4; ledNr+=1)			// führt Anweisungen mehrmals durch
+	for (ledNr=2; ledNr<=4; ledNr+=1)			// führt Anweisungen mehrmals durch
 	{
 		led_set(ledNr, 1);						// Led auf Zustand 1 setzen
 		delay(1000);							// Zeitverzögerung um 1000ms um Vorgang besser zu beobachten
