@@ -188,9 +188,9 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
-    <None Include="main.cpp">
+    <Compile Include="main.c">
       <SubType>compile</SubType>
-    </None>
+    </Compile>
   </ItemGroup>
   <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />
 </Project>

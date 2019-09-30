@@ -1,18 +1,11 @@
-/*
-  Fraidy Cat - Hindernisvermeidung für den NIBO burger
-  Die vier IR-Sensorbricks sollten in den vorderen Slots (FLL, FL, FR, FRR) stecken!
-*/
+/**
+ *	NIBO Burger – Pamasol electronic project for apprentices
+ *	Master task B) Fraidy cat
+ *	Setup: IR-Bricks in slots FLL, FL, FR, FRR, no maroon shield mounted
+ */
 
-//#include <niboburger/base.h>
-//#include <niboburger/iodefs.h>
-//#include <niboburger/usart.h>
-//#include <niboburger/motpwm.h>
-//#include <niboburger/analog.h>
-//#include <niboburger/led.h>
-//#include <niboburger/key.h>
-//#include <niboburger/delay.h>
-//#include <niboburger/utils.h>
 #include <niboburger/robomain.h>
+
 
 enum {
   EVENT_NONE              =  0,
@@ -30,7 +23,13 @@ enum {
 
 uint8_t key_getEvent();
 
-
+/** @brief	Makes an LED blink with 80ms on and 120ms off
+ *
+ *  @param	led		LED number
+ *	@param	count	How many times led should blink
+ *
+ *  @return void
+ */
 void blink_led(uint8_t led, uint8_t count) {
   while (count--) {
     led_set(led, 1);
@@ -41,13 +40,19 @@ void blink_led(uint8_t led, uint8_t count) {
 }
 
 
-/* OBSTACLE */
+/************************************************************************/
+/* OBSTRACLE                                                            */
+/************************************************************************/
 
 int8_t obstacle_pos;
 uint8_t obstacle_val;
 
-
-// auf den Zahlenbereich 0-255 (8 Bit) beschränken
+/** @brief	Limit number range to 0-255 (8 bit) 
+ *
+ *  @param	sensor	Sensor number
+ *	
+ *	@return	val		Number between 0 and 255
+ */
 uint8_t getObstSensorValue(uint8_t sensor) {
   uint16_t val = analog_getValueExt(sensor, 2);
   if (val&0xff00) return 0xff;
@@ -73,26 +78,25 @@ uint8_t obstacle_getEvent(uint8_t reset) {
   ll += l;
   rr += r;
 
-  // drei Werte: ll, cc und rr
-  
+  // Three values: ll (left-left), cc (center-center) and  rr (right-right)
   obstacle_val = max3(ll, cc, rr);
   
   if ((obstacle_val==cc) || (ll==rr)) {
     if (ll>rr) {
-      // Hindernis ist leicht links
+      // Obstacle slightly left
       obstacle_pos = -1;
     } else if (ll<rr) {
-      // Hindernis ist leicht rechts
+      // Obstacle slightly right
       obstacle_pos = +1;
     } else {
-      // Hindernis ist mittig
+      // Obstacle in the middle
       obstacle_pos = 0;
     }
   } else if (ll>rr) {
-     // Hindernis ist links
+     // Obstacle left
     obstacle_pos = -2;
   } else {
-    // Hindernis ist rechts
+    // Obstacle right
     obstacle_pos = +2;
   }
 
@@ -119,7 +123,9 @@ uint8_t obstacle_getEvent(uint8_t reset) {
   return EVENT_NONE;
 }
 
-/* KEY */
+/************************************************************************/
+/* KEY                                                                  */
+/************************************************************************/
 
 uint8_t key_getEvent() {
   uint8_t c = key_get_char();
@@ -156,9 +162,7 @@ void setup() {
   
   delay(100);
   delay(100);
-  
-  maroon_welcome();
-  
+   
   motpid_stop(1);
   blink_led(2, 4);
   run = 1;
