@@ -1,44 +1,22 @@
-/* Includes fÃ¼r den Zugriff auf die NIBO Burger Bibliothek */
+/* Includes für den Zugriff auf die NIBO Burger Bibliothek */
 #include "niboburger/robomain.h"
 
 void setup()
 {
 	/* Programmcode zum einmaligen Setup des Roboters */
-<<<<<<< HEAD
-	led_init();				// Anweisung um Led zu initialisieren
-=======
-	led_init();						// Anweisung um Led zu initialisieren
->>>>>>> 0648d6e6064effdd65d5b40059cc8c641581e50a
+	led_init();							// Anweisung um Led zu initialisieren
 }
 
 void loop()
 {
-<<<<<<< HEAD
 	/* Programmcode, den der NIBO Burger immer wieder ausführen soll */
-	led_set(1,1);			// Led 1 (rote Led) auf Zustand 1 setzen
-	delay(500);				// Zeitverzögerung um 500ms
-	led_set(1,0);			// Led 1 (rote Led) auf Zustand 0 setzen
-	delay(500);				// Zeitverzögerung um 500ms
-	led_set(2,1);			// Led 2 (blaue Led) auf Zustand 1 setzen
-	delay(500);				// Zeitverzögerung um 500ms
-	led_set(2,0);			// Led 2 (blaue Led) auf Zustand 0 setzen
-	delay(500);				// Zeitverzögerung um 500ms
-	led_set(3,1);			// Led 3 (blaue Led) auf Zustand 1 setzen
-	delay(500);				// Zeitverzögerung um 500ms
-	led_set(3,0);			// Led 3 (blaue Led) auf Zustand 0 setzen
-	delay(500);				// Zeitverzögerung um 500ms
-	led_set(4,1);			// Led 4 (rote Led) auf Zustand 1 setzen
-	delay(500);				// Zeitverzögerung um 500ms
-	led_set(4,0);			// Led 4 (rote Led) auf Zustand 0 setzen
-	delay(500);				// Zeitverzögerung um 500ms
-}
-=======
-	/* Programmcode, den der NIBO Burger immer wieder ausfÃ¼hren soll */
-	int ledNr;
-	for (ledNr=2; ledNr<=4; ledNr+=1)			// fÃ¼hrt Anweisungen mehrmals durch
+	int LedNr;
+	
+	for (LedNr=1; LedNr<=4; LedNr+=1)	// führt Anweisungen mehrmals durch 
 	{
-		led_set(ledNr, 1);				// Led auf Zustand 1 setzen
-		delay(1000);					// ZeitverzÃ¶gerung um 1000ms um Vorgang besser zu beobachten
+	led_set(LedNr,1);					// Led auf Zustand 1 setzen
+	delay(500);							// Zeitverzögerung um 500ms
+	led_set(LedNr,0);					// Led auf Zustand 0 setzen
+	delay(500);							// Zeitverzögerung um 500ms
 	}
 }
->>>>>>> 0648d6e6064effdd65d5b40059cc8c641581e50a
