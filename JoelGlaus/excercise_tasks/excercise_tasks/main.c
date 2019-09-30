@@ -1,19 +1,14 @@
-/* Includes fÃ¼r den Zugriff auf die NIBO Burger Bibliothek */
+/* Includes für den Zugriff auf die NIBO Burger Bibliothek */
 #include "niboburger/robomain.h"
 
 void setup()
 {
 	/* Programmcode zum einmaligen Setup des Roboters */
-<<<<<<< HEAD
 	led_init();									//Anweisung um Led zu initialisieren
-=======
-	led_init();				//Anweisung um Led zu initialisieren
->>>>>>> 39c2f1189949c07f8c443ea6779c34caf6c09363
 }
 
 void loop()
 {
-<<<<<<< HEAD
 	/* Programmcode, den der NIBO Burger immer wieder ausführen soll */
 	int ledNr;
 	for (ledNr=1; ledNr<=4; ledNr+=1)			// führt Anweisungen mehrmals durch
@@ -22,11 +17,3 @@ void loop()
 		delay(1000);							// Zeitverzögerung um 1000ms um Vorgang besser zu beobachten
 	}
 }
-=======
-	/* Programmcode, den der NIBO Burger immer wieder ausfÃ¼hren soll */
-	led_set(1,1);				//Led 1 (rote LED) auf Zustand 1 setzen
-	delay(500);					//ZeitverzÃ¶gerung um 500ms
-	led_set(1,0);				//Led 1 (rote LED) auf Zustand 0 setzen
-	delay(500);					//ZeitverzÃ¶gerung um 500ms
-}
->>>>>>> 39c2f1189949c07f8c443ea6779c34caf6c09363
