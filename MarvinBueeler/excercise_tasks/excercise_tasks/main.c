@@ -17,7 +17,7 @@ void loop() //Loop wird ständig wiederholt
 {
 	int lednr; //Variable mit dem Namen "lednr" deklariert
 	
-	for (lednr=1; lednr<=4; lednr++) //for-Schleife um Led 1-4 einzuschalten
+	for (lednr=2; lednr<=4; lednr++) //for-Schleife um Led 2-4 einzuschalten
 	{
 		led_set(lednr, 1);
 		delay(1000); //Verzögerung eingefügt, dass Prozess besser erkennt wird
