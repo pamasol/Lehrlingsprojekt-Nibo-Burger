@@ -15,20 +15,15 @@ void setup() //Setup wird einmal am Anfang ausgeführt
 
 void loop() //Loop wird ständig wiederholt
 {
-	led_set(1,1);
-	delay(500);
-	led_set(1,0);
-	delay(500);
-	led_set(2,1);
-	delay(500);
-	led_set(2,0);
-	delay(500);
-	led_set(3,1);
-	delay(500);
-	led_set(3,0);
-	delay(500);
-	led_set(4,1);
-	delay(500);
-	led_set(4,0);
-	delay(500);
+	int lednr;
+	
+	for (lednr=1; lednr<=4; lednr++)
+	{
+		led_set(lednr,1);
+		delay(500);
+		led_set(lednr,0);
+		delay(500);
+	}
 }
+
+//Mit der for-Schlaufe ist der Code viel Kürzer, da ich mit einem Command alle Leds ansteuern kann. Die Funtkion bleibt die gleiche.
