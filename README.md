@@ -80,7 +80,7 @@ Write same program as above in D) but work with a **for loop**. What is the adva
 [Solution](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/blob/master/PhilippBruhin/Excercise_tasks/e_flashing_leds_2/e_flashing_leds_2/main.c)
 
 ### F) For in for
-Nest program E) from above in a loop that increases the time from **50 to 100 and 200 milliseconds** (each iteration double of time).
+Next program E) from above in a loop that increases the time from **50 to 100 and 200 milliseconds** (each iteration double of time).
 
 [Solution](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/blob/master/PhilippBruhin/Excercise_tasks/f_for_in_for/f_for_in_for/main.c)
 
