@@ -4,14 +4,16 @@
 void setup()
 {
 	/* Programmcode zum einmaligen Setup des Roboters */
-	led_init();					//Anweisung um Led zu initialisieren
+	led_init();									//Anweisung um Led zu initialisieren
 }
 
 void loop()
 {
 	/* Programmcode, den der NIBO Burger immer wieder ausführen soll */
-	led_set(1,1);				//Led 1 (rote LED) auf Zustand 1 setzen
-	delay(500);					//Zeitverzögerung um 500ms
-	led_set(1,0);				//Led 1 (rote LED) auf Zustand 0 setzen
-	delay(500);					//Zeitverzögerung um 500ms
+	int ledNr;
+	for (ledNr=1; ledNr<=4; ledNr+=1)			// führt Anweisungen mehrmals durch
+	{
+		led_set(ledNr, 1);						// Led auf Zustand 1 setzen
+		delay(1000);							// Zeitverzögerung um 1000ms um Vorgang besser zu beobachten
+	}
 }
