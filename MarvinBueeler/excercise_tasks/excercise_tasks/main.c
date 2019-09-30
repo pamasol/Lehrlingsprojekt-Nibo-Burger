@@ -15,13 +15,20 @@ void setup() //Setup wird einmal am Anfang ausgeführt
 
 void loop() //Loop wird ständig wiederholt
 {
-	int lednr; //Variable mit dem Namen "lednr" deklariert
-	
-	for (lednr=2; lednr<=4; lednr++) //for-Schleife um Led 2-4 einzuschalten
-	{
-		led_set(lednr, 1);
-		delay(1000); //Verzögerung eingefügt, dass Prozess besser erkennt wird
-	}
+	led_set(1,1);
+	delay(500);
+	led_set(1,0);
+	delay(500);
+	led_set(2,1);
+	delay(500);
+	led_set(2,0);
+	delay(500);
+	led_set(3,1);
+	delay(500);
+	led_set(3,0);
+	delay(500);
+	led_set(4,1);
+	delay(500);
+	led_set(4,0);
+	delay(500);
 }
-
-//for Schleife führt Anweisung mehrfach aus. Sie hat 3 Parameter: Initialisierung, Bedingungsprüfung, Aktualisierung
