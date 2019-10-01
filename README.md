@@ -260,6 +260,6 @@ This project must be documented by every apprentice. It should be structured as 
         * What is open source software?
 * Appendix
 
-Documentation can be made in German language. There is no minimum or maximu number of pages.
+Documentation can be made in German language. There is no minimum or maximum number of pages.
 
 > A Pamasol Microsoft Word Template can be requested from the instructor.
