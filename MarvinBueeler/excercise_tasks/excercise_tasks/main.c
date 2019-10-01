@@ -16,40 +16,31 @@ void setup() //Setup wird einmal am Anfang ausgeführt
 	surface_readPersistent();
 }
 
-void loop() //Loop wird ständig wiederholt
-{
-	analog_wait_update(); //aktualisiert alle Sensorwerte 
-	nibo_checkMonitorVoltage(); //prüft Akku spannung. Bei tiefer Spannung weichen Sensorwerte ab
+void loop() {
 	
-	char key = key_get_char(); //key Variabel kann nur in der Loop-Funktion verwendet werden, weil sie hier deklariert wurde
-	
-	unsigned long int col = surface_getColorRGB(); //Variabel für die Farberkennung
-	
-	int diff_black = color_diff_rgb(col, COLOR_RGB_CAL_BLACK); //Vergleicht gerade gemessenen Wert mit referenz Wert von Schwarz
-	int diff_white = color_diff_rgb(col, COLOR_RGB_CAL_WHITE); //Vergleicht gerade gemessenen Wert mit referenz Wert von Weiss
-
 	/*
-	Wenn die Sensoren schwarze Farbe detektieren, leuchtet LED1, bei weisser
-	Farbe leuchtet LED2. Sie müssen jedich kalibriert sein.
+	Function returns the value of IR sensor in slot FL. ANALOG_FL
+	is a constant. Second parameter:
+	0 =	Returns value based on human visible spectrum (Wavelength 400 nm - 700 nm)
+	1 =	Returns value based on human visible spectrum together with 
+		the IR spectrum (700 nm - 1 mm)
+	2 =	Returns the reflection value of the IR spectrum, without the visible part.
 	*/
-	led_set(1, diff_black < 20);
-	led_set(2, diff_white < 20);
+	int value = analog_getValueExt(ANALOG_FR, 2); //Fl zu FR gewechselt
 	
-	switch (key)
-	{
-		case 'a': //Taster 1 kalibriert die Farbe Schwarz
-			surface_calibrateBlack();
-			surface_writePersistent();
-		break;
-		
-		case 'b': //Taster 2 kalibriert die Farbe weiss
-			surface_calibrateWhite();
-			surface_writePersistent();
-		break;
+	/*
+	Switch off all LEDs if the reflection is less than 10 and switch on all LEDs
+	when reflection is more than 40.
+	*/
+	if (value<10) {
+		led_setall(0,0,0,0);
+		} else if (value<20) {
+		led_setall(1,0,0,0);
+		} else if (value<30) {
+		led_setall(1,1,0,0);
+		} else if (value<40) {
+		led_setall(1,1,1,0);
+		} else {
+		led_setall(1,1,1,1);
 	}
 }
- 
-
-/*
-unsigned long int ist eine 2 byte Variabel, die nur positiv sein kann.
-*/
