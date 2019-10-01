@@ -13,34 +13,57 @@ void setup() //Setup wird einmal am Anfang ausgeführt
 	analog_init(); //alle analogen Datenleitungen (auch die für die Taster) werden initialisiert 
 	odometry_init(); //Odometry Sensoren werden initialisiert
 	motpwm_init(); //Motoren werden initialisiert
-	surface_readPersistent();
+	surface_readPersistent(); //Laden der Kalibrierung aus EEPROM
 }
 
 void loop() {
-	
 	/*
-	Function returns the value of IR sensor in slot FL. ANALOG_FL
-	is a constant. Second parameter:
-	0 =	Returns value based on human visible spectrum (Wavelength 400 nm - 700 nm)
-	1 =	Returns value based on human visible spectrum together with 
-		the IR spectrum (700 nm - 1 mm)
-	2 =	Returns the reflection value of the IR spectrum, without the visible part.
+	Variables that store analog values of all 4 IR sensors in front of 
+	NIBO Burger.
+	fll	= Front left of left
+	fl	= Front left
+	fr	= Front right
+	frr	= Front right of right
 	*/
-	int value = analog_getValueExt(ANALOG_FR, 2); //Fl zu FR gewechselt
+	int fll = analog_getValueExt(ANALOG_FLL, 2);
+	int fl = analog_getValueExt(ANALOG_FL, 2);
+	int fr = analog_getValueExt(ANALOG_FR, 2);
+	int frr = analog_getValueExt(ANALOG_FRR, 2);
+
+	// Your code here
 	
-	/*
-	Switch off all LEDs if the reflection is less than 10 and switch on all LEDs
-	when reflection is more than 40.
-	*/
-	if (value<10) {
-		led_setall(0,0,0,0);
-		} else if (value<20) {
-		led_setall(1,0,0,0);
-		} else if (value<30) {
-		led_setall(1,1,0,0);
-		} else if (value<40) {
-		led_setall(1,1,1,0);
-		} else {
-		led_setall(1,1,1,1);
+	if (fll>20) //vorne links links
+	{
+		led_set(1,1);
+	} else 
+	{
+		led_set(1,0);	
 	}
+	
+	if (fl>20) //vorne links
+	{
+		led_set(2,1);
+	} else
+	{
+		led_set(2,0);
+	}
+	
+	if (fr>20) //vorne rechts
+	{
+		led_set(3,1);
+	} else
+	{
+		led_set(3,0);
+	}
+	
+	if (frr>20) //vorne rechts rechts
+	{
+		led_set(4,1);
+	} else
+	{
+		led_set(4,0);
+	}
+	
+	
+
 }
