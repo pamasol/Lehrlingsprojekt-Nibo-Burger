@@ -23,10 +23,10 @@ enum {
 
 uint8_t key_getEvent();
 
-/** @brief	Makes an LED blink with 80ms on and 120ms off
+/** @brief  Makes an LED blink with 80ms on and 120ms off
  *
- *  @param	led		LED number
- *	@param	count	How many times led should blink
+ *  @param  led     LED number
+ *	@param  count   How many times led should blink
  *
  *  @return void
  */
@@ -47,11 +47,11 @@ void blink_led(uint8_t led, uint8_t count) {
 int8_t obstacle_pos;
 uint8_t obstacle_val;
 
-/** @brief	Limit number range to 0-255 (8 bit) 
+/** @brief  Limit number range to 0-255 (8 bit) 
  *
- *  @param	sensor	Sensor number
+ *  @param  sensor  Sensor number
  *	
- *	@return	val		Number between 0 and 255
+ *	@return val     Number between 0 and 255
  */
 uint8_t getObstSensorValue(uint8_t sensor) {
 	uint16_t val = analog_getValueExt(sensor, 2);
@@ -62,12 +62,12 @@ uint8_t getObstSensorValue(uint8_t sensor) {
 }
 
 
-/** @brief	Returns an event based on an obstacle
+/** @brief  Returns an event based on an obstacle
  *
- *  @param	reset	1 or any other value for reset except 0
+ *  @param  reset   1 or any other value for reset except 0
  *	
- *	@return	enum	EVENT_NONE, EVENT_OBSTACLE_DETECTED, EVENT_OBSTACLE_CLEAR,
- *					EVENT_OBSTACLE_CLEAR_R, EVENT_OBSTACLE_CLEAR_L
+ *	@return enum    EVENT_NONE, EVENT_OBSTACLE_DETECTED, EVENT_OBSTACLE_CLEAR,
+ *	                EVENT_OBSTACLE_CLEAR_R, EVENT_OBSTACLE_CLEAR_L
  */
 uint8_t obstacle_getEvent(uint8_t reset) {
 	
@@ -150,11 +150,11 @@ uint8_t obstacle_getEvent(uint8_t reset) {
 /* KEY                                                                  */
 /************************************************************************/
 
-/** @brief	Returns which button is clicked or EVENT_NONE
+/** @brief  Returns which button is clicked or EVENT_NONE
  *
- *  @param	-
+ *  @param  -
  *	
- *	@return	enum	EVENT_NONE, EVENT_KEY1, EVENT_KEY2, EVENT_KEY3
+ *	@return enum    EVENT_NONE, EVENT_KEY1, EVENT_KEY2, EVENT_KEY3
  */
 uint8_t key_getEvent() {
 	uint8_t c = key_get_char();
@@ -164,14 +164,14 @@ uint8_t key_getEvent() {
 	return EVENT_NONE;
 }
 
-/** @brief	Returns which button is clicked or EVENT_NONE. If no button
- *			is clicked, it checks if there is an obstacle.
+/** @brief  Returns which button is clicked or EVENT_NONE. If no button
+ *	        is clicked, it checks if there is an obstacle.
  *
- *  @param	-
+ *  @param  -
  *	
- *	@return	enum	EVENT_NONE, EVENT_KEY1, EVENT_KEY2, EVENT_KEY3,
- *					EVENT_OBSTACLE_DETECTED, EVENT_OBSTACLE_CLEAR,
- *					EVENT_OBSTACLE_CLEAR_R, EVENT_OBSTACLE_CLEAR_L
+ *	@return enum    EVENT_NONE, EVENT_KEY1, EVENT_KEY2, EVENT_KEY3,
+ *	                EVENT_OBSTACLE_DETECTED, EVENT_OBSTACLE_CLEAR,
+ *	                EVENT_OBSTACLE_CLEAR_R, EVENT_OBSTACLE_CLEAR_L
  */
 uint8_t getEvent() {
 	uint8_t event = EVENT_NONE;
@@ -211,14 +211,14 @@ void setup() {
 	run = 1;
 }
 
-/** @brief	Checks buttons and obstacle sensors and controls the
- *			motors based on these events (state machine).
+/** @brief  Checks buttons and obstacle sensors and controls the
+ *	        motors based on these events (state machine).
  *
- *	@param	enum	EVENT_NONE, EVENT_KEY1, EVENT_KEY2, EVENT_KEY3,
- *					EVENT_OBSTACLE_DETECTED, EVENT_OBSTACLE_CLEAR,
- *					EVENT_OBSTACLE_CLEAR_R, EVENT_OBSTACLE_CLEAR_L
+ *	@param  enum    EVENT_NONE, EVENT_KEY1, EVENT_KEY2, EVENT_KEY3,
+ *	                EVENT_OBSTACLE_DETECTED, EVENT_OBSTACLE_CLEAR,
+ *	                EVENT_OBSTACLE_CLEAR_R, EVENT_OBSTACLE_CLEAR_L
  *	
- *	@return	void	
+ *	@return void	
  */
 void handle_event(uint8_t event) {
 	
