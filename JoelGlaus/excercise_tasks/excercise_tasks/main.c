@@ -1,67 +1,59 @@
-/* Includes fÃ¼r den Zugriff auf die NIBO Burger Bibliothek */
+/* Includes für den Zugriff auf die NIBO Burger Bibliothek */
 #include "niboburger/robomain.h"
 
-int speed;
-
 void setup()
+/* Programmcode zum einmaligen Setup des Roboters */
 {
-	/* Programmcode zum einmaligen Setup des Roboters */
 	led_init();					// Anweisung um Led zu initialisieren
-	analog_init();					// Anweisung um Analog Signale zu initialisieren
-	motpwm_init();					// Anweisung um Motoren zu initialisieren
-	speed = 0;
+	analog_init();				// Anweisung um Analog Signale zu initialisieren
+	motpwm_init();				// Anweisung um Motoren zu initialisieren
+	odometry_init();			// Anweisung um Odometriesensoren zu initialisieren
 }
 
 void loop()
+/* Programmcode, den der NIBO Burger immer wieder ausführen soll */
 {
-<<<<<<< HEAD
-	/* Programmcode, den der NIBO Burger immer wieder ausführen soll */
-	
-	char key = key_get_char();
-	
-	switch (key)
+	int value = analog_getValueExt(ANALOG_FR, 2);	// steuert den Sensor FR an
+	// 0: Wellenlänge 400 nm - 700 nm
+	// 1: Wellenlänge 700 nm - 1 mm
+	// 2: Gibt den Reflexionswert ohne den sichtbaren Teil zurück.
+	if (value<10)
 	{
-	case 'a':
-	speed = speed + 200;
-	break;
-	
-	case 'b':
-	speed = speed == 0;
-	break;
-	
-	case 'c':
-	speed = speed - 200;
-	break;
-	}	
-	
-	motpwm_setLeft(speed);
-	motpwm_setRight(speed);
-	
-	delay(10);
-}	
-=======
-	/* Programmcode, den der NIBO Burger immer wieder ausfÃ¼hren soll */
-	char key = key_get_char();
-	
-	if (key == 'a')					// Wenn Taster 1 gedrÃ¼ckt wurde					
-	{
-	odometry_resetLeft();				// RÃ¼cksetzen des Wertes vom linken Odometriesensor
+		led_set(1,0);
+		led_set(2,0);
+		led_set(3,0);
+		led_set(4,0);
 	}
-
-	if (key == 'b')					// Wenn Taster 2 gedrÃ¼ckt wurde
+	
+	else if (value<20)
 	{
-	odometry_resetRight();				// RÃ¼cksetzen des Wertes vom rechten Odometriesensor
+		led_set(1,1);
+		led_set(2,0);
+		led_set(3,0);
+		led_set(4,0);
 	}
-
-	if (key == 'c')					// Wenn Taster 3 gedrÃ¼ckt wurde
+	
+	else if (value<30)
 	{
-	odometry_reset();				// RÃ¼cksetzen des Wertes beider Odometriesensoren
+		led_set(1,1);
+		led_set(2,1);
+		led_set(3,0);
+		led_set(4,0);
 	}
-
-	led_set(1, odometry_getLeft(0)>10);		// Led 1 (rote Led) auf Zustand 1 setzen, wenn der Wert des linken Odometriesensors 10 Umdrehungen gemacht hat
-	led_set(2, odometry_getLeft(0)>20);		// Led 2 (blaue Led) auf Zustand 1 setzen, wenn der Wert des linken Odometriesensors 20 Umdrehungen gemacht hat
-
-	led_set(3, odometry_getRight(0)>10);		// Led 3 (blaue Led) auf Zustand 1 setzen, wenn der Wert des rechten Odometriesensors 10 Umdrehungen gemacht hat
-	led_set(4, odometry_getRight(0)>20);		// Led 4 (rote Led) auf Zustand 1 setzen, wenn der Wert des rechten Odometriesensors 20 Umdrehungen gemacht hat
-	}		
->>>>>>> c5047791f22c8b68d90d79ea1b3e33a68c6151ad
+	
+	else if (value<40)
+	{
+		led_set(1,1);
+		led_set(2,1);
+		led_set(3,1);
+		led_set(4,0);
+	}
+	
+	else
+	{
+		led_set(1,1);
+		led_set(2,1);
+		led_set(3,1);
+		led_set(4,1);
+	}
+}
