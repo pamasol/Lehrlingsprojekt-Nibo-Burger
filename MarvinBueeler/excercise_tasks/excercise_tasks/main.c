@@ -63,7 +63,4 @@ void loop() {
 	{
 		led_set(4,0);
 	}
-	
-	
-
 }
