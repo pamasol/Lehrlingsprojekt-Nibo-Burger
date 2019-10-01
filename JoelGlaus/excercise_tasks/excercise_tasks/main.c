@@ -8,33 +8,65 @@ void setup()
 	analog_init();				// Anweisung um Analog Signale zu initialisieren
 	motpwm_init();				// Anweisung um Motoren zu initialisieren
 	odometry_init();			// Anweisung um Odometriesensoren zu initialisieren
-	surface_readPersistent();
 }
 
 void loop()
 /* Programmcode, den der NIBO Burger immer wieder ausführen soll */
 {
-	analog_wait_update();
-	nibo_checkMonitorVoltage();
+	int FLL = analog_getValueExt(ANALOG_FLL, 2);	// steuert den Sensor FLL an
+	// 0: Wellenlänge 400 nm - 700 nm
+	// 1: Wellenlänge 700 nm - 1 mm
+	// 2: Gibt den Reflexionswert ohne den sichtbaren Teil zurück.
 	
-	unsigned long int col = surface_getColorRGB();
+	int FL = analog_getValueExt(ANALOG_FL, 2);	// steuert den Sensor FL an
+	// 0: Wellenlänge 400 nm - 700 nm
+	// 1: Wellenlänge 700 nm - 1 mm
+	// 2: Gibt den Reflexionswert ohne den sichtbaren Teil zurück.
 	
-	int diff_black = color_diff_rgb(col, COLOR_RGB_CAL_BLACK);
-	int diff_white = color_diff_rgb(col, COLOR_RGB_CAL_WHITE);
+	int FR = analog_getValueExt(ANALOG_FR, 2);	// steuert den Sensor FR an
+	// 0: Wellenlänge 400 nm - 700 nm
+	// 1: Wellenlänge 700 nm - 1 mm
+	// 2: Gibt den Reflexionswert ohne den sichtbaren Teil zurück.
 	
-	led_set(1, diff_black < 20);
-	led_set(2, diff_white < 20);
+	int FRR = analog_getValueExt(ANALOG_FRR, 2);	// steuert den Sensor FRR an
+	// 0: Wellenlänge 400 nm - 700 nm
+	// 1: Wellenlänge 700 nm - 1 mm
+	// 2: Gibt den Reflexionswert ohne den sichtbaren Teil zurück.
 	
-	char key = key_get_char();
-
-	if (key == 'a') {
-	surface_calibrateBlack();
-	surface_writePersistent();
+	
+	if (FLL<20)					// Vorne Links Links
+	{
+	led_set(1,1);
+	}
+		else
+		{
+		led_set(1,0);
+		}
+		
+	if (FL<20)					// Vorne Links
+	{
+		led_set(2,1);
+	}
+	else
+	{
+		led_set(2,0);
 	}
 	
-	else if (key == 'b')
+	if (FRR<20)					// Vorne Rechts Rechts
 	{
-	surface_calibrateWhite();
-	surface_writePersistent();
+		led_set(4,1);
+	}
+	else
+	{
+		led_set(4,0);
+	}
+	
+	if (FR<20)					// Vorne Rechts
+	{
+		led_set(3,1);
+	}
+	else
+	{
+		led_set(3,0);
 	}
 }
