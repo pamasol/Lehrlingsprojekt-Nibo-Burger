@@ -12,7 +12,6 @@ enum {
 	EVENT_KEY1              =  1,
 	EVENT_KEY2              =  2,
 	EVENT_KEY3              =  3,
-	EVENT_TIMEOUT           =  4,
   
 	EVENT_OBSTACLE_DETECTED = 16,
 	EVENT_OBSTACLE_CLEAR    = 17,
