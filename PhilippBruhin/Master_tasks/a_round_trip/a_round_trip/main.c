@@ -51,13 +51,33 @@ void stateMachine() {
     
     switch( state ) {
         
-        //
+        // Start position
         case 1:
-        
+            led_setall(1,0,0,1);
             state = 2;
         break;
-
-        case 2:
+        
+        // Bringing wheels into start position
+        case 2:    
+            if(key_getEvent()==EVENT_KEY1 && run == 0) {
+                motpwm_setLeft(100);
+                motpwm_setRight(100);
+                run = 1;
+                odometry_reset();
+            }
+                    
+            if (odometry_getLeft(0)>=10) {
+                motpwm_setLeft(0);
+                led_set(1, 0);
+                led_set(2, 1);
+            }
+                    
+            if (odometry_getRight(0)>=10) {
+                motpwm_setRight(0);
+                led_set(4, 0);
+                led_set(3, 1);
+            }
+                    
             state = 3;
         break;
 
@@ -95,11 +115,7 @@ void setup() {
 	odometry_init();
     	
 	// PID controller setpoint to zero
-	motpid_stop(1);
-
-	blink_led(2, 4);
-	
-	run = 1;
+	motpid_stop(1);   
 }
 
 void loop() {
