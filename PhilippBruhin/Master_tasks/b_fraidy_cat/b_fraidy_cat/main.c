@@ -270,7 +270,6 @@ void handle_event(uint8_t event) {
 
 
 void loop() {
-	nibo_checkMonitorVoltage();
 	analog_wait_update();
 	uint8_t event = getEvent();
 	handle_event(event);
