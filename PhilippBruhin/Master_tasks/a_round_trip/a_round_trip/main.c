@@ -54,6 +54,11 @@ void stateMachine() {
         // Start position
         case 1:
             led_setall(1,0,0,1);
+            motpwm_stop();
+            motpid_stop(1);
+            odometry_reset();
+            
+            run = 0;
             state = 2;
         break;
         
@@ -67,10 +72,8 @@ void stateMachine() {
                 motpwm_setLeft(300);
                 motpwm_setRight(300);
                 run = 1;
-                odometry_reset();
                 state = 3;
             }    
-
         break;
 
         // Stopping wheels where odometry counter is 20
@@ -79,26 +82,45 @@ void stateMachine() {
                 state = 1;
             }                
                 
-            if (odometry_getLeft(0)>=20) {
+            int odometry_counter = 20;    
+                
+            if (odometry_getLeft(0) >= odometry_counter) {
                 motpwm_setLeft(0);
                 led_set(1, 0);
                 led_set(2, 1);
             }
             
-            if (odometry_getRight(0)>=20) {
+            if (odometry_getRight(0) >= odometry_counter) {
                 motpwm_setRight(0);
                 led_set(4, 0);
                 led_set(3, 1);
             }
             
-            if(odometry_getLeft(0)>=10 && odometry_getRight(0)>=10) {
-                run = 0;                
+            if(odometry_getLeft(0) >= odometry_counter && odometry_getRight(0) >= odometry_counter) {
+                run = 0;  
+                state = 4;              
             }
-
         break;
 
+        // Moving 1.5m straight ahead
         case 4:
-
+            if (key_getEvent()==EVENT_KEY3) {
+                state = 1;
+            }
+            
+            // 100 odometry ticks = 141 mm --> 1500mm = 1064
+            int dist_in_ticks = 200;
+            odometry_reset();
+            
+            if(key_getEvent()==EVENT_KEY2 && run == 0) {              
+                motpid_setTargetRel(dist_in_ticks, dist_in_ticks, 40);
+                run = 1;
+            }
+            
+            if(odometry_getLeft(0)>=dist_in_ticks && odometry_getRight(0)>=dist_in_ticks) {
+                run = 0;
+                state = 5;
+            }   
         break;
 
         case 5:
@@ -125,10 +147,6 @@ void setup() {
 	motpwm_init();
 	motpid_init();
 	odometry_init();
-    	
-	// PID controller setpoint to zero
-	motpid_stop(1);  
-    run = 0; 
 }
 
 void loop() {
