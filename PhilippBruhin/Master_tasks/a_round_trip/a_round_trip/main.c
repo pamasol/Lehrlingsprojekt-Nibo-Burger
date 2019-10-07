@@ -49,10 +49,10 @@ int key_getEvent() {
 /************************************************************************/
 void stateMachine() {
     
-    static int odometry_init_counter = 20;
+    static const int odometry_init_counter = 20;
     // 100 odometry ticks = 141 mm --> 1500mm = 1064
-    static int dist_in_ticks = 200;
-    static int turn_in_ticks = 50;
+    static const int dist_in_ticks = 200;
+    static const int turn_in_ticks = 50;
        
     switch( state ) {
         
