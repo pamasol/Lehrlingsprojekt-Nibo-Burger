@@ -49,7 +49,10 @@ int key_getEvent() {
 /************************************************************************/
 void stateMachine() {
     
-    static int odometry_counter = 20;
+    static int odometry_init_counter = 20;
+    // 100 odometry ticks = 141 mm --> 1500mm = 1064
+    static int dist_in_ticks = 200;
+    static int turn_in_ticks = 50;
        
     switch( state ) {
         
@@ -75,7 +78,7 @@ void stateMachine() {
                 run = 1;
             }    
             
-            if (odometry_getLeft(0) >= odometry_counter) {
+            if (odometry_getLeft(0) >= odometry_init_counter) {
                 motpwm_setLeft(0);
                 run = 0;
                 led_set(1, 0);
@@ -96,7 +99,7 @@ void stateMachine() {
                 run = 1;
             }
             
-            if (odometry_getRight(0) >= odometry_counter) {
+            if (odometry_getRight(0) >= odometry_init_counter) {
                 motpwm_setRight(0);
                 run = 0;
                 led_set(4, 0);
@@ -111,12 +114,9 @@ void stateMachine() {
             if (key_getEvent()==EVENT_KEY3) {
                 state = 1;
             }
-            
-            // 100 odometry ticks = 141 mm --> 1500mm = 1064
-            int dist_in_ticks = 200;
-            odometry_reset();
-            
-            while(key_getEvent()==EVENT_KEY2 && run == 0) {              
+                        
+            if(key_getEvent()==EVENT_KEY2 && run == 0) {
+                odometry_reset();              
                 motpid_setTargetRel(dist_in_ticks, dist_in_ticks, 40);
                 run = 1;
             }
@@ -127,20 +127,41 @@ void stateMachine() {
             }   
         break;
 
+        // Turn 180 degree
         case 5:
-
+            if (key_getEvent()==EVENT_KEY3) {
+                state = 1;
+            }
+           
+            if(run == 0) {
+                odometry_reset();
+                motpid_setTargetRel(turn_in_ticks, -turn_in_ticks, 40);
+                run = 1;
+            }
+            
+            if(odometry_getLeft(0)>=turn_in_ticks && odometry_getRight(0)<=turn_in_ticks) {
+                run = 0;
+                state = 6;
+            }            
+            
         break;
 
+        // Moving 1.5m straight ahead
         case 6:
-
-        break;
-
-        case 7:
-
-        break;
-
-        case 8:
- 
+            if (key_getEvent()==EVENT_KEY3) {
+                state = 1;
+            }
+                                                
+            if(run == 0) {
+                odometry_reset();
+                motpid_setTargetRel(dist_in_ticks, dist_in_ticks, 40);
+                run = 1;
+            }
+            
+            if(odometry_getLeft(0)>=dist_in_ticks && odometry_getRight(0)>=dist_in_ticks) {
+                run = 0;
+                state = 1;
+            }
         break;
     }
 }
