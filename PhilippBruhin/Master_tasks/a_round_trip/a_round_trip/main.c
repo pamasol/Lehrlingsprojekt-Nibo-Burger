@@ -112,7 +112,7 @@ void stateMachine() {
             int dist_in_ticks = 200;
             odometry_reset();
             
-            if(key_getEvent()==EVENT_KEY2 && run == 0) {              
+            while(key_getEvent()==EVENT_KEY2 && run == 0) {              
                 motpid_setTargetRel(dist_in_ticks, dist_in_ticks, 40);
                 run = 1;
             }
