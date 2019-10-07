@@ -260,6 +260,7 @@ This project must be documented by every apprentice. It should be structured as 
         * For what can a for loop be used?
         * What is a function in C?
         * How can a state machine be created in C code?
+        * What is the Job of microcontroller IC5 in NIBO Burger?
         * What is Git and GitHub? Is there a difference?
         * What is open source software?
 * Appendix
