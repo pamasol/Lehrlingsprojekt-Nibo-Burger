@@ -49,6 +49,8 @@ int key_getEvent() {
 /************************************************************************/
 void stateMachine() {
     
+    static int odometry_counter = 20;
+       
     switch( state ) {
         
         // Start position
@@ -62,7 +64,7 @@ void stateMachine() {
             state = 2;
         break;
         
-        // Running wheels for alignment
+        // Running left wheel for alignment
         case 2: 
             if (key_getEvent()==EVENT_KEY3) {
                 state = 1;
@@ -70,35 +72,37 @@ void stateMachine() {
                 
             if(key_getEvent()==EVENT_KEY1 && run == 0) {
                 motpwm_setLeft(300);
-                motpwm_setRight(300);
                 run = 1;
-                state = 3;
             }    
+            
+            if (odometry_getLeft(0) >= odometry_counter) {
+                motpwm_setLeft(0);
+                run = 0;
+                led_set(1, 0);
+                blink_led(2, 1);
+
+                state = 3;
+            }                  
         break;
 
-        // Stopping wheels where odometry counter is 20
+        // Running right wheel for alignment
         case 3:
             if (key_getEvent()==EVENT_KEY3) {
                 state = 1;
-            }                
-                
-            int odometry_counter = 20;    
-                
-            if (odometry_getLeft(0) >= odometry_counter) {
-                motpwm_setLeft(0);
-                led_set(1, 0);
-                led_set(2, 1);
+            }
+            
+            if(key_getEvent()==EVENT_KEY1 && run == 0) {
+                motpwm_setRight(300);
+                run = 1;
             }
             
             if (odometry_getRight(0) >= odometry_counter) {
                 motpwm_setRight(0);
+                run = 0;
                 led_set(4, 0);
-                led_set(3, 1);
-            }
-            
-            if(odometry_getLeft(0) >= odometry_counter && odometry_getRight(0) >= odometry_counter) {
-                run = 0;  
-                state = 4;              
+                blink_led(3, 1);
+
+                state = 4;
             }
         break;
 
