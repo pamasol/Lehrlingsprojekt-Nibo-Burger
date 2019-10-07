@@ -204,7 +204,7 @@ There are several ways to program the NIBO Burger. The easiest way is via online
 3. Install **[WinAVR](https://sourceforge.net/projects/winavr/)** which is a distribution of the avr-gcc compiler that is used on Windows operating systems.
 4. Install **Git** from [git-scm.com](https://git-scm.com/downloads).
 
-As soon as the programmes above are installed, one can add specific Atmel Studio settings for NIBO burger as described in the Wiki page. Check [Atmel Studio 7.0 Setup for NIBO Burger](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/wiki/Atmel-Studio-7.0-Setup-for-NIBO-Burger)
+As soon as the programmes above are installed, one can add specific Atmel Studio settings for NIBO burger as described on the Wiki page. Check [Atmel Studio 7.0 Setup for NIBO Burger](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/wiki/Atmel-Studio-7.0-Setup-for-NIBO-Burger).
 
 > There is a German documentation for the NIBO Burger library on [docs.roboter.cc/niborobolib-3.6/niboburger/html](https://docs.roboter.cc/niborobolib-3.6/niboburger/html/)
 
@@ -249,13 +249,17 @@ This project must be documented by every apprentice. It should be structured as 
     * Construction of the robot
         * What is a microcontroller?
         * How is 3.3V generated on the PCB?
-        * Explaining motor bridge and PWM signals
+        * Explain motor bridge and PWM signals.
         * How does an IR sensor work?
         * For what does RGB stand for in the RGB-Sensors?
         * What is the difference between flash and EEPROM storage and how much does the ATmega16A have of each?
+        * Why is it possible to use only 16 microcontroller outputs for controlling 64 LEDs on the display?
     * Programming and software
         * In which programming language do we program the robot?
-        * Why do we need EEPROM storage?
+        * What is the scope of a variable in C?
+        * For what can a for loop be used?
+        * What is a function in C?
+        * How can a state machine be created in C code?
         * What is Git and GitHub? Is there a difference?
         * What is open source software?
 * Appendix
