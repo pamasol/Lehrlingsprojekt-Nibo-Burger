@@ -195,12 +195,12 @@ The maroon shield 8x8 matrix display is super easy to assemble. That is why its 
 
 # 4. Programming with AVR Studio and Git
 
-There are several ways to program the NIBO Burger. The easiest way is via online compiler of [roboter.cc](https://www.roboter.cc/), another way is via Arduino IDE or via Atmel Studio. We use AtmelStudio 7.0 in this project.
+There are several ways to program the NIBO Burger. The easiest way is via online compiler of [roboter.cc](https://www.roboter.cc/), another way is via Arduino IDE or via Atmel Studio. We use Atmel Studio 7.0 in this project.
 
 ## Installing software
 
 1. Install latest **NIBO Burger library** from [SourceForge]( https://sourceforge.net/projects/nibo/).
-2. Install **AtmelStudio 7.0** from [microchip.com](https://www.microchip.com/mplab/avr-support/atmel-studio-7) website.
+2. Install **Atmel Studio 7.0** from [microchip.com](https://www.microchip.com/mplab/avr-support/atmel-studio-7) website.
 3. Install **[WinAVR](https://sourceforge.net/projects/winavr/)** which is a distribution of the avr-gcc compiler that is used on Windows operating systems.
 4. Install **Git** from [git-scm.com](https://git-scm.com/downloads).
 
