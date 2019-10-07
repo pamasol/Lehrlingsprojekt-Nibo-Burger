@@ -1,5 +1,5 @@
 /* Includes für den Zugriff auf die NIBO Burger Bibliothek */
-#include "niboburger/robomain.h"
+#include "./niboburger/robomain.h"
 
 enum {
     EVENT_NONE              =  0,
