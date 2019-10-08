@@ -50,13 +50,36 @@ int key_getEvent() {
 void stateMachine() {
     
     static const int odometry_init_counter = 20;
-    // 100 odometry ticks = 141 mm --> 1500mm = 1064
+    
+    /** @brief  Odometry ticks calculated and trial-and-error for 1500mm
+     *          straight ahead on different floors.
+     *
+     *  @calculation
+     *          100 odometry ticks = 141 mm
+     *          1500mm = 1064 odometry ticks
+     *
+     *  @trialled
+     *          Pamasol (rough) floor =  
+     *          Wood plate =
+     */
     static const int dist_in_ticks = 200;
-    static const int turn_in_ticks = 50;
+    
+    /** @brief  Odometry ticks calculated and trial-and-error for 1500mm
+     *          straight ahead on different floors.
+     *
+     *  @calculation
+     *          114mm diameter (space between wheels) --> 358mm perimeter
+     *          179mm half perimeter --> 179mm = 127 ticks
+     *
+     *  @trialled
+     *          Pamasol (rough) floor =  
+     *          Wood plate = 
+     */
+    static const int turn_in_ticks = 127;
        
     switch( state ) {
         
-        // Start position
+        // State 1: Start and reset position
         case 1:
             led_setall(1,0,0,1);
             motpwm_stop();
@@ -67,7 +90,7 @@ void stateMachine() {
             state = 2;
         break;
         
-        // Running left wheel for alignment
+        // State 2: Running left wheel for alignment
         case 2: 
             if (key_getEvent()==EVENT_KEY3) {
                 state = 1;
@@ -88,7 +111,7 @@ void stateMachine() {
             }                  
         break;
 
-        // Running right wheel for alignment
+        // State 3: Running right wheel for alignment
         case 3:
             if (key_getEvent()==EVENT_KEY3) {
                 state = 1;
@@ -109,14 +132,16 @@ void stateMachine() {
             }
         break;
 
-        // Moving 1.5m straight ahead
+        // State 4: Moving 1.5m straight ahead
         case 4:
             if (key_getEvent()==EVENT_KEY3) {
                 state = 1;
             }
-                        
+                       
             if(key_getEvent()==EVENT_KEY2 && run == 0) {
-                odometry_reset();              
+                odometry_reset();
+                // Delay when clicking button 2 before moving
+                blink_led(2, 4);              
                 motpid_setTargetRel(dist_in_ticks, dist_in_ticks, 40);
                 run = 1;
             }
@@ -127,12 +152,12 @@ void stateMachine() {
             }   
         break;
 
-        // Turn 180 degree
+        // State 5: Turn 180 degree
         case 5:
             if (key_getEvent()==EVENT_KEY3) {
                 state = 1;
             }
-           
+
             if(run == 0) {
                 odometry_reset();
                 motpid_setTargetRel(turn_in_ticks, -turn_in_ticks, 40);
@@ -142,11 +167,10 @@ void stateMachine() {
             if(odometry_getLeft(0)>=turn_in_ticks && odometry_getRight(0)<=turn_in_ticks) {
                 run = 0;
                 state = 6;
-            }            
-            
+            }        
         break;
 
-        // Moving 1.5m straight ahead
+        // State 6: Moving 1.5m straight ahead
         case 6:
             if (key_getEvent()==EVENT_KEY3) {
                 state = 1;
