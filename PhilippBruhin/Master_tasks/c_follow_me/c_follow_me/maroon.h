@@ -18,7 +18,7 @@
 #define MAROON_IMM_DIM(x) "\20d" #x
 
 void maroon_setup();
-  
+
 void maroon_welcome();
 
 void maroon_loop();
