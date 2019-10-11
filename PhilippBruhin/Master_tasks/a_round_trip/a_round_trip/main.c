@@ -1,4 +1,9 @@
-/* Includes für den Zugriff auf die NIBO Burger Bibliothek */
+/**
+ *	NIBO Burger – Pamasol electronic project for apprentices
+ *	Master task A) Round trip
+ *	Setup: IR-Bricks and maroon shield not mounted
+ */
+
 #include "./niboburger/robomain.h"
 
 enum {

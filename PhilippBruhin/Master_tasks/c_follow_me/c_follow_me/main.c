@@ -1,17 +1,9 @@
-/*
-  Follow me - Objektverfolgung für den NIBO burger
-  Die vier IR-Sensorbricks sollten in den vorderen Slots (FLL, FL, FR, FRR) stecken!
-*/
+/**
+ *	NIBO Burger – Pamasol electronic project for apprentices
+ *	Master task C) Follow me
+ *	Setup: IR-Bricks in slots FLL, FL, FR, FRR, maroon shield mounted
+ */
 
-//#include <niboburger/base.h>
-//#include <niboburger/iodefs.h>
-//#include <niboburger/usart.h>
-//#include <niboburger/motpwm.h>
-//#include <niboburger/analog.h>
-//#include <niboburger/led.h>
-//#include <niboburger/key.h>
-//#include <niboburger/delay.h>
-//#include <niboburger/utils.h>
 #include <niboburger/robomain.h>
 
 #include "maroon.h"
@@ -25,7 +17,6 @@ enum {
   EVENT_KEY1              =  1,
   EVENT_KEY2              =  2,
   EVENT_KEY3              =  3,
-  EVENT_TIMEOUT           =  4,
   
   EVENT_NO_HAND           = 20,
   EVENT_TO_CLOSE          = 21,
