@@ -64,10 +64,10 @@ void stateMachine() {
      *          1500mm = 1064 odometry ticks
      *
      *  @trialled
-     *          Pamasol (rough) floor =  
-     *          Wood plate =
+     *          Pamasol (rough) floor = 1064 
+     *          Wood plate = 1064
      */
-    static const int dist_in_ticks = 200;
+    static const int dist_in_ticks = 1064;
     
     /** @brief  Odometry ticks calculated and trial-and-error for 1500mm
      *          straight ahead on different floors.
@@ -77,10 +77,10 @@ void stateMachine() {
      *          179mm half perimeter --> 179mm = 127 ticks
      *
      *  @trialled
-     *          Pamasol (rough) floor =  
-     *          Wood plate = 
+     *          Pamasol (rough) floor =  133
+     *          Wood plate = 130
      */
-    static const int turn_in_ticks = 127;
+    static const int turn_in_ticks = 133;
        
     switch( state ) {
         

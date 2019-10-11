@@ -25,29 +25,9 @@ enum {
     EVENT_HAND_RR           = 26
 };
 
-uint8_t cops1[8] = {
-    0x10,                 // 00010000
-    0x20,                 // 00100000
-    0x40,                 // 01000000
-    0x80,                 // 10000000
-    0x00,                 // 00000000
-    0x00,                 // 00000000
-    0x00,                 // 00000000
-    0x00                  // 00000000
-};
-
-uint8_t cops2[8] = {
-    0x30,                 // 00110000
-    0x30,                 // 00110000
-    0x30,                 // 00110000
-    0xc0,                 // 11000000
-    0xc0,                 // 11000000
-    0xc0,                 // 11000000
-    0x00,                 // 00000000
-    0x00                  // 00000000
-};
 
 uint8_t key_getEvent();
+
 
 /** @brief  Makes an LED blink with 80ms on and 120ms off
  *
@@ -243,12 +223,12 @@ void handle_event(uint8_t event) {
     }
 
     if (event==EVENT_TO_CLOSE) {
-            motpid_stop(1);
+            motpid_stop(1);                             // stop abrupt 
             if (has_maroon) led_setall(1, 0, 0, 1);
             if (!has_maroon) led_setall(1, 1, 1, 1);
 
-        } else if (event==EVENT_NO_HAND) {
-            motpid_stop(0);
+        } else if (event==EVENT_NO_HAND) { 
+            motpid_stop(0);                             // stop smoothly
             led_setall(0, 0, 0, 0);
 
         } else if (event==EVENT_HAND_L) {
@@ -296,11 +276,11 @@ void setup() {
         // wait...
     }
   
-    delay(100);
-    delay(100);
+    delay(200);
   
     maroon_welcome();
   
+    // PID controller setpoint to zero	  
     motpid_stop(1);
     blink_led(1, 4);
     run = 1;
