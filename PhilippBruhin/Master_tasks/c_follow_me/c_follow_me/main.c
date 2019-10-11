@@ -86,7 +86,7 @@ uint8_t getObstSensorValue(uint8_t sensor) {
 }
 
 
-/** @brief  Returns an event based on an obstacle
+/** @brief  Returns an event based on position of the hand.
  *
  *  @param  -
  *	
@@ -166,7 +166,7 @@ uint8_t follow_getEvent() {
 /* KEY                                                                  */
 /************************************************************************/
 
-/** @brief  Returns which button is clicked or EVENT_NONE
+/** @brief  Returns which button has been clicked or EVENT_NONE
  *
  *  @param  -
  *	
@@ -216,7 +216,7 @@ uint16_t counter = 0;
 /** @brief  Checks buttons and obstacle sensors and controls the
  *          motors based on these events (state machine).
  *
- *  @return enum    EVENT_NONE, EVENT_KEY1, EVENT_KEY2, EVENT_KEY3,
+ *  @param  enum    EVENT_NONE, EVENT_KEY1, EVENT_KEY2, EVENT_KEY3,
  *                  EVENT_HAND_L, EVENT_HAND_R, EVENT_HAND_C
  *                  EVENT_HAND_LL, EVENT_HAND_RR, EVENT_TO_CLOSE,
  *                  EVENT_NO_HAND
