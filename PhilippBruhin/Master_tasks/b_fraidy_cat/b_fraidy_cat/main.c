@@ -22,6 +22,7 @@ enum {
 
 uint8_t key_getEvent();
 
+
 /** @brief  Makes an LED blink with 80ms on and 120ms off
  *
  *  @param  led     LED number
@@ -45,6 +46,7 @@ void blink_led(uint8_t led, uint8_t count) {
 
 int8_t obstacle_pos;
 uint8_t obstacle_val;
+
 
 /** @brief  Limit number range to 0-255 (8 bit) 
  *
@@ -88,15 +90,12 @@ uint8_t obstacle_getEvent(uint8_t reset) {
 	uint8_t r = getObstSensorValue(ANALOG_FR)>>1;
 	uint8_t ll = getObstSensorValue(ANALOG_FLL)>>1;
 	uint8_t rr = getObstSensorValue(ANALOG_FRR)>>1;
-	
-	
+		
 	// Three areas: center, left, right
 	uint8_t cc = l + r;
 	ll += l;
 	rr += r;
-
 	obstacle_val = max3(ll, cc, rr);
-  
   
 	// Analyze obstacle location
 	if ((obstacle_val==cc) || (ll==rr)) {
@@ -145,6 +144,7 @@ uint8_t obstacle_getEvent(uint8_t reset) {
 	return EVENT_NONE;
 }
 
+
 /************************************************************************/
 /* KEY                                                                  */
 /************************************************************************/
@@ -162,6 +162,7 @@ uint8_t key_getEvent() {
 	if (c=='c') return EVENT_KEY3;
 	return EVENT_NONE;
 }
+
 
 /** @brief  Returns which button is clicked or EVENT_NONE. If no button
  *          is clicked, it checks if there is an obstacle.
@@ -210,6 +211,7 @@ void setup() {
 	run = 1;
 }
 
+
 /** @brief  Checks buttons and obstacle sensors and controls the
  *          motors based on these events (state machine).
  *
@@ -237,7 +239,6 @@ void handle_event(uint8_t event) {
 		led_setall(1, 0, 0, 1);
 		return;
 	}
-
 
 	if (event==EVENT_OBSTACLE_DETECTED) {
 		// obstacle_pos negative -> obstracle on left side
