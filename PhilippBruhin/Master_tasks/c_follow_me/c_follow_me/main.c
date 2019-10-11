@@ -196,8 +196,9 @@ uint8_t key_getEvent() {
  *  @param  -
  *	
  *  @return enum    EVENT_NONE, EVENT_KEY1, EVENT_KEY2, EVENT_KEY3,
- *                  EVENT_OBSTACLE_DETECTED, EVENT_OBSTACLE_CLEAR,
- *                  EVENT_OBSTACLE_CLEAR_R, EVENT_OBSTACLE_CLEAR_L
+ *                  EVENT_HAND_L, EVENT_HAND_R, EVENT_HAND_C
+ *                  EVENT_HAND_LL, EVENT_HAND_RR, EVENT_TO_CLOSE,
+ *                  EVENT_NO_HAND
  */
 uint8_t getEvent() {
     uint8_t event = EVENT_NONE;
@@ -215,69 +216,68 @@ uint16_t counter = 0;
 /** @brief  Checks buttons and obstacle sensors and controls the
  *          motors based on these events (state machine).
  *
- *  @param  enum    EVENT_NONE, EVENT_KEY1, EVENT_KEY2, EVENT_KEY3,
- *                  EVENT_OBSTACLE_DETECTED, EVENT_OBSTACLE_CLEAR,
- *                  EVENT_OBSTACLE_CLEAR_R, EVENT_OBSTACLE_CLEAR_L
+ *  @return enum    EVENT_NONE, EVENT_KEY1, EVENT_KEY2, EVENT_KEY3,
+ *                  EVENT_HAND_L, EVENT_HAND_R, EVENT_HAND_C
+ *                  EVENT_HAND_LL, EVENT_HAND_RR, EVENT_TO_CLOSE,
+ *                  EVENT_NO_HAND
  *	
  *  @return void	
  */
 void handle_event(uint8_t event) {
-uint8_t has_maroon = maroon_connected();
-
-if (run==0) {
-    if ((event==EVENT_KEY1) || (event==EVENT_KEY2) || (event==EVENT_KEY3)) {
-        run = 1;
-        follow_getEvent();
-    }
-    return;
-}
-
-if ((event==EVENT_KEY1) || (event==EVENT_KEY2) || (event==EVENT_KEY3)) {
-    run = 0;
-    motpid_stop(1);
-    led_setall(1, 0, 0, 1);
-    return;
-}
-
-
-if (event==EVENT_TO_CLOSE) {
-    motpid_stop(1);
-    if (has_maroon) led_setall(1, 0, 0, 1);
-    if (!has_maroon) led_setall(1, 1, 1, 1);
-
-    } else if (event==EVENT_NO_HAND) {
-    motpid_stop(0);
-    led_setall(0, 0, 0, 0);
-
-    } else if (event==EVENT_HAND_L) {
-    motpid_setSpeed(+20,+30);
-    if (has_maroon) led_setall(0, 0, 0, 0);
-    if (!has_maroon) led_setall(0, 1, 0, 0);
-
-    } else if (event==EVENT_HAND_C) {
-    motpid_setSpeed(+30,+30);
-    if (has_maroon) led_setall(0, 0, 0, 0);
-    if (!has_maroon) led_setall(0, 1, 1, 0);
-
-    } else if (event==EVENT_HAND_R) {
-    motpid_setSpeed(+30,+20);
-    if (has_maroon) led_setall(0, 0, 0, 0);
-    if (!has_maroon) led_setall(0, 0, 1, 0);
-
-    } else if (event==EVENT_HAND_LL) {
-    motpid_setSpeed(-10,+20);
-    if (has_maroon) led_setall(0, 0, 0, 0);
-    if (!has_maroon) led_setall(1, 1, 0, 0);
-
-    } else if (event==EVENT_HAND_RR) {
-    motpid_setSpeed(+20,-10);
-    if (has_maroon) led_setall(0, 0, 0, 0);
-    if (!has_maroon) led_setall(0, 0, 1, 1);
     
-}  
+    uint8_t has_maroon = maroon_connected();
 
+    if (run==0) {
+        if ((event==EVENT_KEY1) || (event==EVENT_KEY2) || (event==EVENT_KEY3)) {
+            run = 1;
+            follow_getEvent();
+        }
+        return;
+    }
+
+    if ((event==EVENT_KEY1) || (event==EVENT_KEY2) || (event==EVENT_KEY3)) {
+        run = 0;
+        motpid_stop(1);
+        led_setall(1, 0, 0, 1);
+        return;
+    }
+
+    if (event==EVENT_TO_CLOSE) {
+            motpid_stop(1);
+            if (has_maroon) led_setall(1, 0, 0, 1);
+            if (!has_maroon) led_setall(1, 1, 1, 1);
+
+        } else if (event==EVENT_NO_HAND) {
+            motpid_stop(0);
+            led_setall(0, 0, 0, 0);
+
+        } else if (event==EVENT_HAND_L) {
+            motpid_setSpeed(+20,+30);
+            if (has_maroon) led_setall(0, 0, 0, 0);
+            if (!has_maroon) led_setall(0, 1, 0, 0);
+
+        } else if (event==EVENT_HAND_C) {
+            motpid_setSpeed(+30,+30);
+            if (has_maroon) led_setall(0, 0, 0, 0);
+            if (!has_maroon) led_setall(0, 1, 1, 0);
+
+        } else if (event==EVENT_HAND_R) {
+            motpid_setSpeed(+30,+20);
+            if (has_maroon) led_setall(0, 0, 0, 0);
+            if (!has_maroon) led_setall(0, 0, 1, 0);
+
+        } else if (event==EVENT_HAND_LL) {
+            motpid_setSpeed(-10,+20);
+            if (has_maroon) led_setall(0, 0, 0, 0);
+            if (!has_maroon) led_setall(1, 1, 0, 0);
+
+        } else if (event==EVENT_HAND_RR) {
+            motpid_setSpeed(+20,-10);
+            if (has_maroon) led_setall(0, 0, 0, 0);
+            if (!has_maroon) led_setall(0, 0, 1, 1);
+    
+    }  
 }
-
 
 
 void setup() {
@@ -308,9 +308,9 @@ void setup() {
 
 
 void loop() {
-  nibo_checkMonitorVoltage();
-  analog_wait_update();
-  maroon_loop();
-  uint8_t event = getEvent();
-  handle_event(event);
+    nibo_checkMonitorVoltage();
+    analog_wait_update();
+    maroon_loop();
+    uint8_t event = getEvent();
+    handle_event(event);
 }
