@@ -166,7 +166,7 @@ uint8_t follow_getEvent() {
 /* KEY                                                                  */
 /************************************************************************/
 
-/** @brief  Returns if a button is clicked right now or EVENT_NONE
+/** @brief  Returns which button has been clicked or EVENT_NONE
  *
  *  @param  -
  *	
