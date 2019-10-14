@@ -7,60 +7,113 @@
 
 #include "niboburger/robomain.h"
 
+int odometrie_kali;
+int runde;
+int zaehler;
+int starterlaubnis;
+int drehen;
+
+void odometrie_kalibrieren()
+{
+	odometry_reset();
+	do
+	{
+		if (odometry_getLeft(0)<1)
+		{
+			led_setall(1,0,0,1);
+			motpid_setSpeed(10,10);
+		} else if (odometry_getLeft(0)>1)
+		{
+			led_setall(0,1,1,0);
+			motpid_stop(1);
+			odometrie_kali = 0;
+			starterlaubnis = 1;
+			odometry_reset();
+			loop();
+		}
+	} while (odometrie_kali == 1);
+}
+
+void rundedrehen()
+{
+	do
+	{
+		if (odometry_getLeft(0)<1083)
+		{
+			motpid_setSpeed(50,50);
+		}
+		if (odometry_getLeft(0)>1083)
+		{
+			odometry_reset();
+			drehen = 1;
+			do 
+			{
+				if (odometry_getLeft(0)<130)
+				{
+					motpid_setSpeed(50,-50);
+				}
+				if (odometry_getLeft(0)>130)
+				{
+					motpid_setSpeed(0,0);
+					drehen = 0;
+				}
+			} while (drehen ==1);
+			zaehler = zaehler + 1;
+			odometry_reset();
+		}
+		if (zaehler==2)
+		{
+			motpid_stop(1);
+			runde = 0;
+			starterlaubnis = 0;
+			zaehler = 0;
+			led_setall(1,0,0,1);
+			odometry_reset();
+			loop();
+		}
+	} while (runde == 1);
+}
+
 void setup() //Setup wird einmal am Anfang ausgeführt
 {
 	led_init(); //Leds werden initialisiert
 	analog_init(); //alle analogen Datenleitungen (auch die für die Taster) werden initialisiert 
 	odometry_init(); //Odometry Sensoren werden initialisiert
-	motpwm_init(); //Motoren werden initialisiert
+	motpid_init(); //Motoren werden initialisiert
 	surface_readPersistent(); //Laden der Kalibrierung aus EEPROM
+	odometry_reset();
+	led_setall(1,0,0,1);
+	odometrie_kali = 0;
+	runde = 0;
+	zaehler = 0;
+	starterlaubnis = 0;
+	drehen = 0;
 }
 
-void loop() {
-	/*
-	Variables that store analog values of all 4 IR sensors in front of 
-	NIBO Burger.
-	fll	= Front left of left
-	fl	= Front left
-	fr	= Front right
-	frr	= Front right of right
-	*/
-	int fll = analog_getValueExt(ANALOG_FLL, 2);
-	int fl = analog_getValueExt(ANALOG_FL, 2);
-	int fr = analog_getValueExt(ANALOG_FR, 2);
-	int frr = analog_getValueExt(ANALOG_FRR, 2);
-
-	// Your code here
+void loop() 
+{
+	char key = key_get_char();
 	
-	if (fll>20) //vorne links links
+	switch (key)
 	{
-		led_set(1,1);
-	} else 
-	{
-		led_set(1,0);	
-	}
-	
-	if (fl>20) //vorne links
-	{
-		led_set(2,1);
-	} else
-	{
-		led_set(2,0);
-	}
-	
-	if (fr>20) //vorne rechts
-	{
-		led_set(3,1);
-	} else
-	{
-		led_set(3,0);
-	}
-	
-	if (frr>20) //vorne rechts rechts
-	{
-		led_set(4,1);
-	} else
-	{
-		led_set(4,0);
+		/*
+		Odometrie kalibrieren
+		*/
+		case 'a':
+			if(starterlaubnis == 0)
+				{
+					odometrie_kali = 1;
+					odometrie_kalibrieren();
+				}
+		break;
+		
+		case 'b':
+			if(starterlaubnis == 1)
+				{
+					runde = 1;
+					rundedrehen();
+				}
+		break;
+			
 	}
 }
