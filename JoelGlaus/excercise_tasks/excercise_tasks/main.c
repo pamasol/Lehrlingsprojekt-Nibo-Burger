@@ -4,146 +4,127 @@
 /* STATEMACHINE                                                         */
 /************************************************************************/
 
-unsigned char state = 1;
-int Motorstart;
-int endeodometrielinks;
-int endeodometrierechts;
+unsigned char state = 0;
+int Start = 0;
+int StatusLED = 1;
+
 
 void stateMachine()
 {
+	if (StatusLED == 1)
+	{
+		led_setall(1,0,0,1);
+		delay(100);
+		led_setall(0,0,0,0);
+		delay(100);
+	}
+	
+	if(key_get_char() == 'A')
+	{
+		StatusLED = 0;
+		led_setall(0,1,1,0);
+		delay(1000);
+		Start = 1;
+	}
+	
+	int fll = analog_getValueExt(ANALOG_FLL, 2);
+	int fl = analog_getValueExt(ANALOG_FL, 2);
+	
+	int fr = analog_getValueExt(ANALOG_FR, 2);
+	int frr = analog_getValueExt(ANALOG_FRR, 2);
+	
+	if ((fll>25)&&(Start == 1))
+	{
+		led_set(1, 1);
+		state = 1;
+	}
+	else
+	{
+		led_set(1, 0);
+	}
+
+	if ((fl>25)&&(Start == 1))
+	{
+		led_set(2, 1);
+		state = 1;
+	}
+	else
+	{
+		led_set(2, 0);
+	}
+
+	if ((fr>25)&&(Start == 1))
+	{
+		led_set(3, 1);
+		state = 2;
+	}
+	else
+	{
+		led_set(3, 0);
+	}
+
+	if ((frr>25)&&(Start == 1))
+	{
+		led_set(4, 1);
+		state = 2;
+	}
+	else
+	{
+		led_set(4, 0);
+	}
+	
+	
 	switch( state )
 	{
 
-		// Warten bis jemand Taster 1 drückt
-		case 1:
-		led_setall(0,0,0,0);
-		motpwm_setLeft(0);
-		motpwm_setRight(0);
-		odometry_reset();
-		endeodometrielinks = 0;
-		endeodometrierechts = 0;
-		
-		if(key_get_char() == 'A')
+		case 0:
+		if (Start == 1)
 		{
-			if (odometry_getLeft(0)<5)
-			{
-				led_set(1,1);
-			}
-
-			if (odometry_getRight(0)<5)
-			{
-				led_set(4,1);
-			}
-			Motorstart = 1;
-			state = 2;
-		}
-		break;
-
-		// Räder ausrichten
-		case 2:
-		if(key_get_char() == 'C') state = 1;
-
-		if (Motorstart == 1)
-		{
-			motpwm_setLeft(500);
-			motpwm_setRight(500);
-			Motorstart = 0;
-		}
-
-		if (odometry_getLeft(0)>5)
-		{
-			led_set(1,0);
-			led_set(2,1);
-			motpwm_setLeft(0);
-			endeodometrielinks = 1;
-		}
-		
-		if (odometry_getRight(0)>5)
-		{
-			led_set(4,0);
-			led_set(3,1);
-			motpwm_setRight(0);
-			endeodometrierechts = 1;
-		}
-		
-		if ((endeodometrielinks == 1)&&(endeodometrierechts == 1))
-		{
-			endeodometrielinks = 0;
-			endeodometrierechts = 0;
-			state = 3;
-		}
-		
-		break;
-		
-		// Warten bis jemand Taster 2 drückt -> 1.5m vorwärts fahren
-		case 3:
-		if(key_get_char() == 'B')
-		{
-			led_setall(0,0,0,0);
-			led_setall(1,0,0,1);
 			motpid_setSpeed(50,50);
 		}
 		
-		if (odometry_getLeft(0)>1063)
+		break;
+		
+		case 1:
+		if ((fr>25)&&(frr>25))
 		{
-			motpid_setSpeed(0,0);
-			led_setall(0,1,1,0);
-			odometry_reset();
+			motpid_setSpeed(50,-50);
 			delay(1000);
-			state = 4;
-		}	
+			motpid_setSpeed(0,0);
+			state = 0;
+		}
+		
+		if ((fr<25)&&(frr<25))
+		{
+			motpid_setSpeed(50,-50);
+			delay(500);
+			motpid_setSpeed(0,0);
+			state = 0;
+		}
 			
-		 break;
-		
-		//180 Grad Linkskurve
-		case 4:
-		led_setall(0,0,0,0);
-		led_setall(1,0,0,1);
-		motpid_setSpeed(50,-1);
-		
-		if (odometry_getLeft(0)>260)
-		{
-			motpid_setSpeed(0,0);
-			led_setall(0,1,1,0);
-			odometry_reset();
-			delay(1000);
-			state = 5;
-		}
 		
 		break;
 		
-		//1.5m vorwärts fahren
-		case 5:
-		led_setall(0,0,0,0);
-		led_setall(1,0,0,1);
-		motpid_setSpeed(50,50);
+		case 2:
 		
-		if (odometry_getLeft(0)>1063)
+		if ((fl>25)&&(fll>25))
 		{
-			motpid_setSpeed(0,0);
-			led_setall(0,1,1,0);
-			odometry_reset();
+			motpid_setSpeed(-50,50);
 			delay(1000);
-			state = 6;
+			motpid_setSpeed(0,0);
+			state = 0;
+		}
+		
+		if ((fl<25)&&(fll<25))
+		{
+			motpid_setSpeed(-50,50);
+			delay(500);
+			motpid_setSpeed(0,0);
+			state = 0;
 		}
 		
 		break;
-		
-		//180 Grad Linkskurve
-		case 6:
-		led_setall(0,0,0,0);
-		led_setall(1,0,0,1);
-		motpid_setSpeed(50,-1);
-		
-		if (odometry_getLeft(0)>260)
-		{
-			motpid_setSpeed(0,0);
-			led_setall(0,1,1,0);
-			odometry_reset();
-			delay(1000);
-			state = 1;
-		}
-		
+	
 	}
 }
 
@@ -160,4 +141,5 @@ void setup()
 void loop()
 {
 	stateMachine();
+	
 }
