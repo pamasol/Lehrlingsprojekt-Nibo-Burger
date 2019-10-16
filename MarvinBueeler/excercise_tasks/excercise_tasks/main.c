@@ -7,18 +7,26 @@
 
 #include "niboburger/robomain.h"
 
-unsigned char state;
-int abstand = 30;
+int state;
+int abstand = 20;
+int l;
+int r;
+int v1;
+int v2;
 
-/**********************************
-
-Statemachine
-
-**********************************/
-
-void statemachine()
+void setup() 
 {
-	
+	led_init(); 
+	analog_init(); 
+	odometry_init(); 
+	motpid_init(); 
+	surface_readPersistent(); 
+	odometry_reset();
+	state = 0;
+}
+
+void loop() 
+{	
 	/**********************************
 	
 	Sensorwerte für Objekterkennung initialisieren
@@ -32,257 +40,104 @@ void statemachine()
 	
 	/**********************************
 	
-	LED's über Sensoren steuern
+	LED's ansteuern
 	
 	**********************************/
 	
 	if (fll > abstand)
 	{
 		led_set(1,1);
-	} else
+	}else
 	{
 		led_set(1,0);
 	}
-	
 	if (fl > abstand)
 	{
 		led_set(2,1);
-	} else
+	}else
 	{
 		led_set(2,0);
 	}
-	
 	if (fr > abstand)
 	{
 		led_set(3,1);
-	} else
+	}else
 	{
 		led_set(3,0);
 	}
-	
 	if (frr > abstand)
 	{
 		led_set(4,1);
-	} else
+	}else
 	{
 		led_set(4,0);
 	}
 	
+	l = max(fll, fl);
+	r = max(frr, fr);
 	
-	switch(state)
-	{
-		case 1:
-		
-			/**********************************
-			
-			Anzeigen dass er im State 1 Modus ist
-			
-			**********************************/
-			
-			motpid_setSpeed(0,0);
-			led_setall(1,0,0,0);
-			delay(200);
-			led_setall(0,1,0,0);
-			delay(200);
-			led_setall(0,0,1,0);
-			delay(200);
-			led_setall(0,0,0,1);
-			delay(200);
-			
-			/**********************************
-			
-			Auf Taster 1 warten, damit Start signalisiert werden kann
-			
-			**********************************/
-			
-			if (key_get_char() == 'A')
-			{
-				
-				led_setall(1,0,1,0);
-				delay(500);
-				led_setall(0,1,0,1);
-				delay(500);
-				led_setall(0,0,0,0);
-				state = 2;
-				
-			}
-			
+	switch (state)
+		{
+		case 0:
+			 motpid_setSpeed(0,0);
+			 led_setall(1,0,0,1);
+			 delay(500);
+			 led_setall(0,1,1,0);
+			 delay(500);
+			 
+			 if (key_get_char() == 'A')
+			 {
+				 state = 1;
+			 }
 		break;
 		
-		case 2:
-			
+		case 1:
+				 	
 			/**********************************
-			
-			Vorwaerts fahren bis ein Sensor anspricht
-			
-			**********************************/
-			if ((fll < abstand) && (fl < abstand) && (fr < abstand) && (frr < abstand))
-			{
-				
-				motpid_setSpeed(50,50);
-				
-			}
-			
-			if ((fl) > abstand)
-			{
-				
-				state = 3;
-				
-			}
+	
+			Geschwindigkeiten
 		
-			if ((fll) > abstand)
+			**********************************/
+	
+			if (r > 40)
 			{
-				
-				state = 3;
-				
-			}
-			
-			if ((frr) > abstand)
+				v1 = 50;
+			}else if (r > 30)
 			{
-				
-				state = 4;
-				
-			}
-			
-			if ((fr) > abstand)
+				v1 = 40;
+			}else if (r > abstand)
 			{
-				
-				state = 4;
-				
+				v1 = 35;
+			}else
+			{
+				v1 = 0;
 			}
+	
+			if (l > 40)
+			{
+				v2 = 50;
+			}else if (l > 30)
+			{
+				v2 = 40;
+			}else if (l > abstand)
+			{
+				v2 = 35;
+			}else
+			{
+				v2 = 0;
+			}
+			motpid_setSpeed(v1,v2);
 			
 			/**********************************
 			
-			Taster C ist der Ausschalttaster
-			
+			Ausschaltfunktion
+
 			**********************************/
 			
 			if (key_get_char() == 'C')
 			{
-				
-				motpid_setSpeed(0,0);
-				led_setall(1,0,0,1);
-				delay(1000);
-				led_setall(0,0,0,0);
-				state = 1;
-				
+				state = 0;
 			}
-					
 		break;
-		
-		/**********************************
-		
-		Rechtsmanoever
-		
-		**********************************/
-		
-		case 3:
-			
-			motpid_setSpeed(50, -50);
-			
-			if((fll < abstand) && (fl < abstand))
-			{
-				
-				if ((frr) > abstand)
-				{
-					
-					state = 5;
-					
-				}
-				
-				state = 2;
-				
-			}
-			
-		break;
-			
-		/**********************************
-		
-		Linksmanoever 
-		
-		**********************************/
-		
-		case 4:
-			
-			motpid_setSpeed(-50, 50);
-			
-			if ((frr < abstand) && (fr < abstand))
-			{
-				
-				if ((fll) > abstand)
-				{
-					
-					state = 6;
-					
-				}
-				
-				state = 2;
-				
-			}
-			
-		break;
-		
-		/**********************************
-		
-		Rechtsmanoever bei Erkennung von Wand rechts
-		bei Rechtsmanoever
-		
-		**********************************/
-		
-		case 5:
-			
-			motpid_setSpeed(50, -50);
-			
-			if ((frr < abstand) && (fr < abstand))
-			{
-				
-				state = 3;
-				
-			}
-			
-		break;
-		
-		/**********************************
-		
-		Linksmanoever bei Erkennung von Wand links
-		bei linksmanoever
-		
-		**********************************/
-		
-		case 6:
-		
-			motpid_setSpeed(-50, 50);
-			
-			if ((fll < abstand) && (fl < abstand))
-			{
-				
-				state = 4;
-				
-			}
-			
-		break;
-			
-	}
-}
-
-/**********************************
-
-Setup wird beim Start durchgeführt, hier werden Sensoren usw. initialisiert
-
-**********************************/
-
-void setup() 
-{
-	led_init(); 
-	analog_init(); 
-	odometry_init(); 
-	motpid_init(); 
-	surface_readPersistent(); 
-	odometry_reset();
-	state = 1;
-}
-
-void loop() 
-{
-	statemachine();
+		}
 }
