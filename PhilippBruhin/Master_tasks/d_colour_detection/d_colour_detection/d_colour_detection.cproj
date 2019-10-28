@@ -182,6 +182,12 @@
     <Compile Include="main.c">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="maroon.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="maroon.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="niboburger\analog.c">
       <SubType>compile</SubType>
     </Compile>

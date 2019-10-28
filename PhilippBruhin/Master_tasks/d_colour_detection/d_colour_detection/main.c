@@ -10,12 +10,17 @@
 int inByte = 0;
 
 
-void setup()
-{
+void setup() {
+
+    led_init();
+    maroon_setup();
+    analog_init();
+
+    maroon_welcome();
+    
 
 }
 
-void loop()
-{
-
+void loop() {
+    maroon_loop();
 }
