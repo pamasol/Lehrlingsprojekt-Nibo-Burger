@@ -15,7 +15,8 @@ void setup() {
     led_init();
     maroon_setup();
     analog_init();
-
+    
+    delay(200);
     maroon_welcome();
     
 
