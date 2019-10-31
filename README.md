@@ -47,7 +47,9 @@ Additional information can be found on the product website: [www.nicai-systems.c
 
 ## Purchasing NIBO Burger and LED matrix display
 
-Best offer we could find for purchasing a NIBO Burger in Switzerland at time of writing is [Brack.ch](https://www.brack.ch/nicai-systems-bausatz-nibo-burger-379831) with CHF 80.00 or [reichelt.com](https://secure.reichelt.com/ch/de/nibo-burger-roboterbausatz-nibo-burger-p161082.html) that ships to Switzerand as well for CHF 77.65. The maroon shield 8x8 matrix display can be bought on  [Brack.ch](https://www.brack.ch/nicai-systems-bausatz-shield-led-matrix-379832) for CHF 22.95 or on [reichelt.com](https://www.reichelt.com/ch/de/arduino-shield-roboter-maroon-shield-8x8-led-maroon-shield-p161083.html) for CHF 22.20. Please let us know if there are better deals out there.
+Best offer we could find for purchasing a NIBO Burger in Switzerland at time of writing is [Brack.ch](https://www.brack.ch/nicai-systems-bausatz-nibo-burger-379831) with CHF 80.00 or [reichelt.com](https://secure.reichelt.com/ch/de/nibo-burger-roboterbausatz-nibo-burger-p161082.html) that ships to Switzerand as well for CHF 77.65. The maroon shield 8x8 matrix display can be bought on  [Brack.ch](https://www.brack.ch/nicai-systems-bausatz-shield-led-matrix-379832) for CHF 22.95 or on [reichelt.com](https://www.reichelt.com/ch/de/arduino-shield-roboter-maroon-shield-8x8-led-maroon-shield-p161083.html) for CHF 22.20.
+
+> Please let us know if there are better deals out there.
 
 
 # 2. Robot tasks
