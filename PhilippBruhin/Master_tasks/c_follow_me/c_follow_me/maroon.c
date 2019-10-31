@@ -20,6 +20,9 @@
 
 uint16_t maroon_cnt;
 uint8_t maroon_mode;
+
+// In diesem Array: \33l \33B 00000000
+// die 8 Nullen werden überschrieben mit a bis h, wobei h wahrscheinlich = 8 led's on und a 1 led = on.
 char maroon_gfxdata[] = MAROON_LOAD() MAROON_BAR("00000000");
 #define MAROON_BAR_OFFSET 4
 
@@ -75,13 +78,15 @@ void maroon_loop() {
             maroon_mode = 1;
         }
     }
+    
+    // allenfalls display nur jedes 20-mal aktualisieren?
     if (maroon_mode) {
         if (maroon_cnt) {
             maroon_cnt--;
             return;
         }
         maroon_cnt=20;
-        if (usart_txempty()) {
+        if (usart_txempty()) { // falls noch nicht leer, ist er immer noch letztes kommando am senden.
             char l = getSensorChar(analog_getValueExt(ANALOG_FL, 2));
             char r = getSensorChar(analog_getValueExt(ANALOG_FR, 2));
             char ll = getSensorChar(analog_getValueExt(ANALOG_FLL, 2));
@@ -91,6 +96,8 @@ void maroon_loop() {
     }
 }
 
+
+// prüfen, ob daten empfangen über uart. falls ja --> display montiert.
 uint8_t maroon_connected() {
     return maroon_mode;
 }

@@ -17,6 +17,7 @@ void setup() {
     analog_init();
     
     delay(200);
+    
     maroon_welcome();
     
 
