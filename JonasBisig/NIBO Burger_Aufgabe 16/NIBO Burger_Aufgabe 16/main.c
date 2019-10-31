@@ -8,6 +8,10 @@ void setup()
 	motpwm_init();
 }
 
+void test() {
+	// das ist eine testfunktion
+}
+
 void loop()
 {
 	analog_wait_update();
