@@ -5,14 +5,10 @@
  * Author : Marvin Büeler
  */ 
 
-#include "niboburger/robomain.h"
+#include "niboburger/robomain.h" 
 
 int state;
 int abstand = 20;
-int l;
-int r;
-int v1;
-int v2;
 
 void setup() 
 {
@@ -27,117 +23,54 @@ void setup()
 
 void loop() 
 {	
-	/**********************************
+	analog_wait_update();
+	nibo_checkMonitorVoltage(); 
 	
-	Sensorwerte für Objekterkennung initialisieren
+	unsigned long int col = surface_getColorRGB();
 	
-	**********************************/
+	int diff_red = color_diff_rgb(col, COLOR_RGB_CAL_RED);
+	int diff_black = color_diff_rgb(col, COLOR_RGB_CAL_BLACK);
+	int diff_blue = color_diff_rgb(col, COLOR_RGB_CAL_BLUE);
+	int diff_green = color_diff_rgb(col, COLOR_RGB_CAL_GREEN);
+	int diff_yellow = color_diff_rgb(col, COLOR_RGB_CAL_YELLOW);
 	
-	int fll = analog_getValueExt(ANALOG_FLL, 2);
-	int fl = analog_getValueExt(ANALOG_FL, 2);
-	int frr = analog_getValueExt(ANALOG_FRR, 2);
-	int fr = analog_getValueExt(ANALOG_FR, 2);
-	
-	/**********************************
-	
-	LED's ansteuern
-	
-	**********************************/
-	
-	if (fll > abstand)
-	{
-		led_set(1,1);
-	}else
-	{
-		led_set(1,0);
-	}
-	if (fl > abstand)
-	{
-		led_set(2,1);
-	}else
-	{
-		led_set(2,0);
-	}
-	if (fr > abstand)
-	{
-		led_set(3,1);
-	}else
-	{
-		led_set(3,0);
-	}
-	if (frr > abstand)
-	{
-		led_set(4,1);
-	}else
-	{
-		led_set(4,0);
-	}
-	
-	l = max(fll, fl);
-	r = max(frr, fr);
-	
-	switch (state)
-		{
-		case 0:
-			 motpid_setSpeed(0,0);
-			 led_setall(1,0,0,1);
-			 delay(500);
-			 led_setall(0,1,1,0);
-			 delay(500);
-			 
-			 if (key_get_char() == 'A')
-			 {
-				 state = 1;
-			 }
-		break;
-		
-		case 1:
-				 	
-			/**********************************
-	
-			Geschwindigkeiten
-		
-			**********************************/
-	
-			if (r > 40)
-			{
-				v1 = 50;
-			}else if (r > 30)
-			{
-				v1 = 40;
-			}else if (r > abstand)
-			{
-				v1 = 35;
-			}else
-			{
-				v1 = 0;
-			}
-	
-			if (l > 40)
-			{
-				v2 = 50;
-			}else if (l > 30)
-			{
-				v2 = 40;
-			}else if (l > abstand)
-			{
-				v2 = 35;
-			}else
-			{
-				v2 = 0;
-			}
-			motpid_setSpeed(v1,v2);
-			
-			/**********************************
-			
-			Ausschaltfunktion
+// 	led_set(1, diff_red < 8500);
+// 	led_set(2, diff_yellow < 3500);
+ 	led_set(3, diff_blue < 4500);
+ 	led_set(4, diff_green < 3000);
+	 
+	 if (diff_red < 9000)
+	 {
+		 if (diff_yellow < 4000)
+		 {
+			 led_set(2,1);
+			 led_set(1,0);
+		 } 
+		 else
+		 {
+			 led_set(1,1);
+			 led_set(2,0);
+		 }
+	 } else
+	 {
+		 led_set(2,0);
+		 led_set(1,0);
+	 }
 
-			**********************************/
-			
-			if (key_get_char() == 'C')
-			{
-				state = 0;
-			}
-		break;
-		}
+// 	if (diff_green < 2500)
+// 	{
+// 		led_set(4,1);
+// 	} else
+// 	{
+// 		led_set(4,0);
+// 	}
+// 	
+// 	if (diff_blue < 4000)
+// 	{
+// 		led_set(3,1);
+// 	} 
+// 	else
+// 	{
+// 		led_set((3,0);
+// 	}
 }
