@@ -1,6 +1,9 @@
 /* Includes für den Zugriff auf die NIBO Burger Bibliothek */
 #include "niboburger/robomain.h"
 
+// Globale Variabeln
+int status;
+
 void setup()
 {
 	led_init();
@@ -13,9 +16,9 @@ void setup()
 void loop()
 {
 	int key;
-	int status;
+	
 	analog_wait_update();
-	if
+
 	int fll = analog_getValueExt(ANALOG_FLL, 2);
 	int fl = analog_getValueExt(ANALOG_FL, 2);
 	int fr = analog_getValueExt(ANALOG_FR, 2);
@@ -29,6 +32,7 @@ void loop()
 		case 'a':
 		status = 1;
 	}
+	
 	if ((l<20) && (r<20))
 	{
 		motpwm_setLeft(800);

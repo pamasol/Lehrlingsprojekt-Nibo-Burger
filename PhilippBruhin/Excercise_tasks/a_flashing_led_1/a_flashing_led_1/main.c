@@ -10,8 +10,8 @@ void setup()
 void loop()
 {
 	/* Code that is repeated infinitely on NIBO Burger */
-	led_set(1, 1);
+	led_set(2, 1);
 	delay(500);
-	led_set(1, 0);
+	led_set(2, 0);
 	delay(500);
 }

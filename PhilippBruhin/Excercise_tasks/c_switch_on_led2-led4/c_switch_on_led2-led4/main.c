@@ -9,7 +9,10 @@ void loop()
 {
 	int ledNr;
 	/* For loop starts at LED2, not at LED1 */
-	for (ledNr=2; ledNr<=4; ledNr++) {
+	for (ledNr=1; ledNr<=4; ledNr++) {
 		led_set(ledNr, 1);
+		delay(100);
 	}
+	led_setall(0,0,0,0);
+	delay(100);
 }
