@@ -17,12 +17,13 @@ At Pamasol they work on customer projects as well as on internal training projec
 
 **Table of contents:**
 1. [Robot construction kit NIBO Burger](#1-robot-construction-kit-nibo-burgerr)
-2. [Robot tasks](#2-robot-tasks)
-3. [Assembling NIBO Burger](#3-assembling-nibo-burger)
-4. [Programming with AVR Studio and Git](#4-programming-with-avr-studio-and-git)
-5. [Documentation](#5-documentation)
+2. [Assembling NIBO Burger](#3-assembling-nibo-burger)
+3. [Programming with AVR Studio and Git](#4-programming-with-avr-studio-and-git)
+4. [Documentation](#5-documentation)
+5. [Robot tasks](#2-robot-tasks)
 
-In a first step the roboter kit is presented. The tasks which the robot has to solve are described in a second chapter, followed by robot assembling, programming and documentation.
+In a first step the roboter kit is presented, followed by robot assembling, programming and documentation. The tasks that the robot has to solve are described in the last chapter.
+
 
 # 1. Robot construction kit NIBO Burger
 The NIBO burger robot kit is a free programmable robot that can act autonomously with its environment. It is equipped with an Atmel ATmega16 AVR main controller, 9 sensors and a slot for ARDUINO shields where for example an 8x8 LED matrix display can be mounted. It comes as an assembly kit that is provided by [nicai-systems](http://www.nicai-systems.com/), Germany. 
@@ -52,7 +53,106 @@ Best offer we could find for purchasing a NIBO Burger in Switzerland at time of 
 > Please let us know if there are better deals out there.
 
 
-# 2. Robot tasks
+# 2. Assembling NIBO Burger
+
+How to assemble the robot is described detailly in the manual that is provided with the robot.
+
+* [English Manual NIBO Burger (PDF)](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/files/3652507/Manual_NIBOburger_20150908.pdf)
+* [German Manual NIBO Burger (PDF)](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/files/3652506/Doku_NIBOburger_20150909.pdf)
+* [Electrical Schematic NIBO Burger (PDF)](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/files/3652510/nibo_burger_schematic_1_09.pdf)
+
+It starts with interpreting and sorting the items followed by preparing the workplace and the soldering station. One should proceed as recommended in the instructions to avoid issues when putting the boards together to a burger. A lot of attention should be paid to the gearbox. If it is not assembled in the right angle, it jams afterwards and the motors can not work properly.
+ 
+The microcontroller is preprogramed. One can run the function tests as soon as the hardware work is done. Everything will be checked, starting with the LEDs, the odometry sensors, the IR- and RGB-Sensors and ending with the motors.
+
+## 8x8 pixel matrix display
+
+The maroon shield 8x8 matrix display is super easy to assemble. That is why its manual consists of 2 pages only.
+
+* [English Manual maroon shield matrix display (PDF)](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/files/3652517/Anleitung-EN_maroon_SHIELD.pdf)
+* [German Manual maroon shield matrix display (PDF)](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/files/3652516/Anleitung_maroon_Shield.pdf)
+* [Electrical Schematic maroon shield matrix display (PDF)](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/files/3652520/maroon_shield_1_03_schematic.pdf)
+
+> Unfortunately, marron shield is not as good documented as the robot itself. Nevertheless there is a wiki for the communication protocol that can be found [here (German only)](http://www.nibo-roboter.de/wiki/Maroon_Shield/Protokoll).
+
+
+# 3. Programming with AVR Studio and Git
+
+There are several ways to program the NIBO Burger. The easiest way is via online compiler of [roboter.cc](https://www.roboter.cc/), another way is via Arduino IDE or via Atmel Studio. We use Atmel Studio 7.0 in this project.
+
+## Installing software
+
+1. Install latest **NIBO Burger library** from [SourceForge]( https://sourceforge.net/projects/nibo/).
+2. Install **Atmel Studio 7.0** from [microchip.com](https://www.microchip.com/mplab/avr-support/atmel-studio-7) website.
+3. Install **[WinAVR](https://sourceforge.net/projects/winavr/)** which is a distribution of the avr-gcc compiler that is used on Windows operating systems.
+4. Install **Git** from [git-scm.com](https://git-scm.com/downloads).
+
+As soon as the programmes above are installed, one can add specific Atmel Studio settings for NIBO Burger as described on the Wiki page. Check [Atmel Studio 7.0 Setup for NIBO Burger](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/wiki/Atmel-Studio-7.0-Setup-for-NIBO-Burger).
+
+> There is a German documentation for the NIBO Burger library on [docs.roboter.cc/niborobolib-3.6/niboburger/html](https://docs.roboter.cc/niborobolib-3.6/niboburger/html/)
+
+## Using Git and GitHub
+
+Git is the most widely used modern version control system in the world. It tracks changes in source code during software development. It is designed for coordinating work among programmers, but it can be used to track changes in any set of files. Its setup has to be performed as follows.
+
+1. Generate an SSH key and connect your Git with GitHub as [described here]( https://help.github.com/en/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent).
+2. Ask your Pamasol instructor for adding you to this repository.
+3. Clone the project as follows
+```
+git clone https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger.git
+```
+4. Add your changes with
+```
+git add –all
+```
+5. Commit changes with
+```
+git commit -m “here what I did and want to commit”
+```
+6. Push commits to GitHub
+```
+git push
+```
+7. Load latest commits
+```
+git pull
+```
+
+# 4. Documentation
+
+This project must be documented by every apprentice. It should be structured as follows:
+
+* Front page
+* Summary
+* Table of contents
+* Table of images
+* Table of tables
+* Freely selectable chapters that explain:
+    * Construction of the robot
+        * What is a microcontroller?
+        * How is 3.3V generated on the PCB?
+        * Explain motor bridge and PWM signals.
+        * How does an IR sensor work?
+        * For what does RGB stand for in the RGB-Sensors?
+        * What is the difference between flash and EEPROM storage and how much does the ATmega16A have of each?
+        * Why is it possible to use only 16 microcontroller outputs for controlling 64 LEDs on the display?
+    * Programming and software
+        * In which programming language do we program the robot?
+        * What is the scope of a variable in C?
+        * For what can a for loop be used?
+        * What is a function in C?
+        * How can a state machine be created in C code?
+        * What is the job of microcontroller IC5 in NIBO Burger?
+        * What is Git and GitHub? Is there a difference?
+        * What is open source software?
+* Appendix
+
+Documentation can be made in German language. There is no minimum or maximum number of pages.
+
+> A Pamasol Microsoft Word Template can be requested from the instructor.
+
+
+# 5. Robot tasks
 
 The roboter tasks are divided into two parts, the excercise tasks and the master tasks. The exercise tasks can be done with help of [NIBO burger Coding Tutorial](https://www.roboter.cc/index.php?option=com_wrapper&view=wrapper&Itemid=63). Do not create a new project in Atmel Studio for every task, use Git instead efficiently.
 
@@ -174,103 +274,3 @@ The robot should detect the colours blue, red, yellow and green. Colours should 
 The robot should follow a path from point A to B as shown in [this video](https://youtu.be/VxXwEKlsGJY).
 
 [Layout drawing rabbit warren (PDF)](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/files/3652587/Nibo05_V1.0.pdf)
-
-
-# 3. Assembling NIBO Burger
-
-How to assemble the robot is described detailly in the manual that is provided with the robot.
-
-* [English Manual NIBO Burger (PDF)](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/files/3652507/Manual_NIBOburger_20150908.pdf)
-* [German Manual NIBO Burger (PDF)](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/files/3652506/Doku_NIBOburger_20150909.pdf)
-* [Electrical Schematic NIBO Burger (PDF)](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/files/3652510/nibo_burger_schematic_1_09.pdf)
-
-It starts with interpreting and sorting the items followed by preparing the workplace and the soldering station. One should proceed as recommended in the instructions to avoid issues when putting the boards together to a burger. A lot of attention should be paid to the gearbox. If it is not assembled in the right angle, it jams afterwards and the motors can not work properly.
- 
-The microcontroller is preprogramed. One can run the function tests as soon as the hardware work is done. Everything will be checked, starting with the LEDs, the odometry sensors, the IR- and RGB-Sensors and ending with the motors.
-
-## 8x8 pixel matrix display
-
-The maroon shield 8x8 matrix display is super easy to assemble. That is why its manual consists of 2 pages only.
-
-* [English Manual maroon shield matrix display (PDF)](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/files/3652517/Anleitung-EN_maroon_SHIELD.pdf)
-* [German Manual maroon shield matrix display (PDF)](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/files/3652516/Anleitung_maroon_Shield.pdf)
-* [Electrical Schematic maroon shield matrix display (PDF)](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/files/3652520/maroon_shield_1_03_schematic.pdf)
-
-> Unfortunately, marron shield is not as good documented as the robot itself. Nevertheless there is a wiki for the communication protocol that can be found [here (German only)](http://www.nibo-roboter.de/wiki/Maroon_Shield/Protokoll).
-
-
-# 4. Programming with AVR Studio and Git
-
-There are several ways to program the NIBO Burger. The easiest way is via online compiler of [roboter.cc](https://www.roboter.cc/), another way is via Arduino IDE or via Atmel Studio. We use Atmel Studio 7.0 in this project.
-
-## Installing software
-
-1. Install latest **NIBO Burger library** from [SourceForge]( https://sourceforge.net/projects/nibo/).
-2. Install **Atmel Studio 7.0** from [microchip.com](https://www.microchip.com/mplab/avr-support/atmel-studio-7) website.
-3. Install **[WinAVR](https://sourceforge.net/projects/winavr/)** which is a distribution of the avr-gcc compiler that is used on Windows operating systems.
-4. Install **Git** from [git-scm.com](https://git-scm.com/downloads).
-
-As soon as the programmes above are installed, one can add specific Atmel Studio settings for NIBO Burger as described on the Wiki page. Check [Atmel Studio 7.0 Setup for NIBO Burger](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/wiki/Atmel-Studio-7.0-Setup-for-NIBO-Burger).
-
-> There is a German documentation for the NIBO Burger library on [docs.roboter.cc/niborobolib-3.6/niboburger/html](https://docs.roboter.cc/niborobolib-3.6/niboburger/html/)
-
-## Using Git and GitHub
-
-Git is the most widely used modern version control system in the world. It tracks changes in source code during software development. It is designed for coordinating work among programmers, but it can be used to track changes in any set of files. Its setup has to be performed as follows.
-
-1. Generate an SSH key and connect your Git with GitHub as [described here]( https://help.github.com/en/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent).
-2. Ask your Pamasol instructor for adding you to this repository.
-3. Clone the project as follows
-```
-git clone https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger.git
-```
-4. Add your changes with
-```
-git add –all
-```
-5. Commit changes with
-```
-git commit -m “here what I did and want to commit”
-```
-6. Push commits to GitHub
-```
-git push
-```
-7. Load latest commits
-```
-git pull
-```
-
-
-# 5. Documentation
-
-This project must be documented by every apprentice. It should be structured as follows:
-
-* Front page
-* Summary
-* Table of contents
-* Table of images
-* Table of tables
-* Freely selectable chapters that explain:
-    * Construction of the robot
-        * What is a microcontroller?
-        * How is 3.3V generated on the PCB?
-        * Explain motor bridge and PWM signals.
-        * How does an IR sensor work?
-        * For what does RGB stand for in the RGB-Sensors?
-        * What is the difference between flash and EEPROM storage and how much does the ATmega16A have of each?
-        * Why is it possible to use only 16 microcontroller outputs for controlling 64 LEDs on the display?
-    * Programming and software
-        * In which programming language do we program the robot?
-        * What is the scope of a variable in C?
-        * For what can a for loop be used?
-        * What is a function in C?
-        * How can a state machine be created in C code?
-        * What is the job of microcontroller IC5 in NIBO Burger?
-        * What is Git and GitHub? Is there a difference?
-        * What is open source software?
-* Appendix
-
-Documentation can be made in German language. There is no minimum or maximum number of pages.
-
-> A Pamasol Microsoft Word Template can be requested from the instructor.
