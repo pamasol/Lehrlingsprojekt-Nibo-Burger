@@ -17,10 +17,10 @@ At Pamasol they work on customer projects as well as on internal training projec
 
 **Table of contents:**
 1. [Robot construction kit NIBO Burger](#1-robot-construction-kit-nibo-burgerr)
-2. [Assembling NIBO Burger](#3-assembling-nibo-burger)
-3. [Programming with AVR Studio and Git](#4-programming-with-avr-studio-and-git)
-4. [Documentation](#5-documentation)
-5. [Robot tasks](#2-robot-tasks)
+2. [Assembling NIBO Burger](#2-assembling-nibo-burger)
+3. [Programming with AVR Studio and Git](#3-programming-with-avr-studio-and-git)
+4. [Documentation](#4-documentation)
+5. [Robot tasks](#5-robot-tasks)
 
 In a first step the roboter kit is presented, followed by robot assembling, programming and documentation. The tasks that the robot has to solve are described in the last chapter.
 
