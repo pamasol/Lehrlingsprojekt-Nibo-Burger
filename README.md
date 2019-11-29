@@ -196,6 +196,8 @@ The maroon shield 8x8 matrix display is super easy to assemble. That is why its 
 * [German Manual maroon shield matrix display (PDF)](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/files/3652516/Anleitung_maroon_Shield.pdf)
 * [Electrical Schematic maroon shield matrix display (PDF)](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/files/3652520/maroon_shield_1_03_schematic.pdf)
 
+> Unfortunately, marron shield is not as good documented as the robot itself. Nevertheless there is a wiki for the communication protocol that can be found [here (German only)](http://www.nibo-roboter.de/wiki/Maroon_Shield/Protokoll).
+
 
 # 4. Programming with AVR Studio and Git
 

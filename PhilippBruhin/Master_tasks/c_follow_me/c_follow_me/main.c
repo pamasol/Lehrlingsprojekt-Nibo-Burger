@@ -223,36 +223,36 @@ void handle_event(uint8_t event) {
     }
 
     if (event==EVENT_TO_CLOSE) {
-            motpid_stop(1);                             // stop abrupt 
+            motpid_stop(1);                             // Stop abrupt 
             if (has_maroon) led_setall(1, 0, 0, 1);
             if (!has_maroon) led_setall(1, 1, 1, 1);
 
         } else if (event==EVENT_NO_HAND) { 
-            motpid_stop(0);                             // stop smoothly
+            motpid_stop(0);                             // Stop smoothly
             led_setall(0, 0, 0, 0);
 
         } else if (event==EVENT_HAND_L) {
-            motpid_setSpeed(+20,+30);
+            motpid_setSpeed(+20,+30);                   // Hand slightly left
             if (has_maroon) led_setall(0, 0, 0, 0);
             if (!has_maroon) led_setall(0, 1, 0, 0);
 
         } else if (event==EVENT_HAND_C) {
-            motpid_setSpeed(+30,+30);
+            motpid_setSpeed(+30,+30);                   // Hand straight ahead
             if (has_maroon) led_setall(0, 0, 0, 0);
             if (!has_maroon) led_setall(0, 1, 1, 0);
 
         } else if (event==EVENT_HAND_R) {
-            motpid_setSpeed(+30,+20);
+            motpid_setSpeed(+30,+20);                   // Hand slightly right
             if (has_maroon) led_setall(0, 0, 0, 0);
             if (!has_maroon) led_setall(0, 0, 1, 0);
 
         } else if (event==EVENT_HAND_LL) {
-            motpid_setSpeed(-10,+20);
+            motpid_setSpeed(-10,+20);                   // Hand left
             if (has_maroon) led_setall(0, 0, 0, 0);
             if (!has_maroon) led_setall(1, 1, 0, 0);
 
         } else if (event==EVENT_HAND_RR) {
-            motpid_setSpeed(+20,-10);
+            motpid_setSpeed(+20,-10);                   // Hand right
             if (has_maroon) led_setall(0, 0, 0, 0);
             if (!has_maroon) led_setall(0, 0, 1, 1);
     
