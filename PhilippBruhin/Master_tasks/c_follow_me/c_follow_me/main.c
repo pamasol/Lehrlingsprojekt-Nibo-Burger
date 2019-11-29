@@ -76,15 +76,17 @@ uint8_t getObstSensorValue(uint8_t sensor) {
  */
 uint8_t follow_getEvent() {
 	
-	// Since static, this variable is like a global variable and
-	// therefore assigned on the first function call only.    
+    /** Since static, this variable is like a global variable and
+     *  therefore assigned on the first function call only. 
+     */    
     static uint8_t state = 0;
     
     uint8_t nstate = 0;
       
-	// Shift one bit to the right (division by 2)
-	// Advantage: number is getting smaller
-	// Disadvantage: leads to loss of resolution  
+    /** Shift one bit to the right (division by 2)
+     *  Advantage: number is getting smaller
+     *  Disadvantage: leads to loss of resolution
+     */   
     uint8_t l = getObstSensorValue(ANALOG_FL)>>1;
     uint8_t r = getObstSensorValue(ANALOG_FR)>>1;
     uint8_t ll = getObstSensorValue(ANALOG_FLL)>>1;
@@ -124,9 +126,10 @@ uint8_t follow_getEvent() {
         nstate = EVENT_HAND_RR;
     }
 
-	// Analyze hand distance
-	// more than 50 --> hand to close to the sensor
-    // less than  8 --> no hand detected
+    /** Analyze hand distance
+     *  more than 50 --> hand to close to the sensor
+     *  less than  8 --> no hand detected
+     */  
     if (obstacle_val>50) {
             nstate = EVENT_TO_CLOSE;
         } else if (obstacle_val<8) {
