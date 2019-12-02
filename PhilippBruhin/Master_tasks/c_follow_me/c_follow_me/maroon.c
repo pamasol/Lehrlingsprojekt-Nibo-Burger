@@ -23,6 +23,11 @@ uint8_t maroon_mode;
 
 // In diesem Array: \33l \33B 00000000
 // die 8 Nullen werden überschrieben mit a bis h, wobei h wahrscheinlich = 8 led's on und a 1 led = on.
+/**
+ *	
+ *	
+ *	
+ */
 char maroon_gfxdata[] = MAROON_LOAD() MAROON_BAR("00000000");
 #define MAROON_BAR_OFFSET 4
 
