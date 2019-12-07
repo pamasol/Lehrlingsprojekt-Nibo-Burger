@@ -36,6 +36,8 @@ IR and color sensor bricks | Sensor protection wings
 :-------------------------:|:-------------------------:
 ![IR and Color sensor bricks ](https://user-images.githubusercontent.com/7021907/65602252-dd7b0100-dfa3-11e9-93f1-be680089db00.png "IR and Color sensor bricks ")  |  ![Sensor protection wings](https://user-images.githubusercontent.com/7021907/65602253-de139780-dfa3-11e9-80d9-09017d9aeeda.png "Sensor protection wings")
 
+*Image [source](https://secure.reichelt.com/ch/de/nibo-burger-roboterbausatz-nibo-burger-p161082.html)*
+
 Features of NIBO Burger:
 * Main processing unit Atmel ATmega16A, 16 kByte flash, 15 MHz
 * 4 IR-Sensor-Bricks for contactless collision avoidance
