@@ -7,6 +7,8 @@
 unsigned char state = 0;
 int Start = 0;
 int StatusLED = 1;
+int FL = 0;
+int FR = 0;
 
 
 void stateMachine()
@@ -46,6 +48,7 @@ void stateMachine()
 	if ((fl>25)&&(Start == 1))
 	{
 		led_set(2, 1);
+		FL = 1;
 		state = 1;
 	}
 	else
@@ -56,6 +59,7 @@ void stateMachine()
 	if ((fr>25)&&(Start == 1))
 	{
 		led_set(3, 1);
+		FR = 1;
 		state = 2;
 	}
 	else
@@ -73,6 +77,12 @@ void stateMachine()
 		led_set(4, 0);
 	}
 	
+	if((fr>25)&&(fl>25)&&(Start == 1))
+	{
+	motpid_setSpeed(-50,50);
+	delay (500);
+	motpid_setSpeed(0,0);
+	}
 	
 	switch( state )
 	{
@@ -101,7 +111,17 @@ void stateMachine()
 			motpid_setSpeed(0,0);
 			state = 0;
 		}
-			
+		
+		if ((FR == 1)&&(FL == 1))
+		{
+			motpid_setSpeed(50,-50);
+			delay (500);
+			motpid_setSpeed(0,0);
+			FR = 0;
+			FL = 0;
+			state = 0;
+		}
+		
 		
 		break;
 		
@@ -123,8 +143,18 @@ void stateMachine()
 			state = 0;
 		}
 		
+		if ((FR == 1)&&(FL == 1))
+		{
+			motpid_setSpeed(50,-50);
+			delay (500);
+			motpid_setSpeed(0,0);
+			FR = 0;
+			FL = 0;
+			state = 0;
+		}
+		
 		break;
-	
+		
 	}
 }
 
