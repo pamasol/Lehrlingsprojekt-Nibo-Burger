@@ -1,0 +1,336 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>7.0</ProjectVersion>
+    <ToolchainName>com.Atmel.AVRGCC8.C</ToolchainName>
+    <ProjectGuid>695a7de4-0f03-49b5-9514-e9d845354354</ProjectGuid>
+    <avrdevice>ATmega16A</avrdevice>
+    <avrdeviceseries>none</avrdeviceseries>
+    <OutputType>Executable</OutputType>
+    <Language>C</Language>
+    <OutputFileName>$(MSBuildProjectName)</OutputFileName>
+    <OutputFileExtension>.elf</OutputFileExtension>
+    <OutputDirectory>$(MSBuildProjectDirectory)\$(Configuration)</OutputDirectory>
+    <AssemblyName>d_colour_detection</AssemblyName>
+    <Name>d_colour_detection</Name>
+    <RootNamespace>d_colour_detection</RootNamespace>
+    <ToolchainFlavour>WinAVR</ToolchainFlavour>
+    <KeepTimersRunning>true</KeepTimersRunning>
+    <OverrideVtor>false</OverrideVtor>
+    <CacheFlash>true</CacheFlash>
+    <ProgFlashFromRam>true</ProgFlashFromRam>
+    <RamSnippetAddress>0x20000000</RamSnippetAddress>
+    <UncachedRange />
+    <preserveEEPROM>true</preserveEEPROM>
+    <OverrideVtorValue>exception_table</OverrideVtorValue>
+    <BootSegment>2</BootSegment>
+    <eraseonlaunchrule>0</eraseonlaunchrule>
+    <avrtool>custom</avrtool>
+    <avrtoolserialnumber />
+    <avrdeviceexpectedsignature>0x1E9403</avrdeviceexpectedsignature>
+    <custom>
+      <ToolOptions>
+        <InterfaceProperties>
+        </InterfaceProperties>
+        <InterfaceName>
+        </InterfaceName>
+      </ToolOptions>
+      <ToolType>custom</ToolType>
+      <ToolNumber>
+      </ToolNumber>
+      <ToolName>Custom Programming Tool</ToolName>
+    </custom>
+    <avrtoolinterface>
+    </avrtoolinterface>
+    <com_atmel_avrdbg_tool_stk500>
+      <ToolOptions>
+        <InterfaceProperties>
+          <IspClock>125000</IspClock>
+        </InterfaceProperties>
+        <InterfaceName>ISP</InterfaceName>
+      </ToolOptions>
+      <ToolType>com.atmel.avrdbg.tool.stk500</ToolType>
+      <ToolNumber>
+      </ToolNumber>
+      <ToolName>STK500</ToolName>
+    </com_atmel_avrdbg_tool_stk500>
+    <avrtoolinterfaceclock>125000</avrtoolinterfaceclock>
+    <ResetRule>0</ResetRule>
+    <EraseKey />
+    <AsfFrameworkConfig>
+      <framework-data xmlns="">
+        <options />
+        <configurations />
+        <files />
+        <documentation help="" />
+        <offline-documentation help="" />
+        <dependencies>
+          <content-extension eid="atmel.asf" uuidref="Atmel.ASF" version="3.47.0" />
+        </dependencies>
+      </framework-data>
+    </AsfFrameworkConfig>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <ToolchainSettings>
+      <AvrGcc>
+        <avrgcc.common.Device>-mmcu=atmega16a</avrgcc.common.Device>
+        <avrgcc.common.outputfiles.hex>True</avrgcc.common.outputfiles.hex>
+        <avrgcc.common.outputfiles.lss>True</avrgcc.common.outputfiles.lss>
+        <avrgcc.common.outputfiles.eep>True</avrgcc.common.outputfiles.eep>
+        <avrgcc.common.outputfiles.srec>True</avrgcc.common.outputfiles.srec>
+        <avrgcc.common.outputfiles.usersignatures>False</avrgcc.common.outputfiles.usersignatures>
+        <avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>True</avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>
+        <avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>True</avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>
+        <avrgcc.compiler.symbols.DefSymbols>
+          <ListValues>
+            <Value>_NIBOBEE_</Value>
+            <Value>F_CPU=15000000UL</Value>
+            <Value>NDEBUG</Value>
+            <Value>NDEBUG</Value>
+            <Value>NDEBUG</Value>
+            <Value>NDEBUG</Value>
+          </ListValues>
+        </avrgcc.compiler.symbols.DefSymbols>
+        <avrgcc.compiler.directories.IncludePaths>
+          <ListValues>
+            <Value>C:\Program Files\NIBObeeLib\include</Value>
+            <Value>%24(PackRepoDir)\atmel\ATmega_DFP\1.0.106\include</Value>
+            <Value>%24(PackRepoDir)\atmel\ATmega_DFP\1.3.300\include</Value>
+          </ListValues>
+        </avrgcc.compiler.directories.IncludePaths>
+        <avrgcc.compiler.optimization.level>Optimize for size (-Os)</avrgcc.compiler.optimization.level>
+        <avrgcc.compiler.optimization.PackStructureMembers>True</avrgcc.compiler.optimization.PackStructureMembers>
+        <avrgcc.compiler.optimization.AllocateBytesNeededForEnum>True</avrgcc.compiler.optimization.AllocateBytesNeededForEnum>
+        <avrgcc.compiler.warnings.AllWarnings>True</avrgcc.compiler.warnings.AllWarnings>
+        <avrgcc.linker.libraries.Libraries>
+          <ListValues>
+            <Value>libm</Value>
+          </ListValues>
+        </avrgcc.linker.libraries.Libraries>
+        <avrgcc.linker.libraries.LibrarySearchPaths>
+          <ListValues>
+            <Value>C:\Program Files\NIBObeeLib\lib</Value>
+            <Value>C:\Program Files\NIBObeeLib\include</Value>
+            <Value>C:\Program Files\NiboRoboLib\lib\niboburger-m16-15</Value>
+          </ListValues>
+        </avrgcc.linker.libraries.LibrarySearchPaths>
+        <avrgcc.assembler.general.IncludePaths>
+          <ListValues>
+            <Value>%24(PackRepoDir)\atmel\ATmega_DFP\1.0.106\include</Value>
+            <Value>%24(PackRepoDir)\atmel\ATmega_DFP\1.3.300\include</Value>
+          </ListValues>
+        </avrgcc.assembler.general.IncludePaths>
+      </AvrGcc>
+    </ToolchainSettings>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <ToolchainSettings>
+      <AvrGcc>
+  <avrgcc.common.Device>-mmcu=atmega16a</avrgcc.common.Device>
+  <avrgcc.common.outputfiles.hex>True</avrgcc.common.outputfiles.hex>
+  <avrgcc.common.outputfiles.lss>True</avrgcc.common.outputfiles.lss>
+  <avrgcc.common.outputfiles.eep>True</avrgcc.common.outputfiles.eep>
+  <avrgcc.common.outputfiles.srec>True</avrgcc.common.outputfiles.srec>
+  <avrgcc.common.outputfiles.usersignatures>False</avrgcc.common.outputfiles.usersignatures>
+  <avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>True</avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>
+  <avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>True</avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>
+  <avrgcc.compiler.symbols.DefSymbols>
+    <ListValues>
+      <Value>_NIBOBURGER_</Value>
+      <Value>F_CPU=15000000UL</Value>
+      <Value>DEBUG</Value>
+      <Value>DEBUG</Value>
+      <Value>DEBUG</Value>
+      <Value>DEBUG</Value>
+    </ListValues>
+  </avrgcc.compiler.symbols.DefSymbols>
+  <avrgcc.compiler.directories.IncludePaths>
+    <ListValues>
+      <Value>..</Value>
+      <Value>%24(PackRepoDir)\atmel\ATmega_DFP\1.0.106\include</Value>
+      <Value>%24(PackRepoDir)\atmel\ATmega_DFP\1.3.300\include</Value>
+    </ListValues>
+  </avrgcc.compiler.directories.IncludePaths>
+  <avrgcc.compiler.optimization.level>Optimize (-O1)</avrgcc.compiler.optimization.level>
+  <avrgcc.compiler.optimization.PackStructureMembers>True</avrgcc.compiler.optimization.PackStructureMembers>
+  <avrgcc.compiler.optimization.AllocateBytesNeededForEnum>True</avrgcc.compiler.optimization.AllocateBytesNeededForEnum>
+  <avrgcc.compiler.optimization.DebugLevel>Default (-g2)</avrgcc.compiler.optimization.DebugLevel>
+  <avrgcc.compiler.warnings.AllWarnings>True</avrgcc.compiler.warnings.AllWarnings>
+  <avrgcc.linker.general.UseVprintfLibrary>True</avrgcc.linker.general.UseVprintfLibrary>
+  <avrgcc.linker.libraries.Libraries>
+    <ListValues>
+      <Value>libm</Value>
+    </ListValues>
+  </avrgcc.linker.libraries.Libraries>
+  <avrgcc.linker.libraries.LibrarySearchPaths>
+    <ListValues>
+      <Value>C:\Program Files\NiboRoboLib\lib\niboburger-m16-15</Value>
+    </ListValues>
+  </avrgcc.linker.libraries.LibrarySearchPaths>
+  <avrgcc.assembler.general.IncludePaths>
+    <ListValues>
+      <Value>%24(PackRepoDir)\atmel\ATmega_DFP\1.0.106\include</Value>
+      <Value>%24(PackRepoDir)\atmel\ATmega_DFP\1.3.300\include</Value>
+    </ListValues>
+  </avrgcc.assembler.general.IncludePaths>
+  <avrgcc.assembler.debugging.DebugLevel>Default (-Wa,-g)</avrgcc.assembler.debugging.DebugLevel>
+</AvrGcc>
+    </ToolchainSettings>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="main.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="maroon.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="maroon.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="niboburger\analog.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="niboburger\analog.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="niboburger\base.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="niboburger\base.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="niboburger\bgx1.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="niboburger\bgx1.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="niboburger\bgx1_protocol.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="niboburger\clock.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="niboburger\clock.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="niboburger\color.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="niboburger\color.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="niboburger\delay.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="niboburger\delay.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="niboburger\doc.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="niboburger\i2cmaster.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="niboburger\i2cmaster.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="niboburger\iodefs.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="niboburger\iodefs_niboburger.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="niboburger\key.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="niboburger\key.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="niboburger\led.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="niboburger\led.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="niboburger\motpid.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="niboburger\motpid.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <None Include="niboburger\motpid2.c">
+      <SubType>compile</SubType>
+    </None>
+    <Compile Include="niboburger\motpid2.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="niboburger\motpwm.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="niboburger\motpwm.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="niboburger\mthread_conf.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="niboburger\NIBOburger.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="niboburger\odometry.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="niboburger\odometry.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="niboburger\rc5.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="niboburger\rc5.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="niboburger\robo.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="niboburger\robomain.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="niboburger\storage.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="niboburger\storage.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="niboburger\storage_nrl.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="niboburger\surface.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="niboburger\surface.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="niboburger\usart.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="niboburger\usart.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="niboburger\utils.h">
+      <SubType>compile</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="niboburger\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="niboburger\Makefile">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="niboburger\NIBOburger.cpp">
+      <SubType>compile</SubType>
+    </None>
+  </ItemGroup>
+  <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />
+</Project>
