@@ -1,9 +1,5 @@
 #include "niboburger/robomain.h"
 
-int state;
-int abstand = 20;
-
-
 void setup()
 {
 	led_init();
