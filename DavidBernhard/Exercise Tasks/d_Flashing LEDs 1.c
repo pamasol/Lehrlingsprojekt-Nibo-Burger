@@ -11,8 +11,8 @@ void loop()
 for (LED=2; LED<=4;LED++)
 {
 led_set(LED, 1);
-delay(100);
+delay(500);
 led_set(LED, 0);
-delay(100);
+delay(500);
 }
 }
