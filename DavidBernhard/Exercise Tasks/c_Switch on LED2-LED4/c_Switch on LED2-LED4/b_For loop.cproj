@@ -12,9 +12,9 @@
     <OutputFileName>$(MSBuildProjectName)</OutputFileName>
     <OutputFileExtension>.elf</OutputFileExtension>
     <OutputDirectory>$(MSBuildProjectDirectory)\$(Configuration)</OutputDirectory>
-    <AssemblyName>c_Switch on LED2-LED4</AssemblyName>
-    <Name>c_Switch on LED2-LED4</Name>
-    <RootNamespace>c_Switch on LED2-LED4</RootNamespace>
+    <AssemblyName>b_For loop</AssemblyName>
+    <Name>b_For loop</Name>
+    <RootNamespace>b_For loop</RootNamespace>
     <ToolchainFlavour>Native</ToolchainFlavour>
     <KeepTimersRunning>true</KeepTimersRunning>
     <OverrideVtor>false</OverrideVtor>
@@ -149,6 +149,15 @@
   <avrgcc.linker.libraries.Libraries>
     <ListValues>
       <Value>libm</Value>
+      <Value>libmthread</Value>
+      <Value>libniboburger_base</Value>
+      <Value>libniboburger_bgx1</Value>
+      <Value>libniboburger_class</Value>
+      <Value>libniboburger_pid</Value>
+      <Value>libniboburger_rc5</Value>
+      <Value>libniboburger_surface</Value>
+      <Value>libniboburger_usart</Value>
+      <Value>libniboburger_utils</Value>
     </ListValues>
   </avrgcc.linker.libraries.Libraries>
   <avrgcc.linker.libraries.LibrarySearchPaths>
