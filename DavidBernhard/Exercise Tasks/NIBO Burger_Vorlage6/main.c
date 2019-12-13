@@ -1,15 +1,34 @@
-/* Includes für den Zugriff auf die NIBO Burger Bibliothek */
+
+/* Includes for access to NIBO Burger library */
+
 #include "niboburger/robomain.h"
 
+
+
 void setup()
+
 {
-led_init();
+
+	/* Code that is executed once at startup */
+
+	led_init();
+
 }
 
+
+
 void loop()
+
 {
-led_set(1.1);
-delay(100);
-led_set(1.0);
-delay(100);
+
+	/* Code that is repeated infinitely on NIBO Burger */
+
+	led_set(2, 1);
+
+	delay(500);
+
+	led_set(2, 0);
+
+	delay(500);
+
 }
