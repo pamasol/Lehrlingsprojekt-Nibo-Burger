@@ -3,16 +3,16 @@
 int LED;
 void setup()
 {
-led_init();
+	led_init();
 }
 
 void loop()
 {
-for (LED=1; LED<=4;LED++)
-{
-led_set(LED, 1);
-delay(500);
-led_set(LED, 0);
-delay(500);
-}
+	for (LED=1; LED<=4;LED++)
+	{
+		led_set(LED, 1);
+		delay(500);
+		led_set(LED, 0);
+		delay(500);
+	}
 }
