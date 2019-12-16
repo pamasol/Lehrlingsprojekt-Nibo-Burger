@@ -23,11 +23,19 @@
 char key=key_get_char();
 switch (key)
    {
+
 case 'A':
+led_set(1,1);
+led_set(4,1);
+break;
+
+case 'B':
+led_set(2,1);
 led_set(3,1);
 break;
-case 'a':
-led_set(3,0);
+
+case 'C':
+led_setall(0,0,0,0);
 break;
 }
    }
