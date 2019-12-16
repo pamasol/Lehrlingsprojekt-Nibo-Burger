@@ -9,7 +9,7 @@ void setup()
 	led_init();
 	analog_init();
 	motpwm_init();
-	delay(5000);
+	
 	
 }
 
@@ -35,18 +35,18 @@ void loop()
 	
 	if ((l<20) && (r<20))
 	{
-		motpwm_setLeft(800);
-		motpwm_setRight(800);
+		motpwm_setLeft(0);
+		motpwm_setRight(0);
 		led_setall(1,0,0,1);
 	} else if (l<r)
 	{
-		motpwm_setLeft(0);
-		motpwm_setRight(800);
+		motpwm_setLeft(800);
+		motpwm_setRight(0);
 		led_setall(0,0,1,0);
 	} else if (l>r)
 	{
-		motpwm_setLeft(800);
-		motpwm_setRight(0);
+		motpwm_setLeft(0);
+		motpwm_setRight(800);
 		led_setall(0,1,0,0);
 	}
 	
