@@ -9,34 +9,38 @@
    #include "niboburger/robomain.h"
 
 
-
+   int Power;
    int LED;
 
    void setup()
    {
 	led_init();
 	analog_init();
-	odometry_init();
+	motpwm_init();
+	Power = 0;
    }
 
    void loop()
    {
 char key=key_get_char();
 
-if (key == 'A')
-{
-odometry_resetLeft();
-}
-if (key == 'B')
-{
-odometry_resetRight();
-}
-if (key == 'C')
-{
-odometry_reset();
-}
-led_set(1, odometry_getLeft(0)>10);
-led_set(2, odometry_getLeft(0)>20);
-led_set(3, odometry_getRight(0)>10);
-led_set(4, odometry_getRight(0)>20);
+switch (key)
+   {
+case 'a':
+
+Power= Power + 200;
+break;
+
+case 'B':
+Power = 0;
+break;
+
+case 'c':
+Power = Power - 200;
+break;
+
+   }
+	motpwm_setLeft(Power);
+	motpwm_setRight(Power);
+	delay(10);
    }
