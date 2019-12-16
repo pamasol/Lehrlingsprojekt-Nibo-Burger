@@ -9,38 +9,28 @@
    #include "niboburger/robomain.h"
 
 
-   int Power;
+
    int LED;
 
    void setup()
    {
 	led_init();
 	analog_init();
-	motpwm_init();
-	Power = 0;
    }
 
    void loop()
    {
-char key=key_get_char();
+int value = analog_getValueExt(ANALOG_FR, 2);
 
-switch (key)
-   {
-case 'a':
-
-Power= Power + 200;
-break;
-
-case 'B':
-Power = 0;
-break;
-
-case 'c':
-Power = Power - 200;
-break;
-
+	if (value<10) {
+		led_setall(0,0,0,0);
+		} else if (value<20) {
+		led_setall(1,0,0,0);
+		} else if (value<30) {
+		led_setall(1,1,0,0);
+		} else if (value<40) {
+		led_setall(1,1,1,0);
+		} else {
+		led_setall(1,1,1,1);
    }
-	motpwm_setLeft(Power);
-	motpwm_setRight(Power);
-	delay(10);
    }

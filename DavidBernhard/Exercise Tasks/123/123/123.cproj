@@ -162,6 +162,14 @@
     <ListValues>
       <Value>libm</Value>
       <Value>libniboburger_base</Value>
+      <Value>libmthread</Value>
+      <Value>libniboburger_bgx1</Value>
+      <Value>libniboburger_class</Value>
+      <Value>libniboburger_pid</Value>
+      <Value>libniboburger_rc5</Value>
+      <Value>libniboburger_surface</Value>
+      <Value>libniboburger_usart</Value>
+      <Value>libniboburger_utils</Value>
     </ListValues>
   </avrgcc.linker.libraries.Libraries>
   <avrgcc.linker.libraries.LibrarySearchPaths>
