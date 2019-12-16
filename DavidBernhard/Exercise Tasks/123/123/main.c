@@ -14,28 +14,29 @@
 
    void setup()
    {
-	   led_init();
+	led_init();
 	analog_init();
+	odometry_init();
    }
 
    void loop()
    {
 char key=key_get_char();
-switch (key)
-   {
 
-case 'A':
-led_set(1,1);
-led_set(4,1);
-break;
-
-case 'B':
-led_set(2,1);
-led_set(3,1);
-break;
-
-case 'C':
-led_setall(0,0,0,0);
-break;
+if (key == 'A')
+{
+odometry_resetLeft();
 }
+if (key == 'B')
+{
+odometry_resetRight();
+}
+if (key == 'C')
+{
+odometry_reset();
+}
+led_set(1, odometry_getLeft(0)>10);
+led_set(2, odometry_getLeft(0)>20);
+led_set(3, odometry_getRight(0)>10);
+led_set(4, odometry_getRight(0)>20);
    }
