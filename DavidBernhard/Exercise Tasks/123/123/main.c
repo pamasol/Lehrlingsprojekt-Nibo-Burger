@@ -1,104 +1,138 @@
 #include <niboburger/robomain.h>
-unsigned char state = 0;
-int abstand = 20;
 
 
-void stateMachine(){
+int state;
 
-	int fll = analog_getValueExt(ANALOG_FLL, 2);
+int Mitte;
 
-	int fl = analog_getValueExt(ANALOG_FL, 2);
+int Rechts;
 
-	int frr = analog_getValueExt(ANALOG_FRR, 2);
+int Links;
 
-	int fr = analog_getValueExt(ANALOG_FR, 2);
-
-
-	switch (state)
-	{
-
-		case 1:
-
-		motpid_setSpeed(0,0);
-		if (key_get_char() == 'A')
-		{
-			delay(100);
-			state = 2;
-			
-		}
-		break;
-
-		case 2:
-
-		if ((fll<abstand)&&(fl<abstand)&&(frr<abstand)&&(fr<abstand))
-		{
-			motpid_setSpeed(30,30);
-		}
-
-		if (fll>abstand)
-		{
-			state = 3;
-		}
-
-		if (fl>abstand)
-		{
-			state = 3;
-		}
-
-		if (frr>abstand)
-		{
-			state = 4;
-		}
-
-		if (fr>abstand)
-		{
-			state = 4;
-		}
-
-		break;
-
-		case 3:
-		motpid_setSpeed(30,-30);
-		if ((fll<abstand)&&(fl<abstand))
-		{
-			state = 2;
-		}
-		break;
-
-		case 4:
-		motpid_setSpeed(-30,30);
-		if ((frr<abstand)&&(fr<abstand))
-		{
-			state = 2;
-		}
-		break;
-
-	}
-
-
-}
-
-
-
-
+int key;
 
 
 
 void setup() {
 
 	led_init();
+
 	motpid_init();
+
 	motpwm_init();
+
 	analog_init();
+
 	odometry_init();
+
 	odometry_reset();
+	
+	//surface_readPersistent();
+
 	state = 1;
+	
 }
+
+
+
+
 
 
 
 void loop() {
 
-	stateMachine();
+	key = key_get_char();
+	
+	Mitte = surface_get(SURFACE_C);
+
+	Rechts = surface_get(SURFACE_R);
+
+	Links = surface_get(SURFACE_L);
+	
+	
+	
+	switch (state)
+	
+	
+	{
+		
+		case 1:
+		
+		
+		motpid_stop(0);
+		
+		if (key == 'A')
+		
+		{
+			
+			state = 2;
+			
+		}
+		
+		
+		break;
+		
+		
+		
+		case 2:
+		
+		if (Mitte < 20)
+		
+		{
+			
+			motpid_setSpeed(30, 30);
+			
+		}
+		
+		else
+		
+		{
+			
+			state = 3;
+			
+		}
+		
+		break;
+		
+		
+		case 3:
+		
+		if (Rechts < 200)
+		
+		{
+			
+			motpid_setSpeed(30, 10);
+		}
+		
+		if (Mitte < 20)
+		
+		{
+			
+			state = 2;
+			
+		}
+		
+		if (Links < 200)
+		
+		{
+			
+			motpid_setSpeed(10, 30);
+			
+		}
+		
+		if (Mitte < 20)
+		
+		{
+			
+			state = 2;
+			
+		}
+		
+		
+	}
 	
 }
+
+
+
+
