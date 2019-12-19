@@ -33,21 +33,20 @@ void loop()
 		status = 1;
 	}
 	
-	if ((l<20) && (r<20))
+	if ((l<10) && (r<10))
 	{
 		motpwm_setLeft(0);
 		motpwm_setRight(0);
 		led_setall(1,0,0,1);
 	} else if (l<r)
 	{
-		motpwm_setLeft(800);
+		motpwm_setLeft(1000);
 		motpwm_setRight(0);
 		led_setall(0,0,1,0);
 	} else if (l>r)
 	{
 		motpwm_setLeft(0);
-		motpwm_setRight(800);
+		motpwm_setRight(1000);
 		led_setall(0,1,0,0);
 	}
-	
-}
+	}
