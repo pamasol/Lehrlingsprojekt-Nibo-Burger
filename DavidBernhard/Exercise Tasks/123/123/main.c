@@ -35,10 +35,6 @@ void setup() {
 
 
 
-
-
-
-
 void loop() {
 
 	key = key_get_char();

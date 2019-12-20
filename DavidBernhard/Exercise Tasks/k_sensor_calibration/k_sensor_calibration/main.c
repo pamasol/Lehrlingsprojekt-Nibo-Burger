@@ -1,89 +1,135 @@
 #include <niboburger/robomain.h>
 
-unsigned long previousMillis = 0;
-unsigned long interval = 5000;
-unsigned char tick = 0;
+
+int state;
+
+int Mitte;
+
+int Rechts;
+
+int Links;
+
+int key;
+
+
 
 void setup() {
-	//  NIBOburger.begin();
-	//  NIBOburger.checkVoltage();
+
+	led_init();
+
+	motpid_init();
+
+	motpwm_init();
+
+	analog_init();
+
+	odometry_init();
+
+	odometry_reset();
 	
-	//  initialize serial communication at 38400 bits per second:
-	Serial.begin(38400);            // Maroon
-	//  Serial.begin(9600,SERIAL_8N1);  // XBEE @ BrayTerm
-	
-	delay(1000);
-	delay(1000);
-	delay(1000);
-	//    Fragezeichen Fade In / Fade Out
-	Serial.write("\33d0\33l?\33T*100 \33P1000 \33T0100 \33d*");
-	//  Serial.print("\33d0\33l?\33T*100 \33P1000 \33T0100 \33d*");
+	//surface_readPersistent();
+
+	state = 1;
 	
 }
 
+
+
+
 void loop() {
-	//  interrupts();
-	//  char key = NIBOburger.getKeyChar();
+
+	key = key_get_char();
 	
-	//  switch (key) {
-	//    case 'A':
-	//      NIBOburger.setLed(LED1, ON);
-	////      Serial.write("\33d0\33l?\33T*100 \33P1000 \33T0100 \33d*");
-	////      Serial.print("\33d0\33l?\33T*100 \33P1000 \33T0100 \33d*");
-	//      break;
-	//
-	//    case 'B':
-	//      NIBOburger.setLed(LED2, ON);
-	//      NIBOburger.setLed(LED3, ON);
-	//      break;
-	//
-	//    case 'C':
-	//      NIBOburger.setLed(LED4, ON);
-	// //     Serial.write("hello\33t!");
-	// //     Serial.write("hello\n");
-	//      Serial.print("hello\n");
-	//     break;
-	//
-	//    case 'a':
-	//      NIBOburger.setLed(LED1, OFF);
-	//      break;
-	//
-	//    case 'b':
-	//      NIBOburger.setLed(LED2, OFF);
-	//      NIBOburger.setLed(LED3, OFF);
-	//      break;
-	//
-	//    case 'c':
-	//      NIBOburger.setLed(LED4, OFF);
-	//      break;
-	//  }
+	Mitte = surface_get(SURFACE_C);
+
+	Rechts = surface_get(SURFACE_R);
+
+	Links = surface_get(SURFACE_L);
 	
-	unsigned long currentMillis = millis();
 	
-	if(currentMillis - previousMillis >= interval) {
-		previousMillis = currentMillis;
+	
+	switch (state)
+	
+	
+	{
 		
-		interval = 100;     // Stress
+		case 1:
 		
-		//      XBEE Kommunikation Testen
-		//      Serial.println(tick++,DEC);
 		
-		//   Maroon Samples aus dem Wiki
+		motpid_stop(0);
 		
-		//    Fragezeichen Fade In / Fade Out
-		//    Serial.write("\33d0\33l?\33T*100 \33P1000 \33T0100 \33d*");
-		//      Serial.print("\33d0\33l?\33T*100 \33P1000 \33T0100 \33d*");
+		if (key == 'A')
 		
-		//    Schachbrett Muster
-		if(tick++ %2) {
-			//        Serial.write("\33l\33Gaa55aa55aa55aa55 ");
-			Serial.write("\33l\33G0055aa55aa55aa00 ");
+		{
+			
+			state = 2;
+			
 		}
-		else {
-			Serial.write("\33l\33G55aa55aa55aa55aa ");
+		
+		
+		break;
+		
+		
+		
+		case 2:
+		
+		if (Mitte < 20)
+		
+		{
+			
+			motpid_setSpeed(30, 30);
+			
 		}
+		
+		else
+		
+		{
+			
+			state = 3;
+			
+		}
+		
+		break;
+		
+		
+		case 3:
+		
+		if (Rechts < 200)
+		
+		{
+			
+			motpid_setSpeed(30, 10);
+		}
+		
+		if (Mitte < 20)
+		
+		{
+			
+			state = 2;
+			
+		}
+		
+		if (Links < 200)
+		
+		{
+			
+			motpid_setSpeed(10, 30);
+			
+		}
+		
+		if (Mitte < 20)
+		
+		{
+			
+			state = 2;
+			
+		}
+		
+		
 	}
 	
-	
-	delay(1);        // delay in between reads for stability
 }
+
+
+
+
