@@ -1,60 +1,89 @@
 #include <niboburger/robomain.h>
 
+unsigned long previousMillis = 0;
+unsigned long interval = 5000;
+unsigned char tick = 0;
+
 void setup() {
-	led_init();
-	analog_init();
-	/*
-	Calibration values are stored in the EEPROM and will be 
-	persistent when reprogramming. therefore they have to be
-	loaded in the setup function.
-	*/
-	surface_readPersistent();
+	//  NIBOburger.begin();
+	//  NIBOburger.checkVoltage();
+	
+	//  initialize serial communication at 38400 bits per second:
+	Serial.begin(38400);            // Maroon
+	//  Serial.begin(9600,SERIAL_8N1);  // XBEE @ BrayTerm
+	
+	delay(1000);
+	delay(1000);
+	delay(1000);
+	//    Fragezeichen Fade In / Fade Out
+	Serial.write("\33d0\33l?\33T*100 \33P1000 \33T0100 \33d*");
+	//  Serial.print("\33d0\33l?\33T*100 \33P1000 \33T0100 \33d*");
+	
 }
 
 void loop() {
-	/*
-	Main program should wait until ATmega16 has all sensor values
-	updated.
-	*/
-	analog_wait_update();
-	/*
-	Checking battery voltage. This is an important step since sensor
-	values deviate with low battery voltage.
-	*/
-	nibo_checkMonitorVoltage();
-
-	/*
-	col variable is an unsigned long int that is 2 byte	In this
-	scenario, it stores the RGB color value of the surface.	
-	*/
-	unsigned long int col = surface_getColorRGB();
+	//  interrupts();
+	//  char key = NIBOburger.getKeyChar();
 	
-	/*
-	Comparing just measured color value with reference value for a black
-	and a white surface.
-	*/
-	int diff_black = color_diff_rgb(col, COLOR_RGB_CAL_BLACK);
-	int diff_white = color_diff_rgb(col, COLOR_RGB_CAL_WHITE);
-
-	/*
-	If RGB sensors detect a black surface, LED1 will be switched on, if
-	a white surface is detected, LED2 will switch on. Be aware that this 
-	function works only when the sensors are calibrated.
-	*/
-	led_set(1, diff_black < 20);
-	led_set(2, diff_white < 20);
-
-	/*
-	Putting sensor on a black surface and clicking button 1 calibrates the 
-	sensor for the color black. Same procedure can be applied with white
-	surface and button 2.
-	*/
-	char key = key_get_char();
-	if (key == 'a') {
-		surface_calibrateBlack();
-		surface_writePersistent();
-		} else if (key == 'b') {
-		surface_calibrateWhite();
-		surface_writePersistent();
+	//  switch (key) {
+	//    case 'A':
+	//      NIBOburger.setLed(LED1, ON);
+	////      Serial.write("\33d0\33l?\33T*100 \33P1000 \33T0100 \33d*");
+	////      Serial.print("\33d0\33l?\33T*100 \33P1000 \33T0100 \33d*");
+	//      break;
+	//
+	//    case 'B':
+	//      NIBOburger.setLed(LED2, ON);
+	//      NIBOburger.setLed(LED3, ON);
+	//      break;
+	//
+	//    case 'C':
+	//      NIBOburger.setLed(LED4, ON);
+	// //     Serial.write("hello\33t!");
+	// //     Serial.write("hello\n");
+	//      Serial.print("hello\n");
+	//     break;
+	//
+	//    case 'a':
+	//      NIBOburger.setLed(LED1, OFF);
+	//      break;
+	//
+	//    case 'b':
+	//      NIBOburger.setLed(LED2, OFF);
+	//      NIBOburger.setLed(LED3, OFF);
+	//      break;
+	//
+	//    case 'c':
+	//      NIBOburger.setLed(LED4, OFF);
+	//      break;
+	//  }
+	
+	unsigned long currentMillis = millis();
+	
+	if(currentMillis - previousMillis >= interval) {
+		previousMillis = currentMillis;
+		
+		interval = 100;     // Stress
+		
+		//      XBEE Kommunikation Testen
+		//      Serial.println(tick++,DEC);
+		
+		//   Maroon Samples aus dem Wiki
+		
+		//    Fragezeichen Fade In / Fade Out
+		//    Serial.write("\33d0\33l?\33T*100 \33P1000 \33T0100 \33d*");
+		//      Serial.print("\33d0\33l?\33T*100 \33P1000 \33T0100 \33d*");
+		
+		//    Schachbrett Muster
+		if(tick++ %2) {
+			//        Serial.write("\33l\33Gaa55aa55aa55aa55 ");
+			Serial.write("\33l\33G0055aa55aa55aa00 ");
+		}
+		else {
+			Serial.write("\33l\33G55aa55aa55aa55aa ");
+		}
 	}
+	
+	
+	delay(1);        // delay in between reads for stability
 }
