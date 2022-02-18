@@ -19,7 +19,7 @@ At Pamasol they work on customer projects as well as on internal training projec
 
 1. [Robot construction kit NIBO Burger](#1-robot-construction-kit-nibo-burgerr)
 2. [Assembling NIBO Burger](#2-assembling-nibo-burger)
-3. [Programming with AVR Studio and Git](#3-programming-with-avr-studio-and-git)
+3. [Programming with Microchip Studio and Git](#3-programming-with-microchip-studio-and-git)
 4. [Documentation](#4-documentation)
 5. [Robot tasks](#5-robot-tasks)
 
