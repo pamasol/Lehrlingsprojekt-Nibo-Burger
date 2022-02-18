@@ -92,7 +92,7 @@ There are several ways to program the NIBO Burger. The easiest way is via online
 4. Install **[WinAVR](https://sourceforge.net/projects/winavr/)** which is a distribution of the avr-gcc compiler that is used on Windows operating systems.
 5. Install **Git** from [git-scm.com](https://git-scm.com/downloads).
 
-As soon as the programmes above are installed, one can add specific Atmel Studio settings for NIBO Burger as described on the Wiki page. Check [Microchip Studio 7 Setup for NIBO Burger](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/wiki/Atmel-Studio-7.0-Setup-for-NIBO-Burger).
+As soon as the programmes above are installed, one can add specific Atmel Studio settings for NIBO Burger as described on the Wiki page. Check [Microchip Studio 7 Setup for NIBO Burger](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/wiki).
 
 > There is a German documentation for the NIBO Burger library on [docs.roboter.cc/niborobolib-3.6/niboburger/html](https://docs.roboter.cc/niborobolib-3.6/niboburger/html/)
 
