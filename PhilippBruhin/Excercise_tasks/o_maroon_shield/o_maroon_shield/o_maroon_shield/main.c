@@ -44,7 +44,7 @@ void maroon_welcome() {
 void setup() {
 	led_init();
 	led_setall(1, 1, 1, 1);
-	
+	delay(200);
 	maroon_setup(); 
 	delay(200);
 	maroon_welcome();
