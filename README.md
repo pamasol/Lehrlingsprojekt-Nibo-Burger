@@ -92,7 +92,7 @@ There are several ways to program the NIBO Burger. The easiest way is via online
 4. Install **[WinAVR](https://sourceforge.net/projects/winavr/)** which is a distribution of the avr-gcc compiler that is used on Windows operating systems.
 5. Install **Git** from [git-scm.com](https://git-scm.com/downloads).
 
-As soon as the programmes above are installed, one can add specific Atmel Studio settings for NIBO Burger as described on the Wiki page. Check [Microchip Studio 7 Setup for NIBO Burger](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/wiki).
+As soon as the programmes above are installed, one can add specific Microchip Studio settings for NIBO Burger as described on the Wiki page. Check [Microchip Studio 7 Setup for NIBO Burger](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/wiki) and do project settings and flavours (WinAVR compiler).
 
 > There is a German documentation for the NIBO Burger library on [docs.roboter.cc/niborobolib-3.6/niboburger/html](https://docs.roboter.cc/niborobolib-3.6/niboburger/html/)
 
@@ -272,6 +272,10 @@ Compile and download [this program](https://github.com/pamasol/Lehrlingsprojekt-
 When there are no obstracles within the roboter's reach, it moves **forward with 80%** of max speed. If there are **obstracles** on the **left** or on the **right**, one motor stops and the robot eludes the obstacle.
 
 This **program can be improved** in many ways. For examble the LEDs could indicate what the IR sensors detect. The control of the wheels can be made more smooth. The program could start as soon as button 1 is pressed and so on. This will be part of the master tasks.
+
+### O) Maroon Shield 8 x 8 LED pixel display
+
+TODO: Describe task
 
 ## Master tasks
 
