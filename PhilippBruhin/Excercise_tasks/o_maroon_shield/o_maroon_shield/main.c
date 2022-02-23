@@ -34,7 +34,7 @@ void maroon_welcome() {
 		MAROON_DIM(*)          // Dimm matrix brightness to 100%
 		MAROON_PAUSE(100)      // 100ms pause
 		MAROON_DIM(5)          // Dimm matrix brightness to 50%
-		MAROON_STIME(80)       // Set shift delay time to 60ms
+		MAROON_STIME(200)       // Set shift delay time to 60ms
 		" Pamasol Electrics\n"
 		MAROON_TXBACK(".")     // Transmit back char (synchronization)
 	);
