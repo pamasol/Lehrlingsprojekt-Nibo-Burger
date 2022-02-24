@@ -63,7 +63,7 @@ Best offer we could find for purchasing a NIBO Burger in Switzerland at time of 
 **Maroon Shield LED Display**
 
 * [reichelt.com](https://www.reichelt.com/ch/de/arduino-shield-roboter-maroon-shield-8x8-led-maroon-shield-p161083.html) who ships to Switzerland for CHF 22.44
-* [Brack.ch](https://www.brack.ch/nicai-systems-bausatz-shield-led-matrix-379832) with 22.95
+* [brack.ch](https://www.brack.ch/nicai-systems-bausatz-shield-led-matrix-379832) with 22.95
 * [digitec.ch](https://www.digitec.ch/en/s1/product/nicai-systems-nicai-maroon-shield-arduino-uno-nibo-burger-display-shield-badges-construction-kit-rob-6051422?ip=maroon+shield) with 24.60
 
 > Please let us know if there are better deals out there.
@@ -287,7 +287,7 @@ This **program can be improved** in many ways. For examble the LEDs could indica
 
 ### O) Maroon Shield 8 x 8 LED pixel display
 
-TODO: Describe task
+TODO: Describe task with header files and reference to [wiki](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/wiki).
 
 ## Master tasks
 
