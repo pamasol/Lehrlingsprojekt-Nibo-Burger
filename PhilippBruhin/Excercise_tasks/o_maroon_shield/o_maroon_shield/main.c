@@ -1,8 +1,6 @@
 #include <niboburger/robomain.h>
 #include "maroon.h"
 
-uint8_t maroon_mode;
-
 /** @brief  Setup and enable serial communication with maroon shield
  *          at 38'400 bits per second (38400 baud, 8 bit, no parity,
  *          1 stop bit).
@@ -24,19 +22,29 @@ void maroon_setup() {
  *  @return void
  */
 void maroon_welcome() {
-	maroon_mode=0;
 	usart_write(
-		MAROON_IMM_CLEAR()     // Clear display
-		MAROON_BRIGHT(0)       // Set matrix brightness to 0%
-		MAROON_LOAD()          // Load next matrix bytes without delay
+		MAROON_IMM_CLEAR()             // Clear display
+		MAROON_BRIGHT(*)               // Set matrix brightness to 100%
+		MAROON_LOAD()                  // Load next matrix bytes without delay
 		"1"
-		MAROON_BAR("0")        // Bargraph mode, every char is a colon, terminated by space
-		MAROON_DIM(*)          // Dimm matrix brightness to 100%
-		MAROON_PAUSE(100)      // 100ms pause
-		MAROON_DIM(5)          // Dimm matrix brightness to 50%
-		MAROON_STIME(200)       // Set shift delay time to 60ms
-		" Pamasol Electrics\n"
-		MAROON_TXBACK(".")     // Transmit back char (synchronization)
+		MAROON_BAR("0")                // Bargraph mode, every char is a colon, terminated by space
+                                       // Number one from line 33 is shifted 1 pixel to the left.
+                                       // Write "00" if you want 2 pixels.
+		MAROON_PAUSE(1000)             // 1000ms pause
+		MAROON_STIME(3000)             // Set shift delay time to 3000ms
+		" Pamasol\n"
+        MAROON_LOAD()                  // Load next matrix bytes without delay (in this case
+                                       // load swiss cross without scrolling).
+        MAROON_GFX("ffe7e78181e7e7ff") // Bargraphe mode. Hex number of two chars represent 8 bits
+                                       // ff = 11111111
+                                       // e7 = 11100111
+                                       // e7 = 11100111
+                                       // 81 = 10000001
+                                       // 81 = 10000001
+                                       // e7 = 11100111
+                                       // e7 = 11100111
+                                       // ff = 11111111
+		MAROON_TXBACK(".")             // Transmit back char (synchronization)
 	);
 }
 
