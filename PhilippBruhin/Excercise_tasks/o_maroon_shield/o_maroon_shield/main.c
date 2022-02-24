@@ -35,7 +35,7 @@ void maroon_welcome() {
 		" Pamasol\n"
         MAROON_LOAD()                  // Load next matrix bytes without delay (in this case
                                        // load swiss cross without scrolling).
-        MAROON_GFX("ffe7e78181e7e7ff") // Bargraphe mode. Hex number of two chars represent 8 bits
+        MAROON_GFX("ffe7e78181e7e7ff") // Bargraph mode. Hex number of two chars represent 8 bits
                                        // ff = 11111111
                                        // e7 = 11100111
                                        // e7 = 11100111
