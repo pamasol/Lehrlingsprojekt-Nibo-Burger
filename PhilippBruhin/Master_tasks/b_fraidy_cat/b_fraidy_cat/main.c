@@ -8,7 +8,9 @@
  *  Worth knowing:
  *  Program works with an event handler. In programming, an event handler
  *  is a callback routine that operates asynchronously once an event
- *  takes place. 
+ *  takes place.
+ *  This program checks for events with getEvent() and in a second step
+ *  it runs handle_event() to act.
  */
 
 #include <niboburger/robomain.h>
