@@ -169,6 +169,7 @@ This project must be documented by every apprentice. It should be structured as 
     * What is a function in C?
     * How can a state machine be created in C code?
     * What is the job of microcontroller IC5 in NIBO Burger?
+    * Why is UART interface asynchronous and is there a clock or not?
     * What is Git and GitHub? Is there a difference?
     * What is open source software?
 * Appendix
@@ -288,6 +289,8 @@ This **program can be improved** in many ways. For examble the LEDs could indica
 ### O) Maroon Shield 8 x 8 LED pixel display
 
 TODO: Describe task with header files and reference to [wiki](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/wiki).
+
+[Solution](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/blob/master/PhilippBruhin/Excercise_tasks/o_maroon_shield/o_maroon_shield/main.c)
 
 ## Master tasks
 
