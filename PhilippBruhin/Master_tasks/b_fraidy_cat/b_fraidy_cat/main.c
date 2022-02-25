@@ -3,8 +3,8 @@
  *  Master task B) Fraidy cat
  *  Setup: IR-Bricks in slots FLL, FL, FR, FRR, no maroon shield mounted
  *  Instructions:
- *  1. Place robot on the ground an press key 1 or 3 for start.
- *  2. Press key 2 for stopping the robot.
+ *  1. Place robot on the ground an press key 1, 2 or 3 for starting.
+ *  2. Press key 1, 2 or 3 for stopping the robot.
  *  Worth knowing:
  *  Program works with an event handler. In programming, an event handler
  *  is a callback routine that operates asynchronously once an event
@@ -267,6 +267,7 @@ void handle_event(uint8_t event) {
 }
 
 void loop() {
+    // Do not run loop if analog value does not change.
     analog_wait_update();
     uint8_t event = getEvent();
     handle_event(event);
