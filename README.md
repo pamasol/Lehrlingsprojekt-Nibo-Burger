@@ -288,7 +288,7 @@ This **program can be improved** in many ways. For examble the LEDs could indica
 
 ### O) Maroon Shield 8 x 8 LED pixel display
 
-Before continuing read the two chapters _"4.0 8x8 pixel matrix display"_ and _"5. Programming Maroon Shield"_ in [this project wiki](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/wiki). Then [load this programm](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/blob/master/PhilippBruhin/Excercise_tasks/o_maroon_shield/o_maroon_shield/main.c) on your NIBO Burger together with the [header file](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/blob/master/PhilippBruhin/Excercise_tasks/o_maroon_shield/o_maroon_shield/maroon.h) and try to understand. Feel free to modify the output on the matrix display.
+Before continuing read the two chapters _"4.0 8x8 pixel matrix display"_ and _"5. Programming Maroon Shield"_ in [this project wiki](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/wiki). Then [load this programm](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/blob/master/PhilippBruhin/Excercise_tasks/o_maroon_shield/o_maroon_shield/main.c) on your NIBO Burger together with the [header file](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/blob/master/PhilippBruhin/Excercise_tasks/o_maroon_shield/o_maroon_shield/maroon.h) `maroon.h` and try to understand. Feel free to modify the output on the matrix display.
 
 What a header file does is explained in [gcc.gnu.org](https://gcc.gnu.org/onlinedocs/cpp/Header-Files.htm). When you build the solution, the compiler takes the content from the header file and puts it in your `main.c` file.
 
