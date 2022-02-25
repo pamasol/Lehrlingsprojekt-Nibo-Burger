@@ -25,8 +25,8 @@ uint8_t key_getEvent();
 
 /** @brief  Makes an LED blink with 80ms on and 120ms off
  *
- *  @param  led     LED number
- *  @param  count   How many times led should blink
+ *  @param  led     LED number [1,2,3 or 4]
+ *  @param  count   How many times led should blink [1 up to 32767]
  *
  *  @return void
  */

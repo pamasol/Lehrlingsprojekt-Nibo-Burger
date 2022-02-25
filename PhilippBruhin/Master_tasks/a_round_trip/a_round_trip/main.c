@@ -2,6 +2,11 @@
  *	NIBO Burger – Pamasol electronic project for apprentices
  *	Master task A) Round trip
  *	Setup: IR-Bricks and maroon shield not mounted
+ *  Instructions:
+ *  1. Lift robot off the ground an press key 1 for left wheel alignment.
+ *  2. Press key 1 again for right wheel alignment.
+ *  3. Place robot on the ground at its start position an press key 2.
+ *  4. Reset always possible by clicking key 3.
  */
 
 #include "./niboburger/robomain.h"
@@ -16,11 +21,10 @@ enum {
 int run = 0;
 unsigned char state = 1;
 
-
 /** @brief  Makes an LED blink with 80ms on and 120ms off
  *
- *  @param  led     LED number
- *  @param  count   How many times led should blink
+ *  @param  led     LED number (1, 2, 3 or 4)
+ *  @param  count   How many times led should blink (1 up to 32767)
  *
  *  @return void
  */
@@ -32,7 +36,6 @@ void blink_led(int led, int count) {
 		delay(120);
 	}
 }
-
 
 /** @brief  Returns which button is clicked or EVENT_NONE
  *
