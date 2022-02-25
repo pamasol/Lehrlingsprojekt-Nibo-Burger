@@ -1,7 +1,7 @@
 /**
- *	NIBO Burger – Pamasol electronic project for apprentices
- *	Master task A) Round trip
- *	Setup: IR-Bricks and maroon shield not mounted
+ *  NIBO Burger – Pamasol electronic project for apprentices
+ *  Master task A) Round trip
+ *  Setup: IR-Bricks and maroon shield not mounted
  *  Instructions:
  *  1. Lift robot off the ground an press key 1 for left wheel alignment.
  *  2. Press key 1 again for right wheel alignment.
@@ -199,11 +199,11 @@ void stateMachine() {
 }
 
 void setup() {
-	led_init();
-	analog_init();
-	motpwm_init();
-	motpid_init();
-	odometry_init();
+    led_init();
+    analog_init();
+    motpwm_init();
+    motpid_init();
+    odometry_init();
 }
 
 void loop() {
