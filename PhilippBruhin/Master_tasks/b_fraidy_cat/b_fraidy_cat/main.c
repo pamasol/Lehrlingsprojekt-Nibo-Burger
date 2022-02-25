@@ -1,11 +1,17 @@
 /**
- *	NIBO Burger – Pamasol electronic project for apprentices
- *	Master task B) Fraidy cat
- *	Setup: IR-Bricks in slots FLL, FL, FR, FRR, no maroon shield mounted
+ *  NIBO Burger – Pamasol electronic project for apprentices
+ *  Master task B) Fraidy cat
+ *  Setup: IR-Bricks in slots FLL, FL, FR, FRR, no maroon shield mounted
+ *  Instructions:
+ *  1. Place robot on the ground an press key 1 or 3 for start.
+ *  2. Press key 2 for stopping the robot.
+ *  Worth knowing:
+ *  Program works with an event handler. In programming, an event handler
+ *  is a callback routine that operates asynchronously once an event
+ *  takes place. 
  */
 
 #include <niboburger/robomain.h>
-
 
 enum {
 	EVENT_NONE              =  0,
@@ -19,14 +25,10 @@ enum {
 	EVENT_OBSTACLE_CLEAR_R  = 19
 };
 
-
-uint8_t key_getEvent();
-
-
 /** @brief  Makes an LED blink with 80ms on and 120ms off
  *
- *  @param  led     LED number [1,2,3 or 4]
- *  @param  count   How many times led should blink [1 up to 32767]
+ *  @param  led     LED number (1,2,3 or 4)
+ *  @param  count   How many times led should blink (1 up to 32767)
  *
  *  @return void
  */
@@ -39,7 +41,6 @@ void blink_led(uint8_t led, uint8_t count) {
 	}
 }
 
-
 /************************************************************************/
 /* OBSTRACLE                                                            */
 /************************************************************************/
@@ -47,21 +48,23 @@ void blink_led(uint8_t led, uint8_t count) {
 int8_t obstacle_pos;
 uint8_t obstacle_val;
 
-
 /** @brief  Limit number range to 0-255 (8 bit) 
  *
- *  @param  sensor  Sensor number
+ *  @param  sensor  Sensor number (1,2,3 or 4)
  *	
  *  @return val     Number between 0 and 255
  */
 uint8_t getObstSensorValue(uint8_t sensor) {
+    // Returns value between 0 and 1024. Mode is as follows:
+    // ANALOG_PASSIVE = 0: passive measurement (LED off)
+    // ANALOG_ACTIVE  = 1: active measurement (LED on)
+    // ANALOG_DIFFERENTIAL = 2: active - passive measurement (difference)
 	uint16_t val = analog_getValueExt(sensor, 2);
 	// If value bigger than 255, return 255
 	if (val>0xff) return 0xff;
 	// else return val
 	return val;
 }
-
 
 /** @brief  Returns an event based on an obstacle
  *
@@ -117,7 +120,6 @@ uint8_t obstacle_getEvent(uint8_t reset) {
 		obstacle_pos = +2;
 	}
 
-
 	// Analyze obstacle distance with with a hysteresis
 	// from 20 up to 25.
 	if (obstacle_val>25) {
@@ -144,7 +146,6 @@ uint8_t obstacle_getEvent(uint8_t reset) {
 	return EVENT_NONE;
 }
 
-
 /************************************************************************/
 /* KEY                                                                  */
 /************************************************************************/
@@ -163,9 +164,9 @@ uint8_t key_getEvent() {
 	return EVENT_NONE;
 }
 
-
-/** @brief  Returns which button is clicked or EVENT_NONE. If no button
- *          is clicked, it checks if there is an obstacle.
+/** @brief  Checks if a button is clicked and if so, returns it as event.
+ *          If no button is clicked it checks for obstacle events.
+ *          If no obstacle event it returns event none.
  *
  *  @param  -
  *	
@@ -181,39 +182,35 @@ uint8_t getEvent() {
 	return event;
 }
 
-
 uint8_t run = 0;
-
 
 void setup() {
 	
 	// LED bits as output
 	activate_output_group(IO_LEDS);
-  
+
 	motpwm_init();
 	motpid_init();
 	odometry_init();
 	analog_init();
-  
-  
+
 	// When switching on robot wait until a button is clicked
 	while (key_getEvent()==EVENT_NONE) {
 		// wait...
 	}
-  
+
 	delay(200);
-   
+
 	// PID controller setpoint to zero	
 	motpid_stop(1);
-	
+
 	blink_led(2, 4);
-	
+
 	run = 1;
 }
 
-
 /** @brief  Checks buttons and obstacle sensors and controls the
- *          motors based on these events (state machine).
+ *          motors based on these events.
  *
  *  @param  enum    EVENT_NONE, EVENT_KEY1, EVENT_KEY2, EVENT_KEY3,
  *                  EVENT_OBSTACLE_DETECTED, EVENT_OBSTACLE_CLEAR,
@@ -269,9 +266,8 @@ void handle_event(uint8_t event) {
 	}
 }
 
-
 void loop() {
-	analog_wait_update();
-	uint8_t event = getEvent();
-	handle_event(event);
+    analog_wait_update();
+    uint8_t event = getEvent();
+    handle_event(event);
 }

@@ -7,6 +7,9 @@
  *  2. Press key 1 again for right wheel alignment.
  *  3. Place robot on the ground at its start position an press key 2.
  *  4. Reset always possible by clicking key 3.
+ *  Worth knowing:
+ *  Program is structured as a state machine. A state machine reads a set of
+ *  inputs and changes to a different state based on those inputs.
  */
 
 #include "./niboburger/robomain.h"
@@ -50,7 +53,6 @@ int key_getEvent() {
 	if (c==KEY_STATE_3 ) return EVENT_KEY3;
 	return EVENT_NONE;
 }
-
 
 /************************************************************************/
 /* STATEMACHINE                                                         */
