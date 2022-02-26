@@ -4,7 +4,8 @@
  *	Setup: IR-Bricks in slots FLL, FL, FR, FRR, maroon shield mounted
  *  Instructions:
  *  1. Place robot on the ground an press key 1, 2 or 3 for starting.
- *  2. Press key 1, 2 or 3 for stopping the robot.
+ *  2. Hold hand about 10cm in front of the robot and it will follow.
+ *  3. Press key 1, 2 or 3 for stopping the robot.
  *  Worth knowing:
  *  Program works with an event handler. In programming, an event handler
  *  is a callback routine that operates asynchronously once an event
@@ -15,7 +16,6 @@
 
 #include "niboburger/robomain.h"
 #include "maroon.h"
-
 
 uint8_t progmode = 0;
 
@@ -34,14 +34,12 @@ enum {
     EVENT_HAND_RR           = 26
 };
 
-
 uint8_t key_getEvent();
-
 
 /** @brief  Makes an LED blink with 80ms on and 120ms off
  *
- *  @param  led     LED number
- *  @param  count   How many times led should blink
+ *  @param  led     LED number (1,2,3 or 4)
+ *  @param  count   How many times led should blink (1 up to 32767)
  *
  *  @return void
  */

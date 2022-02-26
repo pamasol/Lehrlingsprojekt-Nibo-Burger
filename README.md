@@ -11,6 +11,7 @@ At Pamasol they work on customer projects as well as on internal training projec
 * Acquiring knowledge of integrated circuits (motor bridges, [odometry](https://en.wikipedia.org/wiki/Odometry), USB programmer)
 * Learning microcontroller programming with C and C++
 * Becoming acquainted with control loops like [PID controller](https://en.wikipedia.org/wiki/PID_controller)
+* Understand the difference between asynchronous (UART) and synchronous communication protocols
 * Using Git as software version control system and GitHub for collaborative software development
 * Enhancing documentation and presentation skills
 * Getting comfortable with project definition and datasheets in English (native language of most apprentices is Swiss-German)
