@@ -56,7 +56,6 @@ void blink_led(uint8_t led, uint8_t count) {
 /* OBSTRACLE                                                            */
 /************************************************************************/
 
-int8_t obstacle_pos;    // Numbers from -2 up to +2
 uint8_t obstacle_val;   // Numbers from 0 up to 127
 
 /** @brief  Limit number range to 0-255 (8 bit) 
@@ -79,7 +78,7 @@ uint8_t getObstSensorValue(uint8_t sensor) {
  *                  EVENT_HAND_LL, EVENT_HAND_RR, EVENT_TO_CLOSE,
  *                  EVENT_NO_HAND
  */
-uint8_t follow_getEvent() {
+uint8_t obstacle_getEvent() {
 	
     /** Since static, this variable is like a global variable and
      *  therefore assigned on the first function call only. 
@@ -98,37 +97,37 @@ uint8_t follow_getEvent() {
     uint8_t r = getObstSensorValue(ANALOG_FR)>>1;
     uint8_t ll = getObstSensorValue(ANALOG_FLL)>>1;
     uint8_t rr = getObstSensorValue(ANALOG_FRR)>>1;
+    /** Building three areas based on the values of 4 sensors.
+     *  Area center: sensor left + sensor right
+     *  Area left: sensor left outside + sensor left
+     *  Area right: sensor right outside + sensor right
+     */  
     uint8_t cc = l + r;
     ll += l;
     rr += r;
     
-	// Three areas: center, left, right
+	// Check highest value and write it in obstacle_val
     obstacle_val = (ll>rr)?ll:rr;
     if (cc>obstacle_val) {
         obstacle_val = cc;
     }
 
-    // Analyze obstacle location  
+    // Analyze obstacle location and set nstate 
     if ((obstacle_val==cc) || (ll==rr)) {
         if (ll>rr) {
             // Hand slightly left
-            obstacle_pos = -1;
             nstate = EVENT_HAND_L;
         } else if (ll<rr) {
             // Hand slightly right
-            obstacle_pos = +1;
             nstate = EVENT_HAND_R;
         } else {
             // Hand straight ahead
-            obstacle_pos = 0;
             nstate = EVENT_HAND_C;
         }
     } else if (ll>rr) {
         // Hand left
-        obstacle_pos = -2;
         nstate = EVENT_HAND_LL;
     } else {
-        obstacle_pos = +2;
         // Hand right
         nstate = EVENT_HAND_RR;
     }
@@ -179,8 +178,9 @@ uint8_t key_getEvent() {
     return EVENT_NONE;
 }
 
-/** @brief  Returns which button is clicked or EVENT_NONE. If no button
- *          is clicked, it checks if there is an obstacle.
+/** @brief  Checks if a button is clicked and if so, returns it as event.
+ *          If no button is clicked it checks for obstacle events.
+ *          If no obstacle event it returns event none.
  *
  *  @param  -
  *	
@@ -193,7 +193,7 @@ uint8_t getEvent() {
     uint8_t event = EVENT_NONE;
     event = key_getEvent();
     if (event) return event;
-    event = follow_getEvent();
+    event = obstacle_getEvent();
     return event;
 }
 
@@ -201,7 +201,7 @@ uint8_t run = 0;
 uint16_t counter = 0;
 
 /** @brief  Checks buttons and obstacle sensors and controls the
- *          motors based on these events (state machine).
+ *          motors based on these events.
  *
  *  @param  enum    EVENT_NONE, EVENT_KEY1, EVENT_KEY2, EVENT_KEY3,
  *                  EVENT_HAND_L, EVENT_HAND_R, EVENT_HAND_C
@@ -214,14 +214,22 @@ void handle_event(uint8_t event) {
     
     uint8_t has_maroon = maroon_connected();
 
+    /** If robot is not running and button has clicked
+     *  Please note initial setup. When main switch has switched on, it is
+     *  waiting in the setup function (while loop) until a key has pressed.
+     *  Then run variable is set to 1 (still in setup function) and robot
+     *  starts moving. Thus the program is not running trough the loop 
+     *  over and over although not a single button has been pressed yet.
+     */
     if (run==0) {
         if ((event==EVENT_KEY1) || (event==EVENT_KEY2) || (event==EVENT_KEY3)) {
             run = 1;
-            follow_getEvent();
+            obstacle_getEvent();
         }
         return;
     }
 
+    // If NIBO is running and button has clicked
     if ((event==EVENT_KEY1) || (event==EVENT_KEY2) || (event==EVENT_KEY3)) {
         run = 0;
         motpid_stop(1);

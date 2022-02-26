@@ -229,7 +229,13 @@ void setup() {
  */
 void handle_event(uint8_t event) {
 	
-	// If NIBO is not running and button is clicked
+    /** If robot is not running and button has clicked
+     *  Please note initial setup. When main switch has switched on, it is
+     *  waiting in the setup function (while loop) until a key has pressed.
+     *  Then run variable is set to 1 (still in setup function) and robot
+     *  starts moving. Thus the program is not running trough the loop 
+     *  over and over although not a single button has been pressed yet.
+     */
 	if (run==0) {
 		if ((event==EVENT_KEY1) || (event==EVENT_KEY2) || (event==EVENT_KEY3)) {
 			run = 1;
@@ -238,7 +244,7 @@ void handle_event(uint8_t event) {
 		return;
 	} 
   
-	// If NIBO is running and button is clicked
+	// If NIBO is running and button has clicked
 	if ((event==EVENT_KEY1) || (event==EVENT_KEY2) || (event==EVENT_KEY3)) {
 		run = 0;
 		motpid_stop(1);
