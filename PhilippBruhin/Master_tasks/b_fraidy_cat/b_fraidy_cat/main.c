@@ -48,8 +48,8 @@ void blink_led(uint8_t led, uint8_t count) {
 /* OBSTRACLE                                                            */
 /************************************************************************/
 
-int8_t obstacle_pos;
-uint8_t obstacle_val;
+int8_t obstacle_pos;    // Numbers from -2 up to +2
+uint8_t obstacle_val;   // Numbers from 0 up to 127
 
 /** @brief  Limit number range to 0-255 (8 bit) 
  *
@@ -58,10 +58,11 @@ uint8_t obstacle_val;
  *  @return val     Number between 0 and 255
  */
 uint8_t getObstSensorValue(uint8_t sensor) {
-    // Returns value between 0 and 1024. Mode is as follows:
-    // ANALOG_PASSIVE = 0: passive measurement (LED off)
-    // ANALOG_ACTIVE  = 1: active measurement (LED on)
-    // ANALOG_DIFFERENTIAL = 2: active - passive measurement (difference)
+    /** Returns value between 0 and 1024. Mode is as follows:
+     *  ANALOG_PASSIVE = 0: passive measurement (LED off)
+     *  ANALOG_ACTIVE  = 1: active measurement (LED on)
+     *  ANALOG_DIFFERENTIAL = 2: active - passive measurement (difference)
+     */
 	uint16_t val = analog_getValueExt(sensor, 2);
 	// If value bigger than 255, return 255
 	if (val>0xff) return 0xff;
@@ -78,8 +79,9 @@ uint8_t getObstSensorValue(uint8_t sensor) {
  */
 uint8_t obstacle_getEvent(uint8_t reset) {
 	
-	// Since static, this variable is like a global variable and 
-	// therefore assigned on the first function call only.
+	/** Since static, this variable is like a global variable and 
+	 *  therefore assigned on the first function call only.
+     */
 	static uint8_t event_last = EVENT_NONE;
   
 	if (reset) {
@@ -89,9 +91,12 @@ uint8_t obstacle_getEvent(uint8_t reset) {
   
 	uint8_t event = EVENT_NONE;
 	
-	// Shift one bit to the right (division by 2)
-	// Advantage: number is getting smaller
-	// Disadvantage: leads to loss of resolution
+	/** Shift one bit to the right (division by 2)
+     *  11111111 = 255
+     *  01111111 = 127
+	 *  Advantage: number is getting smaller
+	 *  Disadvantage: leads to loss of resolution
+     */
 	uint8_t l = getObstSensorValue(ANALOG_FL)>>1;
 	uint8_t r = getObstSensorValue(ANALOG_FR)>>1;
 	uint8_t ll = getObstSensorValue(ANALOG_FLL)>>1;
@@ -123,8 +128,9 @@ uint8_t obstacle_getEvent(uint8_t reset) {
 		obstacle_pos = +2;
 	}
 
-	// Analyze obstacle distance with with a hysteresis
-	// from 20 up to 25.
+	/** Analyze obstacle distance with a hysteresis
+	 *  from 20 up to 25.
+     */ 
 	if (obstacle_val>25) {
 		event = EVENT_OBSTACLE_DETECTED;
 	}
@@ -241,8 +247,9 @@ void handle_event(uint8_t event) {
 	}
 
 	if (event==EVENT_OBSTACLE_DETECTED) {
-		// obstacle_pos negative -> obstracle on left side
-		// obstacle_pos positive -> obstracle on right side
+		/** obstacle_pos negative -> obstracle on left side
+		 *  obstacle_pos positive -> obstracle on right side
+         */
 		led_setall(obstacle_pos<=0, 0, 0, obstacle_pos>=0);
 		if (obstacle_pos>0) {
 			motpid_setSpeed(-25,+15);
@@ -270,7 +277,7 @@ void handle_event(uint8_t event) {
 }
 
 void loop() {
-    // Do not run loop if analog value does not change.
+    // Do not run loop if analog value does not change
     analog_wait_update();
     uint8_t event = getEvent();
     handle_event(event);

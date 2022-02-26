@@ -285,7 +285,7 @@ Compile and download [this program](https://github.com/pamasol/Lehrlingsprojekt-
 
 When there are no obstracles within the roboter's reach, it moves **forward with 80%** of max speed. If there are **obstracles** on the **left** or on the **right**, one motor stops and the robot eludes the obstacle.
 
-This **program can be improved** in many ways. For examble the LEDs could indicate what the IR sensors detect. The control of the wheels can be made more smooth. The program could start as soon as button 1 is pressed and so on. This will be part of the master tasks.
+This **program can be improved** in many ways. For examble the LEDs could indicate what the IR sensors detect. The control of the wheels can be made more smooth. The program could start as soon as button 1 is pressed and so on. All of these improvements are covered in the master tasks
 
 ### O) Maroon Shield 8 x 8 LED pixel display
 

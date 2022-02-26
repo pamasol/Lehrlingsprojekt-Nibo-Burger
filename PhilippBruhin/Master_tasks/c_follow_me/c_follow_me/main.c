@@ -52,17 +52,16 @@ void blink_led(uint8_t led, uint8_t count) {
     }
 }
 
-
 /************************************************************************/
 /* OBSTRACLE                                                            */
 /************************************************************************/
 
-int8_t obstacle_pos;    // Values from -1 up to +2
-uint8_t obstacle_val;   // Values from 0 up to 255
+int8_t obstacle_pos;    // Numbers from -2 up to +2
+uint8_t obstacle_val;   // Numbers from 0 up to 127
 
 /** @brief  Limit number range to 0-255 (8 bit) 
  *
- *  @param  sensor  Sensor number
+ *  @param  sensor  Sensor number (1,2,3 or 4)
  *	
  *  @return val     Number between 0 and 255
  */
@@ -71,7 +70,6 @@ uint8_t getObstSensorValue(uint8_t sensor) {
     if (val & 0xff00) return 0xff;                  // Set max to 255
     return val;
 }
-
 
 /** @brief  Returns an event based on position of the hand.
  *
@@ -91,6 +89,8 @@ uint8_t follow_getEvent() {
     uint8_t nstate = 0;
       
     /** Shift one bit to the right (division by 2)
+     *  11111111 = 255
+     *  01111111 = 127
      *  Advantage: number is getting smaller
      *  Disadvantage: leads to loss of resolution
      */   
@@ -156,7 +156,7 @@ uint8_t follow_getEvent() {
 /* KEY                                                                  */
 /************************************************************************/
 
-/** @brief  Returns which button has been clicked or EVENT_NONE
+/** @brief  Returns which button is clicked or EVENT_NONE
  *
  *  @param  -
  *	
@@ -179,7 +179,6 @@ uint8_t key_getEvent() {
     return EVENT_NONE;
 }
 
-
 /** @brief  Returns which button is clicked or EVENT_NONE. If no button
  *          is clicked, it checks if there is an obstacle.
  *
@@ -198,10 +197,8 @@ uint8_t getEvent() {
     return event;
 }
 
-
 uint8_t run = 0;
 uint16_t counter = 0;
-
 
 /** @brief  Checks buttons and obstacle sensors and controls the
  *          motors based on these events (state machine).
@@ -269,7 +266,6 @@ void handle_event(uint8_t event) {
     }  
 }
 
-
 void setup() {
     
     // LED bits as output
@@ -296,11 +292,15 @@ void setup() {
     run = 1;
 }
 
-
 void loop() {
+    // Blink SOS with LEDs when voltage too low
     nibo_checkMonitorVoltage();
+    // Do not run loop if analog value does not change
     analog_wait_update();
+    
+    // Update display
     maroon_loop();
+    
     uint8_t event = getEvent();
     handle_event(event);
 }
