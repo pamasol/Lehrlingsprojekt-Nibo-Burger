@@ -2,7 +2,7 @@
 
 [Pamasol Willi Mäder AG](https://www.pamasol.com/) has specialised in the development and production of solutions for aerosols and spray systems since 1965.
 
-Its Automatiker Lehrlinge (German for “mechatronic apprentices”) go through a 4-year apprenticeship. They get an on the job training by qualified Pamasol employees and go to college one or two days per week.
+Its "Automatiker Lehrlinge" (German for mechatronic apprentices) go through a 4-year apprenticeship. They get an on the job training by qualified Pamasol employees and go to college one or two days per week.
 
 At Pamasol they work on customer projects as well as on internal training projects. NIBO Burger represents the internal electronic training project. It pursues the following goals:
 
