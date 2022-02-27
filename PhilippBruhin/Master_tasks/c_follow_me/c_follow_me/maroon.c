@@ -32,6 +32,9 @@ char maroon_gfxdata[] = MAROON_LOAD() MAROON_BAR("00000000");
  *  Array position 1: l
  *  Array position 2: \33
  *  Array position 3: B
+ *
+ *  With \ we can write invisible signs in a string. Read
+ *  https://en.wikipedia.org/wiki/Escape_sequences_in_C for more information.
  */
 #define MAROON_BAR_OFFSET 4
 
