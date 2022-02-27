@@ -22,11 +22,11 @@ uint16_t maroon_cnt;
 uint8_t maroon_mode;
 
 /** maroon_gfxdata[] is filled with "\33l \33B 00000000" as initial value.
- *	The eight zeros are overwritten during operation with the letters a
+ *  The eight zeros are overwritten during operation with the letters a
  *  to h. Where a is just 1 LED on while h is 8 LEDs on. 
  */
 char maroon_gfxdata[] = MAROON_LOAD() MAROON_BAR("00000000");
-#define MAROON_BAR_OFFSET 6
+#define MAROON_BAR_OFFSET 4
 
 void maroon_bars(uint8_t a, uint8_t b, uint8_t c, uint8_t d, uint8_t e, uint8_t f, uint8_t g, uint8_t h) {
     if (usart_txempty()) {
