@@ -23,15 +23,15 @@ void maroon_setup() {
  */
 void maroon_welcome() {
 	usart_write(
-		MAROON_IMM_CLEAR()              // Clear display
-		MAROON_BRIGHT(*)                // Set matrix brightness to 100%
-		MAROON_LOAD()                   // Load next matrix bytes without delay
-		"1"
-		MAROON_BAR("0")                 // Bargraph mode, every char is a colon, terminated by space
+        MAROON_IMM_CLEAR()              // Clear display
+        MAROON_BRIGHT(*)                // Set matrix brightness to 100%
+        MAROON_LOAD()                   // Load next matrix bytes without delay
+        "1"
+        MAROON_BAR("0")                 // Bargraph mode, every char is a colon, terminated by space
                                         // Number one from line 33 is shifted 1 pixel to the left.
                                         // Write "00" if you want 2 pixels.
-		MAROON_PAUSE(1000)              // 1000ms pause
-		MAROON_STIME(3000)              // Set shift delay time to 3000ms
+        MAROON_PAUSE(1000)              // 1000ms pause
+        MAROON_STIME(3000)              // Set shift delay time to 3000ms
 		" Pamasol\n"
         MAROON_LOAD()                   // Load next matrix bytes without delay (in this case
                                         // load swiss cross without scrolling).
@@ -44,7 +44,7 @@ void maroon_welcome() {
                                         // e7 = 11100111
                                         // e7 = 11100111
                                         // ff = 11111111
-		MAROON_TXBACK(".")              // Transmit back char (synchronization)
+        MAROON_TXBACK(".")              // Transmit back char (synchronization)
 	);
 }
 
@@ -60,5 +60,5 @@ void setup() {
 }
 
 void loop() {
-
+    
 }

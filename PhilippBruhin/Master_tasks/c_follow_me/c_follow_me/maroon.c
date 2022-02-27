@@ -21,15 +21,12 @@
 uint16_t maroon_cnt;
 uint8_t maroon_mode;
 
-// In diesem Array: \33l \33B 00000000
-// die 8 Nullen werden überschrieben mit a bis h, wobei h wahrscheinlich = 8 led's on und a 1 led = on.
-/**
- *	
- *	
- *	
+/** maroon_gfxdata[] is filled with "\33l \33B 00000000" as initial value.
+ *	The eight zeros are overwritten during operation with the letters a
+ *  to h. Where a is just 1 LED on while h is 8 LEDs on. 
  */
 char maroon_gfxdata[] = MAROON_LOAD() MAROON_BAR("00000000");
-#define MAROON_BAR_OFFSET 4
+#define MAROON_BAR_OFFSET 6
 
 void maroon_bars(uint8_t a, uint8_t b, uint8_t c, uint8_t d, uint8_t e, uint8_t f, uint8_t g, uint8_t h) {
     if (usart_txempty()) {
@@ -45,21 +42,24 @@ void maroon_bars(uint8_t a, uint8_t b, uint8_t c, uint8_t d, uint8_t e, uint8_t 
     }
 }
 
-void maroon_setup() {
-    
-/** For universal asynchronous communication following parameters have to
- *  be in common
- *  1. Transmission speed in baud per second
- *	2. Data length in bits
- *  3. Start/Stop bit
- */
+void maroon_setup() { 
+    /** General for universal asynchronous receiver-transmitter (UART)
+     *  communication, following parameters have to be in common: 
+     *  1. Transmission speed in baud per second
+     *	2. Data length in bits
+     *  3. Start/Stop bit
+     *  Baud rate of maroon shield is 38400, so we need to set same 
+     *  value on the robot and activate sending/receiving.
+     */
     usart_setbaudrate(38400);
     usart_enable();
 }
 
-
 void maroon_welcome() {
     maroon_mode=0;
+    /** Display welcome message "1 Follow me" as scrolling text and
+     *  send back "." as soon as procedure has finished.
+     */
     usart_write(MAROON_IMM_CLEAR() MAROON_BRIGHT(0) MAROON_LOAD() "1" MAROON_BAR("0") MAROON_DIM(*) MAROON_PAUSE(100) MAROON_DIM(5) MAROON_STIME(60) " Follow me\n" MAROON_TXBACK("."));
 }
 
@@ -75,34 +75,47 @@ char getSensorChar(int16_t val) {
     return 'i';
 }
 
-
 void maroon_loop() {
+    /** Waiting until welcome message has finished and getting back
+     *  a "." from the maroon shield micro controller Atmel
+     *  ATmega88A.
+     */
     if (!usart_rxempty()) {
         char c = usart_getchar();
         if (c=='.') {
             maroon_mode = 1;
         }
     }
-    
-    // allenfalls display nur jedes 20-mal aktualisieren?
+
+    // Update display not every loop. Only every 20th loop.
     if (maroon_mode) {
         if (maroon_cnt) {
             maroon_cnt--;
             return;
         }
         maroon_cnt=20;
-        if (usart_txempty()) { // falls noch nicht leer, ist er immer noch letztes kommando am senden.
+        /** If usart_txempty() not true (respectively 1), the controller is
+         *  still sending the previous command and therefore it will wait
+         *  before sending a new command.
+         */        
+        if (usart_txempty()) {
+            /** analog_getValueExt() sends back values from 0 up to 1024.
+             *  getSensorChar() divides the return value into 8 ranges and
+             *  assigns letters from a to h.
+             */   
             char l = getSensorChar(analog_getValueExt(ANALOG_FL, 2));
             char r = getSensorChar(analog_getValueExt(ANALOG_FR, 2));
             char ll = getSensorChar(analog_getValueExt(ANALOG_FLL, 2));
             char rr = getSensorChar(analog_getValueExt(ANALOG_FRR, 2));
+            /** From the 8 rows of maroon shield only 4 are used - the most left
+             *  and right as well as the third and 6th row.
+             */       
             maroon_bars(rr, '0', r, '0', '0', l, '0', ll);
         }
     }
 }
 
-
-// prüfen, ob daten empfangen über uart. falls ja --> display montiert.
+// Check if receiving data via UART. If so, maroon shield mounted.
 uint8_t maroon_connected() {
     return maroon_mode;
 }
