@@ -14,7 +14,7 @@ void maroon_setup();
 
 void maroon_welcome();
 
-void maroon_loop();
+void maroon_print(char str[]);
 
 uint8_t maroon_connected();
 
