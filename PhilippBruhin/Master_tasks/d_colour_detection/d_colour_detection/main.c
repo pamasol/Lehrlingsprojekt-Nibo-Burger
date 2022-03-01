@@ -33,7 +33,7 @@ enum {
 	COL_YELLOW
 };
 
-char rgb_str[] = "#";
+char rgb_str[] = "#000000";
 
 /** @brief  Makes an LED blink with 80ms on and 120ms off
  *
@@ -51,22 +51,22 @@ void blink_led(uint8_t led, uint8_t count) {
     }
 }
 
-void print_hex (uint8_t val) {
+void transform_to_hex (uint8_t val, uint8_t pos) {
 	char c1=val/16;
 	char c2=val%16;
 	if (c1<10) c1+='0'; else c1+='a'-10;
 	if (c2<10) c2+='0'; else c2+='a'-10;
-	strcat(rgb_str, c1);
-	strcat(rgb_str, c2);
+	rgb_str[pos] = c1;
+	rgb_str[pos+1] = c2;
 }
 
-void print_color_rgb (uint32_t rgb) {
+void rgb_color_to_string (uint32_t rgb) {
 	uint8_t r = (uint8_t)((rgb >> 16) & 0xff);
 	uint8_t g = (uint8_t)((rgb >>  8) & 0xff);
 	uint8_t b = (uint8_t)((rgb >>  0) & 0xff);
-	print_hex(r);
-	print_hex(g);
-	print_hex(b);
+	transform_to_hex(r, 1);
+	transform_to_hex(g, 3);
+	transform_to_hex(b, 5);
 }
 
 /************************************************************************/
@@ -137,7 +137,7 @@ void handle_event(uint8_t event) {
 
 			uint32_t rgb = surface_getColorRGB();
 						
-			print_color_rgb(rgb);
+			rgb_color_to_string(rgb);
 			maroon_print(rgb_str);
 
 			delay(100);
