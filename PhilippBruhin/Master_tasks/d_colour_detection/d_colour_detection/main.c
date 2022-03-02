@@ -290,11 +290,11 @@ void setup() {
     /**	3800 millivolts corresponds to 4.2V battery voltage. The battery
      *  is fully charged 4.88V (4x1.22V).
      */
-	nibo_setMonitorVoltage(3800);
+    nibo_setMonitorVoltage(3800);
 	
     delay(200);
 
-	surface_readPersistent();
+    surface_readPersistent();
 	    
     maroon_welcome();
 
@@ -315,6 +315,7 @@ void loop() {
     // Wait until new set of analog values has been measured
     analog_wait_update();
 
+    // Look for event and handle event
     uint8_t event = getEvent();
     handle_event(event);
 }
