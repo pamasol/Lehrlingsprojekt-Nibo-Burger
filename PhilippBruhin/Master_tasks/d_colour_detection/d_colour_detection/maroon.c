@@ -39,14 +39,12 @@ void maroon_print(char str[]) {
         }
     }
 
-    if (maroon_mode) {
-		     
+    if (maroon_mode) {    
         if (usart_txempty()) {
-			usart_write(MAROON_IMM_CLEAR() MAROON_DIM(5) MAROON_STIME(125));
-			usart_write(str);
-			usart_write("\n" MAROON_TXBACK("."));
+            usart_write(MAROON_IMM_CLEAR() MAROON_DIM(5) MAROON_STIME(125));
+            usart_write(str);
+            usart_write("\n" MAROON_TXBACK("."));
         }
-		
     }
 }
 
