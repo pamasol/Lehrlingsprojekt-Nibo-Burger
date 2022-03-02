@@ -178,7 +178,7 @@ This project must be documented by every apprentice. It should be structured as 
     * How did the assembling go?
     * What should be considered when programming?
     * What should future learners pay attention to?
-    * Explain the [electrical schematic](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/files/3652520/maroon_shield_1_03_schematic.pdf) in general. What is motor controlling, display control, USBasp, battery charging and so on.
+    * Explain the [electrical schematic](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/files/3652510/nibo_burger_schematic_1_09.pdf) in general. What is motor controlling, display control, USBasp, battery charging and so on.
 * Appendix
 
 Documentation can be made in German language. There is no minimum or maximum number of pages.
