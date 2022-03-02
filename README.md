@@ -170,9 +170,15 @@ This project must be documented by every apprentice. It should be structured as 
     * What is a function in C?
     * How can a state machine be created in C code?
     * What is the job of microcontroller IC5 in NIBO Burger?
+    * What is a compiler and which compiler is used in this project?
     * Why is UART interface asynchronous and is there a clock or not?
     * What is Git and GitHub? Is there a difference?
     * What is open source software?
+  * Personal expiriences
+    * How did the assembling go?
+    * What should be considered when programming?
+    * What should future learners pay attention to?
+    * Explain the [electrical schematic](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/files/3652520/maroon_shield_1_03_schematic.pdf) in general. What is motor controlling, display control, USBasp, battery charging and so on.
 * Appendix
 
 Documentation can be made in German language. There is no minimum or maximum number of pages.
