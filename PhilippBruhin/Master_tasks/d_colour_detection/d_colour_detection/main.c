@@ -8,7 +8,7 @@
  *  Worth knowing:
  *      This program makes heavily use of RGB colors. R represents
  *      the red value, G the green and B the blue. Examples:
- *	    Red     #ff0000 --> 1111 1111 0000 0000 0000 0000
+ *      Red     #ff0000 --> 1111 1111 0000 0000 0000 0000
  *      Green   #00ff00 --> 0000 0000 1111 1111 0000 0000
  *      Blue    #0000ff --> 0000 0000 0000 0000 1111 1111
  *      Yellow  #ffff00 --> 1111 1111 1111 1111 0000 0000
@@ -40,6 +40,11 @@ enum {
 };
 
 char rgb_str[] = "#000000";
+uint8_t color = COL_NONE;
+
+/************************************************************************/
+/* HELPER FUNCTIONS                                                     */
+/************************************************************************/
 
 /** @brief  Makes an LED blink with 80ms on and 120ms off
  *
@@ -149,18 +154,71 @@ void handle_event(uint8_t event) {
         return;
     } 
 
+    // Output Color as name
     if (event==EVENT_KEY2) {
 	    
+        // Values from 0 up to 1023 when calibrated correct
+        int16_t r = surface_get(SURFACE_R);
+        int16_t g = surface_get(SURFACE_C);
+        int16_t b = surface_get(SURFACE_L);
+        // The pure yellow is formed by overlapping Red=1, Green=1 and Blue=0.
+        int16_t y = (r+g)/2;
+        
+        int16_t rg = (r-g);
+        int16_t by = (b-y);
+        int16_t i = r+g+b;
+        
+        char text[20];
+        sprintf(text, "%d", by);
+        maroon_print(text);
+
+        // Calculate color based in red, green and blue intensity
+        if ((abs(rg)<100) && (abs(by)<100)) {
+            if (i<200) color = COL_BLACK;
+            if (i>2500) color = COL_WHITE;
+        }
+        if (rg>500) {
+            if (g<200) color = COL_RED;
+            else color = COL_YELLOW;
+        }
+        if ((rg<100)&&(by>200)) {
+            color = COL_BLUE;
+        }
+        if ((rg<100)&&(by<-300)) {
+            color = COL_GREEN;
+        }
+
+        // Show color on display
+        if (color==COL_BLACK) {
+            maroon_print("black\n");	
+        } else if (color==COL_WHITE) {
+            maroon_print("white\n");	
+        } else if (color==COL_RED) {
+            maroon_print(" red\n");	
+        } else if (color==COL_BLUE) {
+            maroon_print(" blue\n");	
+        } else if (color==COL_GREEN) {
+            maroon_print(" green\n");	
+        } else if (color==COL_YELLOW) {
+            maroon_print(" yellow\n");	
+        } else {
+            maroon_print(" unknown\n");
+        }            
+                     
         return;
     }
 	
+    
+    // Output color as hex value
     if (event==EVENT_KEY3) {
-        /** Returns color from surface as 24bit RGB value and writes
-         *  in 32 bit variable rgb.
-         */
+
+        // Writing 24 bit RGB value in 32 bit variable
         uint32_t rgb = surface_getColorRGB();
-						
+		
+        // transform 32 bit int to string with hex value				
         rgb_color_to_string(rgb);
+        
+        // Show color on display
         maroon_print(rgb_str);		
 		
         return;
@@ -168,7 +226,7 @@ void handle_event(uint8_t event) {
 }
 
 /************************************************************************/
-/* SETUP                                                                */
+/* SETUP - called once at startup                                       */
 /************************************************************************/
 
 void setup() {
@@ -190,7 +248,7 @@ void setup() {
 }
 
 /************************************************************************/
-/* LOOP                                                       */
+/* LOOP -  loops consecutively                                          */
 /************************************************************************/
 
 void loop() {
