@@ -31,20 +31,20 @@
 #include "maroon.h"
 
 enum {
-	EVENT_NONE              =  0,
-	EVENT_KEY1              =  1,
-	EVENT_KEY2              =  2,
-	EVENT_KEY3              =  3,
+    EVENT_NONE          =  0,
+    EVENT_KEY1          =  1,
+    EVENT_KEY2          =  2,
+    EVENT_KEY3          =  3,
 };
 
 enum {
-	COL_NONE,
-	COL_BLACK,
-	COL_WHITE,
-	COL_RED,
-	COL_BLUE,
-	COL_GREEN,
-	COL_YELLOW
+    COL_NONE,
+    COL_BLACK,
+    COL_WHITE,
+    COL_RED,
+    COL_BLUE,
+    COL_GREEN,
+    COL_YELLOW
 };
 
 char rgb_str[] = "#000000";
@@ -66,14 +66,14 @@ uint8_t color = COL_NONE;
  *  @return void
  */
 void led_blink(uint8_t l1, uint8_t l2, uint8_t l3, uint8_t l4) {
-	cli();
-	for (uint8_t i=0; i<5; i++) {
-		led_setall(l1,l2,l3,l4);
-		delay(100);
-		led_setall(0,0,0,0);
-		delay(100);
-	}
-	sei();
+    cli();
+    for (uint8_t i=0; i<5; i++) {
+        led_setall(l1,l2,l3,l4);
+        delay(100);
+        led_setall(0,0,0,0);
+        delay(100);
+    }
+    sei();
 }
 
 /** @brief  Takes binary number and transforms it to hex number.
@@ -85,12 +85,12 @@ void led_blink(uint8_t l1, uint8_t l2, uint8_t l3, uint8_t l4) {
  *  @return void
  */
 void transform_to_hex (uint8_t val, uint8_t pos) {
-	char c1=val/16;
-	char c2=val%16;
-	if (c1<10) c1+='0'; else c1+='a'-10;
-	if (c2<10) c2+='0'; else c2+='a'-10;
-	rgb_str[pos] = c1;
-	rgb_str[pos+1] = c2;
+    char c1=val/16;
+    char c2=val%16;
+    if (c1<10) c1+='0'; else c1+='a'-10;
+    if (c2<10) c2+='0'; else c2+='a'-10;
+    rgb_str[pos] = c1;
+    rgb_str[pos+1] = c2;
 }
 
 /** @brief  Takes 24 bit binary RGB value and divides it into binary
@@ -101,12 +101,12 @@ void transform_to_hex (uint8_t val, uint8_t pos) {
  *  @return void
  */
 void rgb_color_to_string (uint32_t rgb) {
-	uint8_t r = (uint8_t)((rgb >> 16) & 0xff);
-	uint8_t g = (uint8_t)((rgb >>  8) & 0xff);
-	uint8_t b = (uint8_t)((rgb >>  0) & 0xff);
-	transform_to_hex(r, 1);
-	transform_to_hex(g, 3);
-	transform_to_hex(b, 5);
+    uint8_t r = (uint8_t)((rgb >> 16) & 0xff);
+    uint8_t g = (uint8_t)((rgb >>  8) & 0xff);
+    uint8_t b = (uint8_t)((rgb >>  0) & 0xff);
+    transform_to_hex(r, 1);
+    transform_to_hex(g, 3);
+    transform_to_hex(b, 5);
 }
 
 /** @brief  Calibrates RGB sensors based on black and white surface. 
@@ -120,23 +120,23 @@ void rgb_color_to_string (uint32_t rgb) {
  */
 void calibrate() {
 
-	// Stay in calibration mode for all calibration steps
-	while (1) {
-		char c = key_get_char();
-		if (c=='a') {
-			delay(200);
-			surface_calibrateBlack();
-			led_blink(0,1,0,0);
-		} else if  (c=='b') {
-			delay(200);
-			surface_calibrateWhite();
-			led_blink(0,0,1,0);
-		} else if  (c=='c') {
-			surface_writePersistent();
-			led_blink(1,0,0,1);
-			return;
-		}
-	}
+    // Stay in calibration mode for all calibration steps
+    while (1) {
+        char c = key_get_char();
+        if (c=='a') {
+            delay(200);
+            surface_calibrateBlack();
+            led_blink(0,1,0,0);
+        } else if  (c=='b') {
+            delay(200);
+            surface_calibrateWhite();
+            led_blink(0,0,1,0);
+        } else if  (c=='c') {
+            surface_writePersistent();
+            led_blink(1,0,0,1);
+            return;
+        }
+    }
 }
 
 /************************************************************************/
