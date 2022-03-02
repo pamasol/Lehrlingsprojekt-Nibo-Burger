@@ -1,7 +1,7 @@
 /**
- *	NIBO Burger – Pamasol electronic project for apprentices
- *	Master task C) Follow me
- *	Setup: IR-Bricks in slots FLL, FL, FR, FRR, maroon shield mounted
+ *  NIBO Burger – Pamasol electronic project for apprentices
+ *  Master task C) Follow me
+ *  Setup: IR-Bricks in slots FLL, FL, FR, FRR, maroon shield mounted
  *  Instructions:
  *      1. Place robot on the ground an press key 1, 2 or 3 for starting.
  *      2. Hold hand about 10cm in front of the robot and it will follow.
