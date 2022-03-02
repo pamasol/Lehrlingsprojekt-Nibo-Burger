@@ -5,11 +5,11 @@
  *  Instructions:
  *  If sensors should be calibrated, start with step 1. Otherwise jump to step 2.    
  *      1. Switch on robot and put it on black surface.
- *		    a. Click key 1. Wait until LED 2 (blue LED left) did blink 5 times.
- *		    b. Put robot on white area and click key 2. Wait until LED 3 (blue LED right)
- *             did blink 5 times.
- *		    c. Click key 3 for storing the calibration values and wait until LED 1 and 4
- *             (red LEDs) did blink 5 times.
+ *          a.  Click key 1. Wait until LED 2 (blue LED left) did blink 5 times.
+ *          b.  Put robot on white area and click key 2. Wait until LED 3 (blue LED right)
+ *              did blink 5 times.
+ *          c.  Click key 3 for storing the calibration values and wait until LED 1 and 4
+ *              (red LEDs) did blink 5 times.
  *      2. Place robot on colored surface and click key 2 for getting colors red, green
  *         blue, yellow, black and white. 
  *      3. Click key 3 for getting the color as hex value.
@@ -193,7 +193,7 @@ void handle_event(uint8_t event) {
     
     uint8_t has_maroon = maroon_connected();
 
-    /**	Clicking key 1
+    /**	CLICKING KEY 1
      *  Starts sensor calibration for black surface, followed by white.
      */
     if (event==EVENT_KEY1) {
@@ -201,7 +201,7 @@ void handle_event(uint8_t event) {
         return;
     } 
 
-    /**	Clicking key 2
+    /**	CLICKING KEY 2
      *  Returns color as name. Works for red, blue, green, yellow,
      *  white and black.
      */
@@ -259,7 +259,7 @@ void handle_event(uint8_t event) {
     }
 	
     
-    /**	Clicking key 3
+    /**	KLICKING KEY 3
      *  Returns color as hex value. For example red as #ff0000 or
      *  yellow as #ffff00.
      */
