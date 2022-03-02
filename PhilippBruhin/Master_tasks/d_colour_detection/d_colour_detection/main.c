@@ -3,13 +3,13 @@
  *  Master task D) Colour detection
  *  Setup: maroon shield mounted
  *  Instructions:
- *  If sensors should be calibrated, start with step 1. Otherwise jump to step 2.    
+ *      If sensors should be calibrated, start with step 1. Otherwise jump to step 2.    
  *      1. Switch on robot and put it on black surface.
- *          a.  Click key 1. Wait until LED 2 (blue LED left) did blink 5 times.
- *          b.  Put robot on white area and click key 2. Wait until LED 3 (blue LED right)
- *              did blink 5 times.
- *          c.  Click key 3 for storing the calibration values and wait until LED 1 and 4
- *              (red LEDs) did blink 5 times.
+ *          a. Click key 1. Wait until LED 2 (blue LED left) did blink 5 times.
+ *          b. Put robot on white area and click key 2. Wait until LED 3 (blue LED right)
+ *             did blink 5 times.
+ *          c. Click key 3 for storing the calibration values and wait until LED 1 and 4
+ *             (red LEDs) did blink 5 times.
  *      2. Place robot on colored surface and click key 2 for getting colors red, green
  *         blue, yellow, black and white. 
  *      3. Click key 3 for getting the color as hex value.
