@@ -3,11 +3,17 @@
  *	Master task D) Colour detection
  *	Setup: maroon shield mounted
  *  Instructions:
- *  1. 
- *  2. 
- *  3. 
+ *  1. Switch on robot and place it on colored surface.
+ *  2. Click key 3 to get the color as hex value.
  *  Worth knowing:
- *  - 
+ *  This program makes heavily use of RGB colors. R represents
+ *  the red value, G the green and B the blue. Examples:
+ *	Red     #ff0000 --> 1111 1111 0000 0000 0000 0000
+ *  Green   #00ff00 --> 0000 0000 1111 1111 0000 0000
+ *  Blue    #0000ff --> 0000 0000 0000 0000 1111 1111
+ *  Yellow  #ffff00 --> 1111 1111 1111 1111 0000 0000
+ *  White   #ffffff --> 1111 1111 1111 1111 1111 1111
+ *  Black   #000000 --> 0000 0000 0000 0000 0000 0000 
  */
 
 #include <stdlib.h>
@@ -51,6 +57,14 @@ void blink_led(uint8_t led, uint8_t count) {
     }
 }
 
+/** @brief  Takes binary number and transforms it to hex number.
+ *          Updates global variable rgb_str[] in a second step.
+ *
+ *  @param  val     Binary number with 8 bit
+ *  @param  pos     Position in the hex string (first of two from left)
+ *
+ *  @return void
+ */
 void transform_to_hex (uint8_t val, uint8_t pos) {
 	char c1=val/16;
 	char c2=val%16;
@@ -60,6 +74,13 @@ void transform_to_hex (uint8_t val, uint8_t pos) {
 	rgb_str[pos+1] = c2;
 }
 
+/** @brief  Takes 24 bit binary RGB value and divides it into binary
+ *			data for red, green and blue.
+ *
+ *  @param  rgb     RGB color value 24 bit as 32 bit unsigned int
+ *
+ *  @return void
+ */
 void rgb_color_to_string (uint32_t rgb) {
 	uint8_t r = (uint8_t)((rgb >> 16) & 0xff);
 	uint8_t g = (uint8_t)((rgb >>  8) & 0xff);
@@ -135,13 +156,13 @@ void handle_event(uint8_t event) {
 	
 	if (event==EVENT_KEY3) {
 
+			/** Returns color from surface as 24bit RGB value and writes
+			 *  in 32 bit variable rgb.
+			 */
 			uint32_t rgb = surface_getColorRGB();
 						
 			rgb_color_to_string(rgb);
-			maroon_print(rgb_str);
-
-			delay(100);
-			
+			maroon_print(rgb_str);		
 		
 		return;
 	}
@@ -175,8 +196,9 @@ void setup() {
 
 void loop() {
     /**	Check if monitor voltage is ok. If below nibo_setMonitorVoltage()
-     *  program will be interrupted and LED will blink SOS. This is
-     *  important since low voltage will lead to other sensor outputs.
+     *  program will be interrupted and LED will blink SOS (3 times short,
+	 *  3 times long, 3 times short). This is important since low voltage
+	 *  will lead to other sensor outputs.
      */
 	nibo_checkMonitorVoltage();
 
