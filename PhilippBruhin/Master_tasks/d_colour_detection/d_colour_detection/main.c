@@ -259,7 +259,7 @@ void handle_event(uint8_t event) {
     }
 	
     
-    /**	KLICKING KEY 3
+    /**	CLICKING KEY 3
      *  Returns color as hex value. For example red as #ff0000 or
      *  yellow as #ffff00.
      */
