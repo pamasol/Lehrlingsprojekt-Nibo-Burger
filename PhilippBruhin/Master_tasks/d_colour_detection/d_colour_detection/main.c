@@ -3,11 +3,19 @@
  *  Master task D) Colour detection
  *  Setup: maroon shield mounted
  *  Instructions:
- *      1. Switch on robot and place it on colored surface.
- *      2. Click key 3 to get the color as hex value.
+ *  If sensors should be calibrated, start with step 1. Otherwise jump to step 2.    
+ *      1. Switch on robot and put it on black surface.
+ *		    a. Click key 1. Wait until LED 2 (blue LED left) did blink 5 times.
+ *		    b. Put robot on white area and click key 2. Wait until LED 3 (blue LED right)
+ *             did blink 5 times.
+ *		    c. Click key 3 for storing the calibration values and wait until LED 1 and 4
+ *             (red LEDs) did blink 5 times.
+ *      2. Place robot on colored surface and click key 2 for getting colors red, green
+ *         blue, yellow, black and white. 
+ *      3. Click key 3 for getting the color as hex value.
  *  Worth knowing:
- *      This program makes heavily use of RGB colors. R represents
- *      the red value, G the green and B the blue. Examples:
+ *      This program makes heavily use of RGB color pattern. R represents the red value,
+ *      G the green and B the blue. Examples:
  *      Red     #ff0000 --> 1111 1111 0000 0000 0000 0000
  *      Green   #00ff00 --> 0000 0000 1111 1111 0000 0000
  *      Blue    #0000ff --> 0000 0000 0000 0000 1111 1111
@@ -46,20 +54,26 @@ uint8_t color = COL_NONE;
 /* HELPER FUNCTIONS                                                     */
 /************************************************************************/
 
-/** @brief  Makes an LED blink with 80ms on and 120ms off
+/** @brief  Makes an LEDs blink with 100ms on and 100ms off. Cli clears
+ *  the global interrupt flag in SREG so prevent any form of interrupt
+ *  occurring. While sei sets the bit and switches interrupts on.
  *
- *  @param  led     LED number (1,2,3 or 4)
- *  @param  count   How many times led should blink (1 up to 32767)
+ *  @param  l1      LED 1 must be 0 for being off or 1 for blinking
+ *  @param  l2      LED 2 must be 0 for being off or 1 for blinking
+ *  @param  l3      LED 3 must be 0 for being off or 1 for blinking
+ *  @param  l4      LED 4 must be 0 for being off or 1 for blinking
  *
  *  @return void
  */
-void blink_led(uint8_t led, uint8_t count) {
-    while (count--) {
-        led_set(led, 1);
-        delay(80);
-        led_set(led, 0);
-        delay(120);
-    }
+void led_blink(uint8_t l1, uint8_t l2, uint8_t l3, uint8_t l4) {
+	cli();
+	for (uint8_t i=0; i<5; i++) {
+		led_setall(l1,l2,l3,l4);
+		delay(100);
+		led_setall(0,0,0,0);
+		delay(100);
+	}
+	sei();
 }
 
 /** @brief  Takes binary number and transforms it to hex number.
@@ -93,6 +107,36 @@ void rgb_color_to_string (uint32_t rgb) {
 	transform_to_hex(r, 1);
 	transform_to_hex(g, 3);
 	transform_to_hex(b, 5);
+}
+
+/** @brief  Calibrates RGB sensors based on black and white surface. 
+ *  Calibration values are stored in the EEPROM and will be persistent
+ *  when reprogramming. So this step does not to be repeated with every
+ *  try.
+ *
+ *  @param  -
+ *
+ *  @return void
+ */
+void calibrate() {
+
+	// Stay in calibration mode for all calibration steps
+	while (1) {
+		char c = key_get_char();
+		if (c=='a') {
+			delay(200);
+			surface_calibrateBlack();
+			led_blink(0,1,0,0);
+		} else if  (c=='b') {
+			delay(200);
+			surface_calibrateWhite();
+			led_blink(0,0,1,0);
+		} else if  (c=='c') {
+			surface_writePersistent();
+			led_blink(1,0,0,1);
+			return;
+		}
+	}
 }
 
 /************************************************************************/
@@ -149,12 +193,18 @@ void handle_event(uint8_t event) {
     
     uint8_t has_maroon = maroon_connected();
 
+    /**	Clicking key 1
+     *  Starts sensor calibration for black surface, followed by white.
+     */
     if (event==EVENT_KEY1) {
-        
+        calibrate();
         return;
     } 
 
-    // Output Color as name
+    /**	Clicking key 2
+     *  Returns color as name. Works for red, blue, green, yellow,
+     *  white and black.
+     */
     if (event==EVENT_KEY2) {
 	    
         // Values from 0 up to 1023 when calibrated correct
@@ -168,9 +218,9 @@ void handle_event(uint8_t event) {
         int16_t by = (b-y);
         int16_t i = r+g+b;
         
-        char text[20];
-        sprintf(text, "%d", by);
-        maroon_print(text);
+        // char text[20];
+        // sprintf(text, "%d", by);
+        // maroon_print(text);
 
         // Calculate color based in red, green and blue intensity
         if ((abs(rg)<100) && (abs(by)<100)) {
@@ -209,7 +259,10 @@ void handle_event(uint8_t event) {
     }
 	
     
-    // Output color as hex value
+    /**	Clicking key 3
+     *  Returns color as hex value. For example red as #ff0000 or
+     *  yellow as #ffff00.
+     */
     if (event==EVENT_KEY3) {
 
         // Writing 24 bit RGB value in 32 bit variable
