@@ -1,19 +1,19 @@
 /**
- *	NIBO Burger – Pamasol electronic project for apprentices
- *	Master task D) Colour detection
- *	Setup: maroon shield mounted
+ *  NIBO Burger – Pamasol electronic project for apprentices
+ *  Master task D) Colour detection
+ *  Setup: maroon shield mounted
  *  Instructions:
- *  1. Switch on robot and place it on colored surface.
- *  2. Click key 3 to get the color as hex value.
+ *      1. Switch on robot and place it on colored surface.
+ *      2. Click key 3 to get the color as hex value.
  *  Worth knowing:
- *  This program makes heavily use of RGB colors. R represents
- *  the red value, G the green and B the blue. Examples:
- *	Red     #ff0000 --> 1111 1111 0000 0000 0000 0000
- *  Green   #00ff00 --> 0000 0000 1111 1111 0000 0000
- *  Blue    #0000ff --> 0000 0000 0000 0000 1111 1111
- *  Yellow  #ffff00 --> 1111 1111 1111 1111 0000 0000
- *  White   #ffffff --> 1111 1111 1111 1111 1111 1111
- *  Black   #000000 --> 0000 0000 0000 0000 0000 0000 
+ *      This program makes heavily use of RGB colors. R represents
+ *      the red value, G the green and B the blue. Examples:
+ *	    Red     #ff0000 --> 1111 1111 0000 0000 0000 0000
+ *      Green   #00ff00 --> 0000 0000 1111 1111 0000 0000
+ *      Blue    #0000ff --> 0000 0000 0000 0000 1111 1111
+ *      Yellow  #ffff00 --> 1111 1111 1111 1111 0000 0000
+ *      White   #ffffff --> 1111 1111 1111 1111 1111 1111
+ *      Black   #000000 --> 0000 0000 0000 0000 0000 0000 
  */
 
 #include <stdlib.h>
@@ -75,7 +75,7 @@ void transform_to_hex (uint8_t val, uint8_t pos) {
 }
 
 /** @brief  Takes 24 bit binary RGB value and divides it into binary
- *			data for red, green and blue.
+ *          data for red, green and blue.
  *
  *  @param  rgb     RGB color value 24 bit as 32 bit unsigned int
  *
@@ -146,26 +146,25 @@ void handle_event(uint8_t event) {
 
     if (event==EVENT_KEY1) {
         
-		return;
+        return;
     } 
 
     if (event==EVENT_KEY2) {
 	    
-	    return;
+        return;
     }
 	
-	if (event==EVENT_KEY3) {
-
-			/** Returns color from surface as 24bit RGB value and writes
-			 *  in 32 bit variable rgb.
-			 */
-			uint32_t rgb = surface_getColorRGB();
+    if (event==EVENT_KEY3) {
+        /** Returns color from surface as 24bit RGB value and writes
+         *  in 32 bit variable rgb.
+         */
+        uint32_t rgb = surface_getColorRGB();
 						
-			rgb_color_to_string(rgb);
-			maroon_print(rgb_str);		
+        rgb_color_to_string(rgb);
+        maroon_print(rgb_str);		
 		
-		return;
-	}
+        return;
+    }
 }
 
 /************************************************************************/
@@ -177,8 +176,8 @@ void setup() {
     maroon_setup();
     analog_init();
     
-	/**	3800 millivolts corresponds to 4.2V battery voltage. The battery
-	 *  is fully charged 4.88V (4x1.22V).
+    /**	3800 millivolts corresponds to 4.2V battery voltage. The battery
+     *  is fully charged 4.88V (4x1.22V).
      */
 	nibo_setMonitorVoltage(3800);
 	
@@ -197,14 +196,14 @@ void setup() {
 void loop() {
     /**	Check if monitor voltage is ok. If below nibo_setMonitorVoltage()
      *  program will be interrupted and LED will blink SOS (3 times short,
-	 *  3 times long, 3 times short). This is important since low voltage
-	 *  will lead to other sensor outputs.
+     *  3 times long, 3 times short). This is important since low voltage
+     *  will lead to other sensor outputs.
      */
-	nibo_checkMonitorVoltage();
+    nibo_checkMonitorVoltage();
 
     // Wait until new set of analog values has been measured
-	analog_wait_update();
+    analog_wait_update();
 
-	uint8_t event = getEvent();
-	handle_event(event);
+    uint8_t event = getEvent();
+    handle_event(event);
 }

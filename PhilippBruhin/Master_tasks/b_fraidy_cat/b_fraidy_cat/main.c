@@ -3,15 +3,15 @@
  *  Master task B) Fraidy cat
  *  Setup: IR-Bricks in slots FLL, FL, FR, FRR, no maroon shield mounted
  *  Instructions:
- *  1. Place robot on the ground an press key 1, 2 or 3 for starting.
- *  2. Obstacles can be simulated with hands. The robot will dodge.
- *  3. Press key 1, 2 or 3 for stopping the robot.
+ *      1. Place robot on the ground an press key 1, 2 or 3 for starting.
+ *      2. Obstacles can be simulated with hands. The robot will dodge.
+ *      3. Press key 1, 2 or 3 for stopping the robot.
  *  Worth knowing:
- *  Program works with an event handler. In programming, an event handler
- *  is a callback routine that operates asynchronously once an event
- *  takes place.
- *  This program checks for events with getEvent() and in a second step
- *  it runs handle_event() to act.
+ *      Program works with an event handler. In programming, an event handler
+ *      is a callback routine that operates asynchronously once an event
+ *      takes place.
+ *      This program checks for events with getEvent() and in a second step
+ *      it runs handle_event() to act.
  */
 
 #include <niboburger/robomain.h>

@@ -3,14 +3,14 @@
  *  Master task A) Round trip
  *  Setup: IR-Bricks and maroon shield not mounted
  *  Instructions:
- *  1. Lift robot off the ground an press key 1 for left wheel alignment.
- *  2. Press key 1 again for right wheel alignment.
- *  3. Place robot on the ground at its start position an press key 2.
- *  4. Robot will move forward 1.5m, turn 180° and come back to the same place.
- *  5. Reset always possible by clicking key 3.
+ *      1. Lift robot off the ground an press key 1 for left wheel alignment.
+ *      2. Press key 1 again for right wheel alignment.
+ *      3. Place robot on the ground at its start position an press key 2.
+ *      4. Robot will move forward 1.5m, turn 180° and come back to the same place.
+ *      5. Reset always possible by clicking key 3.
  *  Worth knowing:
- *  Program is structured as a state machine. A state machine reads a set of
- *  inputs and changes to a different state based on those inputs.
+ *      Program is structured as a state machine. A state machine reads a set of
+ *      inputs and changes to a different state based on those inputs.
  */
 
 #include "./niboburger/robomain.h"
