@@ -218,9 +218,10 @@ void handle_event(uint8_t event) {
         int16_t by = (b-y);
         int16_t i = r+g+b;
         
-        // char text[20];
-        // sprintf(text, "%d", by);
-        // maroon_print(text);
+        // Debugging purpose. Puts value of color on display.
+        // char color_value[20];
+        // sprintf(color_value, "%d", by);
+        // maroon_print(color_value);
 
         // Calculate color based in red, green and blue intensity
         if ((abs(rg)<100) && (abs(by)<100)) {
