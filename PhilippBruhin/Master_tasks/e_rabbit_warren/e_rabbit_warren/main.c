@@ -17,9 +17,12 @@
 #include <stdlib.h>
 #include <string.h>
 
-uint8_t display_mode;
-volatile int8_t state;
+int8_t stear;                       // Value between -64 and +64
 
+uint8_t display_mode;
+volatile int8_t state;              // Value between -2 and +2
+uint8_t color;                      // ???
+                     
 /************************************************************************/
 /* HELPER FUNCTIONS                                                     */
 /************************************************************************/
@@ -78,6 +81,45 @@ void calibrate() {
     }
 }
 
+
+/* diese Funktion wird automatisch aufgerufen. Der Aufruf erfolgt 
+   immer nachdem alle analogen Kanäle einen neuen Wert gemessen
+   haben. Da die Funktion so häufig aufgerufen wird, sollte sie 
+   möglichst kurz sein und keine Wartezeiten (delay(), etc...)
+   oder ausgiebige Berechnungen enthalten!
+*/
+
+static void check_color(uint8_t r, uint8_t g, uint8_t b) {
+    uint8_t col=0;
+    if (r<10) {
+        // maybe blue
+        if ((g>30)&&(g<70)&&(b>50)) {
+            // is blue
+            col=1;
+        }
+    } else if (r>50) {
+        // maybe red
+        if ((g<20)&&(b<20)) {
+            // is red
+            col=2;
+        }    
+    }
+    if (color==col) {
+        if (col) {
+            if (colstabcnt<255) {
+                colstabcnt++;
+            }
+        } else {
+            colstabcnt /= 2;
+        }
+    } else {
+        if (col==0) {
+            colstabcnt /= 2;
+        }
+        color = col;
+    }
+}
+
 /** @brief  Sets the state variable from -2 up to +2 based on the 
  *  values from the three surface sensors.
  *
@@ -93,8 +135,9 @@ void calibrate() {
  *  @return void
  */
 void analog_irq_hook() {
-    /** surface_get() returns values between 0 and 1023. Minimum
-     *  sensor value is set to 127.
+    /** surface_get() returns values between 0 and 1023. The min() function
+     *  returns the lesser value. So max value is 127.
+     *
      *  ANALOG_BCL: Floor sensor left  -->  light from middle sensor
      *  ANALOG_BL:  Floor sensor left
      *  ANALOG_BC:  Floor sensor center
@@ -107,18 +150,23 @@ void analog_irq_hook() {
     uint8_t br  = min(127, surface_get(SURFACE_R) /8);
     uint8_t bcr = min(127, surface_get(SURFACE_CR)/8);
     
+    /** Line left: +64 >= stear > 0
+     *  Line right: -64 <= stear < 0
+     */
     int8_t dir = (int8_t)bcr-(int8_t)bcl;
     stear = constrain(dir, -64, +64);
   
+    /** ???
+     *  
+     */      
     if ((dir < -12)||(dir > +12)) {
-    color = 0;
+        color = 0;
     } else {
-    check_color(br, bc, bl);
+        check_color(br, bc, bl);
     }
-    //  uint16_t bcl = analog_getValueExt(ANALOG_BCL,2);
-    //  uint16_t bc = analog_getValueExt(ANALOG_BC,2);
-    //  uint16_t bcr = analog_getValueExt(ANALOG_BCR,2);
-  
+
+
+
     if (bc<FLOOR_VALUE/4) {
     state = 0; // Linie liegt sehr mittig!
     } else if (bc<FLOOR_VALUE) {
