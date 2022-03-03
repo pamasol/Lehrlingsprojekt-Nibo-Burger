@@ -115,7 +115,7 @@ As soon as the programmes above are installed, one can add specific Microchip St
 
 Git is the most widely used modern version control system in the world. It tracks changes in source code during software development. It is designed for coordinating work among programmers, but it can be used to track changes in any set of files. Its setup has to be performed as follows.
 
-1. Generate an SSH key and connect your Git with GitHub as [described here]( https://help.github.com/en/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent).
+1. **Generate an SSH key** and connect your Git with GitHub as [described here]( https://help.github.com/en/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent).
 
 2. Right click on desktop > **Git Bash Here** and run following commands. Use your email and your GitHub user name.
 
@@ -124,33 +124,33 @@ Git is the most widely used modern version control system in the world. It track
   git config --global user.name "Your Name"
   ```
 
-3. Ask your Pamasol instructor for adding you to this repository.
+3. Ask your Pamasol instructor for **adding you to this repository**.
 
-4. Clone the project as follows
+4. **Clone** the project as follows
 
   ```bash
   git clone https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger.git
   ```
 
-5. Add your changes with
+5. **Add** your changes with
 
   ```bash
   git add –all
   ```
 
-6. Commit changes with
+6. **Commit** changes with
 
   ```bash
   git commit -m “here what I did and want to commit”
   ```
 
-7. Push commits to GitHub
+7. **Push** commits to GitHub
 
   ```bash
   git push
   ```
 
-8. Load latest commits
+8. **Load latest** commits
 
   ```bash
   git pull
