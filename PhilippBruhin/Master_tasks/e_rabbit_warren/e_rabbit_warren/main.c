@@ -3,34 +3,35 @@
  *  Master task E) Rabbit warren
  *  Setup: IR-Bricks in slots FLL, FL, FR, FRR, maroon shield mounted
  *  Instructions:
- *      1. Switch on robot and click key 3 for calibration
- *	        a. Put robot on black area and click key 1. Wait for LEDs blinking 5 times.
- *	        b. Put robot on white area and click key 2. Wait for LEDs blinking 5 times.
- *	        c. Click key 3 for storing the calibration values and wait for blinking LEDs.
- *      2. Put robot to start position and click...
+ *      If sensors should be calibrated, start with step 1. Otherwise jump to step 2.
+ *      1. Switch on robot and put it on black surface.
+ *          a. Click key 1. Wait until LED 2 (blue LED left) did blink 5 times.
+ *          b. Put robot on white area and click key 2. Wait until LED 3 (blue LED right)
+ *             did blink 5 times.
+ *          c. Click key 3 for storing the calibration values and wait until LED 1 and 4
+ *             (red LEDs) did blink 5 times.
+ *      2. ...
+ *      3. ...
  *  Worth knowing:
  *  
  *  
  */
 
-#include <niboburger/robomain.h>
 #include <stdlib.h>
 #include <string.h>
 
-// Line tracking
-#define FLOOR_VALUE 40              // Light-gray floor: 40, Medium-gray floor: 30
-int8_t stear;                       // Value between -64 (line right) and +64 (line left)
-volatile int8_t state;              // Value between -2 and +2
-uint16_t loose_cnt = 550;           // Max 550 and decreases when state +2 or -2
-uint8_t obst_max;                   // Obstacles detected by IR-Bricks. Mas value is 127.
+#include "niboburger/robomain.h"
+#include "maroon.h"
 
-// Color detection (start and finish) 
-uint8_t color;                      // 1 for blue, 2 for red, 0 for neither
-uint8_t colstabcnt = 0;             // Color stable count. Max value is 254.
+enum {
+    EVENT_NONE              =  0,
+    EVENT_KEY1              =  1,
+    EVENT_KEY2              =  2,
+    EVENT_KEY3              =  3,
+    
+    EVENT_OBSTRACLE         = 20,
+};
 
-// Display control
-uint8_t display_mode;
-                     
 /************************************************************************/
 /* HELPER FUNCTIONS                                                     */
 /************************************************************************/
@@ -47,7 +48,7 @@ uint8_t display_mode;
  *  @return void
  */
 void led_blink(uint8_t l1, uint8_t l2, uint8_t l3, uint8_t l4) {
- cli();
+    cli();
     for (uint8_t i=0; i<5; i++) {
         led_setall(l1,l2,l3,l4);
         delay(100);
@@ -67,9 +68,8 @@ void led_blink(uint8_t l1, uint8_t l2, uint8_t l3, uint8_t l4) {
  *  @return void
  */
 void calibrate() {
-    led_blink(1,1,1,1);
 	
-    // Waiting in calibration mode for push of a key
+    // Stay in calibration mode for all calibration steps
     while (1) {
         char c = key_get_char();
         if (c=='a') {
@@ -88,48 +88,41 @@ void calibrate() {
     }
 }
 
-/** @brief  Checks if surface color is red (right sensor) or blue
- *  (left sensor) and integrates the time while the same color is
- *  pending.
+/** @brief  ??
+ *  
+ *  
+ *  
  *
- *  @param  red     Int value of red color sensor (value between 0 and 127)
- *  @param  green   Int value of green color sensor (value between 0 and 127)
- *  @param  blue    Int value of blue color sensor (value between 0 and 127)
+ *  @param  -
  *
  *  @return void
  */
-static void check_color(uint8_t red, uint8_t green, uint8_t blue) {
-    uint8_t col=0;
-    if (red<10) {
-        // maybe blue
-        if ((green>30)&&(green<70)&&(blue>50)) {
-            // is blue
-            col=1;
-        }
-    } else if (red>50) {
-        // maybe red
-        if ((green<20)&&(blue<20)) {
-            // is red
-            col=2;
-        }    
-    }
-    // Same color as on last function call
-    if (color==col) {
-        if (col) {
-            if (colstabcnt<255) {
-                colstabcnt++;
-            }
-        } else {
-            colstabcnt /= 2;
-        }
-    // Other color as on last function call    
+uint8_t obstacle_getEvent() {
+    uint8_t obst_max;                   // Obstacles detected by IR-Bricks. Mas value is 127.
+    	
+    // check for obstacles and stop if there are any
+    uint8_t l  = min(127, analog_getValueExt(ANALOG_FL, 2) /8);
+    uint8_t r  = min(127, analog_getValueExt(ANALOG_FR, 2) /8);
+    uint8_t ll = min(127, analog_getValueExt(ANALOG_FLL, 2)/8);
+    uint8_t rr = min(127, analog_getValueExt(ANALOG_FRR, 2)/8);
+    
+    obst_max = max4(l,r,ll,rr);
+    if (obst_max>8) {
+        return EVENT_OBSTRACLE;
     } else {
-        if (col==0) {
-            colstabcnt /= 2;
-        }
-        color = col;
+       return EVENT_NONE; 
     }
+
 }
+
+/************************************************************************/
+/* LINE DETECTION AND FOLLOWING                                         */
+/************************************************************************/
+
+#define FLOOR_VALUE 40              // Light-gray floor: 40, Medium-gray floor: 30
+int8_t stear;                       // Value between -64 (line right) and +64 (line left)
+volatile int8_t state;              // Value between -2 and +2
+uint16_t loose_cnt = 550;           // Max 550 and decreases when state +2 or -2
 
 /** @brief  Sets the state variable from -2 up to +2 based on the 
  *  values from the three surface sensors.
@@ -166,15 +159,6 @@ void analog_irq_hook() {
      */
     int8_t dir = (int8_t)bcr-(int8_t)bcl;
     stear = constrain(dir, -64, +64);
-  
-    /** If difference between bcl and bcr is smaller then 12, the robot could 
-     *  be at the finish or start point (red or blue surface).
-     */      
-    if ((dir < -12)||(dir > +12)) {
-        color = 0;
-    } else {
-        check_color(br, bc, bl);
-    }
 
     if (bc < FLOOR_VALUE/4) {
         state = 0;                              // Line is in the center
@@ -189,64 +173,21 @@ void analog_irq_hook() {
         if (state==0)  state = +2;              // Line was previously in the center (guessing)
         if (state==+1) state = +2;              // Line was previously on the right
     }
-
-    switch (color) {
-        case 0: led_setall(0,0,0,0); break;     // Neither red (right) nor blue (left) sensor
-        case 1: led_setall(0,1,1,0); break;     // On blue surface
-        case 2: led_setall(1,0,0,1); break;     // On red surface
-    }
 }
 
-/************************************************************************/
-/* SETUP - called once at startup                                       */
-/************************************************************************/
-
-void setup() {
-    led_init();
-    analog_init();
-    motpwm_init();
-  
-    /** ANALOG_BCL and ANALOG_BCR are not activated by default as the
-     *  other surface sensors when surface_init() is called. They need
-     *  to be activated separately.
-     */
-    surface_init();
-    analog_setExtToggleMode(ANALOG_BCL, 1);
-    analog_setExtToggleMode(ANALOG_BCR, 1);
-
-    led_blink(0,1,1,0);
-
-    // After start up waiting for push of a key
-    while (1) {
-        char c = key_get_char();
-        if (c=='c') {
-            calibrate();
-            display_mode=2;
-            break;
-        } else if (c=='a') {
-            display_mode=1;
-            break;
-        } else if (c=='b') {
-            display_mode=2;
-            break;
-        }
-    }
-	
-}
-
-/************************************************************************/
-/* LOOP -  loops consecutively                                          */
-/************************************************************************/
-
-void loop() {
-    nibo_checkMonitorVoltage();
-    analog_wait_update();
-
+/** @brief  
+ *  
+ *
+ *  @param  -
+ *
+ *  @return void
+ */
+int8_t follow_line() {
     int16_t left=0, right=0;
 
     /** Set motor speed based on current line state. State comes from
-     *  analog_irq_hook()
-     */
+        *  analog_irq_hook()
+        */
     switch (state) {
         // Line was previously on the left
         case -2:
@@ -266,9 +207,9 @@ void loop() {
     }
     
     /** If loose_cnt is not reset on a regularly basis, the robot probably
-     *  lost the line. In this case the robot waits a moment and then rotates
-     *  around its own axis, trying to find the line again.
-     */  
+        *  lost the line. In this case the robot waits a moment and then rotates
+        *  around its own axis, trying to find the line again.
+        */  
     if (loose_cnt>500) {
         // Waiting...
         loose_cnt--;
@@ -282,30 +223,129 @@ void loop() {
         left = right = 0;
     }
   
-    /** Check if robot on blue or red surface and if so, reduce speed. If
-     *  on one color for some time, stop immediately.
-     */ 
-    if (color) {
-        left /= 2;
-        right /= 2;
-    }
-    if (colstabcnt>=8) {
-        left=right=0;
-    }
-   
-    // check for obstacles and stop if there are any
-    uint8_t l  = min(127, analog_getValueExt(ANALOG_FL, 2) /8);
-    uint8_t r  = min(127, analog_getValueExt(ANALOG_FR, 2) /8);
-    uint8_t ll = min(127, analog_getValueExt(ANALOG_FLL, 2)/8);
-    uint8_t rr = min(127, analog_getValueExt(ANALOG_FRR, 2)/8);
-  
-    obst_max = max4(l,r,ll,rr);
-    if (obst_max>8) {
-        left = right = 0;
-    }
-  
     // Set motor speed based on state and on blue or red surface color
     motpwm_setLeft(left);
     motpwm_setRight(right);
+}
+
+/************************************************************************/
+/* EVENT HANDLING                                                       */
+/************************************************************************/
+
+uint8_t run = 0;
+uint8_t obstacle_flag = 0;
+
+/** @brief  Returns which button is clicked or EVENT_NONE
+ *
+ *  @param  -
+ *	
+ *  @return enum    EVENT_NONE, EVENT_KEY1, EVENT_KEY2, EVENT_KEY3
+ */
+uint8_t key_getEvent() {
+    static uint8_t key = 0;
+    uint8_t act = key_get_state();
+    if (act==0) {
+        act = key;
+        key = 0;
+        if (act==0x01) return EVENT_KEY1;
+        if (act==0x02) return EVENT_KEY2;
+        if (act==0x04) return EVENT_KEY3;
+        return EVENT_NONE;
+    }
+    if (act!=KEY_STATE_INVALID) {
+        key |= act;
+    }
+    return EVENT_NONE;
+}
+
+/** @brief  Checks if a button is clicked and if so, returns it as event.
+ *          If no button is clicked it returns event none.
+ *
+ *  @param  -
+ *	
+ *  @return enum    EVENT_NONE, EVENT_KEY1, EVENT_KEY2, EVENT_KEY3
+ */
+uint8_t getEvent() {
+    uint8_t event = EVENT_NONE;
+    event = key_getEvent();
+    if (event) return event;
+    event = obstacle_getEvent();
+    return event;
+}
+
+/** @brief  Checks buttons and runs robot based on key.
+ *
+ *  @param  enum    EVENT_NONE, EVENT_KEY1, EVENT_KEY2, EVENT_KEY3
+ *	
+ *  @return void	
+ */
+void handle_event(uint8_t event) {
+
+    /**	CLICKING KEY 1
+     *  Starts sensor calibration for black surface, followed by white.
+     *  Works only if robot is not running
+     */
+    if (event==EVENT_KEY1 && run==0) {
+        calibrate();
+        return;
+    }    
+
+    /**	CLICKING KEY 2
+     *  Robot starts following the line.
+     */
+    if (event==EVENT_KEY2 || obstacle_flag) {
+        run=1;       
+        return;
+    }	
+    
+    /**	CLICKING KEY 3
+     *  Stop robot following the line
+     */
+    if (event==EVENT_KEY3) {
+        run=0;
+        return;
+    }
+    
+    if (event==!EVENT_OBSTRACLE && run) {
+        follow_line();   
+    } else {
+        motpwm_setLeft(0);
+        motpwm_setRight(0);
+    }
+}
+
+/************************************************************************/
+/* SETUP - called once at startup                                       */
+/************************************************************************/
+
+void setup() {
+    led_init();
+    analog_init();
+    motpwm_init();
+    maroon_setup();
+  
+    /** ANALOG_BCL and ANALOG_BCR are not activated by default as the
+     *  other surface sensors when surface_init() is called. They need
+     *  to be activated separately.
+     */
+    surface_init();
+    analog_setExtToggleMode(ANALOG_BCL, 1);
+    analog_setExtToggleMode(ANALOG_BCR, 1);
+    
+    nibo_setMonitorVoltage(3800);
+    delay(200);
+    
+    maroon_welcome();
 	
+}
+
+/************************************************************************/
+/* LOOP -  loops consecutively                                          */
+/************************************************************************/
+
+void loop() {
+    nibo_checkMonitorVoltage();
+    analog_wait_update();
+    uint8_t event = getEvent();
+    handle_event(event);	
 }

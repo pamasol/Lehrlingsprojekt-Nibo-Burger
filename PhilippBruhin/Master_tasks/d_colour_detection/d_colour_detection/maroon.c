@@ -28,7 +28,7 @@ void maroon_setup() {
 
 void maroon_welcome() {
     maroon_mode=0;
-    usart_write(MAROON_IMM_CLEAR() MAROON_BRIGHT(0) MAROON_LOAD() "1" MAROON_BAR("0") MAROON_DIM(*) MAROON_PAUSE(100) MAROON_DIM(5) MAROON_STIME(200) " Put me on color\n" MAROON_TXBACK("."));
+    usart_write(MAROON_IMM_CLEAR() MAROON_BRIGHT(0) MAROON_LOAD() "D" MAROON_BAR("0") MAROON_DIM(*) MAROON_PAUSE(100) MAROON_DIM(5) MAROON_STIME(200) " Colour detection\n" MAROON_TXBACK("."));
 }
 
 void maroon_print(char str[]) {

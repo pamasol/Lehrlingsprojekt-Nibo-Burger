@@ -168,7 +168,6 @@ uint8_t key_getEvent() {
 
 /** @brief  Checks if a button is clicked and if so, returns it as event.
  *          If no button is clicked it returns event none.
- *          If no obstacle event it returns event none.
  *
  *  @param  -
  *	
@@ -179,8 +178,6 @@ uint8_t getEvent() {
     event = key_getEvent();
     return event;
 }
-
-uint16_t counter = 0;
 
 /** @brief  Checks buttons and color sensors and print output on 
  *          maroon shield.
