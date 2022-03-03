@@ -117,6 +117,11 @@ Git is the most widely used modern version control system in the world. It track
 
 1. Generate an SSH key and connect your Git with GitHub as [described here]( https://help.github.com/en/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent).
 2. Ask your Pamasol instructor for adding you to this repository.
+
+´´´
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+´´´
 3. Clone the project as follows
 
   ```bash
