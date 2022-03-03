@@ -4,15 +4,16 @@
  * Created: 03.03.2022 12:10:14
  * Author : nicol
  */ 
+#include <niboburger/robomain.h>
 
-#include <avr/io.h>
+void setup() {
+	led_init();
+}
 
-
-int main(void)
-{
-    /* Replace with your application code */
-    while (1) 
-    {
-    }
+void loop() {
+	led_set(2, 1);
+	delay(500);
+	led_set(2,0);
+	delay(500);
 }
 
