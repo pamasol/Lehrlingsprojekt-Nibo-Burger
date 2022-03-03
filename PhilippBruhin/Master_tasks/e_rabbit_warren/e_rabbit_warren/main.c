@@ -17,11 +17,19 @@
 #include <stdlib.h>
 #include <string.h>
 
-int8_t stear;                       // Value between -64 and +64
-
-uint8_t display_mode;
+// Line tracking
+#define FLOOR_VALUE 40              // Light-gray floor: 40, Medium-gray floor: 30
+int8_t stear;                       // Value between -64 (line right) and +64 (line left)
 volatile int8_t state;              // Value between -2 and +2
-uint8_t color;                      // ???
+uint16_t loose_cnt = 550;           // Max 550 and decreases when state +2 or -2
+uint8_t obst_max;                   // Obstacles detected by IR-Bricks. Mas value is 127.
+
+// Color detection (start and finish) 
+uint8_t color;                      // 1 for blue, 2 for red, 0 for neither
+uint8_t colstabcnt = 0;             // Color stable count. Max value is 254.
+
+// Display control
+uint8_t display_mode;
                      
 /************************************************************************/
 /* HELPER FUNCTIONS                                                     */
@@ -39,7 +47,6 @@ uint8_t color;                      // ???
  *  @return void
  */
 void led_blink(uint8_t l1, uint8_t l2, uint8_t l3, uint8_t l4) {
- .
  cli();
     for (uint8_t i=0; i<5; i++) {
         led_setall(l1,l2,l3,l4);
@@ -81,29 +88,32 @@ void calibrate() {
     }
 }
 
-
-/* diese Funktion wird automatisch aufgerufen. Der Aufruf erfolgt 
-   immer nachdem alle analogen Kanäle einen neuen Wert gemessen
-   haben. Da die Funktion so häufig aufgerufen wird, sollte sie 
-   möglichst kurz sein und keine Wartezeiten (delay(), etc...)
-   oder ausgiebige Berechnungen enthalten!
-*/
-
-static void check_color(uint8_t r, uint8_t g, uint8_t b) {
+/** @brief  Checks if surface color is red (right sensor) or blue
+ *  (left sensor) and integrates the time while the same color is
+ *  pending.
+ *
+ *  @param  red     Int value of red color sensor (value between 0 and 127)
+ *  @param  green   Int value of green color sensor (value between 0 and 127)
+ *  @param  blue    Int value of blue color sensor (value between 0 and 127)
+ *
+ *  @return void
+ */
+static void check_color(uint8_t red, uint8_t green, uint8_t blue) {
     uint8_t col=0;
-    if (r<10) {
+    if (red<10) {
         // maybe blue
-        if ((g>30)&&(g<70)&&(b>50)) {
+        if ((green>30)&&(green<70)&&(blue>50)) {
             // is blue
             col=1;
         }
-    } else if (r>50) {
+    } else if (red>50) {
         // maybe red
-        if ((g<20)&&(b<20)) {
+        if ((green<20)&&(blue<20)) {
             // is red
             col=2;
         }    
     }
+    // Same color as on last function call
     if (color==col) {
         if (col) {
             if (colstabcnt<255) {
@@ -112,6 +122,7 @@ static void check_color(uint8_t r, uint8_t g, uint8_t b) {
         } else {
             colstabcnt /= 2;
         }
+    // Other color as on last function call    
     } else {
         if (col==0) {
             colstabcnt /= 2;
@@ -125,10 +136,10 @@ static void check_color(uint8_t r, uint8_t g, uint8_t b) {
  *
  *  Caution: Function is called from the IRQ context!
  *  
- *  Hooks are a category of function that allows base code to
- *  call extension code. In this case the function is called after a
- *  complete pass through all sampling channels. No need to call this
- *  function somewhere in this main.c file. 
+ *  Hooks are a category of function that allows base code to call
+ *  extension code. In this case the function is called every time
+ *  when all analog channels did measure a new value. No need to
+ *  call this function somewhere in this main.c file. 
  *
  *  @param  -
  *
@@ -156,8 +167,8 @@ void analog_irq_hook() {
     int8_t dir = (int8_t)bcr-(int8_t)bcl;
     stear = constrain(dir, -64, +64);
   
-    /** ???
-     *  
+    /** If difference between bcl and bcr is smaller then 12, the robot could 
+     *  be at the finish or start point (red or blue surface).
      */      
     if ((dir < -12)||(dir > +12)) {
         color = 0;
@@ -165,47 +176,25 @@ void analog_irq_hook() {
         check_color(br, bc, bl);
     }
 
-
-
-    if (bc<FLOOR_VALUE/4) {
-    state = 0; // Linie liegt sehr mittig!
-    } else if (bc<FLOOR_VALUE) {
-    // Linie detektiert
-    if (bcl<bcr)  state = -1; // Linie liegt links
-    if (bcl>bcr)  state = +1; // Linie liegt rechts
-    if (bcl==bcr) state =  0; // Linie liegt mittig
+    if (bc < FLOOR_VALUE/4) {
+        state = 0;                              // Line is in the center
+    } else if (bc < FLOOR_VALUE) {
+        // Line detected with center sensor
+        if (bcl<bcr)  state = -1;               // Line slightly left
+        if (bcl>bcr)  state = +1;               // Line slightly right
+        if (bcl==bcr) state =  0;               // Line is in the center
     } else {
-    // Linie verloren
-    if (state==-1) state = -2; // Linie lag vorher links
-    if (state==0)  state = +2; // Linie lag vorher mittig -> Raten
-    if (state==+1) state = +2; // Linie lag vorher rechts
-    /*
-    if (min(bcl,bcr) < 10) {
-    if (bcl < bcr) {
-    state = -2;
-    } else if (bcr < bcl) {
-    state = +2;
-    } else {
-    state = 0;
-    }
-    }
-    */
+        // Line lost with center sensor
+        if (state==-1) state = -2;              // Line was previously on the left
+        if (state==0)  state = +2;              // Line was previously in the center (guessing)
+        if (state==+1) state = +2;              // Line was previously on the right
     }
 
     switch (color) {
-    case 0: led_setall(0,0,0,0); break;
-    case 1: led_setall(0,1,1,0); break;
-    case 2: led_setall(1,0,0,1); break;
+        case 0: led_setall(0,0,0,0); break;     // Neither red (right) nor blue (left) sensor
+        case 1: led_setall(0,1,1,0); break;     // On blue surface
+        case 2: led_setall(1,0,0,1); break;     // On red surface
     }
-    /*
-    switch (state) {
-    case -2: led_setall(1,0,0,0); break;
-    case -1: led_setall(0,1,0,0); break;
-    case  0: led_setall(0,1,1,0); break;
-    case +1: led_setall(0,0,1,0); break;
-    case +2: led_setall(0,0,0,1); break;
-    }
-    */
 }
 
 /************************************************************************/
@@ -259,48 +248,52 @@ void loop() {
      *  analog_irq_hook()
      */
     switch (state) {
+        // Line was previously on the left
         case -2:
             left=-600; right= 900; break;
+        // Line slightly left
         case -1:
-            left= 600; right= 1000; loose_cnt = 550; break;             // loose_cnt reset
+            left= 600; right= 1000; loose_cnt = 550; break;                 // loose_cnt reset
+        // Line is in the center
         case  0:
-            left= 900-stear; right= 900+stear; loose_cnt = 550; break;  // loose_cnt reset
+            left= 900-stear; right= 900+stear; loose_cnt = 550; break;      // loose_cnt reset
+        // Line slightly right
         case +1:
-            left= 1000; right= 600; loose_cnt = 550; break;             // loose_cnt reset
+            left= 1000; right= 600; loose_cnt = 550; break;                 // loose_cnt reset
+        // Line was previously on the right or was previously (guessing)
         case +2:
             left= 900; right=-600; break;
     }
     
-    // Wenn die Linie verloren wurde, kurz warten und danach eine Zeit
-    // lang den Roboter drehen, um die Linie wiederzufinden.
+    /** If loose_cnt is not reset on a regularly basis, the robot probably
+     *  lost the line. In this case the robot waits a moment and then rotates
+     *  around its own axis, trying to find the line again.
+     */  
     if (loose_cnt>500) {
-    // warten...
-    loose_cnt--;
+        // Waiting...
+        loose_cnt--;
     } else if (loose_cnt) {
-    // auf der Stelle drehen...
-    loose_cnt--;
-    if (state>0) {left=+800; right=-800;}
-    if (state<0) {left=-800; right=+800;}
+        // Spin on the spot...
+        loose_cnt--;
+        if (state>0) {left=+800; right=-800;}
+        if (state<0) {left=-800; right=+800;}
     } else {
-    // Linie endgültig verloren :-(
-    left = right = 0;
+        // Line finally lost
+        left = right = 0;
     }
   
-    if (ignore_color) {
-    ignore_color--;
-    } else {
-      
+    /** Check if robot on blue or red surface and if so, reduce speed. If
+     *  on one color for some time, stop immediately.
+     */ 
     if (color) {
-    left /= 2;
-    right /= 2;
+        left /= 2;
+        right /= 2;
     }
-      
     if (colstabcnt>=8) {
-    bot_halt((left+right)/2);
-    left=right=0;
+        left=right=0;
     }
-    }
-  
+   
+    // check for obstacles and stop if there are any
     uint8_t l  = min(127, analog_getValueExt(ANALOG_FL, 2) /8);
     uint8_t r  = min(127, analog_getValueExt(ANALOG_FR, 2) /8);
     uint8_t ll = min(127, analog_getValueExt(ANALOG_FLL, 2)/8);
@@ -308,11 +301,10 @@ void loop() {
   
     obst_max = max4(l,r,ll,rr);
     if (obst_max>8) {
-    // Hindernis
-    left = right = 0;
+        left = right = 0;
     }
   
-    // Leistung der Motoren setzen:
+    // Set motor speed based on state and on blue or red surface color
     motpwm_setLeft(left);
     motpwm_setRight(right);
 	
