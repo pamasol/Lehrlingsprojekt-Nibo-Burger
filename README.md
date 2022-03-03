@@ -105,7 +105,7 @@ There are several ways to program the NIBO Burger. The easiest way is via online
 2. Install **Microchip Studio 7** from [microchip.com](https://www.microchip.com/en-us/tools-resources/develop/microchip-studio) website.
 3. Install **[Visual Studio Code](https://code.visualstudio.com/)** from Microsoft.
 4. Install **[WinAVR](https://sourceforge.net/projects/winavr/)** which is a distribution of the avr-gcc compiler that is used on Windows operating systems.
-5. Install **Git** from [git-scm.com](https://git-scm.com/downloads).
+5. Install **Git** from [git-scm.com](https://git-scm.com/downloads)
 
 As soon as the programmes above are installed, one can add specific Microchip Studio settings for NIBO Burger as described on the Wiki page. Check [Microchip Studio 7 Setup for NIBO Burger](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/wiki) and do project settings and flavours (WinAVR compiler).
 
@@ -116,37 +116,41 @@ As soon as the programmes above are installed, one can add specific Microchip St
 Git is the most widely used modern version control system in the world. It tracks changes in source code during software development. It is designed for coordinating work among programmers, but it can be used to track changes in any set of files. Its setup has to be performed as follows.
 
 1. Generate an SSH key and connect your Git with GitHub as [described here]( https://help.github.com/en/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent).
-2. Ask your Pamasol instructor for adding you to this repository.
 
-´´´
+2. Right click on desktop > **Git Bash Here** and run following commands. Use your email and your GitHub user name.
+
+  ```bash
   git config --global user.email "you@example.com"
   git config --global user.name "Your Name"
-´´´
-3. Clone the project as follows
+  ```
+
+3. Ask your Pamasol instructor for adding you to this repository.
+
+4. Clone the project as follows
 
   ```bash
   git clone https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger.git
   ```
 
-4. Add your changes with
+5. Add your changes with
 
   ```bash
   git add –all
   ```
 
-5. Commit changes with
+6. Commit changes with
 
   ```bash
   git commit -m “here what I did and want to commit”
   ```
 
-6. Push commits to GitHub
+7. Push commits to GitHub
 
   ```bash
   git push
   ```
 
-7. Load latest commits
+8. Load latest commits
 
   ```bash
   git pull
