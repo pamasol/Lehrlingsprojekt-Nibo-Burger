@@ -181,6 +181,7 @@ This project must be documented by every apprentice. It should be structured as 
     * What is a function in C?
     * How can a state machine be created in C code?
     * What is the job of microcontroller IC5 in NIBO Burger?
+    * For what does the robot need the quartz crystal Q1 (15MHz)?
     * What is a compiler and which compiler is used in this project?
     * Why is UART interface asynchronous and is there a clock or not?
     * What is Git and GitHub? Is there a difference?
