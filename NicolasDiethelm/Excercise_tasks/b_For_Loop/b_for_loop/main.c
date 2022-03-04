@@ -6,9 +6,10 @@ void setup() {
 }
 
 void loop() {
-	led_set(1, 1);
-	delay(500);
-	led_set(1,0);
-	delay(500);
+	for(int i=1; i<=4; i++)
+	{
+		led_set(i,1);
+		delay(500);
+	}
 }
 
