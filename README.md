@@ -158,7 +158,7 @@ Git is the most widely used modern version control system in the world. It track
 
 # 4. Documentation
 
-This project must be documented by every apprentice. It should be structured as follows:
+This project must be documented by every apprentice. It should be **structured as follows**:
 
 * Front page
 * Summary
@@ -193,7 +193,13 @@ This project must be documented by every apprentice. It should be structured as 
     * Explain the [electrical schematic](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/files/3652510/nibo_burger_schematic_1_09.pdf) in general. What is motor controlling, display control, USBasp, battery charging and so on.
 * Appendix
 
-Documentation can be made in German language. There is no minimum or maximum number of pages.
+**Take following notes when creating the documentation:**
+
+* Can be written in German language
+* Minimum of 4 pages (exclusive front page summary, index and appendix)
+* Use your own words, dont copy text from the internet 1 to 1
+* Every image, table or formula needs to be referd in the text
+* Don't forget source citation
 
 > A Pamasol Microsoft Word Template can be requested from the instructor.
 
