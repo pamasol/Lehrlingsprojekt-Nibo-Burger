@@ -9,6 +9,11 @@ void setup() {
 	analog_init();
 	led_init();
 	motpwm_init();
+	usart_setbaudrate(38400);
+	usart_enable();
+	
+	usart_write("-_-");
+	
 }
 
 void loop() {
