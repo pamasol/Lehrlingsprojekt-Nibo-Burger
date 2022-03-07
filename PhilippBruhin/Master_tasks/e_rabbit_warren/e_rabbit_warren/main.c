@@ -171,9 +171,9 @@ void analog_irq_hook() {
         // Line lost with center sensor
         if (state==-1) state = -2;              // Line was previously on the left
         if (state==0) {                         // Line was previously in the center (guessing)
-            if(br<64) {                         // Line is on right color sensor
+            if(br<FLOOR_VALUE/4) {              // Line is on right color sensor
                 state = +2;
-            } else if (bl<64) {                 // Line is on left color sensor                 
+            } else if (bl<FLOOR_VALUE/4) {      // Line is on left color sensor                 
                 state = -2;
             } else {                            // line is neither on left nor on right sensor
                 state = +2;
