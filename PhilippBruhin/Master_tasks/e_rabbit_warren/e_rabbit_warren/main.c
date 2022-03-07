@@ -10,8 +10,8 @@
  *             did blink 5 times.
  *          c. Click key 3 for storing the calibration values and wait until LED 1 and 4
  *             (red LEDs) did blink 5 times.
- *      2. ...
- *      3. ...
+ *      2. Put robot on black line and press key 2. It will follow the line.
+ *      3. Press key 3 for stopping the robot.
  *  Worth knowing:
  *  
  *  
@@ -32,13 +32,15 @@ enum {
     EVENT_OBSTRACLE         = 20,
 };
 
+uint8_t obst_max;                       // Value between 0 and 127
+
 /************************************************************************/
 /* HELPER FUNCTIONS                                                     */
 /************************************************************************/
 
 /** @brief  Makes an LEDs blink with 100ms on and 100ms off. Cli clears
  *  the global interrupt flag in SREG so prevent any form of interrupt
- *  occurring. While sei sets the bit and switches interrupts on.
+ *  occurring, while sei sets the bit and switches interrupts back on.
  *
  *  @param  l1      LED 1 must be 0 for being off or 1 for blinking
  *  @param  l2      LED 2 must be 0 for being off or 1 for blinking
@@ -88,17 +90,15 @@ void calibrate() {
     }
 }
 
-/** @brief  ??
+/** @brief  Checks if there are obstacles in front of the four
+ *  IR-Bricks that are mounted at the front. If there are 
+ *  obstacles, it returns the corresponding enum.
  *  
- *  
- *  
- *
  *  @param  -
  *
- *  @return void
+ *  @return enum    EVENT_NONE, EVENT_OBSTRACLE
  */
 uint8_t obstacle_getEvent() {
-    uint8_t obst_max;                   // Obstacles detected by IR-Bricks. Mas value is 127.
     	
     // check for obstacles and stop if there are any
     uint8_t l  = min(127, analog_getValueExt(ANALOG_FL, 2) /8);
@@ -170,13 +170,21 @@ void analog_irq_hook() {
     } else {
         // Line lost with center sensor
         if (state==-1) state = -2;              // Line was previously on the left
-        if (state==0)  state = +2;              // Line was previously in the center (guessing)
+        if (state==0) {                         // Line was previously in the center (guessing)
+            if(br<64) {                         // Line is on right color sensor
+                state = +2;
+            } else if (bl<64) {                 // Line is on left color sensor                 
+                state = -2;
+            } else {                            // line is neither on left nor on right sensor
+                state = +2;
+            }
+        }              
         if (state==+1) state = +2;              // Line was previously on the right
     }
 }
 
-/** @brief  
- *  
+/** @brief  State machine that controls the motors of the robot, based on 
+ *  the feedback of the surface sensors.
  *
  *  @param  -
  *
@@ -186,8 +194,8 @@ int8_t follow_line() {
     int16_t left=0, right=0;
 
     /** Set motor speed based on current line state. State comes from
-        *  analog_irq_hook()
-        */
+     *  analog_irq_hook()
+     */
     switch (state) {
         // Line was previously on the left
         case -2:
@@ -207,9 +215,9 @@ int8_t follow_line() {
     }
     
     /** If loose_cnt is not reset on a regularly basis, the robot probably
-        *  lost the line. In this case the robot waits a moment and then rotates
-        *  around its own axis, trying to find the line again.
-        */  
+     *  lost the line. In this case the robot waits a moment and then rotates
+     *  around its own axis, trying to find the line again.
+     */  
     if (loose_cnt>500) {
         // Waiting...
         loose_cnt--;
@@ -315,6 +323,67 @@ void handle_event(uint8_t event) {
 }
 
 /************************************************************************/
+/* Maroon shield                                                        */
+/************************************************************************/
+uint8_t display_cnt = 50;
+
+/** @brief  Put arrow on the display that shows in which direction robot will
+ *  move. If X a cross will appear and no arrow. 
+ *
+ *  @param  c       Char X (stop), L (Arrow left), D (Arrow front), R (Arrow right)
+ *	
+ *  @return void
+ */
+void displaySym(char c) {
+    static char lastSym = 0;
+    if (c==lastSym) {
+        display_cnt=0;
+        return;
+    }
+    lastSym = c;
+    switch (c) {
+        case 'X': display_X(); break;
+        case 'L': display_ArrowL(); break;
+        case 'R': display_ArrowR(); break;
+        case 'D': display_ArrowD(); break;
+    }
+}
+
+/** @brief  Update display based on robot state and obstacle.
+ *
+ *  @param  -
+ *	
+ *  @return void
+ */
+void updateDisplay() {
+    if (usart_txempty()) {
+        if (obst_max>8) {
+            displaySym('X');
+            } else if (state==-2) {
+            displaySym('R');
+            } else if (state==+2) {
+            displaySym('L');
+            } else {
+            displaySym('D');
+        }
+    }
+}
+
+/** @brief  Updates display every 25th loop, instead of every loop what would
+ *  be exhausting and not effective.
+ * 
+ *  @param  -
+ *	
+ *  @return void
+ */
+void displayLoop() {
+    if (display_cnt-- == 0) {
+        display_cnt = 25;
+        updateDisplay();
+    }
+}
+
+/************************************************************************/
 /* SETUP - called once at startup                                       */
 /************************************************************************/
 
@@ -347,5 +416,6 @@ void loop() {
     nibo_checkMonitorVoltage();
     analog_wait_update();
     uint8_t event = getEvent();
-    handle_event(event);	
+    handle_event(event);
+    displayLoop();
 }

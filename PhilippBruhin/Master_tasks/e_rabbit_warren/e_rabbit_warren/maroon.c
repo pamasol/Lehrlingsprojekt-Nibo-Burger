@@ -48,6 +48,22 @@ void maroon_print(char str[]) {
     }
 }
 
+void display_ArrowL() {
+    usart_write(MAROON_LOAD() MAROON_GFX("182442e72424243c") MAROON_TXBACK("."));
+}
+
+void display_ArrowR() {
+    usart_write(MAROON_LOAD() MAROON_GFX("3c242424e7422418") MAROON_TXBACK("."));
+}
+
+void display_ArrowD() {
+    usart_write(MAROON_LOAD() MAROON_GFX("10305f81815f3010") MAROON_TXBACK("."));
+}
+
+void display_X() {
+    usart_write(MAROON_LOAD() MAROON_GFX("8142241818244281") MAROON_TXBACK("."));
+}
+
 uint8_t maroon_connected() {
     return maroon_mode;
 }

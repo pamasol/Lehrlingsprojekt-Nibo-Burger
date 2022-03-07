@@ -350,3 +350,5 @@ The robot should detect the colours blue, red, yellow and green. Colours should 
 The robot should follow a path from point A to B as shown in [this video](https://youtu.be/VxXwEKlsGJY).
 
 [Layout drawing rabbit warren (Nibo05_V1.0.pdf)](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/files/3652587/Nibo05_V1.0.pdf)
+
+_Help for this task can be found in the wiki section "[E) Rabbit warren thoughts](<https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/wiki/E)-Rabbit-warren-thoughts>)"._
