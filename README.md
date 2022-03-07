@@ -95,7 +95,7 @@ Luckily we were able to add some additional information about the display. How i
 
 # 3. Programming with Microchip Studio and Git
 
-> Before continuing make sure Chapter "[3 Preparation for operation](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/files/3652507/Manual_NIBOburger_20150908.pdf)" in the English Manualor or Chapter "[3 Inbetriebnahme](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/files/3652506/Doku_NIBOburger_20150909.pdf)" in the German Manual has been processed. So you can be sure the hardware works before you load your own programs.
+> Before continuing make sure Chapter "[3 Preparation for operation](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/files/3652507/Manual_NIBOburger_20150908.pdf)" in the English Manual or Chapter "[3 Inbetriebnahme](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/files/3652506/Doku_NIBOburger_20150909.pdf)" in the German Manual has been processed. So you can be sure the hardware works before you load your own programs.
 
 There are several ways to program the NIBO Burger. The easiest way is via online compiler of [roboter.cc](https://www.roboter.cc/), another way is via [Arduino IDE](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/files/8176591/Tutorial_Arduino_NIBOburger_20151205.pdf) or via Microchip Studio (former name Atmel Studio and AVR Studio). We use Microchip Studio 7 in this project.
 
