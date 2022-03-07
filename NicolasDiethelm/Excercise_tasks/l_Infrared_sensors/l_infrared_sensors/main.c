@@ -8,7 +8,7 @@ void setup() {
 
 void loop() {
 	
-	int value= analog_getValueExt(ANALOG_FL,2);
+	int value= analog_getValueExt(ANALOG_FR,2);
 	
 	if (value < 10)
 	{
