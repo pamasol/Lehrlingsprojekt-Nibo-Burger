@@ -17,7 +17,7 @@ At Pamasol they work on customer projects as well as on internal training projec
 * Getting comfortable with project definition and datasheets in English (native language of most apprentices is Swiss-German)
 
 ![nibo_rabbit_warren_02](https://user-images.githubusercontent.com/7021907/157065735-5321e4cc-a0cb-496d-9785-31d239079bdd.gif)
-*NIBO Burger in action. It detects the black line with its surface sensors and controls the motors accordingly. This is an exercise that the trainees will program.*
+*NIBO Burger in action. It detects the black line with its surface sensors and controls the motors accordingly. This is an exercise that the trainees will program during the project.*
 
 **Table of contents:**
 
