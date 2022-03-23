@@ -15,7 +15,7 @@
     <AssemblyName>a_round_trip</AssemblyName>
     <Name>a_round_trip</Name>
     <RootNamespace>a_round_trip</RootNamespace>
-    <ToolchainFlavour>WinAVR</ToolchainFlavour>
+    <ToolchainFlavour>Native</ToolchainFlavour>
     <KeepTimersRunning>true</KeepTimersRunning>
     <OverrideVtor>false</OverrideVtor>
     <CacheFlash>true</CacheFlash>
