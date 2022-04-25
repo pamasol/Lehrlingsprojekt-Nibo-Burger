@@ -98,16 +98,32 @@ void loop() {
 		}
 		
 		
-		if ((fll>30) && (frr>30) && (fl<30) && (fr<30))	{
-			i=6;
+		if ((fll>30) && (frr<30) && (fl>30) && (fr>30))	{
+			i=2;
 		}
 		else
 		{
 			
 		}
 		
-		if ((fl>30) && (fr>30) && (fll<30) && (frr<30))	{
-			i=6;
+		if ((fll<30) && (frr>30) && (fl>30) && (fr>30))	{
+			i=3;
+		}
+		else
+		{
+			
+		}
+		
+		if ((fll<30) && (frr<30) && (fl>30) && (fr>30))	{
+			i=5;
+		}
+		else
+		{
+			
+		}
+		
+		if ((fll>30) && (frr>30) && (fl<30) && (fr<30))	{
+			i=5;
 		}
 		else
 		{
@@ -147,63 +163,54 @@ void loop() {
 		}
 		
 		switch (i)  {
-			case 1:	//obstacle on the far left side
-			motpwm_setLeft(400);
-			motpwm_setRight(-400);
+			case 1:	//hand on the far left side
+			motpwm_setLeft(lspeed/8);
+			motpwm_setRight(rspeed);
 			delay(600);
 			i=0;
 			
 			break;
 		
 		
-			case 2:	//obstacle on the left side
-			motpwm_setLeft(400);
-			motpwm_setRight(-400);
-			delay(600);
+			case 2:	//hand on the left side
+			motpwm_setLeft(lspeed/2);
+			motpwm_setRight(rspeed);
+			delay(50);
 			i=0;
 						
 			break;
 			
 			
-			case 3:	//obstacle on the right side
-			motpwm_setLeft(-400);
-			motpwm_setRight(400);
-			delay(600);
+			case 3:	//hand on the right side
+			motpwm_setLeft(lspeed);
+			motpwm_setRight(rspeed/2);
+			delay(50);
 			i=0;			
 				
 			break;
 			
 			
-			case 4:	//obstacle on the far right side
-			motpwm_setLeft(-400);
-			motpwm_setRight(400);
-			delay(600);
+			case 4:	//hand on the far right side
+			motpwm_setLeft(lspeed);
+			motpwm_setRight(rspeed/8);
+			delay(50);
 			i=0;
 						
 			break;
 			
 			
-			case 5:	//corner
-			motpwm_setLeft(-400);
-			motpwm_setRight(400);
-			delay(700);
+			case 5:	//hand in front
+			motpwm_setLeft(lspeed);
+			motpwm_setRight(rspeed);
+			delay(50);
 			i=0;
 			
 			break;
 			
 			
-			case 6:	//corner
-			motpwm_setLeft(-400);
-			motpwm_setRight(400);
-			delay(1500);
-			i=0;
-			
-			break;
-			
-			
-			default:	//no obstacle
-			motpwm_setLeft(left_speed);
-			motpwm_setRight(right_speed);
+			default:	//no hand
+			motpwm_setLeft(0);
+			motpwm_setRight(0);
 						
 			break;
 			}

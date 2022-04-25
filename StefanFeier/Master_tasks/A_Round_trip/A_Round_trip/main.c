@@ -2,8 +2,8 @@
 
 int instruct=0;
 int i=1;
-const int left_speed=600;
-const int right_speed=600;
+const int left_speed=600; //Max 900!
+const int right_speed=600; //Max 900!
 
 void setup() {
 	analog_init();
