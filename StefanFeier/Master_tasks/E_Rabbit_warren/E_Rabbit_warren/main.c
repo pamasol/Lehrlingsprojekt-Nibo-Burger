@@ -54,7 +54,7 @@ void loop() {
 		uint8_t br  = min(127, surface_get(SURFACE_R) /8);
 		
 		
-		sprintf(bcr_val, "%x", bcr);
+		//sprintf(bcr_val, "%u", bc);
 		
 		
 		if(odometry_getLeft(0)>odometry_getRight(0))	{
@@ -69,70 +69,154 @@ void loop() {
 		}
 		
 		
-		if (bc>=50)	{
+		if(bc<=65)	{
 			led_set(2,1);
 			led_set(3,1);
-			//i=1;
-		}
-		else
-		{
-			
 		}
 		
-		if (bcl>=1)	{
+		if(bcl<=90)	{
 			led_set(1,1);
-			//i=2;
-		}
-		else
-		{
-			
 		}
 		
-		if (bcr>=1)	{
+		if(bcr<=65)	{
 			led_set(4,1);
-			//i=3;
-		}
-		else
-		{
-			
 		}
 		
-		if (bc<=50)	{
+		
+		if(bc>65)	{
 			led_set(2,0);
 			led_set(3,0);
-			//i=1;
-		}
-		else
-		{
-			
 		}
 		
-		if (bcl<=1)	{
+		if(bcl>90)	{
 			led_set(1,0);
-			//i=2;
-		}
-		else
-		{
-			
 		}
 		
-		if (bcr<=1)	{
+		if(bcr>65)	{
 			led_set(4,0);
-			//i=3;
 		}
-		else
-		{
+		
+		
+		if((bc<=65) && (bcl<=90) && (bcr<=65))	{
+			i=1;
+		}
+		
+		if((bc<=65) && (bcl>=90) && (bcr<=65))	{
+			i=3;
+		}
+		
+		if((bc<=65) && (bcl<=90) && (bcr>=65))	{
+			i=2;
+		}
+		
+		if((bc>=65) && (bcl<=90) && (bcr>=65))	{
+			i=4;
+		}
+		
+		if((bc>=65) && (bcl>=90) && (bcr<=65))	{
+			i=5;
+		}
+		
+		if((bc>=65) && (bcl>=90) && (bcr>=65))	{
+			i=6;
+		}
+		
+		
+		
+		switch (i)  {
+			case 1: //no deviation
 			
+				motpwm_setLeft(lspeed);
+				motpwm_setRight(rspeed);
+				delay(50);
+				
+				if(instruct==0) {
+					motpwm_setLeft(0);
+					motpwm_setRight(0);
+					i=0;
+				}
+			
+			break;
+			
+			case 2:	//slight deviation to right
+			
+				motpwm_setLeft(lspeed-20);
+				motpwm_setRight(rspeed);
+				delay(50);
+				
+				if(instruct==0) {
+					motpwm_setLeft(0);
+					motpwm_setRight(0);
+					i=0;
+				}
+			
+			break;
+			
+			case 3: //slight deviation to left
+			
+				motpwm_setLeft(lspeed);
+				motpwm_setRight(rspeed-20);
+				delay(50);
+				
+				if(instruct==0) {
+					motpwm_setLeft(0);
+					motpwm_setRight(0);
+					i=0;
+				}
+			
+			break;
+			
+			case 4: //deviation to left
+			
+				motpwm_setLeft(lspeed);
+				motpwm_setRight(rspeed-80);
+				delay(50);
+				
+				if(instruct==0) {
+					motpwm_setLeft(0);
+					motpwm_setRight(0);
+					i=0;
+				}
+			
+			break;
+			
+			case 5: //deviation to right
+			
+			if(instruct==0) {
+				motpwm_setLeft(0);
+				motpwm_setRight(0);
+				i=0;
+			}
+			motpwm_setLeft(lspeed-80);
+			motpwm_setRight(rspeed);
+			delay(50);
+			
+			
+				
+			
+			break;
+			
+			case 6: //no path
+			
+			motpwm_setLeft(0);
+			motpwm_setRight(0);
+			delay(50);
+			
+			if(instruct==0) {
+				motpwm_setLeft(0);
+				motpwm_setRight(0);
+				i=0;
+			}
+			
+			break;
 		}
-		
-		usart_write(MAROON_IMM_CLEAR());
-		usart_write(bcr_val);
-		delay(2000);
-		
 	
 	if(instruct==0) {
 		motpwm_setLeft(0);
 		motpwm_setRight(0);
+		i=0;
+	}
+
 	}
 }
-}
+
