@@ -205,7 +205,8 @@ This project must be documented by every apprentice. It should be **structured a
 * Don't forget source citation
 
 > A Pamasol Microsoft Word Template can be requested from the instructor.
-> Documentations from apprentices that have finished this tutorial are listed [here](https://pamasol.github.io/de/nibo-burger-project/#dokumentation) (German).
+
+> Documentations from apprentices that have finished this tutorial are listed [here](https://pamasol.github.io/de/nibo-burger-project/#dokumentation) (German language).
 
 # 5. Robot tasks
 
