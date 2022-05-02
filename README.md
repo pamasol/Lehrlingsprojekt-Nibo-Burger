@@ -206,6 +206,8 @@ This project must be documented by every apprentice. It should be **structured a
 
 > A Pamasol Microsoft Word Template can be requested from the instructor.
 
+> Documentations from apprentices that have finished this tutorial are listed [here](https://pamasol.github.io/de/nibo-burger-project/#dokumentation) (German language).
+
 # 5. Robot tasks
 
 The roboter tasks are divided into two parts, the excercise tasks and the master tasks. The exercise tasks can be done with help of [NIBO burger Coding Tutorial](https://www.roboter.cc/index.php?option=com_wrapper&view=wrapper&Itemid=63). Do not create a new project in Microchip Studio for every task, use Git instead efficiently.
