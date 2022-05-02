@@ -123,8 +123,6 @@ void loop() {
 		
 		
 		if(i==1)	{
-			odometry_getLeft(1);
-			odometry_getRight(1);
 			motpwm_setLeft(left_speed);
 			motpwm_setRight(right_speed);
 			delay(30);
