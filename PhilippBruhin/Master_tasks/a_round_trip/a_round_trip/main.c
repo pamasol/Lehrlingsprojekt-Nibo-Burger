@@ -3,7 +3,9 @@
  *  Master task A) Round trip
  *  Setup: IR-Bricks and maroon shield not mounted
  *  Instructions:
- *      1. Lift robot off the ground an press key 1 for left wheel alignment.
+ *      1. Lift robot off the ground an press key 1 for left wheel alignment. If
+ *         the wheel does not turn, make sure the gear is not interlocked. Turn
+ *         the red cogwheel with help of your hands.
  *      2. Press key 1 again for right wheel alignment.
  *      3. Place robot on the ground at its start position an press key 2.
  *      4. Robot will move forward 1.5m, turn 180° and come back to the same place.
