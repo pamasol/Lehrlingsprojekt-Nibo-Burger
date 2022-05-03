@@ -26,7 +26,7 @@ At Pamasol they work on customer projects as well as on internal training projec
 3. [Programming with Microchip Studio and Git](#3-programming-with-microchip-studio-and-git)
 4. [Documentation](#4-documentation)
 5. [Robot tasks](#5-robot-tasks)
-6. [Bonus task: Optical robot tuning](#)
+6. [Bonus task: Optical robot tuning](#6-bonus-task-optical-robot-tuning)
 
 In a first step the roboter kit is presented, followed by robot assembling, programming and documentation. The tasks that the robot has to solve are described in the last chapter.
 
