@@ -170,7 +170,7 @@ This project must be documented by every apprentice. It should be **structured a
 * Table of images
 * Table of tables
 * Freely selectable chapters that explain:
-  * Construction of the robot
+  * **Construction of the robot**
     * What is a microcontroller?
     * How is 3.3V generated on the PCB?
     * Explain motor bridge and PWM signals.
@@ -178,19 +178,20 @@ This project must be documented by every apprentice. It should be **structured a
     * For what does RGB stand for in the RGB-Sensors?
     * What is the difference between flash and EEPROM storage and how much does the ATmega16A have of each?
     * Why is it possible to use only 16 microcontroller outputs for controlling 64 LEDs on the display?
-  * Programming and software
+  * **Programming and software**
     * In which programming language do we program the robot?
     * What is the scope of a variable in C?
     * For what can a for loop be used?
     * What is a function in C?
     * How can a state machine be created in C code?
+    * What is the difference between C and C++ and can the robot be programmed in C++ or just in C?
     * What is the job of microcontroller IC5 in NIBO Burger?
     * For what does the robot need the crystal oscillator Q1 (15MHz)?
     * What is a compiler and which compiler is used in this project?
     * Why is UART interface asynchronous and is there a clock or not?
     * What is Git and GitHub? Is there a difference?
     * What is open source software?
-  * Personal expiriences
+  * **Personal expiriences**
     * How did the assembling go?
     * What should be considered when programming?
     * What should future learners pay attention to?
