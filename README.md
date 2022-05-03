@@ -26,6 +26,7 @@ At Pamasol they work on customer projects as well as on internal training projec
 3. [Programming with Microchip Studio and Git](#3-programming-with-microchip-studio-and-git)
 4. [Documentation](#4-documentation)
 5. [Robot tasks](#5-robot-tasks)
+6. [Bonus task: Optical robot tuning](#)
 
 In a first step the roboter kit is presented, followed by robot assembling, programming and documentation. The tasks that the robot has to solve are described in the last chapter.
 
@@ -357,3 +358,11 @@ The robot should follow a path from point A to B as shown in [this video](https:
 [Layout drawing rabbit warren (Nibo05_V1.0.pdf)](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/files/3652587/Nibo05_V1.0.pdf)
 
 _Help for this task can be found in the wiki section "[E) Rabbit warren thoughts](<https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/wiki/E)-Rabbit-warren-thoughts>)"._
+
+# 6. Bonus task: Optical robot tuning
+
+Upgrade your robot optically and functionally with a spoiler, diffuser or bumpers, for example. A suitable program for drawing the components is [Autodesk Fusion 360](https://www.autodesk.com/products/fusion-360/overview) as the screenshot below shows.
+
+![2022-05-03_fusion_drawing](https://user-images.githubusercontent.com/7021907/166476997-e3bd53b7-6c03-4617-babd-e0be1f0fca3b.png)
+
+> [Fusion 360 for personal use](https://www.autodesk.com/products/fusion-360/personal) is a limited free version for individuals who are doing hobby, non-commercial projects that includes basic functionality and can be renewed on a 3-year basis.
