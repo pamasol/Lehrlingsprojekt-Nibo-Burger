@@ -22,15 +22,14 @@ void setup() {
 
 void loop() {
 	
-	//used for testing
-	/*
+	
 	char red_val[16];
 	char green_val[16];
 	char blue_val[16];
 	char yellow_val[16];
 	char white_val[16];
 	char black_val[16];
-	*/
+	
 	unsigned long int col = surface_getColorRGB();
 	
 	uint16_t diff_red = color_diff_rgb(col, COLOR_RGB_CAL_RED);
@@ -40,8 +39,7 @@ void loop() {
 	uint16_t diff_white = color_diff_rgb(col, COLOR_RGB_CAL_WHITE);
 	uint16_t diff_black = color_diff_rgb(col, COLOR_RGB_CAL_BLACK); //(not used)
 	
-	//display sensor values on maroon shield (testing)
-	/*
+	
 	sprintf(red_val, "%u", diff_red);
 	sprintf(green_val, "%u", diff_green);
 	sprintf(blue_val, "%u", diff_blue);
@@ -71,9 +69,9 @@ void loop() {
 	delay(5000);
 	usart_write(MAROON_IMM_CLEAR());
 	delay(5000);
-	*/
 	
-	//
+	
+	/*
 	if(diff_red<4000)	{
 		usart_write(MAROON_IMM_CLEAR());
 		usart_write("RED");
@@ -108,7 +106,7 @@ void loop() {
 		usart_write(MAROON_IMM_CLEAR());
 		delay(500);
 	}
-	
+	*/
 }
 //testing sensor values
 

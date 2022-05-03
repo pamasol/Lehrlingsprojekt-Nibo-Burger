@@ -125,31 +125,31 @@ void loop() {
 		if(i==1)	{
 			motpwm_setLeft(left_speed);
 			motpwm_setRight(right_speed);
-			delay(10);
+			delay(30);
 		}
 		
 		if(i==2)	{
-			motpwm_setLeft(left_speed-1200);
-			motpwm_setRight(right_speed+600);
-			delay(10);
+			motpwm_setLeft(left_speed-1100);
+			motpwm_setRight(right_speed+500);
+			delay(30);
 		}
 		
 		if(i==3)	{
-			motpwm_setLeft(left_speed+600);
-			motpwm_setRight(right_speed-1200);
-			delay(10);
+			motpwm_setLeft(left_speed+500);
+			motpwm_setRight(right_speed-1100);
+			delay(30);
 		}
 		
 		if(i==4)	{
-			motpwm_setLeft(-800);
+			motpwm_setLeft(left_speed-1000);
 			motpwm_setRight(right_speed+1000);
-			delay(10);
+			delay(30);
 		}
 		
 		if(i==5)	{
 			motpwm_setLeft(left_speed+1000);
-			motpwm_setRight(-800);
-			delay(10);
+			motpwm_setRight(right_speed-1000);
+			delay(30);
 		}
 		
 		if(i==6)	{

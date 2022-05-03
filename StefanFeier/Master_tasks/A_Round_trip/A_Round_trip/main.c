@@ -63,7 +63,7 @@ void loop() {
 			break;
 		
 			case 2:
-			while(odometry_getLeft(0)<140)	{
+			while(odometry_getLeft(0)<142)	{
 			motpwm_setLeft(400);
 			motpwm_setRight(-400);
 			}
