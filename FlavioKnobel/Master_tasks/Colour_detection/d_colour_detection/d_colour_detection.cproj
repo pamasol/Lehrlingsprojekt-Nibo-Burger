@@ -15,7 +15,7 @@
     <AssemblyName>d_colour_detection</AssemblyName>
     <Name>d_colour_detection</Name>
     <RootNamespace>d_colour_detection</RootNamespace>
-    <ToolchainFlavour>Native</ToolchainFlavour>
+    <ToolchainFlavour>WinAVR</ToolchainFlavour>
     <KeepTimersRunning>true</KeepTimersRunning>
     <OverrideVtor>false</OverrideVtor>
     <CacheFlash>true</CacheFlash>
@@ -180,12 +180,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="main.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="maroon.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="maroon.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="niboburger\analog.c">

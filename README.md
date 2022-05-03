@@ -346,7 +346,7 @@ The robot should follow a human hand as shown in [this video](https://youtu.be/K
 
 ### D) Colour detection  
 
-The robot should detect the colours blue, red, yellow and green. Colours should be indicated on the 8x8 pixel display as shown in [this video](https://youtu.be/4foVZdhxUQg).
+The robot should detect white and black surfaces as well as the colours blue, red, yellow and green. Colours should be indicated on the 8x8 pixel display as shown in [this video](https://youtu.be/4foVZdhxUQg).
 
 [Layout drawing colour detection (Nibo04_V1.1.pdf)](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/files/8169805/Nibo04_V1.1.pdf)
 
