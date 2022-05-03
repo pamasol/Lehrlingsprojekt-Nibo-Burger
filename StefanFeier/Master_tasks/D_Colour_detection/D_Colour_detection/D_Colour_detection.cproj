@@ -15,7 +15,7 @@
     <AssemblyName>C_Switch_on_LED2-LED4</AssemblyName>
     <Name>C_Switch_on_LED2-LED4</Name>
     <RootNamespace>C_Switch_on_LED2-LED4</RootNamespace>
-    <ToolchainFlavour>Native</ToolchainFlavour>
+    <ToolchainFlavour>WinAVR</ToolchainFlavour>
     <KeepTimersRunning>true</KeepTimersRunning>
     <OverrideVtor>false</OverrideVtor>
     <CacheFlash>true</CacheFlash>
