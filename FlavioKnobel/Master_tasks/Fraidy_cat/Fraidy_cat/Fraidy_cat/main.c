@@ -40,6 +40,7 @@ void maroon_right() {
 void setup() {
 	analog_init();
 	odometry_init();
+	
 	led_init();
 	motpwm_init();
 	usart_setbaudrate(38400);
@@ -86,21 +87,33 @@ if(Status==0){
 
 if (Status==1){
 
-	if ((l<10) && (r<10)) {
+		if ((l<10) && (r<10)) {
 		/*
 		No obstacles, move with 80% of full speed.
 		*/
-		Speedl=-950;
-		Speedr=-950;
-		delay(10);
+		Speedl=-450;
+		Speedr=-450;
+		if (odometry_getLeft(-1)<odometry_getRight(-1))
+		{
+			Speedr=-500;
+		}
+		if (odometry_getLeft(-1)>odometry_getRight(-1))
+		{
+			Speedl=-500;
+		}
+		if (odometry_getLeft(-1)==odometry_getRight(-1))
+		{
+			Speedl=-450;
+			Speedr=-450;
+		}
 		} 
 		
 		else if ((l<10) && (r>10)) {
 		/*
 		Obstacles in right area, turn left.
 		*/
-		Speedl=450;
-		Speedr=-450;
+		Speedl=1024;
+		Speedr=-1024;
 		delay(10);
 		} 
 		
@@ -108,12 +121,10 @@ if (Status==1){
 		/*
 		Obstacles in left area, turn right.
 		*/
-		Speedl=-450;
-		Speedr=450;
+		Speedl=-1024;
+		Speedr=1024;
 		delay(10);
-		} 
-		
-	
+		} 	
 }
 if (Led==1) {
 	led_set(2,1);

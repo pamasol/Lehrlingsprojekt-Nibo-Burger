@@ -21,40 +21,37 @@ long Yellow = color_diff_rgb(col, COLOR_RGB_CAL_YELLOW);
 long White = color_diff_rgb(col, COLOR_RGB_CAL_WHITE);
 long Black = color_diff_rgb(col, COLOR_RGB_CAL_BLACK);
 
-if(Red<36000)	{
+if((Red<23000) && (Green>22000) && (Black<20000))	{
 	usart_write(MAROON_IMM_CLEAR());
 	usart_write("RED");
 	delay(5000);
 }
 
-if(Green<33000)	{
+if((Green<9000) && (Red>29000) && (White>31000) && (Black<20000))	{
 	usart_write(MAROON_IMM_CLEAR());
 	usart_write("GREEN");
 	delay(5000);
 }
 
-if(Blue<20000)	{
+if((Blue<12000) && (Red>29000) && (Black<20000))	{
 	usart_write(MAROON_IMM_CLEAR());
 	usart_write("BLUE");
 	delay(5000);
 }
 
-if(Yellow<33000)	{
+if((Yellow<14000) && (Blue>29000) && (Red<20000))	{
 	usart_write(MAROON_IMM_CLEAR());
 	usart_write("YELLOW");
 	delay(5000);
 }
 
-if(White<33000)	{
+if((White<32000) && (Black>29000) && (Green<9000) && (Blue>30000) && (Red>30000))	{
 	usart_write(MAROON_IMM_CLEAR());
 	usart_write("WHITE");
 	delay(5000);
 }
 
-if((Red>=39000) && (Green>=36000) && (Blue>22000) && (Yellow>=34000) && (White>=34000))	{
-	usart_write(MAROON_IMM_CLEAR());
-	delay(500);
-}
+
 /*			red		green	blue	yellow	white	black
 red		=	21088	23124	18517	32767	32767	9216
 green	=	32767	7524	26501	32767	32767	15264
