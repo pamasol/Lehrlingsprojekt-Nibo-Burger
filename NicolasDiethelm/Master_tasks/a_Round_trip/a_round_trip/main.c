@@ -5,6 +5,7 @@
 
 uint8_t maroon_mode;
 
+int Task=0;
 int Stop=0;
 int Turn=0;
 int State=0;
@@ -36,83 +37,94 @@ void loop() {
 	
 	switch (key) {
 		case 'A':
-		Stop=0;
-		Turn=0;
-		State=1;
+		odometry_reset();
+		speedl=-300;
+		speedr=-300;
+		Task=2;
 		break;
 		case 'B':
-		State=4;
+		Task=0;
+		speedl=0;
+		speedr=0;
 		break;
 		case 'C':
-		State=2;
 		break;
 	}
 	
-	if (State==2)
+	if (Task==2)
 	{
-		odometry_reset();
-		speedl=-1023;
-		speedr=-1023;
-		State=3;
+		if (odometry_getLeft(0)<=-212)
+		{
+			speedl=-300;
+			speedr=300;
+			Task=3;
+		}
 	}
 	
-
-	if (State==3)
+	if (Task==3)
 	{
 		
-		if (odometry_getRight(0)==-30)
+		if (odometry_getLeft(0)<=-246)
 		{
-			speedr=0;
+			odometry_reset();
+			Task=4;
+			
 		}
-		if (odometry_getLeft(0)==-30)
-		{
-			speedl=0;
-		}
-		
 	}
 	
-	
-	if (State==1)
+	if (Task==4)
 	{
-		speedl=-1023;
-		speedr=-1023;
-		if (odometry_getRight(0)<=-242)
+		speedl=-300;
+		speedr=-300;
+		if (odometry_getRight(0)<=-212)
 		{
 			speedl=0;
 			speedr=0;
-			Turn=1;
-			State=0;
+			odometry_reset();
+			Task=5;
 		}
 	}
-	if (Turn==1)
+	
+	if (Task==5)
 	{
-		speedl=-1023;
-		speedr=1023;
-		if (odometry_getLeft(0)<=-272)
+		speedl=-300;
+		speedr=300;
+		if (odometry_getLeft(0)<=-34)
 		{
-			Stop=1;
-			Turn=0;
+			speedl=0;
+			speedr=0;
+			Task=0;
 		}
+		
 	}
 	
-	
-	if (Stop==1)
+	if ((odometry_getLeft(0)<=-30)&&(Task==1))
 	{
-		speedl=-1023;
-		speedr=-1023;
-			if (odometry_getRight(0)<=-464)
-			{
-				speedl=0;
-				speedr=0;
-				Stop=4;
-			}
-	}
-	if (State==4)
-	{
-		speedr=0;
 		speedl=0;
 	}
 	
+	if ((odometry_getRight(0)<=-30)&&(Task==1))
+	{
+		speedr=0;
+	}
+	
+	if ((odometry_getLeft(0)==odometry_getRight(0))&&((Task==2)||(Task==4)))
+	{
+		speedl=-300;
+		speedr=-300;
+	}
+	
+	if ((odometry_getLeft(0)>odometry_getRight(0))&&((Task==2)||(Task==4)))
+	{
+		speedl=-900;
+		speedr=-300;
+	}
+	
+	if ((odometry_getRight(0)>odometry_getLeft(0))&&((Task==2)||(Task==4)))
+	{
+		speedr=-900;
+		speedl=-300;
+	}
 	motpwm_setLeft(speedl);
 	motpwm_setRight(speedr);
 }

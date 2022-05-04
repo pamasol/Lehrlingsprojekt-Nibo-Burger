@@ -31,6 +31,7 @@ void loop() {
 	switch (key) {
 		case 'A':
 		State=1;
+		led_set(4,1);
 		break;
 		case 'B':
 		State=0;

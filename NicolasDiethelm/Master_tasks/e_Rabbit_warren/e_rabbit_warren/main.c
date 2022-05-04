@@ -34,9 +34,7 @@ void loop() {
 	unsigned long int col = surface_getColorRGB();
 	
 	uint8_t bcl = min(127, surface_get(SURFACE_CL)/8); 
-	uint8_t bl  = min(127, surface_get(SURFACE_L)/8);
 	uint8_t bc  = min(127, surface_get(SURFACE_C)/8);
-	uint8_t br  = min(127, surface_get(SURFACE_R)/8);
 	uint8_t bcr = min(127, surface_get(SURFACE_CR)/8);
 	
 	char key = key_get_char();
@@ -56,12 +54,12 @@ void loop() {
 	
 	if (State==1)
 	{
-		if (bc<60)
+		if (bc<80)
 		{
-			speedl=-300;
-			speedr=-300;
+			speedl=-200;
+			speedr=-200;
 		} 
-		if (bcr>=20&&bcr<=50)
+		if (bcr>=40&&bcr<=50)
 		{
 			speedr=-300;
 			speedl=-200;
@@ -72,7 +70,7 @@ void loop() {
 			speedr=-500;
 			speedl=500;
 		}
-		if (bcl>=20&&bcl<50)
+		if (bcl>=40&&bcl<50)
 		{
 			speedl=-300;
 			speedr=-200;
@@ -83,10 +81,10 @@ void loop() {
 			speedl=-500;
 			speedr=500;
 		}
-		if (bc>90)
+		if (bc>70)
 		{
-			speedl=0;
 			speedr=0;
+			speedl=0;
 		}
 		
 		
