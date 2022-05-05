@@ -88,9 +88,6 @@ if(Status==0){
 if (Status==1){
 
 		if ((l<10) && (r<10)) {
-		/*
-		No obstacles, move with 80% of full speed.
-		*/
 		Speedl=-450;
 		Speedr=-450;
 		if (odometry_getLeft(-1)<odometry_getRight(-1))
@@ -109,18 +106,12 @@ if (Status==1){
 		} 
 		
 		else if ((l<10) && (r>10)) {
-		/*
-		Obstacles in right area, turn left.
-		*/
 		Speedl=1024;
 		Speedr=-1024;
 		delay(10);
 		} 
 		
 		else if ((l>10) && (r<10)) {
-		/*
-		Obstacles in left area, turn right.
-		*/
 		Speedl=-1024;
 		Speedr=1024;
 		delay(10);

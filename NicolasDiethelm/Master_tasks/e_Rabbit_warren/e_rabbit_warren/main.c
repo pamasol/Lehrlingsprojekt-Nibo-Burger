@@ -56,13 +56,13 @@ void loop() {
 	{
 		if (bc<80)
 		{
-			speedl=-200;
-			speedr=-200;
+			speedl=-250;
+			speedr=-250;
 		} 
 		if (bcr>=40&&bcr<=50)
 		{
-			speedr=-300;
-			speedl=-200;
+			speedr=-350;
+			speedl=-250;
 		}
 		
 		if (bcr>50)
@@ -72,8 +72,8 @@ void loop() {
 		}
 		if (bcl>=40&&bcl<50)
 		{
-			speedl=-300;
-			speedr=-200;
+			speedl=-350;
+			speedr=-250;
 		}
 		
 		if (bcl>50)
