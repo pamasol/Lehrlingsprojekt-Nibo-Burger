@@ -40,7 +40,6 @@ void maroon_right() {
 void setup() {
 	analog_init();
 	odometry_init();
-	
 	led_init();
 	motpwm_init();
 	usart_setbaudrate(38400);
