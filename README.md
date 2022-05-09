@@ -366,4 +366,6 @@ Upgrade your robot optically and functionally with a spoiler, diffuser or bumper
 
 ![2022-05-03_fusion_drawing](https://user-images.githubusercontent.com/7021907/166476997-e3bd53b7-6c03-4617-babd-e0be1f0fca3b.png)
 
+A simplyfied NIBO Burger robot, that serves as base for your tuning kit, can be found [here](https://a360.co/3kR8JEr).
+
 > [Fusion 360 for personal use](https://www.autodesk.com/products/fusion-360/personal) is a limited free version for individuals who are doing hobby, non-commercial projects that includes basic functionality and can be renewed on a 3-year basis.
