@@ -366,7 +366,7 @@ Upgrade your robot optically and functionally with a spoiler, diffuser or bumper
 
 ![2022-05-11_18-25-16](https://user-images.githubusercontent.com/7021907/167900246-017ab905-d7a9-47c5-bfa2-2f36a221b11e.png)
 
-A simplyfied NIBO Burger robot, that serves as base for your tuning kit, can be found [here](https://a360.co/3kR8JEr). Downloads:
+A simplyfied NIBO Burger robot, that serves as base for your tuning kit, can be found [here with](https://a360.co/3FAwiLr) and here [without](https://a360.co/3kR8JEr) spoiler. Downloads:
 
 * [Step](./PhilippBruhin/fusion360_3d-files/NIBO-Burger_Tuning.stp) `*.stp`
 * [Fusion 360 Archive](./PhilippBruhin/fusion360_3d-files/NIBO-Burger_Tuning.f3d) `*.f3d`
