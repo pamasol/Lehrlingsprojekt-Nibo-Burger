@@ -3,11 +3,10 @@
 #include "maroon.h"
 #include <stdio.h>
 #include <stdbool.h>
-#include <avr/interrupt.h>
 
 uint8_t maroon_mode;
 
-volatile int prog_select = 0;
+int prog_select = 0;
 int select = 0;
 int sel_1 = 0;
 int sel_2 = 0;
@@ -20,16 +19,6 @@ int bat_volt2 = 0;
 int bat_volt3 = 0;
 char bat[8];
 char bat2[8];
-
-int led;
-
-int prog1 = 0;
-int prog2 = 0;
-int prog3 = 0;
-int prog4 = 0;
-int prog5 = 0;
-int prog_reset = 0;
-
 
 
 int RT_instruct=0;
@@ -49,7 +38,6 @@ const int FM_right_speed=600; //Max 900!
 
 int RW_instruct=0;
 int RW_i=0;
-int RW_start=0;
 const int RW_left_speed=400; //Max 900!
 const int RW_right_speed=400; //Max 900!
 
@@ -68,11 +56,17 @@ void setup() {
 	motpwm_init();
 	odometry_init();
 	
-	int bat_volt = nibo_getMillivolt();
+	double bat_volt = nibo_getMillivolt();
+	bat_volt2=bat_volt/1000;
+	bat_volt3 =bat_volt-(bat_volt2*1000);
+	sprintf(bat, "%d", bat_volt2);
+	sprintf(bat2, "%d", bat_volt3);
 
-	
+
+
 	char bat_key;
 	int button1 = 0;
+	int button2 = 0;
 
 	bat_key = key_get_char();
 	
@@ -81,133 +75,39 @@ void setup() {
 		case 'A':
 		button1=1;
 		led_set(1,1);
-		delay(100);
-		led_set(1,0);
 		break;
+		case 'a':
 		
+		break;
+		case 'B':
+		button2=1;
+		led_set(2,1);
+		break;
+		case 'b':
+		
+		break;
 	}
 
 	if(button1==1)	{
-	
-		if(bat_volt>=5000)	{
-			usart_write("100%   ");
-		}
-		else if(bat_volt>=4874)	{
-			usart_write("95%   ");
-		}
-		else if(bat_volt>=4752)	{
-			usart_write("90%   ");
-		}
-		else if(bat_volt>=4630)	{
-			usart_write("85%   ");
-		}
-		else if(bat_volt>=4508)	{
-			usart_write("80%   ");
-		}
-		else if(bat_volt>=4386)	{
-			usart_write("75%   ");
-		}
-		else if(bat_volt>=4264)	{
-			usart_write("70%   ");
-		}
-		else if(bat_volt>=4142)	{
-			usart_write("65%   ");
-		}
-		else if(bat_volt>=4020)	{
-			usart_write("60%   ");
-		}
-		else if(bat_volt>=3898)	{
-			usart_write("55%   ");
-		}
-		else if(bat_volt>=3776)	{
-			usart_write("50%   ");
-		}
-		else if(bat_volt>=3645)	{
-			usart_write("45%   ");
-		}
-		else if(bat_volt>=3532)	{
-			usart_write("40%   ");
-		}
-		else if(bat_volt>=3410)	{
-			usart_write("35%   ");
-			button1=0;
-			delay(6000);
-		}
-		else if(bat_volt>=3288)	{
-			usart_write("30%   ");
-			button1=0;
-			delay(6000);
-		}
-		else if(bat_volt>=3166)	{
-			usart_write("25%   ");
-			button1=0;
-			delay(6000);
-		}
-		else if(bat_volt>=3044)	{
-			usart_write("20%   ");
-			button1=0;
-			delay(6000);
-		}
-		else if(bat_volt>=2922)	{
-			usart_write("15%   ");
-			button1=0;
-			delay(6000);
-		}
-		else if(bat_volt>=2800)	{
-			usart_write("10%   ");
-			button1=0;
-			delay(6000);
-		}
-		
-		else if(bat_volt>=2700)	{
-			usart_write("5%   ");
-			button1=0;
-			delay(6000);
-		}
-		else
-		{
-			usart_write("0%   ");
-			button1=0;
-			delay(6000);
-		}
-	}
-	
-	
-	delay(500);
-	if(button1==1)	{
-		delay(4500);
 		usart_write(MAROON_IMM_CLEAR());
-		usart_write("On   ");
-		
-	while(led<=5)	{
-		led_setall(1,0,0,0);
-		delay(80);
-		led_setall(0,1,0,0);
-		delay(80);
-		led_setall(0,0,1,0);
-		delay(80);
-		led_setall(0,0,0,1);
-		delay(80);
-		led=led+1;
-	}
-		
-		led_setall(1,0,0,0);
-		delay(80);
-		led_setall(1,1,0,0);
-		delay(80);
-		led_setall(1,1,1,0);
-		delay(80);
-		led_setall(1,1,1,1);
-		delay(80);
-		
-		delay(1000);
-		usart_write(MAROON_IMM_CLEAR());
+		delay(100);
+		usart_write(bat);
+		usart_write(".");
+		usart_write(bat2);
 		led_setall(0,0,0,0);
+		delay(4000);
+		usart_write(MAROON_IMM_CLEAR());
+	}
+	delay(2000);
+	if(button1==1)	{
+		usart_write("On   ");
+		delay(3500);
+		usart_write(MAROON_IMM_CLEAR());
 	}
 	else
 	{
 		usart_write("Off   ");
-		delay(4000);
+		delay(3500);
 		usart_write(MAROON_IMM_CLEAR());
 		while(true){
 			
@@ -218,8 +118,10 @@ void setup() {
 
 void loop() {
 	
-		
-start:
+	
+
+
+
 	
 if(usart_rxempty()==false)	{
 	
@@ -237,11 +139,7 @@ if(usart_rxempty()==false)	{
 		break;
 		case 66:
 		select = 1;
-		led_setall(0,1,1,0);
-		delay(300);
-		led_setall(1,0,0,1);
-		delay(300);
-		led_setall(0,0,0,0);
+		led_set(3,1);
 		break;
 		case 98:
 		//led_set(2,0);
@@ -252,109 +150,54 @@ if(usart_rxempty()==false)	{
 		
 	}
 	
-	switch(prog_select)	{
-		case 1:
-		if(prog1==0)	{
-		usart_write(MAROON_IMM_CLEAR());
-		led_setall(1,0,0,0);
-		usart_write("Round Trip   ");
-		prog1=1;
-		}
 		
-		if(prog1!=0) {
-		prog1=prog1+1;	
-		delay(500);	
-		}
-		
-		if(prog1==14)	{
-			prog1=0;
-		}
-		break;
-		
-		case 2:
-		if(prog2==0)	{
-		usart_write(MAROON_IMM_CLEAR());
-		led_setall(0,1,0,0);
-		usart_write("Fraidy Cat   ");
-		prog2=1;
-		}
-		
-		if(prog2!=0) {
-			prog2=prog2+1;
-			delay(500);
-		}
-		
-		if(prog2==14)	{
-			prog2=0;
-		}
-		break;
-		
-		case 3:
-		if(prog3==0)	{
-			usart_write(MAROON_IMM_CLEAR());
-			led_setall(0,0,1,0);
-			usart_write("Follow Me   ");
-			prog3=1;
-		}
-		
-		if(prog3!=0) {
-			prog3=prog3+1;
-			delay(500);
-		}
-		
-		if(prog3==13)	{
-			prog3=0;
-		}
-		break;
-		
-		case 4:
-		if(prog4==0)	{
-			usart_write(MAROON_IMM_CLEAR());
-			led_setall(0,0,0,1);
-			usart_write("Color Detection   ");
-			prog4=1;
-		}
-		
-		if(prog4!=0) {
-			prog4=prog4+1;
-			delay(500);
-		}
-		
-		if(prog4==20)	{
-			prog4=0;
-		}
-		break;
-		
-		case 5:
-		if(prog5==0)	{
-			usart_write(MAROON_IMM_CLEAR());
-			led_setall(1,0,0,1);
-			usart_write("Rabbit Warren   ");
-			prog5=1;
-		}
-		
-		if(prog5!=0) {
-			prog5=prog5+1;
-			delay(500);
-		}
-		
-		if(prog5==18)	{
-			prog5=0;
-		}
-		break;
-		
-		default:
-		led_setall(0,0,0,0);
-		prog_select=1;
-		prog1=0;
-		prog2=0;
-		prog3=0;
-		prog4=0;
-		prog5=0;
-		delay(200);
-		usart_write(MAROON_IMM_CLEAR());
-		break;
-	}
+if(prog_select==1)	{
+	usart_write("RT");
+	led_setall(1,0,0,0);
+	delay(1500);
+	usart_write(MAROON_IMM_CLEAR());
+	
+}
+
+if(prog_select==2)	{
+	usart_write("FC");
+	led_setall(0,1,0,0);
+	delay(1500);
+	usart_write(MAROON_IMM_CLEAR());	
+}
+
+if(prog_select==3)	{
+	usart_write("FM");
+	led_setall(0,0,1,0);
+	delay(1500);
+	usart_write(MAROON_IMM_CLEAR());	
+}
+
+if(prog_select==4)	{
+	usart_write("CD");
+	led_setall(0,0,0,1);
+	delay(1500);
+	usart_write(MAROON_IMM_CLEAR());
+}
+
+if(prog_select==5)	{
+	usart_write("RW");
+	led_setall(1,0,0,1);
+	delay(1500);
+	usart_write(MAROON_IMM_CLEAR());
+}
+
+if(prog_select==6)	{
+	usart_write(MAROON_IMM_CLEAR());
+	led_setall(0,0,0,0);
+	prog_select=0;
+	sel_1=0;
+	sel_2=0;
+	sel_3=0;
+	sel_4=0;
+	sel_5=0;
+}
+	
 
 
 
@@ -363,107 +206,99 @@ if(usart_rxempty()==false)	{
 
 
 //RoundTrip
-while(prog_select==1 && select==1)	{
+	while(prog_select==1 && select==1)	{
 
 	
-	int RT_lspeed=RT_left_speed;
-	int RT_rspeed=RT_right_speed;
+		int RT_lspeed=RT_left_speed;
+		int RT_rspeed=RT_right_speed;
 		
-	char RT_key = key_get_char();
+		char RT_key = key_get_char();
 		
-	switch (RT_key) {
-		case 'A':
-		RT_instruct=1;
-		break;
-		case 'B':
-		RT_instruct=0;
-		break;
-		case 'C':
-		RT_instruct=0;
-		select=0;
-		prog_select=1;
-		goto start;
-		break;
-	}
+		switch (RT_key) {
+			case 'A':
+			RT_instruct=1;
+			break;
+			case 'B':
+			RT_instruct=0;
+		}
 		
 		
 		
-	if(RT_instruct==1)	{
+		if(RT_instruct==1)	{
 			
 
-		if(odometry_getLeft(0)>odometry_getRight(0))	{
-			RT_rspeed=RT_rspeed+100;
-		}
-		if(odometry_getRight(0)>odometry_getLeft(0))	{
-			RT_lspeed=RT_lspeed+100;
-		}
-		if(odometry_getLeft(0)==odometry_getRight(0))	{
-			RT_lspeed=RT_left_speed;
-			RT_rspeed=RT_right_speed;
-		}
-
-			
-			
-		switch (RT_i)  {
-			case 1:
-			motpwm_setLeft(RT_lspeed);
-			motpwm_setRight(RT_rspeed);
-			if(odometry_getLeft(0)>=1150)	{
-			odometry_getLeft(1);
-			odometry_getRight(1);
-			delay(100);
-			RT_i=2;
+			if(odometry_getLeft(0)>odometry_getRight(0))	{
+				RT_rspeed=RT_rspeed+100;
 			}
-			break;				
-			case 2:
-			while(odometry_getLeft(0)<142)	{
-				motpwm_setLeft(400);
-				motpwm_setRight(-400);
-				}				
+			if(odometry_getRight(0)>odometry_getLeft(0))	{
+				RT_lspeed=RT_lspeed+100;
+			}
+			if(odometry_getLeft(0)==odometry_getRight(0))	{
+				RT_lspeed=RT_left_speed;
+				RT_rspeed=RT_right_speed;
+			}
+
+			
+			
+			switch (RT_i)  {
+				case 1:
+				motpwm_setLeft(RT_lspeed);
+				motpwm_setRight(RT_rspeed);
+				if(odometry_getLeft(0)>=1150)	{
+					odometry_getLeft(1);
+					odometry_getRight(1);
+					delay(100);
+					RT_i=2;
+				}
+				break;
+				
+				case 2:
+				while(odometry_getLeft(0)<142)	{
+					motpwm_setLeft(400);
+					motpwm_setRight(-400);
+				}
+				
+				motpwm_setLeft(0);
+				motpwm_setRight(0);
+				odometry_getLeft(1);
+				odometry_getRight(1);
+				delay(100);
+				RT_i=3;
+				
+				break;
+				
+				case 3:
+				motpwm_setLeft(RT_lspeed);
+				motpwm_setRight(RT_rspeed);
+				if(odometry_getLeft(0)>=1150)	{
+					motpwm_setLeft(0);
+					motpwm_setRight(0);
+					delay(100);
+				}
+				
+				break;
+			}
+		}
+		if(RT_instruct==0) {
+			RT_i=1;
 			motpwm_setLeft(0);
 			motpwm_setRight(0);
 			odometry_getLeft(1);
 			odometry_getRight(1);
-			delay(100);
-			RT_i=3;
-				
-			break;
-				
-			case 3:
-			motpwm_setLeft(RT_lspeed);
-			motpwm_setRight(RT_rspeed);
-			if(odometry_getLeft(0)>=1150)	{
-				motpwm_setLeft(0);
-				motpwm_setRight(0);
-				delay(100);
-			}
-				
-			break;
 		}
-	}
-	if(RT_instruct==0) {
-		RT_i=1;
-		motpwm_setLeft(0);
-		motpwm_setRight(0);
-		odometry_getLeft(1);
-		odometry_getRight(1);
-	}
-	led_set(1, odometry_getLeft(0)>300);
-	led_set(2, odometry_getLeft(0)>600);
+		led_set(1, odometry_getLeft(0)>300);
+		led_set(2, odometry_getLeft(0)>600);
 		
-	led_set(3, odometry_getRight(0)>900);
-	led_set(4, odometry_getRight(0)>1100);
+		led_set(3, odometry_getRight(0)>900);
+		led_set(4, odometry_getRight(0)>1100);
 		
-}
+	}
 
 
 
 
 //FraidyCat() {
-while(prog_select==2 && select==1)	{
-	
-
-	
+while(prog_select==2 && select==1)	{	
 	int FC_lspeed=FC_left_speed;
 	int FC_rspeed=FC_right_speed;
 	
@@ -480,14 +315,6 @@ while(prog_select==2 && select==1)	{
 		break;
 		case 'B':
 		FC_instruct=0;
-		break;
-		case 'C':
-		FC_instruct=0;
-		select=0;
-		prog_select=2;
-		goto start;
-		break;
-		
 	}
 	
 	
@@ -671,10 +498,7 @@ while(prog_select==2 && select==1)	{
 
 
 //FollowMe() {
-while(prog_select==3 && select==1)	{
-	
-
-				
+while(prog_select==3 && select==1)	{		
 	int FM_lspeed=FM_left_speed;
 	int FM_rspeed=FM_right_speed;
 	
@@ -691,13 +515,6 @@ while(prog_select==3 && select==1)	{
 		break;
 		case 'B':
 		FM_instruct=0;
-		break;
-		case 'C':
-		FM_instruct=0;
-		select=0;
-		prog_select=3;
-		goto start;
-		break;
 	}
 	
 	
@@ -888,20 +705,7 @@ while(prog_select==3 && select==1)	{
 
 
 //ColorDetection() {
-while(prog_select==4 && select==1)	{
-	
-	prog_reset = key_get_char();
-	
-	switch (prog_reset) {
-		case 'C':
-		select=0;
-		prog_select=4;
-		goto start;
-		break;
-	}
-
-
-				
+while(prog_select==4 && select==1)	{		
 	//used for testing
 	/*
 	char red_val[16];
@@ -992,10 +796,10 @@ while(prog_select==4 && select==1)	{
 }
 
 
+
+
+while(prog_select==5 && select==1)	{	
 //RabbitWarrenSetup() {
-
-if(prog_select==5 && select==1 && RW_start==0)	{	
-
 	analog_init();
 	led_init();
 	motpwm_init();
@@ -1006,20 +810,14 @@ if(prog_select==5 && select==1 && RW_start==0)	{
 	usart_setbaudrate(38400);
 	usart_enable();
 	delay(500);
-}
+
 
 //RabbitWarren() {
-	
-while(prog_select==5 && select==1)	{
-	
-		
-		
 	/*
 	The loop is executed only if a value of the analog inputs changes.
 	This makes sense since thousands of iterations with the same analog
 	values is unrewarding.
 	*/
-	RW_start=1;
 	analog_wait_update();
 	
 	int RW_lspeed=RW_left_speed;
@@ -1033,13 +831,6 @@ while(prog_select==5 && select==1)	{
 		break;	
 		case 'B':
 		RW_instruct=0;
-		break;
-		case 'C':
-		RW_instruct=0;
-		select=0;
-		prog_select=5;
-		goto start;
-		break;
 	}
 		
 	
