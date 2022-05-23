@@ -17,7 +17,7 @@ void loop()
 	int Speedl;
 	int Speedr;
 	
-	if ((l<15) && (r<15)) {
+	if ((l<20) && (r<20)) {
 		delay(10);
 		Speedl=0;
 		Speedr=0;
@@ -25,20 +25,20 @@ void loop()
 		
 		else if ((l<15) && (r>15)) {
 		delay(10);
-		Speedl=-950;
+		Speedl=-650;
 		Speedr=400;
 		} 
 		
 		else if ((l>15) && (r<15)) {
 		delay(10);
 		Speedl=400;
-		Speedr=-950;
+		Speedr=-650;
 		} 
 		
-		else if ((l>15) && (r>15)){
+		else if ((l>10) && (r>10)){
 		delay(10);
-		Speedl=-950;
-		Speedr=-950;
+		Speedl=-650;
+		Speedr=-650;
 }
 motpwm_setLeft(Speedl);
 motpwm_setRight(Speedr);

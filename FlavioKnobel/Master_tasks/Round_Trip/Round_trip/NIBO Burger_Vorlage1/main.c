@@ -2,6 +2,7 @@
 #include "maroon.h"
 int ON;
 int gerade;
+int Hupe;
 void setup()
 {
 	motpid_init();
@@ -54,6 +55,11 @@ void loop()
 	if (gerade==10){
 	ON=1;
 	}
+	break;
+	
+	case 'C':
+	Hupe=0;
+	motpwm_setRight(0);
 	break;
 	}
 	
@@ -160,6 +166,7 @@ void loop()
 		usart_write(MAROON_IMM_CLEAR());
 		usart_write("Finish");
 		delay(5000);
+		Hupe=2;
 		ON=20;
 		break;
 	}
@@ -182,5 +189,13 @@ void loop()
 			}
 			delay(100);
 			break;
+		}
+		
+		if(Hupe==2)
+		{
+		motpwm_setRight(1024);
+		delay(1);
+		motpwm_setRight(-1024);
+		delay(1);
 		}
 }

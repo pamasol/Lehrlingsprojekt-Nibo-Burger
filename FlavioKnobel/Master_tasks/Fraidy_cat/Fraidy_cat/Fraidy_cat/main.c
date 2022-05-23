@@ -88,32 +88,17 @@ if (Status==1){
 
 		if ((l<10) && (r<10)) {
 		Speedl=-450;
-		Speedr=-450;
-		if (odometry_getLeft(-1)<odometry_getRight(-1))
-		{
-			Speedr=-500;
-		}
-		if (odometry_getLeft(-1)>odometry_getRight(-1))
-		{
-			Speedl=-500;
-		}
-		if (odometry_getLeft(-1)==odometry_getRight(-1))
-		{
-			Speedl=-450;
-			Speedr=-450;
-		}
+		Speedr=-480;
 		} 
 		
 		else if ((l<10) && (r>10)) {
-		Speedl=1024;
-		Speedr=-1024;
-		delay(10);
+		Speedl=300;
+		Speedr=-600;
 		} 
 		
 		else if ((l>10) && (r<10)) {
-		Speedl=-1024;
-		Speedr=1024;
-		delay(10);
+		Speedl=-600;
+		Speedr=300;
 		} 	
 }
 if (Led==1) {
@@ -152,17 +137,13 @@ motpwm_setRight(Speedr);
 
 	if ((l>10) && (r<10)) {
 	state = 1;
-	delay(10);
 	maroon_right();
-	delay(1000);
 	state = 2;
 }
 
 	if ((l<10) && (r>10)) {
 	state = 1;
-	delay(10);
 	maroon_left();
-	delay(1000);
 	state = 2;
 } 
 }

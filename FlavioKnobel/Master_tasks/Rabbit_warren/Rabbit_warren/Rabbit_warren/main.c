@@ -47,43 +47,43 @@ if (State==1)
 {
 	if (bc<80)
 	{
-	MotSpeedL=470;
-	MotSpeedR=470;
+	MotSpeedL=-470;
+	MotSpeedR=-470;
 	}
 	if (bcr>=40&&bcr<=50)
 	{
-	MotSpeedR=480;
-	MotSpeedL=350;
+	MotSpeedR=-480;
+	MotSpeedL=-350;
 	}
 	
 	if (bcr>50)
 	{
-	MotSpeedR=540;
-	MotSpeedL=-560;
+	MotSpeedR=-540;
+	MotSpeedL=560;
 	}
 	
 	if (bcr>67)
 	{
-	MotSpeedR=980;
-	MotSpeedL=-1024;
+	MotSpeedR=-980;
+	MotSpeedL=1024;
 	}
 	
 	if (bcl>=40&&bcl<50)
 	{
-	MotSpeedL=480;
-	MotSpeedR=350;
+	MotSpeedL=-480;
+	MotSpeedR=-350;
 	}
 	
 	if (bcl>50)
 	{
-	MotSpeedL=540;
-	MotSpeedR=-560;
+	MotSpeedL=-540;
+	MotSpeedR=560;
 	}
 	
 	if (bcl>67)
 	{
-	MotSpeedL=980;
-	MotSpeedR=-1024;
+	MotSpeedL=-980;
+	MotSpeedR=1024;
 	}
 	
 	if (bc>70)
