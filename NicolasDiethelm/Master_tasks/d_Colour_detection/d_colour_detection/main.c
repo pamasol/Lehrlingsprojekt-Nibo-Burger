@@ -31,7 +31,6 @@ void loop() {
 	switch (key) {
 		case 'A':
 		State=1;
-		led_set(4,1);
 		break;
 		case 'B':
 		State=0;
@@ -53,12 +52,14 @@ void loop() {
 	uint16_t diff_blue = color_diff_rgb(col, COLOR_RGB_CAL_BLUE);
 	uint16_t diff_yellow = color_diff_rgb(col, COLOR_RGB_CAL_YELLOW);
 	uint16_t diff_white = color_diff_rgb(col, COLOR_RGB_CAL_WHITE);
+	uint16_t diff_black = color_diff_rgb(col, COLOR_RGB_CAL_BLACK);
 	
 	sprintf(red_val, "%u", diff_red);
 	sprintf(green_val, "%u", diff_green);
 	sprintf(blue_val, "%u", diff_blue);
 	sprintf(yellow_val, "%u", diff_yellow);
 	sprintf(white_val, "%u", diff_white);
+	sprintf(black_val, "%u", diff_black);
 	
 	
 	if (State==1)
@@ -98,6 +99,11 @@ void loop() {
 			delay(500);
 		}
 		
+		if(diff_black==0)	{
+			usart_write(MAROON_IMM_CLEAR());
+			usart_write("BLACK");
+			delay(5000);
+		}
 	}else{
 		usart_write(MAROON_IMM_CLEAR());
 		delay(1000);

@@ -41,6 +41,9 @@ void loop() {
 	
 	switch (key) {
 		case 'A':
+		motpwm_setLeft(-1023);
+		motpwm_setRight(-1023);
+		delay(300);
 		State=1;
 		break;
 		case 'B':
@@ -56,13 +59,13 @@ void loop() {
 	{
 		if (bc<80)
 		{
-			speedl=-250;
-			speedr=-250;
+			speedl=-255;
+			speedr=-255;
 		} 
 		if (bcr>=40&&bcr<=50)
 		{
-			speedr=-350;
-			speedl=-250;
+			speedr=-355;
+			speedl=-255;
 		}
 		
 		if (bcr>50)
@@ -72,8 +75,8 @@ void loop() {
 		}
 		if (bcl>=40&&bcl<50)
 		{
-			speedl=-350;
-			speedr=-250;
+			speedl=-355;
+			speedr=-255;
 		}
 		
 		if (bcl>50)
