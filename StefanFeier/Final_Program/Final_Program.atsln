@@ -5,6 +5,16 @@ VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "Final_Program", "Final_Program\Final_Program.cproj", "{DCE6C7E3-EE26-4D79-826B-08594B9AD897}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B4F3F25D-477C-469E-A3C4-54BB03CFB2F9}"
+	ProjectSection(SolutionItems) = preProject
+		Final_Program\ColorDetection.h = Final_Program\ColorDetection.h
+		Final_Program\FollowMe.h = Final_Program\FollowMe.h
+		Final_Program\FraidyCat.h = Final_Program\FraidyCat.h
+		Final_Program\maroon.h = Final_Program\maroon.h
+		Final_Program\RabbitWarren.h = Final_Program\RabbitWarren.h
+		Final_Program\RoundTrip.h = Final_Program\RoundTrip.h
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|AVR = Debug|AVR

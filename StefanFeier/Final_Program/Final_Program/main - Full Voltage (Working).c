@@ -23,12 +23,11 @@ char bat2[8];
 
 int led;
 
-int prog1 = 0;
-int prog2 = 0;
-int prog3 = 0;
-int prog4 = 0;
-int prog5 = 0;
-int prog_reset = 0;
+long prog1 = 0;
+long prog2 = 0;
+long prog3 = 0;
+long prog4 = 0;
+long prog5 = 0;
 
 
 
@@ -84,7 +83,6 @@ void setup() {
 		delay(100);
 		led_set(1,0);
 		break;
-		
 	}
 
 	if(button1==1)	{
@@ -218,8 +216,10 @@ void setup() {
 
 void loop() {
 	
-		
-start:
+	
+
+
+
 	
 if(usart_rxempty()==false)	{
 	
@@ -237,11 +237,7 @@ if(usart_rxempty()==false)	{
 		break;
 		case 66:
 		select = 1;
-		led_setall(0,1,1,0);
-		delay(300);
-		led_setall(1,0,0,1);
-		delay(300);
-		led_setall(0,0,0,0);
+		led_set(3,1);
 		break;
 		case 98:
 		//led_set(2,0);
@@ -363,107 +359,99 @@ if(usart_rxempty()==false)	{
 
 
 //RoundTrip
-while(prog_select==1 && select==1)	{
+	while(prog_select==1 && select==1)	{
 
 	
-	int RT_lspeed=RT_left_speed;
-	int RT_rspeed=RT_right_speed;
+		int RT_lspeed=RT_left_speed;
+		int RT_rspeed=RT_right_speed;
 		
-	char RT_key = key_get_char();
+		char RT_key = key_get_char();
 		
-	switch (RT_key) {
-		case 'A':
-		RT_instruct=1;
-		break;
-		case 'B':
-		RT_instruct=0;
-		break;
-		case 'C':
-		RT_instruct=0;
-		select=0;
-		prog_select=1;
-		goto start;
-		break;
-	}
+		switch (RT_key) {
+			case 'A':
+			RT_instruct=1;
+			break;
+			case 'B':
+			RT_instruct=0;
+		}
 		
 		
 		
-	if(RT_instruct==1)	{
+		if(RT_instruct==1)	{
 			
 
-		if(odometry_getLeft(0)>odometry_getRight(0))	{
-			RT_rspeed=RT_rspeed+100;
-		}
-		if(odometry_getRight(0)>odometry_getLeft(0))	{
-			RT_lspeed=RT_lspeed+100;
-		}
-		if(odometry_getLeft(0)==odometry_getRight(0))	{
-			RT_lspeed=RT_left_speed;
-			RT_rspeed=RT_right_speed;
-		}
-
-			
-			
-		switch (RT_i)  {
-			case 1:
-			motpwm_setLeft(RT_lspeed);
-			motpwm_setRight(RT_rspeed);
-			if(odometry_getLeft(0)>=1150)	{
-			odometry_getLeft(1);
-			odometry_getRight(1);
-			delay(100);
-			RT_i=2;
+			if(odometry_getLeft(0)>odometry_getRight(0))	{
+				RT_rspeed=RT_rspeed+100;
 			}
-			break;				
-			case 2:
-			while(odometry_getLeft(0)<142)	{
-				motpwm_setLeft(400);
-				motpwm_setRight(-400);
-				}				
+			if(odometry_getRight(0)>odometry_getLeft(0))	{
+				RT_lspeed=RT_lspeed+100;
+			}
+			if(odometry_getLeft(0)==odometry_getRight(0))	{
+				RT_lspeed=RT_left_speed;
+				RT_rspeed=RT_right_speed;
+			}
+
+			
+			
+			switch (RT_i)  {
+				case 1:
+				motpwm_setLeft(RT_lspeed);
+				motpwm_setRight(RT_rspeed);
+				if(odometry_getLeft(0)>=1150)	{
+					odometry_getLeft(1);
+					odometry_getRight(1);
+					delay(100);
+					RT_i=2;
+				}
+				break;
+				
+				case 2:
+				while(odometry_getLeft(0)<142)	{
+					motpwm_setLeft(400);
+					motpwm_setRight(-400);
+				}
+				
+				motpwm_setLeft(0);
+				motpwm_setRight(0);
+				odometry_getLeft(1);
+				odometry_getRight(1);
+				delay(100);
+				RT_i=3;
+				
+				break;
+				
+				case 3:
+				motpwm_setLeft(RT_lspeed);
+				motpwm_setRight(RT_rspeed);
+				if(odometry_getLeft(0)>=1150)	{
+					motpwm_setLeft(0);
+					motpwm_setRight(0);
+					delay(100);
+				}
+				
+				break;
+			}
+		}
+		if(RT_instruct==0) {
+			RT_i=1;
 			motpwm_setLeft(0);
 			motpwm_setRight(0);
 			odometry_getLeft(1);
 			odometry_getRight(1);
-			delay(100);
-			RT_i=3;
-				
-			break;
-				
-			case 3:
-			motpwm_setLeft(RT_lspeed);
-			motpwm_setRight(RT_rspeed);
-			if(odometry_getLeft(0)>=1150)	{
-				motpwm_setLeft(0);
-				motpwm_setRight(0);
-				delay(100);
-			}
-				
-			break;
 		}
-	}
-	if(RT_instruct==0) {
-		RT_i=1;
-		motpwm_setLeft(0);
-		motpwm_setRight(0);
-		odometry_getLeft(1);
-		odometry_getRight(1);
-	}
-	led_set(1, odometry_getLeft(0)>300);
-	led_set(2, odometry_getLeft(0)>600);
+		led_set(1, odometry_getLeft(0)>300);
+		led_set(2, odometry_getLeft(0)>600);
 		
-	led_set(3, odometry_getRight(0)>900);
-	led_set(4, odometry_getRight(0)>1100);
+		led_set(3, odometry_getRight(0)>900);
+		led_set(4, odometry_getRight(0)>1100);
 		
-}
+	}
 
 
 
 
 //FraidyCat() {
-while(prog_select==2 && select==1)	{
-	
-
-	
+while(prog_select==2 && select==1)	{	
 	int FC_lspeed=FC_left_speed;
 	int FC_rspeed=FC_right_speed;
 	
@@ -480,14 +468,6 @@ while(prog_select==2 && select==1)	{
 		break;
 		case 'B':
 		FC_instruct=0;
-		break;
-		case 'C':
-		FC_instruct=0;
-		select=0;
-		prog_select=2;
-		goto start;
-		break;
-		
 	}
 	
 	
@@ -671,10 +651,7 @@ while(prog_select==2 && select==1)	{
 
 
 //FollowMe() {
-while(prog_select==3 && select==1)	{
-	
-
-				
+while(prog_select==3 && select==1)	{		
 	int FM_lspeed=FM_left_speed;
 	int FM_rspeed=FM_right_speed;
 	
@@ -691,13 +668,6 @@ while(prog_select==3 && select==1)	{
 		break;
 		case 'B':
 		FM_instruct=0;
-		break;
-		case 'C':
-		FM_instruct=0;
-		select=0;
-		prog_select=3;
-		goto start;
-		break;
 	}
 	
 	
@@ -888,20 +858,7 @@ while(prog_select==3 && select==1)	{
 
 
 //ColorDetection() {
-while(prog_select==4 && select==1)	{
-	
-	prog_reset = key_get_char();
-	
-	switch (prog_reset) {
-		case 'C':
-		select=0;
-		prog_select=4;
-		goto start;
-		break;
-	}
-
-
-				
+while(prog_select==4 && select==1)	{		
 	//used for testing
 	/*
 	char red_val[16];
@@ -992,10 +949,10 @@ while(prog_select==4 && select==1)	{
 }
 
 
-//RabbitWarrenSetup() {
+
 
 if(prog_select==5 && select==1 && RW_start==0)	{	
-
+//RabbitWarrenSetup() {
 	analog_init();
 	led_init();
 	motpwm_init();
@@ -1008,12 +965,8 @@ if(prog_select==5 && select==1 && RW_start==0)	{
 	delay(500);
 }
 
-//RabbitWarren() {
-	
 while(prog_select==5 && select==1)	{
-	
-		
-		
+//RabbitWarren() {
 	/*
 	The loop is executed only if a value of the analog inputs changes.
 	This makes sense since thousands of iterations with the same analog
@@ -1033,13 +986,6 @@ while(prog_select==5 && select==1)	{
 		break;	
 		case 'B':
 		RW_instruct=0;
-		break;
-		case 'C':
-		RW_instruct=0;
-		select=0;
-		prog_select=5;
-		goto start;
-		break;
 	}
 		
 	

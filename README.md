@@ -1,6 +1,6 @@
 # NIBO Burger – Pamasol electronic project for apprentices
 
-[Pamasol Willi Mäder AG](https://www.pamasol.com/) has specialised in the development and production of solutions for aerosols and spray systems since 1965.
+[Pamasol Willi Mäder AG](https://www.pamasol.com/) has specialized in the development and production of solutions for aerosols and spray systems since 1965.
 
 Its "Automatiker Lehrlinge" (German for mechatronic apprentices) go through a 4-year apprenticeship. They get an on the job training by qualified Pamasol employees and go to college one or two days per week.
 
@@ -28,7 +28,7 @@ At Pamasol they work on customer projects as well as on internal training projec
 5. [Robot tasks](#5-robot-tasks)
 6. [Bonus task: Optical robot tuning](#6-bonus-task-optical-robot-tuning)
 
-In a first step the roboter kit is presented, followed by robot assembling, programming and documentation. The tasks that the robot has to solve are described in the last chapter.
+In a first step the robot kit is presented, followed by robot assembling, programming and documentation. The tasks that the robot must solve are described in the last chapter.
 
 # 1. Robot construction kit NIBO Burger
 
@@ -48,7 +48,7 @@ Features of NIBO Burger:
 
 * Main processing unit Atmel ATmega16A, 16 kByte flash, 15 MHz
 * 4 IR-Sensor-Bricks for contactless collision avoidance
-* 3 Colour-Sensor-Bricks (R+G+B) for surface colour detection
+* 3 Color-Sensor-Bricks (R+G+B) for surface color detection
 * 10 Slots for variable sensor configuration
 * 2 motors with 25:1 / 125:1 gear ratio
 * 2 IR-sensors for rotation speed detection
@@ -81,7 +81,7 @@ How to assemble the robot is described detailly in the manual that is provided w
 * [German Manual NIBO Burger (PDF)](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/files/3652506/Doku_NIBOburger_20150909.pdf)
 * [Electrical Schematic NIBO Burger (PDF)](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/files/3652510/nibo_burger_schematic_1_09.pdf)
 
-It starts with interpreting and sorting the items followed by preparing the workplace and the soldering station. One should proceed as recommended in the instructions to avoid issues when putting the boards together to a burger. A lot of attention should be paid to the gearbox. If it is not assembled in the right angle, it jams afterwards and the motors can not work properly.
+It starts with interpreting and sorting the items followed by preparing the workplace and the soldering station. One should proceed as recommended in the instructions to avoid issues when putting the boards together to a burger. A lot of attention should be paid to the gearbox. If it is not assembled in the right angle, it jams afterwards and the motors cannot work properly.
 
 The microcontroller is preprogramed. One can run the function tests as soon as the hardware work is done. Everything will be checked, starting with the LEDs, the odometry sensors, the IR- and RGB-Sensors and ending with the motors.
 
@@ -111,7 +111,7 @@ There are several ways to program the NIBO Burger. The easiest way is via online
 4. Install **[WinAVR](https://sourceforge.net/projects/winavr/)** which is a distribution of the avr-gcc compiler that is used on Windows operating systems.
 5. Install **Git** from [git-scm.com](https://git-scm.com/downloads)
 
-As soon as the programmes above are installed, one can add specific Microchip Studio settings for NIBO Burger as described on the Wiki page. Check [Microchip Studio 7 Setup for NIBO Burger](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/wiki) and do project settings and flavours (WinAVR compiler).
+As soon as the programs above are installed, one can add specific Microchip Studio settings for NIBO Burger as described on the Wiki page. Check [Microchip Studio 7 Setup for NIBO Burger](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/wiki) and do project settings and flavours (WinAVR compiler).
 
 > There is a German documentation for the NIBO Burger library on [docs.roboter.cc/niborobolib-3.6/niboburger/html](https://docs.roboter.cc/niborobolib-3.6/niboburger/html/)
 
@@ -190,8 +190,8 @@ This project must be documented by every apprentice. It should be **structured a
     * What is a compiler and which compiler is used in this project?
     * Why is UART interface asynchronous and is there a clock or not?
     * What is Git and GitHub? Is there a difference?
-    * What is open source software?
-  * **Personal expiriences**
+    * What is open-source software?
+  * **Personal experiences**
     * How did the assembling go?
     * What should be considered when programming?
     * What should future learners pay attention to?
@@ -202,8 +202,8 @@ This project must be documented by every apprentice. It should be **structured a
 
 * Can be written in German language
 * Minimum of 4 pages (exclusive front page summary, index and appendix)
-* Use your own words, dont copy text from the internet 1 to 1
-* Every image, table or formula needs to be referd in the text
+* Use your own words, don’t copy text from the internet 1 to 1
+* Every image, table or formula needs to be referred in the text
 * Don't forget source citation
 
 > A Pamasol Microsoft Word Template can be requested from the instructor.
@@ -212,9 +212,9 @@ This project must be documented by every apprentice. It should be **structured a
 
 # 5. Robot tasks
 
-The roboter tasks are divided into two parts, the excercise tasks and the master tasks. The exercise tasks can be done with help of [NIBO burger Coding Tutorial](https://www.roboter.cc/index.php?option=com_wrapper&view=wrapper&Itemid=63). Do not create a new project in Microchip Studio for every task, use Git instead efficiently.
+The robot tasks are divided into two parts, the exercise tasks and the master tasks. The exercise tasks can be done with help of [NIBO burger Coding Tutorial](https://www.roboter.cc/index.php?option=com_wrapper&view=wrapper&Itemid=63). Do not create a new project in Microchip Studio for every task, use Git instead efficiently.
 
-## Excercise tasks
+## Exercise tasks
 
 ### A) Flashing LED1
 
@@ -274,7 +274,7 @@ Check [this program](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/blo
 
 The program **measures** the readings of the **left odometry sensor** and switches on **LED1** as soon as it counts **more than 10** and **LED2** when it is **more than 20**. The counter of left odometry sensor can be **reset** (counter back to 0) with clicking **button 1** or button 3.
 
-Implement the same behavior for the right odometry sensor. Clicking **button 2** resets right odometry counter wheras clicking **button 3** should reset both. The program can be tested by turning the red gear.
+Implement the same behavior for the right odometry sensor. Clicking **button 2** resets right odometry counter whereas clicking **button 3** should reset both. The program can be tested by turning the red gear.
 
 [Solution](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/blob/master/PhilippBruhin/Excercise_tasks/i_odometry_sensors/i_odometry_sensors/main.c)
 
@@ -282,13 +282,13 @@ Implement the same behavior for the right odometry sensor. Clicking **button 2**
 
 The motors have to be initialized via `motpwm_init();` in the setup function. Check setup function in [this program](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/blob/aa2d69d422beaac5624e22e60bb058737606038a/PhilippBruhin/Excercise_tasks/j_playing_with_motors/j_playing_with_motors/main.c).
 
-The program furthermore explaines **local and global variables** and the motor control. Extend it as follows: When **button 3** is released **motor power** variable should be **decreased by 200**.
+The program furthermore explains **local and global variables** and the motor control. Extend it as follows: When **button 3** is released **motor power** variable should be **decreased by 200**.
 
 [Solution](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/blob/master/PhilippBruhin/Excercise_tasks/j_playing_with_motors/j_playing_with_motors/main.c)
 
 ### K) Sensor calibration
 
-In this excercise one will calibrate the color sensors of the roboter. Therefore create a program with [this content](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/blob/master/PhilippBruhin/Excercise_tasks/k_sensor_calibration/k_sensor_calibration/main.c), compile it and download it to the robot. Put robot on a **black surface** and click **button 1**. In a second step, put the robot on a **white surface** and click **button 2**.
+In this exercise one will calibrate the color sensors of the robot. Therefore create a program with [this content](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/blob/master/PhilippBruhin/Excercise_tasks/k_sensor_calibration/k_sensor_calibration/main.c), compile it and download it to the robot. Put robot on a **black surface** and click **button 1**. In a second step, put the robot on a **white surface** and click **button 2**.
 
 Since the [RGB values](https://en.wikipedia.org/wiki/RGB_color_model) will be stored in the [EEPROM](https://en.wikipedia.org/wiki/EEPROM), they will not get lost anymore, even when turning off or reprogramming the robot. Furthermore a new variable type is used: `unsigned long int` what is a [2 byte variable](https://gcc.gnu.org/wiki/avr-gcc#Deviations_from_the_Standard) that can be positive only (no - in front).
 
@@ -298,7 +298,7 @@ If everything went well, **LED1** is flashing when sensors detect a **black surf
 
 Take a look at [this program](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/blob/c4faf0595e501fffab596e6a930e0ae0cdbc37a3/PhilippBruhin/Excercise_tasks/l_infrared_sensors/l_infrared_sensors/main.c). It switches off all LEDs when IR-Sensor (respectively phototransistor) in **slot FL** does not receive reflected [infrared light](https://en.wikipedia.org/wiki/Infrared) from the IR diode. The better the reflection gets, the more LEDs are flashing. Update the code as follows.
 
-When there is no reflection at IR Sensor FR (not FL), all LEDs are switched off. Is ther a **bit reflection**, **LED1** swichtes on. Is there **more reflection**, **LED2** switches on additionally and so on until **LED4** for **high reflection**.
+When there is no reflection at IR Sensor FR (not FL), all LEDs are switched off. Is there a **bit reflection**, **LED1** switches on. Is there **more reflection**, **LED2** switches on additionally and so on until **LED4** for **high reflection**.
 
 [Solution](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/blob/master/PhilippBruhin/Excercise_tasks/l_infrared_sensors/l_infrared_sensors/main.c)
 
@@ -314,13 +314,13 @@ Does **FLL sensor** reflection valves **bigger than 20**, **LED1 should flash**.
 
 Compile and download [this program](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/blob/master/PhilippBruhin/Excercise_tasks/n_moving_robot/n_moving_robot/main.c) to your robot. Check also [documentation](http://tigcc.ticalc.org/doc/stdlib.html#max) of the `max(argument_a, argument_b)` function that is used in this program.
 
-When there are no obstracles within the roboter's reach, it moves **forward with 80%** of max speed. If there are **obstracles** on the **left** or on the **right**, one motor stops and the robot eludes the obstacle.
+When there are no obstacles within the robot's reach, it moves **forward with 80%** of max speed. If there are **obstacles** on the **left** or on the **right**, one motor stops and the robot eludes the obstacle.
 
-This **program can be improved** in many ways. For examble the LEDs could indicate what the IR sensors detect. The control of the wheels can be made more smooth. The program could start as soon as button 1 is pressed and so on. All of these improvements are covered in the master tasks
+This **program can be improved** in many ways. For example the LEDs could indicate what the IR sensors detect. The control of the wheels can be made more smooth. The program could start as soon as button 1 is pressed and so on. All of these improvements are covered in the master tasks
 
 ### O) Maroon Shield 8 x 8 LED pixel display
 
-Before continuing read the two chapters _"4.0 8x8 pixel matrix display"_ and _"5. Programming Maroon Shield"_ in [this project wiki](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/wiki). Then [load this programm](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/blob/master/PhilippBruhin/Excercise_tasks/o_maroon_shield/o_maroon_shield/main.c) on your NIBO Burger together with the [header file](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/blob/master/PhilippBruhin/Excercise_tasks/o_maroon_shield/o_maroon_shield/maroon.h) `maroon.h` and try to understand. Feel free to modify the output on the matrix display.
+Before continuing read the two chapters _"4.0 8x8 pixel matrix display"_ and _"5. Programming Maroon Shield"_ in [this project wiki](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/wiki). Then [load this program](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/blob/master/PhilippBruhin/Excercise_tasks/o_maroon_shield/o_maroon_shield/main.c) on your NIBO Burger together with the [header file](https://github.com/pamasol/Lehrlingsprojekt-Nibo-Burger/blob/master/PhilippBruhin/Excercise_tasks/o_maroon_shield/o_maroon_shield/maroon.h) `maroon.h` and try to understand. Feel free to modify the output on the matrix display.
 
 What a header file does is explained in [gcc.gnu.org](https://gcc.gnu.org/onlinedocs/cpp/Header-Files.htm). When you build the solution, the compiler takes the content from the header file and puts it in your `main.c` file.
 
@@ -364,6 +364,11 @@ _Help for this task can be found in the wiki section "[E) Rabbit warren thoughts
 
 Upgrade your robot optically and functionally with a spoiler, diffuser or bumpers, for example. A suitable program for drawing the components is [Autodesk Fusion 360](https://www.autodesk.com/products/fusion-360/overview) as the screenshot below shows.
 
-![2022-05-03_fusion_drawing](https://user-images.githubusercontent.com/7021907/166476997-e3bd53b7-6c03-4617-babd-e0be1f0fca3b.png)
+![2022-05-11_18-25-16](https://user-images.githubusercontent.com/7021907/167900246-017ab905-d7a9-47c5-bfa2-2f36a221b11e.png)
+
+A simplified NIBO Burger robot, that serves as base for your tuning kit, can be found [here with](https://a360.co/3FAwiLr) and [here without](https://a360.co/3kR8JEr) spoiler. Downloads:
+
+* [Step](./PhilippBruhin/fusion360_3d-files/NIBO-Burger_Tuning.stp) `*.stp`
+* [Fusion 360 Archive](./PhilippBruhin/fusion360_3d-files/NIBO-Burger_Tuning.f3d) `*.f3d`
 
 > [Fusion 360 for personal use](https://www.autodesk.com/products/fusion-360/personal) is a limited free version for individuals who are doing hobby, non-commercial projects that includes basic functionality and can be renewed on a 3-year basis.
